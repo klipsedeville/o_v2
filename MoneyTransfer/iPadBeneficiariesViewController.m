@@ -1,0 +1,610 @@
+//
+//  iPadBeneficiariesViewController.m
+//  MoneyTransfer
+//
+//  Created by Sohan Rajpal on 19/05/16.
+//  Copyright © 2016 UVE. All rights reserved.
+//
+
+#import "iPadBeneficiariesViewController.h"
+#import "iPadSendMoneyViewController.h"
+#import "iPadAddBeneficiariesViewController.h"
+#import "Controller.h"
+#import "iPadSelectAmountViewController.h"
+#import "AppDelegate.h"
+#import "iPadLoginViewController.h"
+#import "AsyncImageView.h"
+
+
+@interface iPadBeneficiariesViewController ()
+{
+    AppDelegate *appDel;
+}
+@end
+
+@implementation iPadBeneficiariesViewController
+
+#pragma mark ######
+#pragma mark View life cycle methods
+#pragma mark ######
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
+    
+//     Check user Session expire or not
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+        userDataDict = [userDataDict valueForKeyPath:@"User"];
+        double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
+    if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
+    {
+        NSLog(@"User Session expired");
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Your session has been expired." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 1003;
+        [alertview show];
+        
+    }
+    else{
+        NSLog(@"User Session not expired");
+    }
+    
+    _lowerView.hidden = YES;
+    _middleView.hidden = YES;
+    _beneficiaryBtn.hidden = YES;
+    
+    _deleteView.frame = CGRectMake(0, SCREEN_HEIGHT, _deleteView.frame.size.width, _deleteView.frame.size.height);
+    _deleteView.alpha = 1.0;
+    _sendMoneyView.frame = CGRectMake(0, SCREEN_HEIGHT, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+    _sendMoneyView.alpha = 1.0;
+    
+    // Get beneficiary list
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading beneficiaries...", nil);
+    [HUD show:YES];
+    
+    [ self GetBeneficiariesList];
+    
+    _beneficiaryView.hidden = NO;
+    [_beneficiaryListTableView reloadData];
+    _beneficiaryListTableView.bounces = NO;
+    
+    self.sendMoneyView.frame = CGRectMake(self.sendMoneyView.frame.origin.x, self.sendMoneyView.frame.origin.y, self.sendMoneyView.frame.size.width, self.sendMoneyView.frame.size.height);
+    
+    // Guesture
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 0.4; //seconds
+    lpgr.delegate = self;
+    [_beneficiaryListTableView addGestureRecognizer:lpgr];
+    
+    UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
+    swiperight.direction=UISwipeGestureRecognizerDirectionRight;
+    [_deleteView addGestureRecognizer:swiperight];
+    
+    UISwipeGestureRecognizer * swiperight1=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight1:)];
+    swiperight1.direction=UISwipeGestureRecognizerDirectionRight;
+    [_sendMoneyView addGestureRecognizer:swiperight1];
+    
+}
+
+#pragma mark ######
+#pragma mark Swipe methods
+#pragma mark ######
+
+-(void)swiperight:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [UIView animateWithDuration:0.8f animations:^{
+        
+        _deleteView.frame = CGRectMake(SCREEN_WIDTH, _deleteView.frame.origin.y, _deleteView.frame.size.width, _deleteView.frame.size.height);
+        _deleteView.alpha = 0.1;
+        
+    }completion:^(BOOL finished){
+        _deleteView.frame = CGRectMake(0, SCREEN_HEIGHT, _deleteView.frame.size.width, _deleteView.frame.size.height);
+        _deleteView.alpha = 1.0;
+    }];
+}
+
+-(void)swiperight1:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    [UIView animateWithDuration:0.8f animations:^{
+        _sendMoneyView.frame = CGRectMake(SCREEN_WIDTH, _sendMoneyView.frame.origin.y, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+        _sendMoneyView.alpha = 0.1;
+    }completion:^(BOOL finished){
+        _sendMoneyView.frame = CGRectMake(0, SCREEN_HEIGHT, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+        _sendMoneyView.alpha = 1.0;
+    }];
+}
+#pragma mark ######
+#pragma mark User long press detection method
+#pragma mark ######
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    [timer invalidate];
+    CGPoint p = [gestureRecognizer locationInView:_beneficiaryListTableView];
+    NSIndexPath *indexPath = [_beneficiaryListTableView indexPathForRowAtPoint:p];
+    if (indexPath == nil)
+    {
+    }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
+    {
+        _deleteView.frame = CGRectMake(_deleteView.frame.origin.x, SCREEN_HEIGHT, _deleteView.frame.size.width, _deleteView.frame.size.height);
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionAllowAnimatedContent animations:^{
+            beneficiaryDic = [beneficiaryArray objectAtIndex:indexPath.row];
+            
+            selectedBeneficaryID= [beneficiaryDic valueForKey:@"id"];
+            _beneficaryNameLbl.text = [[ NSString stringWithFormat:@"Delete %@?",[beneficiaryDic valueForKeyPath:@"full_name"]]uppercaseString];
+            
+            _beneficaryNameLbl.lineBreakMode = NSLineBreakByWordWrapping;
+            _beneficaryNameLbl.numberOfLines = 0;
+            
+            _sendMoneyView.frame = CGRectMake(_sendMoneyView.frame.origin.x, SCREEN_HEIGHT, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+            
+            _deleteView.frame = CGRectMake(_deleteView.frame.origin.x, SCREEN_HEIGHT - _deleteView.frame.size.height, _deleteView.frame.size.width, _deleteView.frame.size.height);
+            
+        } completion:^(BOOL finished){
+            
+        }];
+    }
+}
+
+#pragma mark ######
+#pragma mark GEt Beneficiaries List method
+#pragma mark ######
+
+-(void)GetBeneficiariesList;
+{
+    // Get Beneficiaries list
+    [ Controller GetBeneficiariesListWithSuccess:^(id responseObject){
+        
+        [HUD removeFromSuperview];
+        
+    }andFailure:^(NSString *String){
+        
+        NSLog(@"Received String..%@", String);
+        
+        NSError *error;
+        NSData *jsonData = [String dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:NSJSONReadingMutableContainers error:&error];
+        
+        NSDictionary *payLoadDic = [ json valueForKey:@"PayLoad"];
+        BOOL Status = [[ payLoadDic valueForKey:@"status"] boolValue];
+        if ( Status == true)
+        {
+            beneficiaryArray = [ [payLoadDic valueForKey:@"data"] valueForKey:@"beneficiaries"];
+            NSLog(@" Beneficiary list Data ..%@", beneficiaryArray);
+            
+            if ([beneficiaryArray count] != 0)
+            {
+                _beneficiaryView.hidden = NO;
+                _lowerView.hidden = NO;
+                _middleView.hidden = NO;
+                _beneficiaryBtn.hidden = YES;
+                
+                [_beneficiaryListTableView reloadData];
+            }
+            else{
+                _beneficiaryBtn.hidden = NO;
+                _beneficiaryView.hidden = YES;
+            }
+            [_beneficiaryListTableView reloadData];
+        }
+        else
+        {
+            if(!String || [String isEqualToString:@"(null)"])
+            {
+                String = @"Your session has been expired.";
+                
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:String delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                alertview.tag = 1003;
+                
+                [alertview show];
+            }
+
+            [HUD removeFromSuperview];
+        }
+        [HUD removeFromSuperview];
+    }];
+}
+#pragma mark ######
+#pragma mark Click Events method
+#pragma mark ######
+
+- (IBAction)deleteBeneficaryBtn:(id)sender
+{
+    // Delete Beneficiary
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Deleting beneficiary...", nil);
+    [HUD show:YES];
+    
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    
+    NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
+    
+    // Decode KeyString form base64
+    NSString *base64KeyString =[ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"public_key"]];
+    NSData *decodedKeyData = [[NSData alloc] initWithBase64EncodedString:base64KeyString options:0];
+    // Decode IvString form base64
+    NSString *base64IVString = [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"iv"]];
+    NSData *decodedIVData = [[NSData alloc] initWithBase64EncodedString:base64IVString options:0];
+    
+    NSString *EncryptKey = [[FBEncryptorAES encryptData:[@"beneficiary_id" dataUsingEncoding:NSUTF8StringEncoding] key:decodedKeyData iv:decodedIVData] base64EncodedStringWithOptions:0];
+    
+    EncryptKey= [self URLEncodeStringFromString:EncryptKey];
+    
+    NSString *EncryptValue = [[FBEncryptorAES encryptData:[selectedBeneficaryID dataUsingEncoding:NSUTF8StringEncoding] key:decodedKeyData iv:decodedIVData] base64EncodedStringWithOptions:0];
+    
+    EncryptValue= [self URLEncodeStringFromString:EncryptValue];
+    
+    NSMutableData *PostData =[[NSMutableData alloc] initWithData:[[NSString stringWithFormat:@"%@=%@",EncryptKey,EncryptValue] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@?%@=%@", BaseUrl, DeletBeneficary,
+                        @"beneficiary_id", selectedBeneficaryID];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"PUT";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request addValue: userTokenString forHTTPHeaderField:@"token"];
+    
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *receivedData, NSURLResponse *response, NSError *error) {
+        //if communication was successful
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+            if (httpResp.statusCode == 200)
+            {
+                NSString* resultString= [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+                NSLog(@"result string %@", resultString);
+                
+                NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:resultString options:0];
+                
+                NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
+                if (data1)
+                {
+                    NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
+                    
+                    dispatch_queue_t concurrentQueue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                    dispatch_async(concurrentQueue1, ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
+                            if (status == 0)
+                            {
+                                [HUD removeFromSuperview];
+                                NSString * errorString =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                                
+                                if(!errorString || [errorString isEqualToString:@"(null)"])
+                                {
+                                    errorString = @"Your session has been expired.";
+                                    
+                                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                    alertview.tag = 1003;
+                                    
+                                    [alertview show];
+                                }
+                                else
+                                {
+                                    
+                                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                    
+                                    [alertview show];
+                                }
+                            }
+                            else
+                            {
+                                _deleteView.frame = CGRectMake(0, SCREEN_HEIGHT, _deleteView.frame.size.width, _deleteView.frame.size.height);
+                                _deleteView.alpha = 1.0;
+                                
+                                _sendMoneyView.frame = CGRectMake(0, SCREEN_HEIGHT, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+                                _sendMoneyView.alpha = 1.0;
+                                
+                                // Get teh beneficary list after deleting the selected beneficiary
+                                [ self GetBeneficiariesList];
+                                
+                            }
+                        });
+                    });
+                }
+                else
+                {
+                    [HUD removeFromSuperview];
+                }
+            }
+        }
+        else{
+            [HUD removeFromSuperview];
+        }
+        
+    }];
+    
+    [postDataTask resume];
+}
+
+- (IBAction)SendMoneyBtn:(id)sender {
+    
+    // Send money
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    
+    NSString *stripe_customerID = [userDataDict valueForKeyPath:@"card.user_id"];
+    
+    if (![[userDataDict valueForKeyPath:@"card.user_id"] isKindOfClass:[NSNull class]])
+    {
+        [self performSegueWithIdentifier:@"SelectAmount" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"Showprofile" sender:self];
+    }
+}
+
+- (IBAction)backBtnClicked:(id)sender {
+    
+    // Back button
+    [self performSegueWithIdentifier:@"ShowMoney" sender:self];
+}
+
+- (IBAction)newBeneficiaryBtn:(id)sender {
+    
+    // New beneficary button
+    [self performSegueWithIdentifier:@"ShowBeneficiary" sender:self];
+}
+
+- (IBAction)plusBtn:(id)sender {
+    
+    // Add beneficary Button
+    [self performSegueWithIdentifier:@"ShowBeneficiary" sender:self];
+}
+#pragma mark ######
+#pragma mark Encode URL
+#pragma mark ######
+
+- (NSString *)URLEncodeStringFromString:(NSString *)string
+{
+    // Encode URL
+    static CFStringRef charset = CFSTR("!@#$%&*()+'\";:=,/?[] ");
+    CFStringRef str = (__bridge CFStringRef)string;
+    CFStringEncoding encoding = kCFStringEncodingUTF8;
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, str, NULL, charset, encoding));
+}
+
+#pragma mark ######
+#pragma mark  Table View Methods
+#pragma mark ######
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 110;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [beneficiaryArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    
+    UITableViewCell *cell;
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+
+    NSDictionary *billerDic = [beneficiaryArray objectAtIndex:indexPath.row];
+    
+    UILabel *userName = [[UILabel alloc] initWithFrame:CGRectMake(15,15,SCREEN_WIDTH-300, 40)];
+    userName.textColor = [UIColor blackColor];
+    userName.text = [ NSString stringWithFormat:@"%@",[billerDic valueForKeyPath:@"full_name"]];
+    userName.lineBreakMode = NSLineBreakByWordWrapping;
+    userName.numberOfLines = 0;
+    [cell.contentView addSubview:userName];
+    userName.font = [UIFont fontWithName:@"MyriadPro-Regular" size:30];
+    
+    UILabel *ChannelName = [[UILabel alloc] initWithFrame:CGRectMake(15,65, SCREEN_WIDTH-250,20)];
+    ChannelName.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
+    ChannelName.textColor = [UIColor lightGrayColor];
+    ChannelName.text = [ NSString stringWithFormat:@"%@",[billerDic valueForKeyPath:@"settlement_channel.title"]];
+    ChannelName.textColor = [ UIColor blackColor];
+    [cell.contentView addSubview:ChannelName];
+    
+    UILabel *userCountryname = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-65,65,50,20)];
+    userCountryname.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
+    userCountryname.textColor = [UIColor lightGrayColor];
+    userCountryname.textColor = [ UIColor blackColor];
+    userCountryname.textAlignment = NSTextAlignmentRight;
+    userCountryname.text = [ NSString stringWithFormat:@"%@",[billerDic valueForKeyPath:@"country_currency.currency_code"]];
+    [cell.contentView addSubview:userCountryname];
+    
+    
+    AsyncImageView *iconImage = [[AsyncImageView alloc] init];
+    iconImage.frame =  CGRectMake(SCREEN_WIDTH-47,20,30,30);
+    NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[billerDic valueForKeyPath:@"country_currency.flag"]];
+    
+    NSString  *urlStr = [logoimageURl stringByReplacingOccurrencesOfString:@"" withString:@"%20"];
+    
+    NSURL * imgUrl = [NSURL URLWithString:urlStr];
+    iconImage.imageURL = imgUrl;
+    
+    NSString * flagName = @"";
+    flagName = [logoimageURl lastPathComponent];
+    [cell.contentView addSubview:iconImage];
+
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    tapGestureRecognizer.numberOfTouchesRequired = 1;
+    cell.tag = indexPath.row;
+    [cell addGestureRecognizer:tapGestureRecognizer];
+    
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 0.6; //seconds
+    [cell addGestureRecognizer:lpgr];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *endLabel = [[UIView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 0.5)];
+    endLabel.backgroundColor = [UIColor lightGrayColor];
+    [cell.contentView addSubview:endLabel];
+
+    return cell;
+}
+
+-(void)cellTapped:(UITapGestureRecognizer*)tap
+{
+    // Select table view cell
+    CGPoint location = [tap locationInView:_beneficiaryListTableView];
+    NSIndexPath *path = [_beneficiaryListTableView indexPathForRowAtPoint:location];
+    index = path.row;
+    [timer invalidate];
+    beneficiaryDic = [beneficiaryArray objectAtIndex:path.row];
+    
+    if (_deleteView.frame.origin.y < SCREEN_HEIGHT)
+    {
+        _deleteView.frame = CGRectMake(_deleteView.frame.origin.x, SCREEN_HEIGHT, _deleteView.frame.size.width, _deleteView.frame.size.height);
+    }
+    
+    _sendMoneyView.frame = CGRectMake(_sendMoneyView.frame.origin.x, SCREEN_HEIGHT, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+    
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionAllowAnimatedContent animations:^{
+        
+        _sendingMoneyUserNameLbl.text = [[ NSString stringWithFormat:@"SEND MONEY TO %@?",[beneficiaryDic valueForKeyPath:@"full_name"]]uppercaseString];
+        _sendingMoneyUserNameLbl.lineBreakMode = NSLineBreakByWordWrapping;
+        _sendingMoneyUserNameLbl.numberOfLines = 0;
+        
+        _sendMoneyView.frame = CGRectMake(_sendMoneyView.frame.origin.x, SCREEN_HEIGHT-_sendMoneyView.frame.size.height, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+        
+    } completion:nil];
+    
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideSendMoneyView) userInfo:nil repeats:NO];
+    
+}
+
+- (void) hideSendMoneyView
+{
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionAllowAnimatedContent animations:^{
+        _sendMoneyView.frame = CGRectMake(_sendMoneyView.frame.origin.x, SCREEN_HEIGHT, _sendMoneyView.frame.size.width, _sendMoneyView.frame.size.height);
+    } completion:nil];
+}
+
+#pragma mark ######
+#pragma mark  Segue Methods
+#pragma mark ######
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"segue to Selct Amount Screen screen");
+    if([[segue identifier] isEqualToString:@"SelectAmount"]){
+        
+        iPadSelectAmountViewController * vc = [segue destinationViewController];
+         vc.beneficiaryUserInfo =   [beneficiaryArray objectAtIndex:index];
+    }
+}
+#pragma mark ########
+#pragma mark Color HexString methods
+#pragma mark ######
+
+-(UIColor*)colorWithHexString:(NSString*)hex
+{
+    NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) return [UIColor grayColor];
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    
+    if ([cString length] != 6) return  [UIColor grayColor];
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:1.0f];
+}
+
+#pragma mark ######
+#pragma mark  Alert Methods
+#pragma mark ######
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag ==1002)
+    {
+        if (buttonIndex==0)
+        {
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[iPadLoginViewController class]]) {
+                    [self.navigationController popToViewController:controller
+                                                          animated:YES];
+                    [self.navigationController setNavigationBarHidden:NO];
+                    break;
+                }
+            }
+        }
+    }
+    if(alertView.tag ==1003)
+    {
+        if (buttonIndex==0)
+        {
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[iPadLoginViewController class]]) {
+                    [self.navigationController popToViewController:controller
+                                                          animated:YES];
+                    [self.navigationController setNavigationBarHidden:NO];
+                    break;
+                }
+            }
+        }
+    }
+}
+
+@end

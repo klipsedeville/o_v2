@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D56135186BC56B1ADAD28AE2E616FAB1F0FF149B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D56135186BC56B1ADAD28AE2E616FAB1F0FF149B" : 9223372036854775807,
+    "DC57E9AFE15E5B8F498E270EEA6FAD644C1BA6B2" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "091CF861-BBE1-47F3-994E-FDD5E36F2F05",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D56135186BC56B1ADAD28AE2E616FAB1F0FF149B" : "MoneyTransferx%2029Sept\/",
+    "DC57E9AFE15E5B8F498E270EEA6FAD644C1BA6B2" : "MoneyTransferx%2029Sept\/iOS\/MoneyTransfer\/BloodDonorOman(%2013th%20july)%20\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MoneyTransfer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iOS\/MoneyTransfer.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.100.73\/root\/MoneyTransfer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D56135186BC56B1ADAD28AE2E616FAB1F0FF149B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/192.168.100.76:29418\/BloodDonor.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC57E9AFE15E5B8F498E270EEA6FAD644C1BA6B2"
+    }
+  ]
+}
