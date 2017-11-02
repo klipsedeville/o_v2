@@ -561,6 +561,26 @@
         [ dict1 setObject:textString forKey:@"collected_data"];
         [DataArray addObject:dict1];
     }
+    
+    [PaymentUserData setValue:_titleLbl.text forKey:@"bill"];
+    [PaymentUserData setValue:_billOptionLbl.text forKey:@"optionName"];
+    [PaymentUserData setValue:_amountTextField.text forKey:@"amount"];
+    [PaymentUserData setValue:_meterTextField.text forKey:@"meter"];
+    [PaymentUserData setValue:_receiverPhnNoTextField.text forKey:@"receiverPhnNo"];
+    [PaymentUserData setValue:_emailAddressTextField.text forKey:@"emailAddress"];
+    [PaymentUserData setValue:_fullNameTextField.text forKey:@"fullName"];
+    [PaymentUserData setValue:_phnNoTextField.text forKey:@"phnNo"];
+    [PaymentUserData setValue:_fullNameProTextField.text forKey:@"_fullNamePro"];
+    [PaymentUserData setValue:_ageTextField.text forKey:@"age"];
+    [PaymentUserData setValue:_studentRegistartionnumberTextField.text forKey:@"studentRegNo"];
+    [PaymentUserData setValue:_studentFullNameTextField.text forKey:@"studentFullName"];
+    [PaymentUserData setValue:_classTextField.text forKey:@"class"];
+    [PaymentUserData setValue:_clientTextField.text forKey:@"client"];
+    [PaymentUserData setValue:_equipmentIDTextField.text forKey:@"equipmentID"];
+    [PaymentUserData setValue:billOptionID forKey:@"billOptionID"];
+    
+        [self performSegueWithIdentifier:@"confirmpayment" sender:self];
+    
 //     // call pay bill
 //    HUD = [[MBProgressHUD alloc] initWithView:self.view];
 //    [self.view addSubview:HUD];

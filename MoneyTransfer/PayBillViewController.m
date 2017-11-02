@@ -419,7 +419,11 @@
         [DataArray addObject:dict1];
         
     }
+    [PaymentUserData setValue:_billOptionLbl.text forKey:@"option_name"];
+    [PaymentUserData setValue:_amountTextField.text forKey:@"amount"];
+    [PaymentUserData setValue:billOptionID forKey:@"bill_optionID"];
     
+        [self performSegueWithIdentifier:@"confirmpayment" sender:self];
 //    // call pay bill
 //    HUD = [[MBProgressHUD alloc] initWithView:self.view];
 //    [self.view addSubview:HUD];

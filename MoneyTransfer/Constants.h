@@ -57,4 +57,4 @@
 #define ListBills @"webservice/bills/list_bills_by_biller.json?"
 #define ListBillPayments @"webservice/bills/list_bill_payments.json"
 
-#define ListBanks @"webservice/currencies/list_banks.json?"
+#define ListBanks @"webservice/currencies/list_banks.json"

@@ -90,7 +90,7 @@
     [self.view addSubview:HUD];
     HUD.labelText = NSLocalizedString(@"Loading...", nil);
     [HUD show:YES];
-    
+
     [self callPayBill];
 }
 

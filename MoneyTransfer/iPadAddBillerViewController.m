@@ -35,7 +35,6 @@
     _accountNumberTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Account Number"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _billNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _billAmountTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Amount"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-    bankArray = [NSMutableArray arrayWithObjects:@"Access",@"Diamond",@"Fidelity", @"Guaranty Trust",@"Zenith",@"UBA", @"Union",@"Stanbic",@"Wema", @"First Bank",@"FCMB",@"Skye", @"Sterling",@"Eco",@"Heritage",nil];
     _categoryTableView.hidden = YES;
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
@@ -58,12 +57,12 @@
     [HUD show:YES];
     [self GetStatesList1];
     
-    //    //     Call Get List Banks
-    //    [HUD removeFromSuperview];
-    //    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    //    [self.view addSubview:HUD];
-    //    [HUD show:YES];
-    //    [self GetListBanks];
+        //     Call Get List Banks
+        [HUD removeFromSuperview];
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        [HUD show:YES];
+        [self GetListBanks];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -999,6 +998,104 @@
          }
          
      }];
+}
+
+#pragma  mark ############
+#pragma mark Get List Banks
+#pragma  mark ############
+
+-(void)GetListBanks
+{
+    // Get bill states list
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    userDataDict = [ userDataDict valueForKey:@"User"];
+    NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
+    
+    // Decode KeyString form base64
+    NSString *base64KeyString =[ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"public_key"]];
+    NSData *decodedKeyData = [[NSData alloc] initWithBase64EncodedString:base64KeyString options:0];
+    // Decode IvString form base64
+    NSString *base64IVString = [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"iv"]];
+    NSData *decodedIVData = [[NSData alloc] initWithBase64EncodedString:base64IVString options:0];
+    
+    NSMutableData *PostData;
+    
+    NSString *ApiUrl = [ NSString stringWithFormat:@"https://staging.orobo.com//webservice/currencies/list_banks.json?%@=%@", @"currency_id", @"154"];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request addValue: userTokenString forHTTPHeaderField:@"token"];
+    
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        //if communication was successful
+        
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+            if (httpResp.statusCode == 200)
+            {
+                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"result string %@", resultString);
+                
+                NSData *data = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+                id responseDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                
+                NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"]integerValue];
+                
+                if (status == 0)
+                {
+                    [HUD removeFromSuperview];
+                    NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                    NSLog(@"error ..%@", errorArray);
+                    
+                    NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                    
+                    if(!errorString || [errorString isEqualToString:@"(null)"])
+                    {
+                        errorString = @"Your sesssion has been expired.";
+                        
+                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        alertview.tag = 1003;
+                        
+                        [alertview show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        
+                        [alertview show];
+                    }
+                }
+                else
+                {
+                    [HUD removeFromSuperview];
+                    NSLog(@"Bank String..%@",responseDic );
+                    
+                    bankArray= [ responseDic valueForKeyPath:@"PayLoad.data.banks.title"];
+                    [_bankTableView reloadData];
+                    
+                    [HUD removeFromSuperview];
+                    
+                }
+            }
+            else{
+                [HUD removeFromSuperview];
+            }
+        }
+        
+    }];
+    
+    [postDataTask resume];
 }
 
 @end
