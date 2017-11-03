@@ -2974,11 +2974,11 @@
             <objects>
                 <viewController id="HtB-23-vBk" customClass="ConfirmPaymentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAQ-AM-Czo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="2000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uDw-Tz-pSs">
-                                <rect key="frame" x="0.0" y="1960" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="760" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.24313725489999999" green="0.77647058820000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2990,11 +2990,11 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="LiY-4p-PZg">
-                                <rect key="frame" x="0.0" y="160" width="320" height="770"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="160" width="320" height="596"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" id="28h-MP-Jw0">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down.png" id="RpR-iG-uh4">
@@ -3087,9 +3087,14 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" id="ZDk-pC-2Cv">
+                                        <rect key="frame" x="0.0" y="280" width="320" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ex. Rate: $1.00 = ₦350.00 Service Fee $4.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1R8-nL-m1C">
                                         <rect key="frame" x="0.0" y="367" width="320" height="13"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3110,19 +3115,22 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Full Name" textAlignment="natural" minimumFontSize="17" id="1pf-Bt-Iq8">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" id="1pf-Bt-Iq8">
                                                 <rect key="frame" x="15" y="46" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="HtB-23-vBk" id="Kzj-MP-F2q"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" misplaced="YES" id="19m-Pi-dQq">
                                                 <rect key="frame" x="15" y="76" width="290" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email Address" textAlignment="natural" minimumFontSize="17" id="8IU-dT-uTn">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" id="8IU-dT-uTn">
                                                 <rect key="frame" x="15" y="84" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
@@ -3134,7 +3142,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phone number" textAlignment="natural" minimumFontSize="17" id="klu-TQ-4ed">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" id="klu-TQ-4ed">
                                                 <rect key="frame" x="15" y="119" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
@@ -3147,11 +3155,6 @@
                                                 <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="ZDk-pC-2Cv">
-                                        <rect key="frame" x="0.0" y="280" width="320" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -3186,7 +3189,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="320" height="2000"/>
+                    <size key="freeformSize" width="320" height="800"/>
                     <connections>
                         <outlet property="amountHeadingLbl" destination="owE-UE-Sdq" id="aOU-6c-RKz"/>
                         <outlet property="amountLbl" destination="cQL-9r-PP6" id="G6i-fT-6G9"/>
@@ -3195,10 +3198,14 @@
                         <outlet property="billLbl" destination="H7m-u0-D6X" id="ILO-jh-Nud"/>
                         <outlet property="billerCategoryLbl" destination="Ng2-EN-RWp" id="lPl-Qy-Rki"/>
                         <outlet property="billerDetailsLbl" destination="Zbp-mE-5Fu" id="CiF-JC-pXM"/>
+                        <outlet property="emailAddressTextFielf" destination="8IU-dT-uTn" id="QO0-d2-KyL"/>
                         <outlet property="exchangeRateLbl" destination="1R8-nL-m1C" id="OSD-EG-Cbu"/>
                         <outlet property="fieldView" destination="ZDk-pC-2Cv" id="dHf-V2-hEP"/>
+                        <outlet property="fullNameTextField" destination="1pf-Bt-Iq8" id="YwR-ZV-DXD"/>
+                        <outlet property="lastView" destination="wUn-Lo-WWL" id="SBv-Fl-cVl"/>
                         <outlet property="optionHeadingLbl" destination="GNi-tE-MZR" id="DDG-tG-r0a"/>
                         <outlet property="optionLbl" destination="uyv-Cc-qbp" id="Qqx-RP-kyF"/>
+                        <outlet property="phoneNumberTextField" destination="klu-TQ-4ed" id="mJU-ws-Kkl"/>
                         <outlet property="scrollView" destination="LiY-4p-PZg" id="S5Z-82-RWd"/>
                         <segue destination="xh6-d8-XGw" kind="push" identifier="TransferPayment" id="8WE-qM-jZQ"/>
                         <segue destination="n7Y-Na-lok" kind="push" identifier="Billers" id="xDA-QG-zCN"/>
@@ -5143,6 +5150,667 @@ too.   Tip : Include your referral code in your app review  when you rate us
             </objects>
             <point key="canvasLocation" x="-2339" y="471"/>
         </scene>
+        <!--Add Biller View Controller-->
+        <scene sceneID="5ZM-pz-74W">
+            <objects>
+                <viewController id="eRc-yo-bdt" customClass="AddBillerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aON-6d-QtP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rWR-ka-qc0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your biller's country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jBx-rQ-QtE">
+                                        <rect key="frame" x="20" y="12" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="sfZ-dk-Ebx">
+                                        <rect key="frame" x="230" y="38" width="90" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down_white.png" id="8nW-oD-Oc5">
+                                                <rect key="frame" x="66" y="7" width="9" height="10"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" id="hfj-Ta-jy3">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.027450980390000001" green="0.1960784314" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LGi-PD-DjF">
+                                                <rect key="frame" x="24" y="0.0" width="35" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Vsi-OO-dUv">
+                                                <rect key="frame" x="4" y="5" width="14" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AIS-iM-ygZ">
+                                                <rect key="frame" x="-1" y="0.0" width="90" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="17"/>
+                                                <connections>
+                                                    <action selector="currencyBtnClicked:" destination="eRc-yo-bdt" eventType="touchUpInside" id="k5k-6V-1rp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="5d7-bD-yFp">
+                                        <rect key="frame" x="0.0" y="79" width="320" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down.png" id="S98-Nn-YBx">
+                                                <rect key="frame" x="289" y="-5" width="31" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Biller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7pM-ZN-rar">
+                                                <rect key="frame" x="15" y="27" width="110" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="23"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="3Ll-va-5ii">
+                                        <rect key="frame" x="0.0" y="149" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="slp-gu-MKq">
+                                                <rect key="frame" x="1" y="1" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Biller Name" minimumFontSize="17" id="XdP-E4-aur">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="6Sj-vO-OI5"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="GmH-BI-n3d">
+                                                <rect key="frame" x="80" y="1" width="1" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" id="aPm-BS-r45">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_business_48pt.png" id="euQ-Sv-wg0">
+                                                <rect key="frame" x="20" y="22" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="skA-Ql-c0A">
+                                        <rect key="frame" x="0.0" y="229" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="bgj-Pu-ncG">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select biller category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="UpD-2j-MXu">
+                                                <rect key="frame" x="95" y="15" width="220" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Tv-3S-wMJ">
+                                                <rect key="frame" x="95" y="45" width="220" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow.png" id="WgF-XN-b1X">
+                                                <rect key="frame" x="280" y="50" width="15" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" id="fEw-fM-ZVO">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_group_work_48pt.png" id="dXS-lL-j7z">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4qP-aG-ohZ">
+                                                <rect key="frame" x="80" y="35" width="240" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="ActionSelectBillerCategory:" destination="eRc-yo-bdt" eventType="touchUpInside" id="sAG-mU-Yor"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="co5-E9-G5K">
+                                        <rect key="frame" x="0.0" y="309" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="M52-NK-eOP">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" id="WJN-g3-BmE">
+                                                <rect key="frame" x="95" y="0.0" width="225" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="pOJ-2C-mhU"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" id="h8O-Pi-zyQ">
+                                                <rect key="frame" x="160" y="0.0" width="160" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="0EZ-4J-JZN"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="c5W-Vg-vsb">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person_48pt.png" id="eBa-5q-r0y">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="idz-Jy-5aA">
+                                        <rect key="frame" x="0.0" y="389" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="gSz-cl-RCm">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" id="vKQ-yW-CTK">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="zic-ye-CKg"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="YDI-lz-v8P">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_email_48pt.png" id="3Pd-Zf-QmO">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="v0z-3g-tSi">
+                                        <rect key="frame" x="0.0" y="469" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="e1x-fL-QMx">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" minimumFontSize="17" id="mNd-sr-IL2">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="Gwm-bQ-X7a"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="OZf-Zd-0fo">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_contact_phone_48pt.png" id="tzF-b6-Dr0">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="2iF-gH-STG">
+                                        <rect key="frame" x="0.0" y="549" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="2XY-h1-83M">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Physical Address" minimumFontSize="17" id="hSB-t2-Xhn">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="Y1P-u0-YTC"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="IIG-Rv-SWY">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_streetview_48pt.png" id="rxA-wN-zjb">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="OSS-Md-QJe">
+                                        <rect key="frame" x="0.0" y="629" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="CCi-vO-CJw">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XGy-db-4K5">
+                                                <rect key="frame" x="95" y="1" width="225" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow.png" id="2qH-zx-zUJ">
+                                                <rect key="frame" x="280" y="33" width="15" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" id="rAw-tN-YVS">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location_city_48pt.png" id="xiI-xE-kCl">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UZr-x2-o2m">
+                                                <rect key="frame" x="95" y="1" width="225" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="ActionSelectLocation:" destination="eRc-yo-bdt" eventType="touchUpInside" id="7rJ-i9-Q9u"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="wrx-xi-LEi">
+                                        <rect key="frame" x="0.0" y="709" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="P2O-mM-4AP">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dp9-d7-h0c">
+                                                <rect key="frame" x="95" y="1" width="225" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="21"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow.png" id="qEm-5l-qdb">
+                                                <rect key="frame" x="280" y="33" width="15" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" id="G1d-gF-k1k">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_balance_48pt.png" id="TtS-2A-r5J">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SDh-54-hdk">
+                                                <rect key="frame" x="95" y="1" width="225" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="ActionSelectBank:" destination="eRc-yo-bdt" eventType="touchUpInside" id="VAV-Wq-eRg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="1Pu-kd-ac2">
+                                        <rect key="frame" x="0.0" y="789" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="vhv-kW-xPO">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account name" minimumFontSize="17" id="8Xb-eq-Utf">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="Vvg-yE-pj8"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="89R-yf-emF">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_box_48pt.png" id="J9C-dL-ySN">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="INh-IQ-E73">
+                                        <rect key="frame" x="0.0" y="869" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="D8r-Dr-SHs">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account number" minimumFontSize="17" id="a9N-o1-MlJ">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="OMI-cC-j4P"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="qaq-dt-omV">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_balance_wallet_48pt.png" id="lfI-Je-1dN">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="xYh-J5-HAZ">
+                                        <rect key="frame" x="0.0" y="949" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="DyA-gL-KkO">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to pay for?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3QM-Kr-YoA">
+                                                <rect key="frame" x="15" y="25" width="305" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="hCM-K4-BmZ">
+                                        <rect key="frame" x="0.0" y="1029" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="55X-1W-wDa">
+                                                <rect key="frame" x="80" y="1" width="1" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bill Name" minimumFontSize="17" id="jlb-qL-DwM">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="vso-Zo-KQI"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="X9B-wI-5dw">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" id="NtI-c0-sp0">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="ygm-x5-fNu">
+                                        <rect key="frame" x="0.0" y="1109" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="40s-76-8vD">
+                                                <rect key="frame" x="80" y="0.0" width="1" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bill Amount" minimumFontSize="17" id="yLU-3F-WP9">
+                                                <rect key="frame" x="95" y="1" width="320" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRc-yo-bdt" id="U4G-c4-hIg"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" id="W9m-fR-6yG">
+                                                <rect key="frame" x="1" y="79" width="320" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cuY-hI-z5x">
+                                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="35"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rWm-tb-iqD">
+                                        <rect key="frame" x="90" y="293" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="eRc-yo-bdt" id="ksY-KY-Qv7"/>
+                                            <outlet property="delegate" destination="eRc-yo-bdt" id="g9Q-bd-yHm"/>
+                                        </connections>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qCS-6G-V5o">
+                                        <rect key="frame" x="90" y="683" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="eRc-yo-bdt" id="ZIc-ag-f5y"/>
+                                            <outlet property="delegate" destination="eRc-yo-bdt" id="863-MY-VYZ"/>
+                                        </connections>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xdX-hV-Ymp">
+                                        <rect key="frame" x="90" y="763" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="eRc-yo-bdt" id="Ky3-WA-vDy"/>
+                                            <outlet property="delegate" destination="eRc-yo-bdt" id="9I0-QL-X7v"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.027450980390000001" green="0.1960784314" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nHP-ql-Ovp">
+                                <rect key="frame" x="0.0" y="528" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.50980392159999999" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="0.31764705879999999" green="0.34901960780000002" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled" title="Sign in"/>
+                                <connections>
+                                    <action selector="ActionNextBtn:" destination="eRc-yo-bdt" eventType="touchUpInside" id="89K-wG-vdf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.027450980390000001" green="0.1960784314" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="F13-H0-3zH">
+                        <leftBarButtonItems>
+                            <barButtonItem image="left_arrow.png" id="KpF-Ld-aDY">
+                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="-4"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="backBtnClicked:" destination="eRc-yo-bdt" id="Hug-lg-XAN"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="nPc-Ff-mWD">
+                                <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Your Biller" textAlignment="natural" minimumFontSize="17" id="pt0-61-im5">
+                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="0.0" height="0.0"/>
+                    <connections>
+                        <outlet property="accNameView" destination="1Pu-kd-ac2" id="j1v-fP-j6H"/>
+                        <outlet property="accountNameTextfield" destination="8Xb-eq-Utf" id="MRD-1p-Np3"/>
+                        <outlet property="accountNumberTextfield" destination="a9N-o1-MlJ" id="VHT-en-0ql"/>
+                        <outlet property="accountNumberView" destination="INh-IQ-E73" id="HkB-JR-d0M"/>
+                        <outlet property="addressView" destination="2iF-gH-STG" id="hSE-Vt-iRs"/>
+                        <outlet property="bankTableView" destination="xdX-hV-Ymp" id="rXN-jW-b5h"/>
+                        <outlet property="bankView" destination="wrx-xi-LEi" id="xp4-WX-vvH"/>
+                        <outlet property="billAmountImgLabel" destination="cuY-hI-z5x" id="BsY-me-yqe"/>
+                        <outlet property="billAmountTextfield" destination="yLU-3F-WP9" id="h0L-jd-AeW"/>
+                        <outlet property="billNameTextfield" destination="jlb-qL-DwM" id="kV3-ji-z4h"/>
+                        <outlet property="billNameView" destination="hCM-K4-BmZ" id="lzX-Zp-tKN"/>
+                        <outlet property="billerNameTextfield" destination="XdP-E4-aur" id="Wsh-tF-SDS"/>
+                        <outlet property="billerView" destination="3Ll-va-5ii" id="5jp-om-bA5"/>
+                        <outlet property="categoryTableView" destination="rWm-tb-iqD" id="7Rl-FA-CRn"/>
+                        <outlet property="categoryView" destination="skA-Ql-c0A" id="UPK-gW-xFI"/>
+                        <outlet property="countryImage" destination="Vsi-OO-dUv" id="DnA-jf-rPv"/>
+                        <outlet property="currencyIDLbl" destination="LGi-PD-DjF" id="HS0-hh-sdY"/>
+                        <outlet property="currencyView" destination="sfZ-dk-Ebx" id="62C-1O-NBI"/>
+                        <outlet property="emailAddressTextfield" destination="vKQ-yW-CTK" id="tKb-Vh-PDI"/>
+                        <outlet property="emailView" destination="idz-Jy-5aA" id="d3Q-H5-HOJ"/>
+                        <outlet property="firstNameTextfield" destination="WJN-g3-BmE" id="pVe-5g-3gE"/>
+                        <outlet property="lastNameTextfield" destination="h8O-Pi-zyQ" id="b8E-po-7LO"/>
+                        <outlet property="lastView" destination="ygm-x5-fNu" id="cY8-cn-fC1"/>
+                        <outlet property="locationTableView" destination="qCS-6G-V5o" id="UZB-v0-znh"/>
+                        <outlet property="locationView" destination="OSS-Md-QJe" id="KtI-oI-NTB"/>
+                        <outlet property="nameView" destination="co5-E9-G5K" id="Eku-8g-NRt"/>
+                        <outlet property="numberView" destination="v0z-3g-tSi" id="oMw-l6-nfB"/>
+                        <outlet property="phoneNumberTextfield" destination="mNd-sr-IL2" id="QYi-tp-bkp"/>
+                        <outlet property="physicalAddressTextfield" destination="hSB-t2-Xhn" id="sMF-yR-WCc"/>
+                        <outlet property="scrollView" destination="rWR-ka-qc0" id="qsB-eM-YhY"/>
+                        <outlet property="selectBankLbl" destination="dp9-d7-h0c" id="Pqe-1L-X6I"/>
+                        <outlet property="selectBillerCategoryLbl" destination="1Tv-3S-wMJ" id="z3f-3t-BoM"/>
+                        <outlet property="selectLocationLbl" destination="XGy-db-4K5" id="sMR-Fl-WF4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y34-Yz-7hE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2742.5" y="-210.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="01u-cu-Fxa">
+            <objects>
+                <viewController id="Peq-ar-f6i" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6sj-O8-x2D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.027450980390000001" green="0.1960784314" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qGG-Qb-YDM">
+                        <leftBarButtonItems>
+                            <barButtonItem image="left_arrow.png" id="9UE-Rz-xcb">
+                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="-4"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="backBtnClicked:" destination="Peq-ar-f6i" id="TTn-IU-zT4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="U0Q-Tf-JKR">
+                                <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Your Biller" textAlignment="natural" minimumFontSize="17" id="y8l-k7-c57">
+                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="0.0" height="0.0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBR-34-Xf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3153" y="-211"/>
+        </scene>
     </scenes>
     <resources>
         <image name="0" width="22" height="23"/>
@@ -5205,8 +5873,8 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <segue reference="n75-l5-JXV"/>
         <segue reference="sQY-Sr-ZeI"/>
         <segue reference="kyK-ne-rQq"/>
-        <segue reference="Tvk-Ng-cd5"/>
+        <segue reference="NOF-Oo-GTq"/>
         <segue reference="6iI-9c-gcQ"/>
-        <segue reference="I9G-Of-vCD"/>
+        <segue reference="f4M-Zl-5Mx"/>
     </inferredMetricsTieBreakers>
 </document>

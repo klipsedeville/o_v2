@@ -82,18 +82,6 @@
 //    self.popUpMsgLbl.text = self.popUpMsg;
     self.callFromLbl.text = self.callFrom;
 
-//    NSString *language = [ [ NSUserDefaults standardUserDefaults] valueForKey:@"lang_locale"];
-//    
-//    if ([language  isEqual: @"ar"])
-//    {
-//        [self.OkBtn setTitle:@"تم!" forState:UIControlStateNormal];
-//    }
-//    else
-//    {
-//        
-//    }
-    
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)hideManual

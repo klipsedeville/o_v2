@@ -14,6 +14,7 @@
     MBProgressHUD *HUD;
     NSMutableDictionary *payBillDict;
     NSMutableDictionary *billUserData;
+    NSDictionary *rateDic;
 }
 
 // Property
@@ -35,6 +36,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *billerCategoryLbl;
 @property (weak, nonatomic) IBOutlet UILabel *billerDetailsLbl;
 @property (weak, nonatomic) IBOutlet UILabel *exchangeRateLbl;
+@property (weak, nonatomic) IBOutlet UIView *lastView;
+@property (weak, nonatomic) IBOutlet UITextField *fullNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailAddressTextFielf;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+
+
+
 
 // Click Event Method
 - (IBAction)paymentBtn:(id)sender;

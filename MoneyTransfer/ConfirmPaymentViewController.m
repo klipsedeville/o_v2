@@ -29,12 +29,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
+   
     payBillDict= [[NSMutableDictionary alloc]init];
     
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -68,6 +69,15 @@
     
     _fieldView.frame = CGRectMake(_fieldView.frame.origin.x, _fieldView.frame.origin.y, _fieldView.frame.size.width, (55 * _paymentUserData.count)+10);
     
+    if (_paymentUserData.count == 0){
+        _exchangeRateLbl.frame = CGRectMake(0, 330, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
+          _lastView.frame = CGRectMake(0, 378, SCREEN_WIDTH, _lastView.frame.size.height);
+    }
+    else{
+        _exchangeRateLbl.frame = CGRectMake(0, 330+_fieldView.frame.size.height, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
+        _lastView.frame = CGRectMake(0, 378+_fieldView.frame.size.height, SCREEN_WIDTH, _lastView.frame.size.height);
+    }
+    
     for ( NSDictionary *fieldDic in _paymentUserData) {
         
         UITextView *fldText = [ fieldDic objectForKey:@"reqFldTextField"];
@@ -97,15 +107,28 @@
     _billerCategoryLbl.text = [NSString stringWithFormat:@"%@",[billUserData valueForKeyPath:@"bill_provider.title"]];;
     _billerDetailsLbl.text = [NSString stringWithFormat:@"%@",[billUserData valueForKeyPath:@"bill_provider.address"]];;
     
+    // Call get Commercial
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+    [HUD show:YES];
+    [HUD hide:YES afterDelay:1.5];
     [self getCommercials];
     
     float sizeOfContent = 0;
-    NSInteger wd = _fieldView.frame.origin.y;
-    NSInteger ht = _fieldView.frame.size.height;
-    sizeOfContent = wd+ht+100;
+    NSInteger wd = _lastView.frame.origin.y;
+    NSInteger ht = _lastView.frame.size.height;
+    sizeOfContent = wd+ht+20;
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     _scrollView.bounces = NO;
     _scrollView.scrollEnabled = YES;
+    
+    UIColor *color = [self colorWithHexString:@"51595c"];
+    _fullNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
+
+    _emailAddressTextFielf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: color}];
+    _phoneNumberTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Phone Number" attributes:@{NSForegroundColorAttributeName: color}];
 }
 #pragma  mark ############
 #pragma  mark Click Action methods
@@ -150,11 +173,32 @@
     
     // Create dictionary of data for beneficiary
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
-    [dictA setValue:_billCategoryId forKey:@"bill_id"];
+    NSArray * billArray = [billUserData valueForKey:@"bill_options"];
+    NSDictionary *billIDDict = [billArray objectAtIndex:0];
+    [dictA setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
+    [dictA setValue:[billUserData valueForKeyPath:@"bill_provider.bill_provider_id"] forKey:@"bill_provider_id"];
     [dictA setValue:[paymentData valueForKey:@"bill_optionID"] forKey:@"bill_option_id"];
-    [dictA setValue:_amountLbl.text forKey:@"amount"];
+    [dictA setValue:[ rateDic valueForKeyPath:@"PayLoad.data.exchange_rate"] forKey:@"exchange_rate"];
+    [dictA setValue:[rateDic valueForKeyPath:@"PayLoad.data.fee"] forKey:@"fee"];
+    [dictA setValue:[ rateDic valueForKeyPath:@"PayLoad.data.sending_amount"] forKey:@"sending_amount"];
+    [dictA setValue:[ rateDic valueForKeyPath:@"PayLoad.data.receiving_amount"] forKey:@"receiving_amount"];
+    [dictA setValue:[userDataDict valueForKeyPath:@"country_currency.id"] forKey:@"sending_country_currency"];
+    [dictA setValue:[billUserData valueForKeyPath:@"bill_provider.country_currency.id"] forKey:@"receiving_country_currency"];
+    [dictA setValue:_fullNameTextField.text forKey:@"beneficiary_name"];
+    [dictA setValue:_phoneNumberTextField.text forKey:@"beneficiary_phone_number"];
+    [dictA setValue:_emailAddressTextFielf.text forKey:@"beneficiary_email_address"];
+    [dictA setValue:@"ios" forKey:@"source"];
+    
     
     NSLog(@"Bill DATA ADDED...%@",dictA);
+  
+    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
+    [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
+    [dictB setValue:@"" forKey:@"bill_required_field_id"];
+    [dictB setValue:@"" forKey:@"collected_data"];
+
+    [_DataArray addObject:dictB];
+    NSLog(@"Bill DATA ADDED...%@",_DataArray);
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", _DataArray, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
@@ -235,6 +279,9 @@
                     }
                 }
                 
+            }
+            else{
+                 [HUD removeFromSuperview];
             }
         }
         
@@ -349,14 +396,13 @@
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
     {
         
-//        // Call change password
-//        [HUD removeFromSuperview];
-//        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//        [self.view addSubview:HUD];
-//        HUD.labelText = NSLocalizedString(@"Loading...", nil);
-//        [HUD show:YES];
-//        [self callPayBill];
-        
+        // Call change password
+        [HUD removeFromSuperview];
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        HUD.labelText = NSLocalizedString(@"Loading...", nil);
+        [HUD show:YES];
+        [self callPayBill];
         
     }
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
@@ -432,7 +478,7 @@
                 if (data1)
                 {
                     NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
-                    
+                    rateDic = [responseDic mutableCopy];
                     NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
                     
                     if (status == 0)

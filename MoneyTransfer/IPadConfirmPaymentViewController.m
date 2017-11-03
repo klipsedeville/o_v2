@@ -12,7 +12,10 @@
 #import "PaymentCompletedViewController.h"
 #import "IPadPaymentCompletedViewController.h"
 #import "iPadLoginViewController.h"
-
+#import "CustomPopUp_iPad.h"
+#import "MJPopupBackgroundView.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "AsyncImageView.h"
 
 @interface IPadConfirmPaymentViewController ()
 
@@ -32,11 +35,15 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    
+    NSLog(@"UserPaymentData... %@",paymentData);
+    NSLog(@"PaymentUserData... %@",_paymentUserData);
     
     _billLbl.text = _descriptionBillLbl;
     _optionLbl.text = [paymentData valueForKey:@"optionName"];
@@ -45,6 +52,15 @@
     int i = 0;
     
     _fieldView.frame = CGRectMake(_fieldView.frame.origin.x, _fieldView.frame.origin.y, _fieldView.frame.size.width, (93 * _paymentUserData.count));
+    
+    if (_paymentUserData.count == 0){
+        _exchangeRateLbl.frame = CGRectMake(0, 330, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
+        _lastView.frame = CGRectMake(0, 378, SCREEN_WIDTH, _lastView.frame.size.height);
+    }
+    else{
+        _exchangeRateLbl.frame = CGRectMake(0, 330+_fieldView.frame.size.height, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
+        _lastView.frame = CGRectMake(0, 378+_fieldView.frame.size.height, SCREEN_WIDTH, _lastView.frame.size.height);
+    }
     
     for ( NSDictionary *fieldDic in _paymentUserData) {
         
@@ -71,13 +87,33 @@
         i++;
     }
     
-    float sizeOfContent = 0;
-    NSInteger wd = _fieldView.frame.origin.y;
-    NSInteger ht = _fieldView.frame.size.height;
+    billUserData = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"PayBillDetail"]];
     
-    sizeOfContent = wd+ht;
+    _billerCategoryLbl.text = [NSString stringWithFormat:@"%@",[billUserData valueForKeyPath:@"bill_provider.title"]];;
+    _billerDetailsLbl.text = [NSString stringWithFormat:@"%@",[billUserData valueForKeyPath:@"bill_provider.address"]];;
+    
+    // Call get Commercial
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+    [HUD show:YES];
+    [HUD hide:YES afterDelay:1.5];
+    [self getCommercials];
+    
+    float sizeOfContent = 0;
+    NSInteger wd = _lastView.frame.origin.y;
+    NSInteger ht = _lastView.frame.size.height;
+    sizeOfContent = wd+ht+20;
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     _scrollView.bounces = NO;
+    _scrollView.scrollEnabled = YES;
+    
+    UIColor *color = [self colorWithHexString:@"51595c"];
+    _fullNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
+    
+    _emailAddressTextFielf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: color}];
+    _phoneNumberTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Phone Number" attributes:@{NSForegroundColorAttributeName: color}];
 }
 
 - (IBAction)backBtnClicked:(id)sender {
@@ -86,12 +122,14 @@
 }
 
 - (IBAction)paymentBtn:(id)sender {
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.labelText = NSLocalizedString(@"Loading...", nil);
-    [HUD show:YES];
-
-    [self callPayBill];
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+    popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+    popUp.callFrom = [userDataDict valueForKeyPath:@"phone_number"];
+    popUp.delegate = self;
+    
+    [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
 }
 
 #pragma mark ########
@@ -100,8 +138,8 @@
 
 -(void)callPayBill
 {
+    // Pay Bill
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-    
     userDataDict = [userDataDict valueForKeyPath:@"User"];
     
     NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
@@ -116,13 +154,36 @@
     
     // Create dictionary of data for beneficiary
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
-    [dictA setValue:_billCategoryId forKey:@"bill_id"];
-    [dictA setValue:[paymentData valueForKey:@"billOptionID"] forKey:@"bill_option_id"];
-    [dictA setValue:_amountLbl.text forKey:@"amount"];
+    NSArray * billArray = [billUserData valueForKey:@"bill_options"];
+    NSDictionary *billIDDict = [billArray objectAtIndex:0];
+    [dictA setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
+    [dictA setValue:[billUserData valueForKeyPath:@"bill_provider.bill_provider_id"] forKey:@"bill_provider_id"];
+    [dictA setValue:[paymentData valueForKey:@"bill_optionID"] forKey:@"bill_option_id"];
+    [dictA setValue:[ rateDic valueForKeyPath:@"PayLoad.data.exchange_rate"] forKey:@"exchange_rate"];
+    [dictA setValue:[rateDic valueForKeyPath:@"PayLoad.data.fee"] forKey:@"fee"];
+    [dictA setValue:[ rateDic valueForKeyPath:@"PayLoad.data.receiving_amount"] forKey:@"sending_amount"];
+    [dictA setValue:[ rateDic valueForKeyPath:@"PayLoad.data.sending_amount"] forKey:@"receiving_amount"];
+    [dictA setValue:@"NGN" forKey:@"sending_country_currency"];
+    [dictA setValue:@"USD" forKey:@"receiving_country_currency"];
+    //    [dictA setValue:[billUserData valueForKeyPath:@"bill_provider.country_currency.full_name"] forKey:@"sending_country_currency"];
+    //    [dictA setValue:[userDataDict valueForKeyPath:@"country_currency.full_name"] forKey:@"receiving_country_currency"];
+    [dictA setValue:_fullNameTextField.text forKey:@"beneficiary_name"];
+    [dictA setValue:_phoneNumberTextField.text forKey:@"beneficiary_phone_number"];
+    [dictA setValue:_emailAddressTextFielf.text forKey:@"beneficiary_email_address"];
+    [dictA setValue:@"ios" forKey:@"source"];
+    
     
     NSLog(@"Bill DATA ADDED...%@",dictA);
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", _DataArray, @"BillCollectedField", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
+    [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
+    [dictB setValue:@"" forKey:@"bill_required_field_id"];
+    [dictB setValue:@"" forKey:@"collected_data"];
+    
+    [_DataArray addObject:dictB];
+    NSLog(@"Bill DATA ADDED...%@",_DataArray);
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", _DataArray, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
     // Encrypt the user token using public data and iv data
@@ -181,12 +242,10 @@
                             
                             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                             alertview.tag = 1003;
-                            
                             [alertview show];
                         }
                         else
                         {
-                            
                             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                             
                             [alertview show];
@@ -195,17 +254,17 @@
                     else
                     {
                         [HUD removeFromSuperview];
-                        
-                        payBillDict = [responseDic valueForKeyPath:@"PayLoad.data.BillPayment"];
-                        
+                        payBillDict = [responseDic valueForKeyPath:@"PayLoad.data.bill_payment"];
                         NSLog(@"Transfer request...%@",responseDic );
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self performSegueWithIdentifier:@"TransferPayment" sender:self];
-                            
                         });
                     }
                 }
                 
+            }
+            else{
+                [HUD removeFromSuperview];
             }
         }
         
@@ -311,6 +370,144 @@
         
     }
     
+}
+
+#pragma mark ########
+#pragma mark get Commercial data method
+#pragma  mark ############
+
+-(void)getCommercials
+{
+    // get Commercial
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    
+    NSString *direction = @"0";
+    NSString *amountText= [paymentData valueForKey:@"amount"];
+    
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    
+    NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
+    
+    // Decode KeyString form base64
+    NSString *base64KeyString =[ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"public_key"]];
+    NSData *decodedKeyData = [[NSData alloc] initWithBase64EncodedString:base64KeyString options:0];
+    // Decode IvString form base64
+    NSString *base64IVString = [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"iv"]];
+    NSData *decodedIVData = [[NSData alloc] initWithBase64EncodedString:base64IVString options:0];
+    
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:[userDataDict valueForKeyPath:@"country_currency.id"], @"sending_currency", [billUserData valueForKeyPath:@"bill_provider.country_currency.id"], @"receiving_currency",amountText, @"amount",direction, @"direction", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+    // Encrypt the user token using public data and iv data
+    NSData *EncodedData = [FBEncryptorAES encryptData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                  key:decodedKeyData
+                                                   iv:decodedIVData];
+    
+    NSString *base64TokenString = [EncodedData base64EncodedStringWithOptions:0];
+    
+    NSMutableData *PostData =[[NSMutableData alloc] initWithData:[base64TokenString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSString *ApiUrl = [ NSString stringWithFormat:@"%@%@", BaseUrl, GetCommericials];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request addValue: userTokenString forHTTPHeaderField:@"token"];
+    
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        //if communication was successful
+        
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+            if (httpResp.statusCode == 200)
+            {
+                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"result string %@", resultString);
+                
+                NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:resultString options:0];
+                
+                NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
+                if (data1)
+                {
+                    NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
+                    rateDic = [responseDic mutableCopy];
+                    NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
+                    
+                    if (status == 0)
+                    {
+                        NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                        NSLog(@"error ..%@", errorArray);
+                        
+                        NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                        
+                        if(!errorString || [errorString isEqualToString:@"(null)"])
+                        {
+                            errorString = @"Your sesssion has been expired.";
+                            
+                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                            alertview.tag = 1003;
+                            
+                            [alertview show];
+                        }
+                        else
+                        {
+                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                            
+                            [alertview show];
+                        }
+                    }
+                    else
+                    {
+                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            NSLog(@"Get Commercial Response...%@",responseDic );
+                            
+                            NSDictionary *myData = [responseDic valueForKeyPath:@"Payload.data"];
+                            
+                            _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service fee %@%@.00",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"],[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
+                            
+                            _amountLbl.text = [ NSString stringWithFormat:@"%@ %@ (%@ %.02f)",[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],amountText,[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[[responseDic valueForKeyPath:@"PayLoad.data.sending_amount"]floatValue]];
+                            
+                        });
+                    }
+                }
+                
+            }
+        }
+        
+    }];
+    
+    [postDataTask resume];
+    
+}
+
+-(void) removeShade {
+    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+    
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
+    {
+        
+        // Call change password
+        [HUD removeFromSuperview];
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        HUD.labelText = NSLocalizedString(@"Loading...", nil);
+        [HUD show:YES];
+        [self callPayBill];
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
 }
 
 @end
