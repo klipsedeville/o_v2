@@ -415,7 +415,7 @@
     
     NSMutableURLRequest *request = [  NSMutableURLRequest requestWithURL:[NSURL
                                                                           
-                                                                          URLWithString:@"https://staging.orobo.com/webservice/bills/recommend_biller.json"]
+                                                                          URLWithString:[NSString stringWithFormat:@"%@%@" ,BaseUrl, RecommendBiller]]
                                     
                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     
@@ -1020,7 +1020,7 @@
     
     NSMutableData *PostData;
     
-    NSString *ApiUrl = [ NSString stringWithFormat:@"https://staging.orobo.com//webservice/currencies/list_banks.json?%@=%@", @"currency_id", @"154"];
+    NSString *ApiUrl = [ NSString stringWithFormat: @"%@%@?%@=%@" ,BaseUrl, ListBanks, @"currency_id", @"154"];
     NSURL *url = [NSURL URLWithString:ApiUrl];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];

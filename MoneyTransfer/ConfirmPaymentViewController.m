@@ -108,12 +108,6 @@
     _billerDetailsLbl.text = [NSString stringWithFormat:@"%@",[billUserData valueForKeyPath:@"bill_provider.address"]];;
     
     // Call get Commercial
-    [HUD removeFromSuperview];
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.labelText = NSLocalizedString(@"Loading...", nil);
-    [HUD show:YES];
-    [HUD hide:YES afterDelay:1.5];
     [self getCommercials];
     
     float sizeOfContent = 0;
@@ -200,7 +194,7 @@
     [_DataArray addObject:dictB];
     NSLog(@"Bill DATA ADDED...%@",_DataArray);
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", _DataArray, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", _DataArray, @"BillCollectedField", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
     // Encrypt the user token using public data and iv data
@@ -448,6 +442,12 @@
     NSString *ApiUrl = [ NSString stringWithFormat:@"%@%@", BaseUrl, GetCommericials];
     NSURL *url = [NSURL URLWithString:ApiUrl];
     
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+    [HUD show:YES];
+    
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
@@ -483,6 +483,8 @@
                     
                     if (status == 0)
                     {
+                        [HUD removeFromSuperview];
+                        [HUD hide:YES];
                         NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
                         NSLog(@"error ..%@", errorArray);
                         
@@ -508,7 +510,8 @@
                     {
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             NSLog(@"Get Commercial Response...%@",responseDic );
-                            
+                            [HUD removeFromSuperview];
+                            [HUD hide:YES];
                             NSDictionary *myData = [responseDic valueForKeyPath:@"Payload.data"];
                             
                             _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service fee %@%@.00",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"],[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
@@ -519,6 +522,10 @@
                     }
                 }
                 
+            }
+            else{
+                [HUD removeFromSuperview];
+                [HUD hide:YES];
             }
         }
         

@@ -27,6 +27,10 @@
     NSMutableArray *parameterValueArray;
     int currentTag;
     NSMutableArray *title_array;
+    NSMutableArray *settlement_channel_parameters_options_array;
+    NSMutableArray *Main_array;
+    NSMutableArray *MainArrayValue;
+    NSMutableDictionary *MainSelectedValue;
 }
 
 // Property

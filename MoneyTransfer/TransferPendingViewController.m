@@ -76,12 +76,14 @@
             
             UILabel *requiredInfoTitleLbl = [[UILabel alloc] init];
             requiredInfoTitleLbl.frame = CGRectMake(10,_settlementChannelNameLbl.frame.origin.y+_settlementChannelNameLbl.frame.size.height+(i*20),SCREEN_WIDTH-20,20);
-            
-            NSArray *parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
+            NSArray *parameterOptionsArray  = [tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"];
+
+           // NSArray *parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
             NSString *txt;
             if(parameterOptionsArray.count > 0)
             {
-                for (int j = 0; j<parameterOptionsArray.count; j++) {
+                for (int j = 0; j<parameterOptionsArray.count; j++)
+                {
                     NSDictionary * dict = [parameterOptionsArray objectAtIndex:j];
                     if([[dict valueForKey:@"id"] integerValue] == [[tempDict valueForKey:@"collected_data"] integerValue])
                     {
@@ -124,8 +126,6 @@
             
             _lastView.frame = CGRectMake(10,requiredInfoTitleLbl.frame.origin.y+requiredInfoTitleLbl.frame.size.height+5,SCREEN_WIDTH-20,1);
         }
-        
-        
     }
 }
 

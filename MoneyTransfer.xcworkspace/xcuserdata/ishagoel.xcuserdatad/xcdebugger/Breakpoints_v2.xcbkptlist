@@ -97,38 +97,6 @@
             endingLineNumber = "145"
             landmarkName = "-callForgotPasswordMethod"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[iPadForgetPasswordViewController callForgotPasswordMethod]"
-                  moduleName = "MoneyTransfer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishagoel/Desktop/MT(25Oct)/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "530659705.793368"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__60-[iPadForgetPasswordViewController callForgotPasswordMethod]_block_invoke"
-                  moduleName = "MoneyTransfer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishagoel/Desktop/MT(25Oct)/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "530659705.79645"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,13 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/AddBillerViewController.m"
-            timestampString = "530506895.766543"
+            timestampString = "531597767.859441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1141"
-            endingLineNumber = "1141"
-            landmarkName = "-GetBillsCategory"
-            landmarkType = "7">
+            startingLineNumber = "1149"
+            endingLineNumber = "1149">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -234,12 +200,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/AddBillerViewController.m"
-            timestampString = "530506902.791311"
+            timestampString = "531597767.859441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1082"
-            endingLineNumber = "1082"
-            landmarkName = "-GetStatesList1"
+            startingLineNumber = "1090"
+            endingLineNumber = "1090"
+            landmarkName = "-GetListBanks"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -273,38 +239,6 @@
             endingLineNumber = "467"
             landmarkName = "-getCommercials"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__48-[iPadSelectAmountViewController getCommercials]_block_invoke"
-                  moduleName = "MoneyTransfer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishagoel/Desktop/MT(25Oct)/MoneyTransfer/iPadSelectAmountViewController.m"
-                  timestampString = "530659705.852688"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "468"
-                  endingLineNumber = "468"
-                  offsetFromSymbolStart = "5568">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__48-[iPadSelectAmountViewController getCommercials]_block_invoke"
-                  moduleName = "MoneyTransfer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishagoel/Desktop/MT(25Oct)/MoneyTransfer/iPadSelectAmountViewController.m"
-                  timestampString = "530659705.857115"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "468"
-                  endingLineNumber = "468"
-                  offsetFromSymbolStart = "6434">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -705,6 +639,38 @@
             endingLineNumber = "67"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConfirmTransferMoneyViewController viewWillAppear:]"
+                  moduleName = "MoneyTransfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishagoel/Desktop/o_v2/MoneyTransfer/ConfirmTransferMoneyViewController.m"
+                  timestampString = "531596379.720528"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "2298">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53-[ConfirmTransferMoneyViewController viewWillAppear:]_block_invoke"
+                  moduleName = "MoneyTransfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishagoel/Desktop/o_v2/MoneyTransfer/ConfirmTransferMoneyViewController.m"
+                  timestampString = "531596379.722798"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "107">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

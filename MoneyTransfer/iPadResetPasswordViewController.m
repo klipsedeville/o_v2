@@ -134,7 +134,7 @@
     
     NSMutableURLRequest *request = [  NSMutableURLRequest requestWithURL:[NSURL
                                                                           
-                                                                          URLWithString:@"https://staging.orobo.com/webservice/users/reset_password.json"]
+                                                                          URLWithString:[NSString stringWithFormat:@"%@%@" ,BaseUrl, ResetPassword]]
                                     
                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     

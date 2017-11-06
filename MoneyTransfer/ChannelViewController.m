@@ -58,6 +58,8 @@
     
     _ChannelsTableView.hidden = YES;
     _titletableView.hidden = YES;
+    bankslistTableView.hidden =  YES;
+    
     title_array = [[NSMutableArray alloc]init];
     
     // Check user session expired or not
@@ -161,6 +163,9 @@
                  if (channelArray.count == 1)
                  {
                      _ChannelsTableView.hidden = YES;
+                     _titletableView.hidden = YES;
+                     bankslistTableView.hidden =  YES;
+                     
                      settlement_channel_id = [channelInfoDic valueForKey:@"id"];
                      
                      NSMutableArray *parametersArray = [ [channelArray objectAtIndex:0] valueForKey:@"settlement_channel_parameters"];
@@ -190,6 +195,8 @@
                  else
                  {
                      _ChannelsTableView.hidden = YES;
+                     _titletableView.hidden = YES;
+                     bankslistTableView.hidden =  YES;
                      [_ChannelsTableView reloadData];
                      settlement_channel_id = [channelInfoDic valueForKey:@"id"];
                  }
@@ -324,21 +331,28 @@
 - (IBAction)methodsListShowClick:(id)sender {
     // Show Channel table
     [self.view endEditing:YES];
-    
-    bankslistTableView.hidden = YES;
+    _ChannelsTableView.hidden = YES;
+    _titletableView.hidden = YES;
+    bankslistTableView.hidden =  YES;
     
     if ([channelArray count] == 0 )
     {
         _ChannelsTableView.hidden = YES;
+        _titletableView.hidden = YES;
+        bankslistTableView.hidden =  YES;
     }
     else if (_ChannelsTableView.hidden == YES) {
         _ChannelsTableView.hidden = NO;
+        _titletableView.hidden = YES;
+        bankslistTableView.hidden =  YES;
         [_ChannelsTableView reloadData];
         
     }
     else
     {
         _ChannelsTableView.hidden = YES;
+        _titletableView.hidden = YES;
+        bankslistTableView.hidden =  YES;
     }
     
     [_scrollView sendSubviewToBack: parameterView];
@@ -346,6 +360,8 @@
 
 - (IBAction)channelsListShowClick:(id)sender {
     [self.view endEditing:YES];
+    _ChannelsTableView.hidden = YES;
+    bankslistTableView.hidden =  YES;
     _titletableView.hidden = NO;
     _titletableView.frame = CGRectMake(7, 7+_channelView.frame.origin.y, _titletableView.frame.size.width, 120);
     [_titletableView reloadData];
@@ -353,6 +369,8 @@
 
 - (IBAction)banksListShowClick:(id)sender {
     [self.view endEditing:YES];
+    _ChannelsTableView.hidden = YES;
+    bankslistTableView.hidden =  YES;
     _titletableView.hidden = NO;
     _titletableView.frame = CGRectMake(7, 108, _titletableView.frame.size.width, 240);
     [_titletableView reloadData];
@@ -449,11 +467,18 @@
     [dictA setValue:[NSString stringWithFormat:@"%@",[_userData valueForKey:@"phoneNumber"]] forKey:@"phone_number"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[_userData valueForKey:@"Address"]] forKey:@"address"];
     [dictA setValue:settlement_channel_id forKey:@"settlement_channel_id"];
-    NSLog(@"USER BENFICIARY DATA ADDED...%@",dictA);
+    NSLog(@"USER BENFICIARY DATA ADDED1...%@",dictA);
     
-    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc]init];
+     NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
+    [dictB setValue:[NSString stringWithFormat:@"%@",settlement_channel_id] forKey:@"settlement_channel_id"];
+    [dictB setValue:[NSString stringWithFormat:@"%@",[MainSelectedValue valueForKey:@"id"]] forKey:@"settlement_channel_parameter_id"];
+    [dictB setValue:[NSString stringWithFormat:@"%@",[MainSelectedValue valueForKey:@"id"]] forKey:@"collected_data"];
+    NSArray *dictBArr = [NSArray arrayWithObjects:dictB, nil];
+    NSLog(@"USER BENFICIARY DATA ADDED2...%@",dictBArr);
+    
+//    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc]init];
 
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"Beneficiary", DataArray, @"BeneficiarySettlementChannelData", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"Beneficiary", dictBArr, @"BeneficiarySettlementChannelData", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
     // Encrypt the user token using public data and iv data
@@ -604,6 +629,8 @@
         _selectMethodLbl.text = [[channelArray objectAtIndex:indexPath.row]valueForKeyPath:@"title"];
         
         _ChannelsTableView.hidden = YES;
+        _titletableView.hidden = YES;
+        bankslistTableView.hidden =  YES;
         
         selectedSettlementDic = [channelArray objectAtIndex:indexPath.row];
         
@@ -612,8 +639,8 @@
         title_array = [[NSMutableArray alloc]init];
         
         NSMutableArray *settlement_channel_parameters_array = [[NSMutableArray alloc]init];
-        NSMutableArray *settlement_channel_parameters_options_array = [[NSMutableArray alloc]init];
-        NSMutableArray *Main_array = [[NSMutableArray alloc]init];
+        settlement_channel_parameters_options_array = [[NSMutableArray alloc]init];
+        Main_array = [[NSMutableArray alloc]init];
 
         if ([[[channelArray objectAtIndex:indexPath.row] valueForKey:@"settlement_channel_parameters"] count] == 0)
         {
@@ -633,6 +660,7 @@
                 {
                     if ([[[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"options_data"] count] == 0)
                     {
+                        
                     }
                     else{
                        [settlement_channel_parameters_options_array addObject:[[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"options_data"]];
@@ -649,8 +677,10 @@
             {
    
                 [Main_array addObject:[settlement_channel_parameters_options_array objectAtIndex:k]];
+                MainArrayValue = [[NSMutableArray alloc]init];
                 for (int l = 0; l < [Main_array count]; l++)
                 {
+                    [MainArrayValue addObject:[Main_array objectAtIndex:l]];
                     [title_array addObject:[[Main_array objectAtIndex:l] valueForKey:@"title"]];
                 }
             }
@@ -680,12 +710,20 @@
 
     else{
         if ([_selectMethodLbl.text  isEqual: @"Airtime"]){
+             MainArrayValue = [MainArrayValue objectAtIndex:0];
             _channelNameLbl.text = title_array[indexPath.row];
+             MainSelectedValue = MainArrayValue[indexPath.row];
+            _ChannelsTableView.hidden = YES;
             _titletableView.hidden = YES;
+            bankslistTableView.hidden =  YES;
         }
         else if ([_selectMethodLbl.text  isEqual: @"Bank Transfer"]){
+           MainArrayValue = [MainArrayValue objectAtIndex:0];
             _bankTypeLbl.text = title_array[indexPath.row];
+            MainSelectedValue = MainArrayValue[indexPath.row];
+            _ChannelsTableView.hidden = YES;
             _titletableView.hidden = YES;
+            bankslistTableView.hidden =  YES;
         }
     }
 }

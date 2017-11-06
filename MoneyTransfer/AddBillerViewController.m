@@ -34,7 +34,7 @@
     _accountNumberTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Account Number"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
      _billNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _billAmountTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Amount"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-//    bankArray = [NSMutableArray arrayWithObjects:@"Access",@"Diamond",@"Fidelity", @"Guaranty Trust",@"Zenith",@"UBA", @"Union",@"Stanbic",@"Wema", @"First Bank",@"FCMB",@"Skye", @"Sterling",@"Eco",@"Heritage",nil];
+    
     _categoryTableView.hidden = YES;
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
@@ -135,7 +135,7 @@
     _currencyTableView.hidden = YES;
     _locationTableView.hidden = YES;
     _categoryTableView.hidden = YES;
-//    _bankTableView.hidden = YES;
+    _bankTableView.hidden = YES;
     
 }
 
@@ -421,7 +421,7 @@
     
     NSMutableURLRequest *request = [  NSMutableURLRequest requestWithURL:[NSURL
                                                                           
-                                                                          URLWithString:@"https://staging.orobo.com/webservice/bills/recommend_biller.json"]
+                                                                          URLWithString: [NSString stringWithFormat:@"%@%@" ,BaseUrl, RecommendBiller]]
                                     
                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     
@@ -542,6 +542,9 @@
     [self scrollViewToCenterOfScreen:tempVW];
     
     _categoryTableView.hidden = NO;
+    _locationTableView.hidden = YES;
+    _bankTableView.hidden = YES;
+    
       [_categoryTableView setContentSize:CGSizeMake( _selectBillerCategoryLbl.frame.size.width, _categoryTableView.frame.size.height)];
     [_categoryTableView reloadData];
     }
@@ -552,13 +555,21 @@
     tempVW.frame = CGRectMake(_locationView.frame.origin.x, _locationView.frame.origin.y, _locationView.frame.size.width, _locationView.frame.size.height );
     [self scrollViewToCenterOfScreen:tempVW];
   [_locationTableView setContentSize:CGSizeMake( _selectLocationLbl.frame.size.width,_locationTableView.frame.size.height)];
+    
     _locationTableView.hidden = NO;
+    _categoryTableView.hidden = YES;
+    _bankTableView.hidden = YES;
+    
     [_locationTableView reloadData];
 }
 
 - (IBAction)ActionSelectBank:(id)sender {
     [self cancelNumberPad];
+    
+    _locationTableView.hidden = YES;
+    _categoryTableView.hidden = YES;
     _bankTableView.hidden = NO;
+    
     UIView *tempVW = [[ UIView alloc] init];
     tempVW.frame = CGRectMake(_bankView.frame.origin.x, _bankView.frame.origin.y, _bankView.frame.size.width, _bankView.frame.size.height );
      [_bankTableView setContentSize:CGSizeMake( _selectBankLbl.frame.size.width,_bankTableView.frame.size.height)];
@@ -572,7 +583,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return 25;
+        return 30;
     }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -654,19 +665,24 @@
     }
     else if (tableView == _categoryTableView) {
        cell.textLabel.text = [NSString stringWithFormat:@"%@", categoryArray[indexPath.row]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:15]];
+
+        [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
     
     else if (tableView == _locationTableView) {
          cell.textLabel.text = [NSString stringWithFormat:@"%@", locationArray[indexPath.row]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:15]];
+        
+        [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
     else if (tableView == _bankTableView){
          cell.textLabel.text = [NSString stringWithFormat:@"%@", bankArray[indexPath.row]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:15]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
        return cell;
 }
@@ -915,8 +931,6 @@ else if (textField == _physicalAddressTextfield)
          if ( Status  == YES)
          {
              locationArray= [ payLoadDic valueForKeyPath:@"data.states.title"];
-             
-             //_locationTableView.hidden = NO;
              [_locationTableView reloadData];
 
              [HUD removeFromSuperview];
@@ -974,8 +988,7 @@ else if (textField == _physicalAddressTextfield)
          {
              //             int x = 0;
              categoryArray= [ payLoadDic valueForKeyPath:@"data.categories.title"];
-             
-             ///_categoryTableView.hidden = NO;
+
              [_categoryTableView reloadData];
 
              [HUD removeFromSuperview];
@@ -1028,7 +1041,7 @@ else if (textField == _physicalAddressTextfield)
     
     NSMutableData *PostData;
     
-    NSString *ApiUrl = [ NSString stringWithFormat:@"https://staging.orobo.com//webservice/currencies/list_banks.json?%@=%@", @"currency_id", @"154"];
+    NSString *ApiUrl = [ NSString stringWithFormat: @"%@%@?%@=%@" ,BaseUrl, ListBanks, @"currency_id", @"154"];
     NSURL *url = [NSURL URLWithString:ApiUrl];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];

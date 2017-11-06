@@ -121,12 +121,8 @@
     _beneficiaryUserCountryLbl.frame = CGRectMake(_beneficiaryUserNameLbl.frame.origin.x + _beneficiaryUserNameLbl.frame.size.width + 10, _beneficiaryUserCountryLbl.frame.origin.y, _beneficiaryUserCountryLbl.frame.size.width, _beneficiaryUserCountryLbl.frame.size.height);
     
     // Call get Commercial
-    [HUD removeFromSuperview];
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.labelText = NSLocalizedString(@"Loading...", nil);
-    [HUD show:YES];
-    [HUD hide:YES afterDelay:1.5];
+    
+//    [HUD hide:YES afterDelay:1.5];
     [ self getCommercials];
 
     [UIView animateWithDuration:1.5f animations:^{
@@ -305,6 +301,12 @@
     NSString *ApiUrl = [ NSString stringWithFormat:@"%@%@", BaseUrl, GetCommericials];
     NSURL *url = [NSURL URLWithString:ApiUrl];
     
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+    [HUD show:YES];
+    
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
@@ -340,6 +342,8 @@
                     
                     if (status == 0)
                     {
+                        [HUD removeFromSuperview];
+                        [HUD hide:YES];
                         NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
                         NSLog(@"error ..%@", errorArray);
                         
@@ -364,6 +368,8 @@
                     else
                     {
                         dispatch_sync(dispatch_get_main_queue(), ^{
+                            [HUD removeFromSuperview];
+                            [HUD hide:YES];
                             NSLog(@"Get Commercial Response...%@",responseDic );
                             
                             NSDictionary *myData = [responseDic valueForKeyPath:@"Payload.data"];
@@ -416,6 +422,10 @@
                     }
                 }
                 
+            }
+            else{
+                [HUD removeFromSuperview];
+                [HUD hide:YES];
             }
         }
         
@@ -618,12 +628,8 @@
         if (![textField.text isEqualToString: @""] ) {
             
             // Call get Commercial
-            [HUD removeFromSuperview];
-            HUD = [[MBProgressHUD alloc] initWithView:self.view];
-            [self.view addSubview:HUD];
-            HUD.labelText = NSLocalizedString(@"Loading...", nil);
-            [HUD show:YES];
-            [HUD hide:YES afterDelay:2.0];
+
+//            [HUD hide:YES afterDelay:2.0];
             [ self getCommercials];
         }
     }

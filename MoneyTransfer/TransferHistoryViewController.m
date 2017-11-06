@@ -325,25 +325,30 @@
     
     UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-32,0, 30, 30)];
     
-    if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"PENDING"] )
+//    if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"PENDING"] )
+//    {
+//        imv.image=[UIImage imageNamed:@"Ques.png"];
+//    }
+//    
+    if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"FAILED"] )
     {
-        imv.image=[UIImage imageNamed:@"Ques.png"];
+        imv.image=[UIImage imageNamed:@"failed.png"];
     }
-    else if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"PROCESSING"] )
-    {
-        imv.image=[UIImage imageNamed:@"Ques.png"];
-    }
-    else if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"AWAITING-COLLECTION"] )
-    {
-        imv.image=[UIImage imageNamed:@"Ques.png"];
-    }
+//    else if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"PROCESSING"] )
+//    {
+//        imv.image=[UIImage imageNamed:@"Ques.png"];
+//    }
+//    else if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"AWAITING-COLLECTION"] )
+//    {
+//        imv.image=[UIImage imageNamed:@"Ques.png"];
+//    }
     else if ([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"SUCCESSFUL"] )
     {
         imv.image=[UIImage imageNamed:@"sucess.png"];
     }
     else
     {
-        imv.image=[UIImage imageNamed:@"failed.png"];
+        imv.image=[UIImage imageNamed:@"Ques.png"];
     }
     
     [businessNameLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:13]];
