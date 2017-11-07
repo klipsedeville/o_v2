@@ -410,6 +410,7 @@
     if (![[userDataDict valueForKeyPath:@"card.user_id"] isKindOfClass:[NSNull class]])
     //stripe_customerID
     {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[beneficiaryArray objectAtIndex:index]] forKey:@"beneficiaryUserInfo"];
         [self performSegueWithIdentifier:@"SelectAmount" sender:self];
     }
     else
@@ -566,15 +567,15 @@
 #pragma mark Segue method
 #pragma mark ######
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"segue to Select Amount screen");
-    if([[segue identifier] isEqualToString:@"SelectAmount"]){
-        
-        SelectAmountViewController * vc = [segue destinationViewController];
-        vc.beneficiaryUserInfo =   [beneficiaryArray objectAtIndex:index];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    NSLog(@"segue to Select Amount screen");
+//    if([[segue identifier] isEqualToString:@"SelectAmount"]){
+//
+//        SelectAmountViewController * vc = [segue destinationViewController];
+//        vc.beneficiaryUserInfo =   [beneficiaryArray objectAtIndex:index];
+//    }
+//}
 
 #pragma mark ########
 #pragma mark Color HexString methods

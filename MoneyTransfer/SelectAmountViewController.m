@@ -28,6 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    beneficiaryUserInfo = [[NSDictionary alloc]init];
+    beneficiaryUserInfo = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"beneficiaryUserInfo"]];
     // Check user Session expired or not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userDataDict = [userDataDict valueForKeyPath:@"User"];
@@ -237,7 +239,9 @@
         [selectedUserAmount setValue:@"and" forKey:@"source"];
         
         NSLog(@"Selected user Amount...%@",selectedUserAmount);
-    
+        
+     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:selectedUserAmount] forKey:@"ConfirmTransferData"];
+        
         [self performSegueWithIdentifier:@"ConfirmTransferMoney" sender:self];
     }
 }
@@ -656,15 +660,14 @@
 #pragma  mark Segue method
 #pragma  mark ############
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"segue to Confirm transfer screen");
-    if([[segue identifier] isEqualToString:@"ConfirmTransferMoney"]){
-        ConfirmTransferMoneyViewController *vc = [segue destinationViewController];
-        vc.transferConfirmMoneyInfo = selectedUserAmount;
-    }
-    
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    NSLog(@"segue to Confirm transfer screen");
+//    if([[segue identifier] isEqualToString:@"ConfirmTransferMoney"]){
+//        ConfirmTransferMoneyViewController *vc = [segue destinationViewController];
+//    }
+//
+//}
 #pragma mark ########
 #pragma mark Color HexString methods
 #pragma  mark ############

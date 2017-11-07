@@ -19,6 +19,7 @@
     NSDictionary *billInstructionDic;
     NSMutableArray *allCurrencyArray,*categoryArray, *locationArray, *bankArray;
     NSString *selectCountryCode, *selectedCountryName, *selectionType, *selectCountryID, *selectCatID, *selectLocID, *selectBankID;
+    NSString *listbank;
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITextField *billerNameTextfield;

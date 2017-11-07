@@ -115,6 +115,9 @@
         _amountTextField.userInteractionEnabled = false;
         
     }
+    if ( !([_amountTextField.text containsString:@".00"])) {
+          _amountTextField.text = [_amountTextField.text stringByAppendingString:@".00"];
+    }
     
     billOptionID =[ NSString stringWithFormat:@"%@",[[amountArr objectAtIndex:0] valueForKey:@"id"]];
     _descriptionLabel.text = [ NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"bill_provider.title"]];
@@ -225,7 +228,7 @@
                 requiredInfoView.frame = CGRectMake(requiredInfoView.frame.origin.x, requiredInfoView.frame.origin.y, requiredInfoView.frame.size.width, requiredInfoView.frame.size.height+30);
                 
                 UILabel *titleLbl = [[UILabel alloc] init];
-                titleLbl.frame = CGRectMake(10, (i*75)+25, SCREEN_WIDTH-20, 20);
+                titleLbl.frame = CGRectMake(10, (i*75)+50, SCREEN_WIDTH-20, 20);
                 titleLbl.text = [NSString stringWithFormat:@"Select a %@",[[tempDict valueForKey:@"title"] stringByReplacingOccurrencesOfString:@"_" withString:@" "]];
                 titleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:15];
                 titleLbl.textColor = [self colorWithHexString:@"51595c"];
@@ -264,7 +267,7 @@
         
         float sizeOfContent = 0;
         NSInteger wd = requiredInfoView.frame.origin.y;
-        NSInteger ht = requiredInfoView.frame.size.height;
+        NSInteger ht = requiredInfoView.frame.size.height+20;
         sizeOfContent = wd+ht;
         _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     }

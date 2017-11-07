@@ -39,7 +39,7 @@
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
 
-    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, 1300)];
+    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, 1250)];
     _scrollView.bounces = NO;
     
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
@@ -47,6 +47,10 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handletap:)];
+
+    [self.scrollView addGestureRecognizer:tapGesture];
     
     // Call get Bills Category
     [HUD removeFromSuperview];
@@ -139,6 +143,13 @@
     
 }
 
+-(void)handletap:(UITapGestureRecognizer*)sender
+{
+    _categoryTableView.hidden = YES;
+    _locationTableView.hidden = YES;
+    _bankTableView.hidden = YES;
+    self.scrollView.scrollEnabled = YES;
+}
 
 #pragma  mark ############
 #pragma mark Get Receiving Curreny List
@@ -523,7 +534,7 @@
 
 - (void)viewDidLayoutSubviews
 {
-    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+100)];
+    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
 
     _scrollView.bounces = NO;
 }
@@ -545,7 +556,7 @@
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
     
-      [_categoryTableView setContentSize:CGSizeMake( _selectBillerCategoryLbl.frame.size.width, _categoryTableView.frame.size.height)];
+  [_categoryTableView setContentSize:CGSizeMake( _selectBillerCategoryLbl.frame.size.width, _categoryTableView.frame.size.height)];
     [_categoryTableView reloadData];
     }
 
@@ -554,7 +565,8 @@
     UIView *tempVW = [[ UIView alloc] init];
     tempVW.frame = CGRectMake(_locationView.frame.origin.x, _locationView.frame.origin.y, _locationView.frame.size.width, _locationView.frame.size.height );
     [self scrollViewToCenterOfScreen:tempVW];
-  [_locationTableView setContentSize:CGSizeMake( _selectLocationLbl.frame.size.width,_locationTableView.frame.size.height)];
+  
+    [_locationTableView setContentSize:CGSizeMake( _selectLocationLbl.frame.size.width,_locationTableView.frame.size.height)];
     
     _locationTableView.hidden = NO;
     _categoryTableView.hidden = YES;
@@ -583,7 +595,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return 30;
+        return 40;
     }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -668,7 +680,7 @@
 
         [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
     
     else if (tableView == _locationTableView) {
@@ -676,13 +688,13 @@
         
         [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
     else if (tableView == _bankTableView){
          cell.textLabel.text = [NSString stringWithFormat:@"%@", bankArray[indexPath.row]];
         [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
        return cell;
 }
@@ -778,7 +790,10 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-   [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+100)];
+    _categoryTableView.hidden = YES;
+    _locationTableView.hidden = YES;
+    _bankTableView.hidden = YES;
+   [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
     if (textField == _billerNameTextfield)
     {
         UIView *tempVW = [[ UIView alloc] init];
@@ -885,21 +900,21 @@ else if (textField == _physicalAddressTextfield)
 
 -(void)keyboardWillHide
 {
-    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+100)];
+    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
     _scrollView.bounces = NO;
 
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 -(void)cancelNumberPad{
     [self.view endEditing:YES];
-    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+100)];
+    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
     _scrollView.bounces = NO;
     
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 -(void)doneWithNumberPad{
     [self.view endEditing:YES];
-    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+100)];
+    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
     _scrollView.bounces = NO;
     
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
@@ -1042,6 +1057,7 @@ else if (textField == _physicalAddressTextfield)
     NSMutableData *PostData;
     
     NSString *ApiUrl = [ NSString stringWithFormat: @"%@%@?%@=%@" ,BaseUrl, ListBanks, @"currency_id", @"154"];
+    ApiUrl = [ApiUrl stringByReplacingOccurrencesOfString:@"\x10" withString:@""];
     NSURL *url = [NSURL URLWithString:ApiUrl];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];

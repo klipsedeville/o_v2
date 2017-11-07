@@ -46,9 +46,9 @@
     _blankView.hidden = YES;
     _bankView.hidden = YES;
 
-    self.mobileNumberTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Mobile Number" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
-    self.accNameTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Account Name" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
-    self.accNumberTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Account Number" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
+    self.mobileNumberTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Mobile number" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
+    self.accNameTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Account name" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
+    self.accNumberTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Account number" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,26 +100,18 @@
     HUD.labelText = NSLocalizedString(@"Fetching settlement channels...", nil);
     [HUD show:YES];
     [ self GetChannelSettleMentlist];
+
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handletap:)];
+
+    [self.scrollView addGestureRecognizer:tapGesture];
 }
 
 -(void)handletap:(UITapGestureRecognizer*)sender
 {
-    [bankslistTableView setHidden:YES];
-    [self.ChannelsTableView setHidden:YES];
+    _ChannelsTableView.hidden = YES;
+    _titletableView.hidden = YES;
+    bankslistTableView.hidden =  YES;
     self.scrollView.scrollEnabled = YES;
-}
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if ([touch.view isDescendantOfView:bankslistTableView]) {
-        return NO;
-    }
-    if ([touch.view isDescendantOfView:self.ChannelsTableView]) {
-        return NO;
-    }
-    if ([touch.view isDescendantOfView:self.lowerView]) {
-        return NO;
-    }
-    return YES;
 }
 
 #pragma mark #####
@@ -363,7 +355,7 @@
     _ChannelsTableView.hidden = YES;
     bankslistTableView.hidden =  YES;
     _titletableView.hidden = NO;
-    _titletableView.frame = CGRectMake(7, 7+_channelView.frame.origin.y, _titletableView.frame.size.width, 120);
+    _titletableView.frame = CGRectMake(7, 231, _titletableView.frame.size.width, 120);
     [_titletableView reloadData];
 }
 
@@ -372,7 +364,7 @@
     _ChannelsTableView.hidden = YES;
     bankslistTableView.hidden =  YES;
     _titletableView.hidden = NO;
-    _titletableView.frame = CGRectMake(7, 108, _titletableView.frame.size.width, 240);
+    _titletableView.frame = CGRectMake(7, 231, _titletableView.frame.size.width, 240);
     [_titletableView reloadData];
 }
 
@@ -718,9 +710,9 @@
             bankslistTableView.hidden =  YES;
         }
         else if ([_selectMethodLbl.text  isEqual: @"Bank Transfer"]){
-           MainArrayValue = [MainArrayValue objectAtIndex:0];
+          NSArray *MainValueArr = [MainArrayValue objectAtIndex:0];
             _bankTypeLbl.text = title_array[indexPath.row];
-            MainSelectedValue = MainArrayValue[indexPath.row];
+            MainSelectedValue = MainValueArr[indexPath.row];
             _ChannelsTableView.hidden = YES;
             _titletableView.hidden = YES;
             bankslistTableView.hidden =  YES;
@@ -783,15 +775,23 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [_scrollView setContentSize:CGSizeMake(_scrollView.contentSize.width,_scrollView.contentSize.height + 200)];
- 
-    if (textField == _accNameTextfield)
+    if (textField == _mobileNumberTextfield)
     {
+        _mobileNoBtm.backgroundColor = [self colorWithHexString:@"3ec6f0"];
+        UIView *tempVW = [[ UIView alloc] init];
+        tempVW.frame = CGRectMake(textField.frame.origin.x, _mobileNumberTextfield.frame.origin.y+5, textField.frame.size.width, textField.frame.size.height );
+        [self scrollViewToCenterOfScreen:tempVW];
+    }
+    else if (textField == _accNameTextfield)
+    {
+        _accNamebtm.backgroundColor = [self colorWithHexString:@"3ec6f0"];
         UIView *tempVW = [[ UIView alloc] init];
         tempVW.frame = CGRectMake(textField.frame.origin.x, _accNumberTextfield.frame.origin.y+5, textField.frame.size.width, textField.frame.size.height );
         [self scrollViewToCenterOfScreen:tempVW];
     }
     else if (textField == _accNumberTextfield)
     {
+        _accNoBtm.backgroundColor = [self colorWithHexString:@"3ec6f0"];
         UIView *tempVW = [[ UIView alloc] init];
         tempVW.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y+5, textField.frame.size.width, textField.frame.size.height );
         [self scrollViewToCenterOfScreen:tempVW];
@@ -805,6 +805,18 @@
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    if (textField == _mobileNumberTextfield)
+    {
+        _mobileNoBtm.backgroundColor = [UIColor grayColor];
+    }
+    else if (textField == _accNameTextfield)
+    {
+        _accNamebtm.backgroundColor =  [UIColor grayColor];
+    }
+    else if (textField == _accNumberTextfield)
+    {
+        _accNoBtm.backgroundColor =  [UIColor grayColor];
+    }
     float sizeOfContent = 0;
     NSInteger wd = parameterView.frame.origin.y;
     NSInteger ht = parameterView.frame.size.height;
@@ -852,12 +864,10 @@
     NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     
     // String should be 6 or 8 characters
-    if ([cString length] < 6) return [UIColor grayColor];
-    
+    if ([cString length] < 6) return [UIColor whiteColor];
     // strip 0X if it appears
     if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
-    
-    if ([cString length] != 6) return  [UIColor grayColor];
+    if ([cString length] != 6) return  [UIColor whiteColor];
     
     // Separate into r, g, b substrings
     NSRange range;
@@ -882,6 +892,7 @@
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
 }
+
 
 -(void)cancelNumberPad{
     [self.view endEditing:YES];

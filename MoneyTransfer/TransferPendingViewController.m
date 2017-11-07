@@ -76,9 +76,11 @@
             
             UILabel *requiredInfoTitleLbl = [[UILabel alloc] init];
             requiredInfoTitleLbl.frame = CGRectMake(10,_settlementChannelNameLbl.frame.origin.y+_settlementChannelNameLbl.frame.size.height+(i*20),SCREEN_WIDTH-20,20);
-            NSArray *parameterOptionsArray  = [tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"];
+//            NSArray *parameterOptionsArray  = [tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"];
 
-           // NSArray *parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
+            
+            
+            NSArray *parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
             NSString *txt;
             if(parameterOptionsArray.count > 0)
             {

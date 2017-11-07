@@ -32,6 +32,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    transferConfirmMoneyInfoNew = [[NSDictionary alloc]init];
+     transferConfirmMoneyInfoNew = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"ConfirmTransferData"]];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -55,13 +57,13 @@
     
     _last4DigitCreditCardLbl.text = [ NSString stringWithFormat:@"%@",[userDataDict valueForKeyPath:@"card.title"]];
     
-    if ([_transferConfirmMoneyInfo valueForKeyPath:@"sending_amount"] != nil){
-    _sendingAmountTransferLbl.text = [ NSString stringWithFormat:@"%@%@",[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKeyPath:@"sending_amount"]];
+    if ([transferConfirmMoneyInfoNew valueForKeyPath:@"sending_amount"] != nil){
+    _sendingAmountTransferLbl.text = [ NSString stringWithFormat:@"%@%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_amount"]];
     }
  
-   _SendingMoneyUserNameLbl.text = [ NSString stringWithFormat:@"%@",[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_username"]];
+   _SendingMoneyUserNameLbl.text = [ NSString stringWithFormat:@"%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_username"]];
     
-    NSString *str = [[ NSString stringWithFormat:@"%@",[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_username_country"]]lowercaseString];
+    NSString *str = [[ NSString stringWithFormat:@"%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_username_country"]]lowercaseString];
     NSMutableString *result = [str mutableCopy];
     [result enumerateSubstringsInRange:NSMakeRange(0, [result length])
                                options:NSStringEnumerationByWords
@@ -71,18 +73,17 @@
                             }];
     NSLog(@"%@", result);
     _sendingMoneyUserCountryNameLbl.text = result;
-    _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 to %@%@.00 Fee %@%@.00",[_transferConfirmMoneyInfo valueForKey:@"sending_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKey:@"receiving_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKey:@"exchange_rate"],[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKey:@"fee"]];
+    _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 to %@%@.00 Fee %@%@.00",[transferConfirmMoneyInfoNew valueForKey:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKey:@"receiving_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKey:@"exchange_rate"],[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKey:@"fee"]];
 
-    sending_country_currency = [_transferConfirmMoneyInfo valueForKey:@"sending_country_currency"];
-    receiving_country_currency = [_transferConfirmMoneyInfo valueForKey:@"receiving_country_currency"];
-    sending_amount = [_transferConfirmMoneyInfo valueForKey:@"sending_amount"];
-    receiving_amount = [_transferConfirmMoneyInfo valueForKey:@"receiving_amount"];
-    fee = [_transferConfirmMoneyInfo valueForKey:@"fee"];
-    exchange_rate = [_transferConfirmMoneyInfo valueForKey:@"exchange_rate"];
-    beneficiary_id = [_transferConfirmMoneyInfo valueForKey:@"beneficiary_id"];
-    source = [_transferConfirmMoneyInfo valueForKey:@"source"];
+    sending_country_currency = [transferConfirmMoneyInfoNew valueForKey:@"sending_country_currency"];
+    receiving_country_currency = [transferConfirmMoneyInfoNew valueForKey:@"receiving_country_currency"];
+    sending_amount = [transferConfirmMoneyInfoNew valueForKey:@"sending_amount"];
+    receiving_amount = [transferConfirmMoneyInfoNew valueForKey:@"receiving_amount"];
+    fee = [transferConfirmMoneyInfoNew valueForKey:@"fee"];
+    exchange_rate = [transferConfirmMoneyInfoNew valueForKey:@"exchange_rate"];
+    beneficiary_id = [transferConfirmMoneyInfoNew valueForKey:@"beneficiary_id"];
+    source = [transferConfirmMoneyInfoNew valueForKey:@"source"];
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width,335)];
-
 }
 
 #pragma  mark ############
@@ -136,7 +137,7 @@
     [dictA setValue:sending_amount forKey:@"sending_amount"];
     [dictA setValue:sending_country_currency forKey:@"sending_country_currency"];
     
-    [dictA setValue:@"and" forKey:@"source"];
+    [dictA setValue:@"ios" forKey:@"source"];
     
     NSLog(@"Transfer Requested DATA ADDED...%@",dictA);
     

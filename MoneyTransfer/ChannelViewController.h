@@ -53,6 +53,9 @@
 @property (strong, nonatomic) IBOutlet UITableView *selectedBankTable;
 
 @property (strong, nonatomic) IBOutlet UITableView *titletableView;
+@property (weak, nonatomic) IBOutlet UIView *mobileNoBtm;
+@property (weak, nonatomic) IBOutlet UIView *accNamebtm;
+@property (weak, nonatomic) IBOutlet UIView *accNoBtm;
 
 
 // Click Events

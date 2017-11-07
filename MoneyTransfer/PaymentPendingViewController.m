@@ -69,7 +69,7 @@
             addView.backgroundColor = [UIColor whiteColor];
 //            addView.backgroundColor = [self colorWithHexString:@"51595c"];
             [_scrollView addSubview:addView];
-_scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, 1500);
+_scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, 530);
             UILabel *trackingLbl = [[UILabel alloc] init];
             trackingLbl.frame = CGRectMake(10, 15, SCREEN_WIDTH-20, 20);
             trackingLbl.text = @"TRACKING";
