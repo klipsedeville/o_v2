@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     
-
+    
     _scrollView.bounces = NO;
     _navigationTitleTextField.text = [ NSString stringWithFormat:@"Transfer %@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
     _referenceNumberLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"transaction_reference"]];
@@ -35,7 +35,7 @@
     [df setDateFormat:@"MMMM dd, HH:MM"];
     NSString *dateString = [df stringFromDate:date];
     _dateLbl.text = dateString;
-
+    
     _beneficiaryUserNameLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"beneficiary.full_name"]];
     
     _sendingAmountLbl.text = [NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"sending_amount"]];
@@ -59,10 +59,9 @@
     _settlementChannelNameLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"beneficiary.settlement_channel.title"]];
     
     _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service Fee: %@%@.00",[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKeyPath:@"receiving_currency.currency_symbol"],[_transferStatusData valueForKey:@"exchange_rate"],[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKey:@"fee"]];
-
+    
     // ---------------------Dynamic View----------------------------
     NSLog(@"Transfer Status Data is :- %@",_transferStatusData);
-    
     NSArray *requiredFieldArray = [_transferStatusData valueForKeyPath:@"beneficiary.beneficiary_settlement_channel_data"];
     
     if ([requiredFieldArray count] > 0)
@@ -76,24 +75,47 @@
             
             UILabel *requiredInfoTitleLbl = [[UILabel alloc] init];
             requiredInfoTitleLbl.frame = CGRectMake(10,_settlementChannelNameLbl.frame.origin.y+_settlementChannelNameLbl.frame.size.height+(i*20),SCREEN_WIDTH-20,20);
-//            NSArray *parameterOptionsArray  = [tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"];
-
+            NSArray *parameterOptionsArray ;
             
+            if([ tempDict valueForKeyPath:@"settlement_channel_parameter.has_options"] != [NSNull null]  && [ tempDict valueForKeyPath:@"settlement_channel_parameter.options_model"] != [NSNull null])
+            {
+                parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data"];
+            }
+            else{
+                parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
+            }
             
-            NSArray *parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
             NSString *txt;
             if(parameterOptionsArray.count > 0)
             {
+                BOOL valueFound;
+                
                 for (int j = 0; j<parameterOptionsArray.count; j++)
                 {
                     NSDictionary * dict = [parameterOptionsArray objectAtIndex:j];
                     if([[dict valueForKey:@"id"] integerValue] == [[tempDict valueForKey:@"collected_data"] integerValue])
                     {
-                        txt = [ NSString stringWithFormat:@"%@: %@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"],[dict valueForKey:@"title"]];
-                        txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
-                                                              withString:@""];
+                        valueFound = YES;
+                        if([ tempDict valueForKeyPath:@"settlement_channel_parameter.has_options"] != [NSNull null]  && [ tempDict valueForKeyPath:@"settlement_channel_parameter.options_model"] != [NSNull null])
+                        {
+                            txt = [ NSString stringWithFormat:@"%@: %@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"],[dict valueForKey:@"title"]];
+                            txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
+                                                                  withString:@""];
+                        }
+                        else{
+                            txt = [ NSString stringWithFormat:@"%@: %@",[dict valueForKey:@"title"],[dict valueForKey:@"title"]];
+                            txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
+                                                                  withString:@""];
+                        }
+                        
                         break;
                     }
+                }
+                
+                if (valueFound == NO) {
+                    txt = [ NSString stringWithFormat:@"%@:",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]];
+                    txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
+                                                          withString:@""];
                 }
             }
             else
@@ -111,15 +133,15 @@
             txt = [txt stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[txt substringToIndex:1] uppercaseString]];
             txt =  [txt stringByReplacingOccurrencesOfString:@"_"
                                                   withString:@" "];
-            NSMutableArray *myArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data"];
-//            for (int j = 0; j<parameterOptionsArray.count; j++) {
-//                NSDictionary * dict = [parameterOptionsArray objectAtIndex:j];
-//                if([[dict valueForKey:@"id"] integerValue] == [[tempDict valueForKey:@"collected_data"] integerValue])
-//                {
-//            if ([[ NSString stringWithFormat:@"%@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]]  isEqual: @"sort_code"]){
-//                
-//                txt = [ NSString stringWithFormat:@"Sort Code: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.options_data.bank_code"], [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data.title"]];
-//            }
+            //NSMutableArray *myArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data"];
+            //            for (int j = 0; j<parameterOptionsArray.count; j++) {
+            //                NSDictionary * dict = [parameterOptionsArray objectAtIndex:j];
+            //                if([[dict valueForKey:@"id"] integerValue] == [[tempDict valueForKey:@"collected_data"] integerValue])
+            //                {
+            //            if ([[ NSString stringWithFormat:@"%@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]]  isEqual: @"sort_code"]){
+            //
+            //                txt = [ NSString stringWithFormat:@"Sort Code: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.options_data.bank_code"], [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data.title"]];
+            //            }
             
             requiredInfoTitleLbl.text = txt;
             requiredInfoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:15];
@@ -160,13 +182,13 @@
     NSArray *toRecipents = [NSArray arrayWithObject:@"care@orobo.com"];
     MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
     if ([MFMailComposeViewController canSendMail]) {
-    mc.mailComposeDelegate = self;
-    [mc setSubject:emailTitle];
-    [mc setMessageBody:messageBody isHTML:NO];
-    [mc setToRecipients:toRecipents];
-    
-    // Present mail view controller on screen
-    [self.navigationController presentViewController:mc animated:YES completion:NULL];
+        mc.mailComposeDelegate = self;
+        [mc setSubject:emailTitle];
+        [mc setMessageBody:messageBody isHTML:NO];
+        [mc setToRecipients:toRecipents];
+        
+        // Present mail view controller on screen
+        [self.navigationController presentViewController:mc animated:YES completion:NULL];
     }
 }
 
@@ -234,3 +256,4 @@
 
 
 @end
+

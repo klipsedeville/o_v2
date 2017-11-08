@@ -32,9 +32,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     transferConfirmMoneyInfoNew = [[NSDictionary alloc]init];
-     transferConfirmMoneyInfoNew = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"ConfirmTransferData"]];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
+    transferConfirmMoneyInfoNew = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"ConfirmTransferData"]];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -74,15 +74,6 @@
     NSLog(@"%@", result);
     _sendingMoneyUserCountryNameLbl.text = result;
     _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 to %@%@.00 Fee %@%@.00",[transferConfirmMoneyInfoNew valueForKey:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKey:@"receiving_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKey:@"exchange_rate"],[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKey:@"fee"]];
-
-    sending_country_currency = [transferConfirmMoneyInfoNew valueForKey:@"sending_country_currency"];
-    receiving_country_currency = [transferConfirmMoneyInfoNew valueForKey:@"receiving_country_currency"];
-    sending_amount = [transferConfirmMoneyInfoNew valueForKey:@"sending_amount"];
-    receiving_amount = [transferConfirmMoneyInfoNew valueForKey:@"receiving_amount"];
-    fee = [transferConfirmMoneyInfoNew valueForKey:@"fee"];
-    exchange_rate = [transferConfirmMoneyInfoNew valueForKey:@"exchange_rate"];
-    beneficiary_id = [transferConfirmMoneyInfoNew valueForKey:@"beneficiary_id"];
-    source = [transferConfirmMoneyInfoNew valueForKey:@"source"];
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width,335)];
 }
 
@@ -114,6 +105,15 @@
 
 -(void)callTransferRequest
 {
+    sending_country_currency = [transferConfirmMoneyInfoNew valueForKey:@"sending_country_currency"];
+    receiving_country_currency = [transferConfirmMoneyInfoNew valueForKey:@"receiving_country_currency"];
+    sending_amount = [transferConfirmMoneyInfoNew valueForKey:@"sending_amount"];
+    receiving_amount = [transferConfirmMoneyInfoNew valueForKey:@"receiving_amount"];
+    fee = [transferConfirmMoneyInfoNew valueForKey:@"fee"];
+    exchange_rate = [transferConfirmMoneyInfoNew valueForKey:@"exchange_rate"];
+    beneficiary_id = [transferConfirmMoneyInfoNew valueForKey:@"beneficiary_id"];
+    source = [transferConfirmMoneyInfoNew valueForKey:@"source"];
+    
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userDataDict = [userDataDict valueForKeyPath:@"User"];
 
@@ -325,16 +325,16 @@
     
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
     {
-        
+        transferConfirmMoneyInfoNew = [[NSDictionary alloc]init];
+        transferConfirmMoneyInfoNew = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"ConfirmTransferData"]];
         // Call change password
         [HUD removeFromSuperview];
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];
         HUD.labelText = NSLocalizedString(@"Loading...", nil);
         [HUD show:YES];
+//        [self viewWillAppear:YES];
         [self callTransferRequest];
-        
-        
     }
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
 }

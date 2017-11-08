@@ -13,7 +13,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="MyriadPro-Light.otf">
+        <array key="MyriadPro-Light.ttf">
             <string>MyriadPro-Light</string>
         </array>
         <array key="MyriadPro-Regular.otf">
@@ -1141,7 +1141,7 @@
                     <navigationItem key="navigationItem" id="vrB-rs-1Vx">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="9XG-IB-ewU">
                             <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Transfer Completed" textAlignment="natural" minimumFontSize="17" id="Mp3-GH-r6m">
-                                <rect key="frame" x="16" y="5" width="200" height="35"/>
+                                <rect key="frame" x="16" y="4.5" width="200" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1308,7 +1308,7 @@
                                     <color key="titleColor" red="0.31764705879999999" green="0.34901960780000002" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendMoneyBtn:" destination="iZu-mc-JG1" eventType="touchUpInside" id="9rl-zY-ZPJ"/>
+                                    <action selector="sendMoneyBtn:" destination="iZu-mc-JG1" eventType="touchUpInside" id="9hz-Ak-BaQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1951,7 +1951,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" misplaced="YES" id="SSi-Op-7Ao">
-                                                <rect key="frame" x="0.0" y="101" width="320" height="115"/>
+                                                <rect key="frame" x="0.0" y="81" width="320" height="115"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile number" minimumFontSize="17" id="rhA-zI-nml">
@@ -1992,7 +1992,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" misplaced="YES" id="zMK-oV-0M6">
-                                                <rect key="frame" x="0.0" y="101" width="320" height="115"/>
+                                                <rect key="frame" x="0.0" y="101" width="320" height="148"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
@@ -3437,7 +3437,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="aJp-YO-t2X">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Share Orobo" minimumFontSize="17" id="doe-6x-UYX">
-                                    <rect key="frame" x="52" y="10" width="196" height="25"/>
+                                    <rect key="frame" x="52" y="9.5" width="196" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -5180,7 +5180,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="sfZ-dk-Ebx">
-                                        <rect key="frame" x="230" y="38" width="90" height="25"/>
+                                        <rect key="frame" x="0.0" y="38" width="90" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down_white.png" id="8nW-oD-Oc5">
@@ -5220,7 +5220,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down.png" id="S98-Nn-YBx">
-                                                <rect key="frame" x="289" y="-5" width="31" height="21"/>
+                                                <rect key="frame" x="0.0" y="-5" width="31" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Biller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7pM-ZN-rar">
@@ -5325,7 +5325,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" id="WJN-g3-BmE">
-                                                <rect key="frame" x="95" y="0.0" width="225" height="79"/>
+                                                <rect key="frame" x="95" y="0.0" width="0.0" height="79"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
@@ -6198,7 +6198,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <segue reference="n75-l5-JXV"/>
         <segue reference="uNU-aK-i7R"/>
         <segue reference="Y8j-6T-1q0"/>
-        <segue reference="gN4-aF-gkT"/>
+        <segue reference="qZ9-Hy-xoO"/>
         <segue reference="6iI-9c-gcQ"/>
         <segue reference="I9G-Of-vCD"/>
     </inferredMetricsTieBreakers>

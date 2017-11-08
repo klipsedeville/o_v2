@@ -52,6 +52,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    dataTableView = [[UITableView alloc]init];
+    dataTableView.delegate = self;
+    dataTableView.dataSource = self;
+    
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self
+               action:@selector(aMethod:)
+     forControlEvents:UIControlEventTouchUpInside];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -459,6 +467,20 @@
     [dictA setValue:[NSString stringWithFormat:@"%@",[_userData valueForKey:@"phoneNumber"]] forKey:@"phone_number"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[_userData valueForKey:@"Address"]] forKey:@"address"];
     [dictA setValue:settlement_channel_id forKey:@"settlement_channel_id"];
+    if ([_selectMethodLbl.text  isEqual: @"Airtime"]){
+                if (![_mobileNumberTextfield.text  isEqual: nil]){
+                    [dictA setValue:_mobileNumberTextfield.text forKey:@"mobile_number"];
+                }
+        
+            }
+            else if ([_selectMethodLbl.text  isEqual: @"Bank Transfer"]){
+                if (![_accNameTextfield.text  isEqual: nil]){
+                    [dictA setValue:_accNameTextfield.text forKey:@"account_name"];
+                }
+                if (![_accNumberTextfield.text  isEqual: nil]){
+                    [dictA setValue:_accNumberTextfield.text forKey:@"account_number"];
+                }
+            }
     NSLog(@"USER BENFICIARY DATA ADDED1...%@",dictA);
     
      NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
@@ -624,13 +646,22 @@
         _titletableView.hidden = YES;
         bankslistTableView.hidden =  YES;
         
+        _blankView.hidden = NO;
+        _bankView.hidden = YES;
+        _channelView.hidden = YES;
+        
+        for (UIView *view in [_blankView subviews])
+        {
+            [view removeFromSuperview];
+        }
+        
         selectedSettlementDic = [channelArray objectAtIndex:indexPath.row];
         
         settlement_channel_id = [selectedSettlementDic valueForKey:@"id"];
         
         title_array = [[NSMutableArray alloc]init];
         
-        NSMutableArray *settlement_channel_parameters_array = [[NSMutableArray alloc]init];
+        settlement_channel_parameters_array = [[NSMutableArray alloc]init];
         settlement_channel_parameters_options_array = [[NSMutableArray alloc]init];
         Main_array = [[NSMutableArray alloc]init];
 
@@ -646,10 +677,21 @@
                 
             }
             NSLog(@"%@",settlement_channel_parameters_array);
+      
             for (int j = 0; j < settlement_channel_parameters_array.count; j++)
             {
                 if ([[[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"settlement_channel_parameter_options"] count] == 0)
                 {
+                    UITextField *parameterTextfield = [[UITextField alloc]init];
+                    parameterTextfield.frame = CGRectMake(10, (10+(j*30)), SCREEN_WIDTH-20, 30);
+                    UIColor *color = [self colorWithHexString:@"51595c"];
+                    parameterTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", [[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"parameter"]] attributes:@{NSForegroundColorAttributeName: color}];
+//                    UIView *bottomView = [[UIView alloc]init];
+//                    bottomView.frame = CGRectMake(10, (30+(j*30)), SCREEN_WIDTH-20, 1);
+//                    bottomView.backgroundColor = [UIColor lightGrayColor];
+                    [_blankView addSubview:parameterTextfield];
+//                    [_blankView addSubview:bottomView];
+                    
                     if ([[[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"options_data"] count] == 0)
                     {
                         
@@ -660,63 +702,83 @@
                 }
                 else
                 {
-                    [settlement_channel_parameters_options_array addObject:[[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"settlement_channel_parameter_options"]];
+                    
+                    if([ [settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"has_options"] != [NSNull null]  && [ [settlement_channel_parameters_array objectAtIndex:j] valueForKeyPath:@"options_model"] != [NSNull null])
+                    {
+                        [settlement_channel_parameters_options_array addObject:[[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"options_data"]];
+                    }
+                    else{
+                        [settlement_channel_parameters_options_array addObject:[[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"settlement_channel_parameter_options"]];
+                    }
+                    
+                    UILabel *parameterLabel = [[UILabel alloc]init];
+                    parameterLabel.frame = CGRectMake(10, (10+(j*30)), SCREEN_WIDTH-20, 30);
+                    UIColor *color = [self colorWithHexString:@"51595c"];
+                    parameterLabel.text = [NSString stringWithFormat:@"%@", [[[settlement_channel_parameters_options_array objectAtIndex:j]objectAtIndex:0] valueForKey:@"title"]];
+                    UIImageView *bottom = [[UIImageView alloc]init];
+                    bottom.frame = CGRectMake(10, (35+(j*30)), SCREEN_WIDTH-20, 5);
+                    bottom.image = [UIImage imageNamed:@"bottom"];
+                    [button setTitle:@"" forState:UIControlStateNormal];
+                    button.frame = CGRectMake(10, (10+(j*30)), SCREEN_WIDTH-20, 30);
+                    selectedTag = [NSString stringWithFormat:@"%d", j];
+                    [_blankView addSubview:parameterLabel];
+                    [_blankView addSubview:bottom];
+                    [_blankView addSubview:button];
+                    
                 }
             }
             NSLog(@"%@",settlement_channel_parameters_options_array);
-            
-            for (int k = 0; k < settlement_channel_parameters_options_array.count; k++)
-            {
-   
-                [Main_array addObject:[settlement_channel_parameters_options_array objectAtIndex:k]];
-                MainArrayValue = [[NSMutableArray alloc]init];
-                for (int l = 0; l < [Main_array count]; l++)
-                {
-                    [MainArrayValue addObject:[Main_array objectAtIndex:l]];
-                    [title_array addObject:[[Main_array objectAtIndex:l] valueForKey:@"title"]];
-                }
-            }
-            title_array = [title_array objectAtIndex:0];
-            NSLog(@"%@",[title_array objectAtIndex:0]);
-            
         }
         
-        if ([_selectMethodLbl.text  isEqual: @"Airtime"]){
-            _channelView.hidden = NO;
-            _blankView.hidden = YES;
-            _bankView.hidden = YES;
-            _channelNameLbl.text = title_array[0];
-        }
-        else if ([_selectMethodLbl.text  isEqual: @"Cash Pickup"]){
-            _channelView.hidden = YES;
-            _blankView.hidden = NO;
-            _bankView.hidden = YES;
-        }
-        else{
-            _channelView.hidden = YES;
-            _blankView.hidden = YES;
-            _bankView.hidden = NO;
-            _bankTypeLbl.text = title_array[0];
-        }
+        
+//        if ([_selectMethodLbl.text  isEqual: @"Airtime"]){
+//            _channelView.hidden = NO;
+//            _blankView.hidden = YES;
+//            _bankView.hidden = YES;
+//            _channelNameLbl.text = title_array[0];
+//        }
+//        else if ([_selectMethodLbl.text  isEqual: @"Cash Pickup"]){
+//            _channelView.hidden = YES;
+//            _blankView.hidden = NO;
+//            _bankView.hidden = YES;
+//        }
+//        else{
+//            _channelView.hidden = YES;
+//            _blankView.hidden = YES;
+//            _bankView.hidden = NO;
+//            _bankTypeLbl.text = title_array[0];
+//        }
     }
 
-    else{
-        if ([_selectMethodLbl.text  isEqual: @"Airtime"]){
-             MainArrayValue = [MainArrayValue objectAtIndex:0];
-            _channelNameLbl.text = title_array[indexPath.row];
-             MainSelectedValue = MainArrayValue[indexPath.row];
-            _ChannelsTableView.hidden = YES;
-            _titletableView.hidden = YES;
-            bankslistTableView.hidden =  YES;
+    else if(tableView == dataTableView){
+        NSString *selectedData = [title_array objectAtIndex:indexPath.row];
+        for (UIView *i in _blankView.subviews){
+            if([i isKindOfClass:[UILabel class]]){
+                UILabel *newLbl = (UILabel *)i;
+                if([NSString stringWithFormat:@"%ld", (long)(newLbl.tag)] == selectedTag){
+                    newLbl.text = selectedData;
+                    dataTableView.hidden = YES;
+                }
+            }
         }
-        else if ([_selectMethodLbl.text  isEqual: @"Bank Transfer"]){
-          NSArray *MainValueArr = [MainArrayValue objectAtIndex:0];
-            _bankTypeLbl.text = title_array[indexPath.row];
-            MainSelectedValue = MainValueArr[indexPath.row];
-            _ChannelsTableView.hidden = YES;
-            _titletableView.hidden = YES;
-            bankslistTableView.hidden =  YES;
-        }
+        
+        
+//        if ([_selectMethodLbl.text  isEqual: @"Airtime"]){
+//             NSArray *MainValueArr = [MainArrayValue objectAtIndex:0];
+//            _channelNameLbl.text = title_array[indexPath.row];
+//             MainSelectedValue = MainValueArr[indexPath.row];
+//            _ChannelsTableView.hidden = YES;
+//            _titletableView.hidden = YES;
+//            bankslistTableView.hidden =  YES;
+//        }
+//        else if ([_selectMethodLbl.text  isEqual: @"Bank Transfer"]){
+//          NSArray *MainValueArr = [MainArrayValue objectAtIndex:0];
+//            _bankTypeLbl.text = title_array[indexPath.row];
+//            MainSelectedValue = MainValueArr[indexPath.row];
+//            _ChannelsTableView.hidden = YES;
+//            _titletableView.hidden = YES;
+//            bankslistTableView.hidden =  YES;
+//        }
     }
 }
 
@@ -902,5 +964,27 @@
     [self.view endEditing:YES];
 }
 
+-(void)aMethod:(UIButton*)sender {
+     MainArrayValue = [[NSMutableArray alloc]init];
+    if (title_array.count == 0){
+    for (int k = 0; k < settlement_channel_parameters_options_array.count; k++)
+    {
+        
+        [Main_array addObject:[settlement_channel_parameters_options_array objectAtIndex:k]];
+       
+        for (int l = 0; l < [Main_array count]; l++)
+        {
+            [MainArrayValue addObject:[Main_array objectAtIndex:l]];
+            [title_array addObject:[[Main_array objectAtIndex:l] valueForKey:@"title"]];
+        }
+    }
+    title_array = [title_array objectAtIndex:0];
+    }
+    NSLog(@"%@",title_array);
+    
+    dataTableView.frame = CGRectMake(0, 224+sender.frame.origin.y, SCREEN_WIDTH-20, 120);
+    [self.view addSubview:dataTableView];
+    [dataTableView reloadData];
+}
 @end
 

@@ -31,6 +31,11 @@
     NSMutableArray *Main_array;
     NSMutableArray *MainArrayValue;
     NSMutableDictionary *MainSelectedValue;
+    NSArray *MainValueArr;
+    NSMutableArray *settlement_channel_parameters_array;
+    UITableView *dataTableView;
+    NSString *selectedTag;
+    UIButton *button;
 }
 
 // Property
