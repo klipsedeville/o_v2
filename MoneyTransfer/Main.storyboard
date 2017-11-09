@@ -13,7 +13,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="MyriadPro-Light.ttf">
+        <array key="MyriadPro-Light.otf">
             <string>MyriadPro-Light</string>
         </array>
         <array key="MyriadPro-Regular.otf">
@@ -204,7 +204,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="ReP-XE-Y9e">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Forgot Password" textAlignment="natural" minimumFontSize="17" id="Qhu-zg-OrM">
-                                    <rect key="frame" x="55" y="6" width="136" height="32"/>
+                                    <rect key="frame" x="56.5" y="8" width="136" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -232,7 +232,7 @@
             <objects>
                 <navigationController id="E1f-Ww-xdu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d1s-II-eGM">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -531,7 +531,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="fW7-rM-0Er">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Create your account" textAlignment="natural" minimumFontSize="17" id="4pg-kz-sTp">
-                                    <rect key="frame" x="55" y="7" width="186" height="30"/>
+                                    <rect key="frame" x="56.5" y="9" width="186" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
@@ -794,7 +794,7 @@
                             <barButtonItem image="bars.png" style="plain" id="jDw-t4-XRq">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="-4"/>
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ssP-L9-klp">
-                                    <rect key="frame" x="16" y="10" width="25" height="25"/>
+                                    <rect key="frame" x="16" y="12" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" backgroundImage="bars.png"/>
                                     <connections>
@@ -804,7 +804,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="Ejo-bU-VsA">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select . Send . Smile" textAlignment="center" minimumFontSize="17" id="cV9-Tr-f7Y">
-                                    <rect key="frame" x="49" y="7" width="200" height="30"/>
+                                    <rect key="frame" x="49" y="9" width="200" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1033,7 +1033,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="vSE-e3-Yl9">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select Amount" textAlignment="natural" minimumFontSize="17" id="Nac-k5-Ug5">
-                                    <rect key="frame" x="52" y="7" width="129" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="129" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1141,7 +1141,7 @@
                     <navigationItem key="navigationItem" id="vrB-rs-1Vx">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="9XG-IB-ewU">
                             <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Transfer Completed" textAlignment="natural" minimumFontSize="17" id="Mp3-GH-r6m">
-                                <rect key="frame" x="16" y="4.5" width="200" height="35"/>
+                                <rect key="frame" x="16" y="7" width="200" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1326,7 +1326,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="rOE-kS-H9v">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Confirm Transfer" textAlignment="natural" minimumFontSize="17" id="oai-BY-WTG">
-                                    <rect key="frame" x="52" y="7" width="145" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="145" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1495,7 +1495,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="xFe-k5-o3Z">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" My Beneficiaries" textAlignment="natural" minimumFontSize="17" id="dSe-vM-yJX">
-                                    <rect key="frame" x="52" y="7" width="174" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="174" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1705,7 +1705,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="9QY-Hp-bR3">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Beneficiary" minimumFontSize="17" id="Vve-YK-17r">
-                                    <rect key="frame" x="52" y="7" width="171" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="171" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1841,7 +1841,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="7BX-Rr-RBM">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Change Password" textAlignment="natural" minimumFontSize="17" id="t6d-6y-ptR">
-                                    <rect key="frame" x="52" y="7" width="171" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="171" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -1950,106 +1950,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" id="SSi-Op-7Ao">
-                                                <rect key="frame" x="0.0" y="81" width="320" height="115"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile number" minimumFontSize="17" id="rhA-zI-nml">
-                                                        <rect key="frame" x="7" y="65" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="WjM-LY-M70" id="OCI-N7-Ppg"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" id="xry-qa-jEB">
-                                                        <rect key="frame" x="7" y="94" width="306" height="1"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MTN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rNf-aV-HUT">
-                                                        <rect key="frame" x="7" y="7" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
-                                                        <color key="textColor" red="0.31764705879999999" green="0.34901960780000002" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bottom" id="E8Y-Xa-fUy">
-                                                        <rect key="frame" x="7" y="32" width="306" height="5"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jzz-B5-WFy">
-                                                        <rect key="frame" x="7" y="7" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="15"/>
-                                                        <connections>
-                                                            <action selector="channelsListShowClick:" destination="WjM-LY-M70" eventType="touchUpInside" id="RrA-6z-sB4"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
                                             <view contentMode="scaleToFill" misplaced="YES" id="zMK-oV-0M6">
-                                                <rect key="frame" x="0.0" y="101" width="320" height="148"/>
+                                                <rect key="frame" x="0.0" y="81" width="320" height="168"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" id="PlN-Tp-qYQ">
-                                                <rect key="frame" x="0.0" y="101" width="320" height="174"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Diamond Bank Plc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1ja-05-Ykp">
-                                                        <rect key="frame" x="7" y="7" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
-                                                        <color key="textColor" red="0.31764705879999999" green="0.34901960780000002" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bottom" id="SpC-CH-8ZI">
-                                                        <rect key="frame" x="7" y="32" width="306" height="5"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UCY-3G-Ul3">
-                                                        <rect key="frame" x="7" y="7" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="15"/>
-                                                        <connections>
-                                                            <action selector="banksListShowClick:" destination="WjM-LY-M70" eventType="touchUpInside" id="3sb-kw-Dmo"/>
-                                                        </connections>
-                                                    </button>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account name" minimumFontSize="17" id="LgL-l0-hlL">
-                                                        <rect key="frame" x="7" y="65" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="WjM-LY-M70" id="mZO-I7-31v"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" id="eKr-6f-r5N">
-                                                        <rect key="frame" x="7" y="94" width="306" height="1"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account number" minimumFontSize="17" id="OUf-Fr-5dM">
-                                                        <rect key="frame" x="7" y="122" width="306" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="WjM-LY-M70" id="V6g-Yi-HgC"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" misplaced="YES" id="veh-jd-4tJ">
-                                                        <rect key="frame" x="7" y="151" width="306" height="1"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    </view>
-                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -2060,15 +1963,6 @@
                                     <outlet property="delegate" destination="WjM-LY-M70" id="bAH-Sx-U3C"/>
                                 </connections>
                             </scrollView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="b7k-TE-lBx">
-                                <rect key="frame" x="7" y="231" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="WjM-LY-M70" id="3ow-nr-LUL"/>
-                                    <outlet property="delegate" destination="WjM-LY-M70" id="7q6-Um-yEB"/>
-                                </connections>
-                            </tableView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" id="v8Z-ej-rSA">
                                 <rect key="frame" x="163" y="165" width="130" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -2092,7 +1986,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="PEl-g4-f0y">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Method Of Collection " textAlignment="natural" minimumFontSize="17" id="DOG-hy-bRe">
-                                    <rect key="frame" x="52" y="7" width="200" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="200" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2105,22 +1999,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="ChannelsTableView" destination="v8Z-ej-rSA" id="j2Z-uR-CaX"/>
-                        <outlet property="accNameTextfield" destination="LgL-l0-hlL" id="oHP-ly-80o"/>
-                        <outlet property="accNamebtm" destination="eKr-6f-r5N" id="hr2-Ct-lbQ"/>
-                        <outlet property="accNoBtm" destination="veh-jd-4tJ" id="sdB-Kv-Qwd"/>
-                        <outlet property="accNumberTextfield" destination="OUf-Fr-5dM" id="xQe-ld-oVJ"/>
-                        <outlet property="bankTypeLbl" destination="1ja-05-Ykp" id="n4W-r9-VJa"/>
-                        <outlet property="bankView" destination="PlN-Tp-qYQ" id="EO3-eA-RzB"/>
                         <outlet property="blankView" destination="zMK-oV-0M6" id="TBk-Hy-fF8"/>
-                        <outlet property="channelNameLbl" destination="rNf-aV-HUT" id="qoU-R6-SxC"/>
-                        <outlet property="channelView" destination="SSi-Op-7Ao" id="PE3-jA-F3w"/>
                         <outlet property="lowerView" destination="hRh-f5-GZg" id="vMk-KP-gtS"/>
-                        <outlet property="mobileNoBtm" destination="xry-qa-jEB" id="kIE-b2-ejC"/>
-                        <outlet property="mobileNumberTextfield" destination="rhA-zI-nml" id="94R-cZ-XOp"/>
                         <outlet property="nextBtn" destination="evz-Tv-CZi" id="Of1-fB-AAT"/>
                         <outlet property="scrollView" destination="j11-Sh-s3W" id="oG7-F9-gsK"/>
                         <outlet property="selectMethodLbl" destination="CKx-9Z-dzN" id="mHl-Wy-XtY"/>
-                        <outlet property="titletableView" destination="b7k-TE-lBx" id="i11-C9-63O"/>
                         <segue destination="6QF-pH-0a7" kind="push" identifier="ShowBeneficiary" id="uNU-aK-i7R"/>
                         <segue destination="vgZ-VX-wAD" kind="push" identifier="ShowMoney" id="gN4-aF-gkT"/>
                         <segue destination="om1-BU-Hks" kind="push" identifier="ConfirmAddBeneficiary" id="pBe-Tf-Pv6"/>
@@ -2186,7 +2069,7 @@
                     <navigationItem key="navigationItem" id="fP3-3q-hg5">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="bNJ-sn-L6P">
                             <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" Beneficiary Added" textAlignment="natural" minimumFontSize="17" id="QbW-xr-fRa">
-                                <rect key="frame" x="16" y="7" width="200" height="30"/>
+                                <rect key="frame" x="16" y="9" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="19"/>
@@ -2408,7 +2291,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="bXH-sz-vQE">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="My Profile" textAlignment="natural" minimumFontSize="17" id="WsO-km-Tsz">
-                                    <rect key="frame" x="52" y="7" width="100" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="100" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2556,7 +2439,7 @@
                             <barButtonItem style="plain" id="gGs-y6-dDE">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select a category" minimumFontSize="17" id="pkz-Md-f3T">
-                                    <rect key="frame" x="52" y="7" width="153" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="153" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2739,7 +2622,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="jBT-oE-jUQ">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bill Details" minimumFontSize="17" id="IEO-2d-u1J">
-                                    <rect key="frame" x="52" y="7" width="251" height="30"/>
+                                    <rect key="frame" x="54" y="9" width="251" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2842,7 +2725,7 @@
                             <barButtonItem style="plain" id="AcV-gP-vYY">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select a location" minimumFontSize="17" id="gg6-a8-Tmv">
-                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2964,7 +2847,7 @@
                             <barButtonItem style="plain" id="srf-JF-Ar7">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select a biller" minimumFontSize="17" id="IZG-ii-QG2">
-                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -3196,7 +3079,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="nih-HC-epH">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Confirm Payment" minimumFontSize="17" id="0O8-eM-19k">
-                                    <rect key="frame" x="52" y="7" width="255" height="30"/>
+                                    <rect key="frame" x="54" y="9" width="255" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="19"/>
@@ -3306,7 +3189,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="11t-ev-ZX1">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="My Transactions" textAlignment="center" minimumFontSize="17" id="zuL-6B-oVA">
-                                    <rect key="frame" x="52" y="7" width="131" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="131" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -3437,7 +3320,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="aJp-YO-t2X">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Share Orobo" minimumFontSize="17" id="doe-6x-UYX">
-                                    <rect key="frame" x="52" y="9.5" width="196" height="25"/>
+                                    <rect key="frame" x="53.5" y="11.5" width="196" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -3631,7 +3514,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </connections>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Payment Method" textAlignment="center" minimumFontSize="17" id="X2W-ys-noA">
-                            <rect key="frame" x="57" y="7" width="206" height="30"/>
+                            <rect key="frame" x="57" y="9" width="206" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -3734,7 +3617,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="JSH-zJ-naZ">
                             <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Orobo" minimumFontSize="17" id="ePY-8m-uME">
-                                <rect key="frame" x="16" y="7" width="128" height="30"/>
+                                <rect key="frame" x="16" y="9" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -3938,7 +3821,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             <barButtonItem style="plain" id="Xjo-Kh-pDI">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Transfer PENDING" minimumFontSize="17" id="yuw-mY-gR4">
-                                    <rect key="frame" x="52" y="7" width="256" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="256" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -4011,7 +3894,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             <barButtonItem style="plain" id="z1K-gL-nDr">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select a bill" minimumFontSize="17" id="o6N-Jn-dH2">
-                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -4595,7 +4478,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="9Mb-iP-YcL">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Your Biller" textAlignment="natural" minimumFontSize="17" id="y8a-q9-4hA">
-                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -4763,7 +4646,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="bUf-U9-lyM">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Reset Password" textAlignment="natural" minimumFontSize="17" id="Dwu-ZB-loW">
-                                    <rect key="frame" x="55" y="6" width="143" height="32"/>
+                                    <rect key="frame" x="56.5" y="8" width="143" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4967,7 +4850,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             <barButtonItem style="plain" id="8bj-vn-oS0">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Transfer PENDING" minimumFontSize="17" id="vRB-mC-fjp">
-                                    <rect key="frame" x="52" y="7" width="256" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="256" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -5135,7 +5018,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="aAx-YC-TWW">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Agent Profile" minimumFontSize="17" id="lMv-Vo-Oa2">
-                                    <rect key="frame" x="52" y="7" width="255" height="30"/>
+                                    <rect key="frame" x="54" y="9" width="255" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="19"/>
@@ -5730,7 +5613,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="nPc-Ff-mWD">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Your Biller" textAlignment="natural" minimumFontSize="17" id="pt0-61-im5">
-                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -6117,7 +6000,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="iXE-Y1-4JM">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Your Biller" textAlignment="natural" minimumFontSize="17" id="AdN-67-xzt">
-                                    <rect key="frame" x="52" y="7" width="150" height="30"/>
+                                    <rect key="frame" x="53.5" y="9" width="150" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -6155,7 +6038,6 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <image name="arrow_down_tint.png" width="20" height="20"/>
         <image name="arrow_down_white.png" width="20" height="20"/>
         <image name="bars.png" width="20" height="20"/>
-        <image name="bottom" width="320" height="12"/>
         <image name="camera.png" width="20" height="20"/>
         <image name="card.png" width="40" height="40"/>
         <image name="downArrow.png" width="20" height="20"/>

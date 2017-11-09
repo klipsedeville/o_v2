@@ -36,6 +36,9 @@
     UITableView *dataTableView;
     NSString *selectedTag;
     UIButton *button;
+    NSString *tfTagValue;
+    NSIndexPath *indexPathValue;
+    UIToolbar* numberToolbar;
 }
 
 // Property
