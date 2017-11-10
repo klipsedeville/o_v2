@@ -32,22 +32,12 @@
 #define GetCommericials @"webservice/currencies/calculate_fee.json"
 #define TransferRequest @"webservice/transfer_requests/create.json"
 #define ListofTransfers @"webservice/transfer_requests.json"
-//#define ListBills @"webservice/bills/list_bills.json?bill_category_id="
-//#define ListBills @"webservice/bills/list_bills.json?"
-//#define ListBills @"/webservice/bills/list_categories.json?"
 #define ListBillsCategories @"webservice/bills/list_categories.json"
 
 #define PayBill @"webservice/bills/pay.json"
-
-
-
-
-
 #define BillersList @"webservice/beneficiaries/list_merchants.json"
 #define UserProfile @"webservice/users/profile.json"
 #define URLImage @"img/flags/"
-
-
 #define ResetPassword @"webservice/users/reset_password.json"
 #define RecommendBiller @"webservice/bills/recommend_biller.json"
 #define ListFundingChannels @"webservice/currencies/funding_channels.json?currency_id=154"
@@ -58,3 +48,7 @@
 #define ListBillPayments @"webservice/bills/list_bill_payments.json"
 
 #define ListBanks @"webservice/currencies/list_banks.json"
+
+#define Duphlux1 @"https://duphlux.com/webservice/authe/verify.json"
+#define Duphlux2 @"https://duphlux.com/webservice/authe/status.json"
+

@@ -32,7 +32,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     NSDate *date = [df dateFromString:myString];
-    [df setDateFormat:@"MMMM dd, HH:MM"];
+    [df setDateFormat:@"MMMM dd YYYY, HH:MM"];
     NSString *dateString = [df stringFromDate:date];
     _dateLbl.text = dateString;
     
@@ -88,7 +88,7 @@
             NSString *txt;
             if(parameterOptionsArray.count > 0)
             {
-                BOOL valueFound;
+                BOOL valueFound = false;
                 
                 for (int j = 0; j<parameterOptionsArray.count; j++)
                 {
@@ -98,12 +98,13 @@
                         valueFound = YES;
                         if([ tempDict valueForKeyPath:@"settlement_channel_parameter.has_options"] != [NSNull null]  && [ tempDict valueForKeyPath:@"settlement_channel_parameter.options_model"] != [NSNull null])
                         {
-                            txt = [ NSString stringWithFormat:@"%@: %@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"],[dict valueForKey:@"title"]];
+                             txt = [ NSString stringWithFormat:@"%@: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"], [dict valueForKey:@"sort_code"], [dict valueForKey:@"title"]];
                             txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
                                                                   withString:@""];
                         }
                         else{
-                            txt = [ NSString stringWithFormat:@"%@: %@",[dict valueForKey:@"title"],[dict valueForKey:@"title"]];
+                            
+                            txt = [ NSString stringWithFormat:@"%@: %@",[[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]capitalizedString],[dict valueForKey:@"title"]];
                             txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
                                                                   withString:@""];
                         }
@@ -113,7 +114,7 @@
                 }
                 
                 if (valueFound == NO) {
-                    txt = [ NSString stringWithFormat:@"%@:",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]];
+                    txt = [ NSString stringWithFormat:@"%@:",[[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]capitalizedString]];
                     txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
                                                           withString:@""];
                 }
@@ -122,7 +123,7 @@
             {
                 if(![[tempDict valueForKeyPath:@"collected_data"] isEqualToString:@""])
                 {
-                    txt = [ NSString stringWithFormat:@"%@: %@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"],[tempDict valueForKeyPath:@"collected_data"]];
+                    txt = [ NSString stringWithFormat:@"%@: %@",[[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]capitalizedString],[tempDict valueForKeyPath:@"collected_data"]];
                 }
                 else
                 {
@@ -133,18 +134,8 @@
             txt = [txt stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[txt substringToIndex:1] uppercaseString]];
             txt =  [txt stringByReplacingOccurrencesOfString:@"_"
                                                   withString:@" "];
-            //NSMutableArray *myArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data"];
-            //            for (int j = 0; j<parameterOptionsArray.count; j++) {
-            //                NSDictionary * dict = [parameterOptionsArray objectAtIndex:j];
-            //                if([[dict valueForKey:@"id"] integerValue] == [[tempDict valueForKey:@"collected_data"] integerValue])
-            //                {
-            //            if ([[ NSString stringWithFormat:@"%@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]]  isEqual: @"sort_code"]){
-            //
-            //                txt = [ NSString stringWithFormat:@"Sort Code: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.options_data.bank_code"], [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data.title"]];
-            //            }
-            
             requiredInfoTitleLbl.text = txt;
-            requiredInfoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:15];
+            requiredInfoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Semibold" size:15];
             requiredInfoTitleLbl.textColor = [self colorWithHexString:@"51595c"];
             [_statusView addSubview:requiredInfoTitleLbl];
             

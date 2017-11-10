@@ -39,6 +39,7 @@
     NSString *tfTagValue;
     NSIndexPath *indexPathValue;
     UIToolbar* numberToolbar;
+    NSString *selectedFieldTag;
 }
 
 // Property
