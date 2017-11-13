@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "Controller.h"
 
 @interface ConfirmTransferMoneyViewController : UIViewController
 {
     MBProgressHUD *HUD;
     NSString *sending_country_currency,*receiving_country_currency,*sending_amount,*receiving_amount,*fee,*exchange_rate,*beneficiary_id,*source;
     NSDictionary *transferConfirmMoneyInfoNew;
+    
+    UIView *backGroundVW;
 }
 
 // Property

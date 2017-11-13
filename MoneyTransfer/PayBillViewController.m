@@ -104,7 +104,7 @@
             }
         }
     NSArray *amountArr = [_billUserData valueForKeyPath:@"bill_options"];
-        NSString *amountstr = [[amountArr objectAtIndex:0]valueForKey:@"amount"];
+    NSString *amountstr = [[amountArr objectAtIndex:0]valueForKey:@"amount"];
     
     
     _amountLbl.hidden = YES;

@@ -18,5 +18,5 @@ target 'MoneyTransfer' do
   end
 pod 'Stripe'
 pod 'CardIO'
-
+pod 'Toast', '~> 3.1.0'
 end

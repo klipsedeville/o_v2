@@ -87,7 +87,6 @@
         }
         else
         {
-
         if ([error.userInfo objectForKey:@"NSLocalizedRecoverySuggestion"])
         {
             NSString * errorMessage = [ error.userInfo objectForKey:@"NSLocalizedRecoverySuggestion"];
@@ -106,6 +105,52 @@
             failure(@"Please try after some time, as the server is not responding.");
         }
     }
+    }];
+    [reqOp start];
+}
+
++(void) authPhone :(NSDictionary *)Mobile  withSuccess:(void (^)(id))success andFailure:(void (^)(NSString *))failure
+{
+    
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"https://duphlux.com/webservice/authe/verify.json"]];
+    [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [client setDefaultHeader:@"Accept" value:@"application/json"];
+    [client setDefaultHeader:@"Content-Type" value:@"application/json"];
+    [client setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
+    [client setDefaultHeader:@"token" value:@"34792cda48f4f90736d3faed467503568b347ee0"];
+    
+    
+    NSMutableURLRequest *req = [client requestWithMethod:@"POST" path:@"" parameters:Mobile];
+    NSLog(@"Dictionary %@", Mobile);
+    AFJSONRequestOperation *reqOp = [[AFJSONRequestOperation alloc] initWithRequest:req];
+    
+    [reqOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"Succeeded with object %@", responseObject);
+        NSLog(@"Request was %@", operation);
+        success(responseObject);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Failed with error %@", operation.responseString);
+        NSLog(@"Failed with error %li", (long)[operation.response statusCode]);
+        
+        if ([error.userInfo objectForKey:@"NSLocalizedRecoverySuggestion"])
+        {
+            NSString * errorMessage = [ error.userInfo objectForKey:@"NSLocalizedRecoverySuggestion"];
+            
+            NSError *error;
+            NSData *jsonData = [errorMessage dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                 options:NSJSONReadingMutableContainers error:&error];
+            NSString *message = [ json valueForKey:@"message"];
+            
+            failure(message);
+        }
+        else
+        {
+            failure(@"Please try after some time, as the server is not responding.");
+        }
     }];
     
     [reqOp start];

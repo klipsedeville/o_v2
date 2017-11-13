@@ -462,7 +462,9 @@
                                                                 
                                                                 dispatch_queue_t concurrentQueue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                                                                 dispatch_async(concurrentQueue1, ^{
-                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                    dispatch_async(dispatch_get_main_queue(), ^
+                                                                    {
+                                                                         NSLog(@"responseDic %@", responseDic);
                                                                         
                                                                         NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
                                                                         if (status == 0)

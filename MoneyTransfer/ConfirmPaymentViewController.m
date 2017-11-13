@@ -29,12 +29,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
+    // Remove the notifications
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
+    
     payBillDict= [[NSMutableDictionary alloc]init];
     
     // Do any additional setup after loading the view.
 }
--(void)viewWillAppear:(BOOL)animated{
+-(void) viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -137,14 +144,182 @@
 - (IBAction)paymentBtn:(id)sender {
     
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-    userDataDict = [userDataDict valueForKeyPath:@"User"];
-    CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
-    popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-    popUp.callFrom = [userDataDict valueForKeyPath:@"phone_number"];
-    popUp.delegate = self;
+//    userDataDict = [userDataDict valueForKeyPath:@"User"];
+//    CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+//    popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+//    popUp.callFrom = [userDataDict valueForKeyPath:@"phone_number"];
+//    popUp.delegate = self;
+//
+//    [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
     
-    [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+    [HUD show:YES];
+    
+     [self callAuthWebService:[userDataDict valueForKeyPath:@"User.phone_number"]];
 }
+- (void)DuphluxAuthStatusCall:(NSNotification *)notification
+{
+    NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
+    
+    [HUD removeFromSuperview];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+    [HUD show:YES];
+    [self getAuthStatusWebService:referneceString];
+}
+
+-(void) callAuthWebService:(NSString *) phoneNumber
+{
+    NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/verify.json"];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request addValue:@"34792cda48f4f90736d3faed467503568b347ee0" forHTTPHeaderField:@"token"];
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterFullStyle];
+    
+    NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
+    [dictA setValue:phoneNumber forKey:@"phone_number"];
+    [dictA setValue:@"30" forKey:@"timeout"];
+    [dictA setValue:dateString forKey:@"transaction_reference"];
+    [dictA setValue:@"com.uve.MoneyTransferApp" forKey:@"redirect_url"];
+    
+    NSData *PostData = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
+    
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        //if communication was successful
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+            if (httpResp.statusCode == 200)
+            {
+                [HUD removeFromSuperview];
+                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"result string %@", resultString);
+                NSError *jsonError;
+                NSData *objectData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                     options:NSJSONReadingMutableContainers
+                                                                       error:&jsonError];
+                
+                NSLog(@"json string %@", json);
+                if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
+                {
+                    NSDictionary *responseDic = [ json valueForKeyPath:@"PayLoad.data"];
+                    NSString *redirectURl = [ responseDic valueForKey:@"verification_url"];
+                    NSURL *url = [NSURL URLWithString:redirectURl];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"%@",url );
+                        
+                        [[ NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CallDuphluxAuth"];
+                        [[ NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"DuphuluxReferenceNumber"];
+                        
+                        if (![[UIApplication sharedApplication] openURL:url]) {
+                            NSLog(@"%@%@",@"Failed to open url:",[url description]);
+                        }
+                    });
+                }
+                else{
+                    NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
+                    
+                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alertview show];
+                }
+            }
+            else{
+                [HUD removeFromSuperview];
+            }
+        }
+        else{
+            [HUD removeFromSuperview];
+        }
+    }];
+    [postDataTask resume];
+}
+
+-(void) getAuthStatusWebService:( NSString *)referneceString
+{
+    NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/status.json"];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request addValue:@"34792cda48f4f90736d3faed467503568b347ee0" forHTTPHeaderField:@"token"];
+    
+    NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
+    [dictA setValue:referneceString forKey:@"transaction_reference"];
+    
+    NSData *PostData = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
+    
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        //if communication was successful
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+            if (httpResp.statusCode == 200)
+            {
+                 [HUD removeFromSuperview];
+                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"result string %@", resultString);
+                NSError *jsonError;
+                NSData *objectData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                     options:NSJSONReadingMutableContainers
+                                                                       error:&jsonError];
+                
+                NSLog(@"json string %@", json);
+                if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
+                {
+                    [[ NSUserDefaults standardUserDefaults] setValue:nil forKey:@"DuphuluxReferenceNumber"];
+                    [HUD removeFromSuperview];
+                    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+                    [self.view addSubview:HUD];
+                    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+                    [HUD show:YES];
+                    [self callPayBill];
+                }
+                else{
+                    NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
+                    
+                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alertview show];
+                }
+            }
+            else{
+                 [HUD removeFromSuperview];
+            }
+        }
+        else{
+             [HUD removeFromSuperview];
+        }
+    }];
+    [postDataTask resume];
+}
+
 #pragma  mark ############
 #pragma  mark Call pay bill methods
 #pragma  mark ############
@@ -190,9 +365,9 @@
     [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
     [dictB setValue:@"" forKey:@"bill_required_field_id"];
     [dictB setValue:@"" forKey:@"collected_data"];
-
     [_DataArray addObject:dictB];
     NSLog(@"Bill DATA ADDED...%@",_DataArray);
+    
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", _DataArray, @"BillCollectedField", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
@@ -233,6 +408,7 @@
                 
                 NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:resultString options:0];
                 NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
+                
                 if (data1)
                 {
                     [HUD removeFromSuperview];

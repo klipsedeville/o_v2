@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h> 
+#import <MessageUI/MessageUI.h>
+#import "UIView+Toast.h"
 
 @interface TransferPendingViewController : UIViewController<MFMailComposeViewControllerDelegate>
 

@@ -240,7 +240,7 @@
         
         NSLog(@"Selected user Amount...%@",selectedUserAmount);
         
-     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:selectedUserAmount] forKey:@"ConfirmTransferData"];
+       [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:selectedUserAmount] forKey:@"ConfirmTransferData"];
         
         [self performSegueWithIdentifier:@"ConfirmTransferMoney" sender:self];
     }

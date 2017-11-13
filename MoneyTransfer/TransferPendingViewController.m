@@ -142,6 +142,11 @@
             _lastView.frame = CGRectMake(10,requiredInfoTitleLbl.frame.origin.y+requiredInfoTitleLbl.frame.size.height+5,SCREEN_WIDTH-20,1);
         }
     }
+    
+    UITapGestureRecognizer * single = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnreferenceNumberLbl:)];
+    [self.referenceNumberLbl addGestureRecognizer:single];
+    single.numberOfTapsRequired = 1;
+    self.referenceNumberLbl.userInteractionEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,6 +161,19 @@
 #pragma mark ########
 #pragma mark Click Action methods
 #pragma mark ########
+
+- (void)tapOnreferenceNumberLbl:(UITapGestureRecognizer *)tapGesture
+{
+    if (tapGesture.state == UIGestureRecognizerStateEnded)
+    {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.referenceNumberLbl.text;
+        // toast with a specific duration and position
+        [self.view makeToast:[NSString stringWithFormat:@"%@",@"Reference copied to clipboard."]
+                      duration:2.0
+                      position:CSToastPositionBottom];
+    }
+}
 
 -(IBAction)backBtnClicked:(id)sender{
     
