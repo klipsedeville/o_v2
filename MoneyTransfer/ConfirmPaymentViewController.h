@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface ConfirmPaymentViewController : UIViewController
+@interface ConfirmPaymentViewController : UIViewController<UITextFieldDelegate>
 {
     MBProgressHUD *HUD;
     NSMutableDictionary *payBillDict;

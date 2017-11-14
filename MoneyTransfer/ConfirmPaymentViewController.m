@@ -369,7 +369,7 @@
     NSLog(@"Bill DATA ADDED...%@",_DataArray);
     
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", _DataArray, @"BillCollectedField", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
     // Encrypt the user token using public data and iv data
@@ -697,19 +697,106 @@
                         });
                     }
                 }
-                
             }
             else{
                 [HUD removeFromSuperview];
                 [HUD hide:YES];
             }
         }
-        
     }];
     
     [postDataTask resume];
     
 }
 
+#pragma mark ###########
+#pragma mark - Text Fields Deletgate methods
+#pragma mark ###########
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (SCREEN_HEIGHT ==480)
+    {
+        if (textField == self.fullNameTextField) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        if (textField == self.emailAddressTextFielf) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        if (textField == self.phoneNumberTextField) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+    }
+    else  if (SCREEN_HEIGHT ==568) {
+        if (textField == self.fullNameTextField) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        if (textField == self.emailAddressTextFielf) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        if (textField == self.phoneNumberTextField) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+    }
+    else
+    {
+        if (textField == self.fullNameTextField) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        if (textField == self.emailAddressTextFielf) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        if (textField == self.phoneNumberTextField) {
+            [self scrollViewToCenterOfScreen:self.lastView];
+        }
+        
+    }
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    [UIView animateWithDuration:.5f
+                     animations:^{
+                         [self.scrollView setContentOffset:CGPointMake(0, -63) animated:YES];
+                     }
+                     completion:^(BOOL finished){
+                     }
+     ];
+    
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (string.length == 0) //BackSpace
+    {
+        return YES;
+    }
+    
+    return YES;
+}
+
+-(void)scrollViewToCenterOfScreen:(UIView *)theView
+{
+    CGFloat viewCenterY = theView.center.y;
+    CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+    
+    CGFloat availableHeight = applicationFrame.size.height - 350; // Remove area covered by keyboard
+    
+    CGFloat y = viewCenterY - availableHeight / 2.0;
+    if (y < 0) {
+        y = 0;
+    }
+    [self.scrollView setContentOffset:CGPointMake(0, y) animated:YES];
+}
 
 @end

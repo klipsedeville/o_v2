@@ -153,6 +153,11 @@
     sizeOfContent = wd+ht;
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     
+    UITapGestureRecognizer * single = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnreferenceNumberLbl:)];
+    [self.referenceNumberLbl addGestureRecognizer:single];
+    single.numberOfTapsRequired = 1;
+    self.referenceNumberLbl.userInteractionEnabled = YES;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -168,6 +173,19 @@
 #pragma mark ########
 #pragma mark Click button action
 #pragma mark ########
+
+- (void)tapOnreferenceNumberLbl:(UITapGestureRecognizer *)tapGesture
+{
+    if (tapGesture.state == UIGestureRecognizerStateEnded)
+    {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.referenceNumberLbl.text;
+        // toast with a specific duration and position
+        [self.view makeToast:[NSString stringWithFormat:@"%@",@"Reference copied to clipboard."]
+                    duration:2.0
+                    position:CSToastPositionBottom];
+    }
+}
 
 -(IBAction)backBtnClicked:(id)sender{
     // back button
