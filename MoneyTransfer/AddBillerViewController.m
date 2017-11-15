@@ -24,32 +24,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     _billerNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Biller Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-     _firstNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"First Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-     _lastNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Last Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-     _emailAddressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Email Address"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    _billerNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Biller Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    _firstNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"First Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    _lastNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Last Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    _emailAddressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Email Address"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _phoneNumberTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Phone Number"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-     _physicalAddressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Physical Address"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    _physicalAddressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Physical Address"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _accountNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Account Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _accountNumberTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Account Number"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
-     _billNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    _billNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Name"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     _billAmountTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Bill Amount"] attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     
     _categoryTableView.hidden = YES;
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
-
+    
     [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, 1250)];
     _scrollView.bounces = NO;
     
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handletap:)];
-
+    
     [self.scrollView addGestureRecognizer:tapGesture];
     
     // Call get Bills Category
@@ -81,18 +81,18 @@
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     
     userDataDict = [userDataDict valueForKeyPath:@"User"];
-        double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
-        if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
-        {
-            NSLog(@"User Session expired");
-            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Your session has been expired." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            alertview.tag = 1003;
-            [alertview show];
-    
-        }
-        else{
-            NSLog(@"User Session not expired");
-        }
+    double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
+    if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
+    {
+        NSLog(@"User Session expired");
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Your session has been expired." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 1003;
+        [alertview show];
+        
+    }
+    else{
+        NSLog(@"User Session not expired");
+    }
     _currencyTableView.scrollEnabled = YES;
     allCurrencyArray = [[NSMutableArray alloc]init];
     
@@ -103,7 +103,7 @@
                             [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                             [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
     [numberToolbar sizeToFit];
-
+    
     _billerNameTextfield.inputAccessoryView = numberToolbar;
     _firstNameTextfield.inputAccessoryView = numberToolbar;
     _lastNameTextfield.inputAccessoryView = numberToolbar;
@@ -205,7 +205,7 @@
             errorString = @"Your session has been expired.";
             
             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                alertview.tag = 1003;
+            alertview.tag = 1003;
             
             [alertview show];
         }
@@ -261,7 +261,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -287,7 +287,7 @@
     }
     else if ([_firstNameTextfield.text length] == 0){
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"First name is required" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
+        
         [alertview show];
     }
     else if ([_lastNameTextfield.text length] == 0){
@@ -342,29 +342,29 @@
         
         [alertview show];
     }
-   
-    
-    else {
-    [self resignFirstResponder];
-    
-    userData = [[NSMutableDictionary alloc]init];
-
-    [userData setValue:_billNameTextfield.text forKey:@"title"];
-     [userData setValue:_billAmountTextfield.text forKey:@"amount"];
-    [userData setValue:_billerNameTextfield.text forKey:@"biller_name"];
-    [userData setValue:_emailAddressTextfield.text forKey:@"email_address"];
-   [userData setValue:_phoneNumberTextfield.text forKey:@"phone_number"];
-    [userData setValue:_physicalAddressTextfield.text forKey:@"address"];
-    [userData setValue:_selectBankLbl.text forKey:@"bank_name"];
-    [userData setValue:_accountNameTextfield.text forKey:@"bank_account_name"];
-    [userData setValue:_accountNumberTextfield.text forKey:@"bank_account_number"];
-    [userData setValue:_firstNameTextfield.text forKey:@"contact_person"];
-    
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.labelText = NSLocalizedString(@"Processing...", nil);
-    [HUD show:YES];
-    [ self callAddBiller];
+    else
+    {
+        NSString *personString = [_firstNameTextfield.text stringByAppendingString:[NSString stringWithFormat:@" %@", _lastNameTextfield.text ]];
+        [self resignFirstResponder];
+        userData = [[NSMutableDictionary alloc]init];
+        
+        [userData setValue:_billerNameTextfield.text forKey:@"biller_name"];
+        [userData setValue:_emailAddressTextfield.text forKey:@"email_address"];
+        [userData setValue:_phoneNumberTextfield.text forKey:@"phone_number"];
+        [userData setValue:_physicalAddressTextfield.text forKey:@"address"];
+        [userData setValue:_selectBankLbl.text forKey:@"bank_name"];
+        [userData setValue:_accountNameTextfield.text forKey:@"bank_account_name"];
+        [userData setValue:_accountNumberTextfield.text forKey:@"bank_account_number"];
+        [userData setValue:personString forKey:@"contact_person"];
+        
+        [userData setValue:_billNameTextfield.text forKey:@"title"];
+        [userData setValue:_billAmountTextfield.text forKey:@"amount"];
+        
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        HUD.labelText = NSLocalizedString(@"Processing...", nil);
+        [HUD show:YES];
+        [ self callAddBiller];
     }
 }
 
@@ -388,47 +388,72 @@
     NSString *base64IVString = [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"iv"]];
     NSData *decodedIVData = [[NSData alloc] initWithBase64EncodedString:base64IVString options:0];
     
-    NSMutableDictionary *dictC = [[NSMutableDictionary alloc]init];
-    [dictC setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"title"]] forKey:@"title"];
-    [dictC setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"amount"]] forKey:@"amount"];
-    [dictC setValue:@"true" forKey:@"allow_any_amount"];
-
-    NSMutableArray *dictBArray = [[NSMutableArray alloc] init];
-    dictBArray[0] = dictC;
-    
-    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
-    [dictB setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"title"]] forKey:@"title"];
-    [dictB setValue:selectCatID forKey:@"bill_category_id"];
-    [dictB setValue: dictBArray forKey:@"bill_options"];
-
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
     [dictA setValue:selectCatID forKey:@"bill_category_id"];
     [dictA setValue:selectCountryCode  forKey:@"country_currency_id"];
-    [dictA setValue: selectLocID forKey:@"state_id"];
+    [dictA setValue:selectLocID forKey:@"state_id"];
     
-    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"bank_account_name"]] forKey:@"title"];
+    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"biller_name"]] forKey:@"title"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"email_address"]] forKey:@"email_address"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"phone_number"]] forKey:@"phone_number"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"address"]] forKey:@"address"];
-    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"bank_name"]] forKey:@"bank_id"];
-    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"bank_account_name"]] forKey:@"bank_account_name"];
-    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"bank_account_number"]] forKey:@"bank_account_number"];
+    
     [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"contact_person"]] forKey:@"contact_person"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"email_address"]] forKey:@"contact_person_email_address"];
-    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"phone_number"]] forKey:@"contact_person_phone_number"];
     [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"address"]] forKey:@"contact_person_address"];
+    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"phone_number"]] forKey:@"contact_person_phone_number"];
     
-    NSMutableArray *dictAArray = [[NSMutableArray alloc] init];
-    dictAArray[0] = dictB;
+    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"bank_account_name"]] forKey:@"bank_account_name"];
+    [dictA setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"bank_account_number"]] forKey:@"bank_account_number"];
+    [dictA setValue:[NSString stringWithFormat:@"%@",selectBankID] forKey:@"bank_id"];
     
-    [dictA setValue:dictAArray forKey:@"bills"];
+    //Bill Options
+    NSMutableDictionary *OptionsDic = [[NSMutableDictionary alloc]init];
+    [OptionsDic setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"amount"]] forKey:@"amount"];
+    if([[userData valueForKey:@"amount"] floatValue] > 0.00)
+    {
+        [OptionsDic setObject:[ NSNumber numberWithBool:false] forKey:@"allow_any_amount"];
+    }
+    else{
+        [OptionsDic setObject:[ NSNumber numberWithBool:true] forKey:@"allow_any_amount"];
+    }
+        
+    
+    [OptionsDic setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"title"]] forKey:@"title"];
+    
+    // Bill Details
+    NSMutableArray *OptionsArray = [[NSMutableArray alloc] init];
+    OptionsArray[0] = OptionsDic;
+    
+    NSMutableDictionary *billDic = [[NSMutableDictionary alloc]init];
+    [billDic setValue:selectCatID forKey:@"bill_category_id"];
+    [billDic setValue:[NSString stringWithFormat:@"%@",[userData valueForKey:@"title"]] forKey:@"title"];
+    [billDic setValue: OptionsArray forKey:@"bill_options"];
+    
+    NSMutableArray *billArray = [[NSMutableArray alloc] init];
+    billArray[0] = billDic;
+    [dictA setValue:billArray forKey:@"bills"];
+    
+    NSLog(@"Dic .. %@", dictA);
     
     NSDictionary *headers = @{ @"token": userTokenString,
                                @"cache-control": @"no-cache",
                                @"postman-token": @"e052d2a7-928b-0406-a9a6-d859b881496c",
                                @"content-type": @"application/x-www-form-urlencoded" };
     
-    NSMutableData *postData1 = [[NSMutableData alloc] initWithData:[[ NSString stringWithFormat:@"%@=%@",@"",dictA] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+    // Encrypt the user token using public data and iv data
+    NSData *EncodedData = [FBEncryptorAES encryptData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                  key:decodedKeyData
+                                                   iv:decodedIVData];
+
+    NSString *base64TokenString = [EncodedData base64EncodedStringWithOptions:0];
+
+    NSMutableData *PostData =[[NSMutableData alloc] initWithData:[base64TokenString dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSMutableURLRequest *request = [  NSMutableURLRequest requestWithURL:[NSURL
                                                                           
@@ -440,7 +465,7 @@
     
     [request setHTTPMethod: @"POST"];
     [request setAllHTTPHeaderFields:headers];
-//    [request setHTTPBody:postData1];
+    [request setHTTPBody:PostData];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
@@ -458,48 +483,49 @@
                                                             
                                                             NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
                                                             if (data1)
-                                                            {NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
+                                                            {
+                                                                NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
                                                                 
                                                                 dispatch_queue_t concurrentQueue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                                                                 dispatch_async(concurrentQueue1, ^{
                                                                     dispatch_async(dispatch_get_main_queue(), ^
-                                                                    {
-                                                                         NSLog(@"responseDic %@", responseDic);
-                                                                        
-                                                                        NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
-                                                                        if (status == 0)
-                                                                        {
-                                                                            NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
-                                                                            
-                                                                            NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
-                                                                            
-                                                                            if(!errorString || [errorString isEqualToString:@"(null)"])
-                                                                            {
-                                                                                errorString = @"Your session has been expired.";
-                                                                                
-                                                                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                                                                                alertview.tag = 1003;
-                                                                                
-                                                                                [alertview show];
-                                                                                [HUD removeFromSuperview];                                   }
-                                                                            else
-                                                                            {
-                                                                                
-                                                                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                                                                                
-                                                                                [alertview show];
-                                                                                [HUD removeFromSuperview];
-                                                                            }
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Your biller information has been received and will be available to accept bill payments within 48hrs." delegate:self cancelButtonTitle:@"Continue" otherButtonTitles: nil];
-                                                                            
-                                                                            alertview.tag = 100;                         [alertview show];
-                                                                            [HUD removeFromSuperview];
-                                                                            
-                                                                        }
-                                                                    });
+                                                                                   {
+                                                                                       NSLog(@"responseDic %@", responseDic);
+                                                                                       
+                                                                                       NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
+                                                                                       if (status == 0)
+                                                                                       {
+                                                                                           NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                                                                                           
+                                                                                           NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                                                                                           
+                                                                                           if(!errorString || [errorString isEqualToString:@"(null)"])
+                                                                                           {
+                                                                                               errorString = @"Your session has been expired.";
+                                                                                               
+                                                                                               UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                                                                               alertview.tag = 1003;
+                                                                                               
+                                                                                               [alertview show];
+                                                                                               [HUD removeFromSuperview];                                   }
+                                                                                           else
+                                                                                           {
+                                                                                               
+                                                                                               UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                                                                               
+                                                                                               [alertview show];
+                                                                                               [HUD removeFromSuperview];
+                                                                                           }
+                                                                                       }
+                                                                                       else
+                                                                                       {
+                                                                                           UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Your biller information has been received and will be available to accept bill payments within 48hrs." delegate:self cancelButtonTitle:@"Continue" otherButtonTitles: nil];
+                                                                                           
+                                                                                           alertview.tag = 100;                         [alertview show];
+                                                                                           [HUD removeFromSuperview];
+                                                                                           
+                                                                                       }
+                                                                                   });
                                                                 });
                                                             }
                                                         }
@@ -520,10 +546,10 @@
         _currencyTableView.hidden = YES;
     }
     else if (_currencyTableView.hidden == YES) {
-            _currencyView.frame = CGRectMake(SCREEN_WIDTH/2-_currencyView.frame.size.width/2, 38, 90, 25);
-            _currencyTableView.frame =CGRectMake(0,0,60,25*(allCurrencyArray.count));
-            
-            _currencyTableView.hidden = NO;
+        _currencyView.frame = CGRectMake(SCREEN_WIDTH/2-_currencyView.frame.size.width/2, 38, 90, 25);
+        _currencyTableView.frame =CGRectMake(0,0,60,25*(allCurrencyArray.count));
+        
+        _currencyTableView.hidden = NO;
         [_currencyTableView reloadData];
     }
     else{
@@ -537,7 +563,7 @@
 - (void)viewDidLayoutSubviews
 {
     [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
-
+    
     _scrollView.bounces = NO;
 }
 
@@ -558,16 +584,16 @@
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
     
-  [_categoryTableView setContentSize:CGSizeMake( _selectBillerCategoryLbl.frame.size.width, _categoryTableView.frame.size.height)];
+    [_categoryTableView setContentSize:CGSizeMake( _selectBillerCategoryLbl.frame.size.width, _categoryTableView.frame.size.height)];
     [_categoryTableView reloadData];
-    }
+}
 
 - (IBAction)ActionSelectLocation:(id)sender {
     [self cancelNumberPad];
     UIView *tempVW = [[ UIView alloc] init];
     tempVW.frame = CGRectMake(_locationView.frame.origin.x, _locationView.frame.origin.y, _locationView.frame.size.width, _locationView.frame.size.height );
     [self scrollViewToCenterOfScreen:tempVW];
-  
+    
     [_locationTableView setContentSize:CGSizeMake( _selectLocationLbl.frame.size.width,_locationTableView.frame.size.height)];
     
     _locationTableView.hidden = NO;
@@ -586,7 +612,7 @@
     
     UIView *tempVW = [[ UIView alloc] init];
     tempVW.frame = CGRectMake(_bankView.frame.origin.x, _bankView.frame.origin.y, _bankView.frame.size.width, _bankView.frame.size.height );
-     [_bankTableView setContentSize:CGSizeMake( _selectBankLbl.frame.size.width,_bankTableView.frame.size.height)];
+    [_bankTableView setContentSize:CGSizeMake( _selectBankLbl.frame.size.width,_bankTableView.frame.size.height)];
     [self scrollViewToCenterOfScreen:tempVW];
     [_bankTableView reloadData];
 }
@@ -597,8 +623,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return 40;
-    }
+    return 40;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -608,11 +634,11 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == _currencyTableView) {
-    
+        
         cell.backgroundColor = [self colorWithHexString:@"073245"];
     }
     else{
-
+        
         cell.backgroundColor = [UIColor whiteColor];
     }
     
@@ -622,7 +648,7 @@
 {
     
     if (tableView == _currencyTableView) {
-    
+        
         return [allCurrencyArray count];
     }
     else if (tableView == _categoryTableView) {
@@ -630,10 +656,10 @@
     }
     
     else if (tableView == _locationTableView) {
-            return [locationArray count];
+        return [locationArray count];
     }
     else if (tableView == _bankTableView) {
-            return [bankArray count];
+        return [bankArray count];
     }
     else{
         return 1;
@@ -645,7 +671,7 @@
     static NSString *simpleTableIdentifier = @"SimpleTableItem";
     
     UITableViewCell *cell;
-
+    
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     
     if(tableView == _currencyTableView)
@@ -655,13 +681,13 @@
         NSDictionary *dict;
         dict = [allCurrencyArray objectAtIndex:indexPath.row];
         
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 50, 30)];
-    
-    titleLabel.textColor = [UIColor whiteColor];
-    [titleLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:11]];
-    titleLabel.text = [dict valueForKey:@"currency_code"];
-    [cell.contentView addSubview:titleLabel];
-    
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 50, 30)];
+        
+        titleLabel.textColor = [UIColor whiteColor];
+        [titleLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:11]];
+        titleLabel.text = [dict valueForKey:@"currency_code"];
+        [cell.contentView addSubview:titleLabel];
+        
         
         AsyncImageView *iconImage = [[AsyncImageView alloc] init];
         iconImage.frame = CGRectMake(5,5,15,15);
@@ -678,27 +704,37 @@
         
     }
     else if (tableView == _categoryTableView) {
-       cell.textLabel.text = [NSString stringWithFormat:@"%@", categoryArray[indexPath.row]];
-
+        NSDictionary *dict;
+        dict = [categoryArray objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [dict valueForKey:@"title"]];
+        
         [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.contentView.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
     
     else if (tableView == _locationTableView) {
-         cell.textLabel.text = [NSString stringWithFormat:@"%@", locationArray[indexPath.row]];
+        NSDictionary *dict;
+        dict = [locationArray objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [dict valueForKey:@"title"]];
         
         [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.contentView.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
-    else if (tableView == _bankTableView){
-         cell.textLabel.text = [NSString stringWithFormat:@"%@", bankArray[indexPath.row]];
+    else if (tableView == _bankTableView)
+    {
+        NSDictionary *dict;
+        dict = [bankArray objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [dict valueForKey:@"title"]];
         [cell.textLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:17]];
         cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.contentView.backgroundColor = [UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(218/255.0) alpha:1.0];
     }
-       return cell;
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -708,7 +744,6 @@
         NSDictionary *dict = [ allCurrencyArray objectAtIndex:indexPath.row];
         _currencyIDLbl.text = [ NSString stringWithFormat:@"%@   ",[dict valueForKey:@"currency_code"]];
         selectCountryCode = [dict valueForKey:@"id"];
-        
         selectedCountryName = [dict valueForKey:@"country_name"];
         
         NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[dict valueForKey:@"flag"]];
@@ -729,24 +764,32 @@
         _currencyTableView.hidden = YES;
         
     }
-    else if (tableView == _categoryTableView) {
-        _selectBillerCategoryLbl.text = [NSString stringWithFormat:@"%@", categoryArray[indexPath.row]];
-        selectCatID = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    else if (tableView == _categoryTableView)
+    {
+        NSDictionary *dict = [ categoryArray objectAtIndex:indexPath.row];
+        
+        _selectBillerCategoryLbl.text = [NSString stringWithFormat:@"%@", [dict valueForKey:@"title"]];
+        selectCatID = [NSString stringWithFormat:@"%@",[dict valueForKey:@"id"]];
         _categoryTableView.hidden = YES;
     }
     
-    else if (tableView == _locationTableView) {
-        _selectLocationLbl.text = [NSString stringWithFormat:@"%@", locationArray[indexPath.row]];
-        selectLocID = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    else if (tableView == _locationTableView)
+    {
+        NSDictionary *dict = [ locationArray objectAtIndex:indexPath.row];
+        
+        _selectLocationLbl.text = [NSString stringWithFormat:@"%@", [dict valueForKey:@"title"]];
+        selectLocID = [NSString stringWithFormat:@"%@", [dict valueForKey:@"id"]];
         _locationTableView.hidden = YES;
     }
-    else if (tableView == _bankTableView){
-        _selectBankLbl.text = [NSString stringWithFormat:@"%@", bankArray[indexPath.row]];
-        selectBankID = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    else if (tableView == _bankTableView)
+    {
+        NSDictionary *dict = [ bankArray objectAtIndex:indexPath.row];
+        _selectBankLbl.text = [NSString stringWithFormat:@"%@",[dict valueForKey:@"title"]];
+        selectBankID = [NSString stringWithFormat:@"%@", [dict valueForKey:@"id"]];
         _bankTableView.hidden = YES;
     }
-
-    }
+    
+}
 
 #pragma mark ########
 #pragma mark Color HexString methods
@@ -795,7 +838,7 @@
     _categoryTableView.hidden = YES;
     _locationTableView.hidden = YES;
     _bankTableView.hidden = YES;
-   [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
+    [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
     if (textField == _billerNameTextfield)
     {
         UIView *tempVW = [[ UIView alloc] init];
@@ -827,7 +870,7 @@
         tempVW.frame = CGRectMake(_phoneNumberTextfield.frame.origin.x, _numberView.frame.origin.y, _phoneNumberTextfield.frame.size.width, _phoneNumberTextfield.frame.size.height );
         [self scrollViewToCenterOfScreen:tempVW];
     }
-else if (textField == _physicalAddressTextfield)
+    else if (textField == _physicalAddressTextfield)
     {
         UIView *tempVW = [[ UIView alloc] init];
         tempVW.frame = CGRectMake(_physicalAddressTextfield.frame.origin.x, _addressView.frame.origin.y, _physicalAddressTextfield.frame.size.width, _physicalAddressTextfield.frame.size.height );
@@ -857,7 +900,7 @@ else if (textField == _physicalAddressTextfield)
         tempVW.frame = CGRectMake(_billAmountTextfield.frame.origin.x, _lastView.frame.origin.y, _billAmountTextfield.frame.size.width, _billAmountTextfield.frame.size.height );
         [self scrollViewToCenterOfScreen:tempVW];
     }
-   _scrollView.bounces = NO;
+    _scrollView.bounces = NO;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -904,7 +947,7 @@ else if (textField == _physicalAddressTextfield)
 {
     [_scrollView setContentSize:CGSizeMake( SCREEN_WIDTH, _lastView.frame.origin.y+_lastView.frame.size.height+50)];
     _scrollView.bounces = NO;
-
+    
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 -(void)cancelNumberPad{
@@ -930,13 +973,12 @@ else if (textField == _physicalAddressTextfield)
 -(void)GetStatesList1
 {
     // Get bill states list
-    
     [Controller GetBillStatesListByCountryID:@"154" withSuccess:^(id responseObject)
      {
          [HUD removeFromSuperview];
      }andFailure:^(NSString *String){
          
-         NSLog(@"State String..%@", String);
+         NSLog(@"State location String..%@", String);
          NSError *error;
          NSData *jsonData = [String dataUsingEncoding:NSUTF8StringEncoding];
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -947,11 +989,9 @@ else if (textField == _physicalAddressTextfield)
          
          if ( Status  == YES)
          {
-             locationArray= [ payLoadDic valueForKeyPath:@"data.states.title"];
+             locationArray= [ payLoadDic valueForKeyPath:@"data.states"];
              [_locationTableView reloadData];
-
              [HUD removeFromSuperview];
-             
          }
          else{
              [HUD removeFromSuperview];
@@ -992,7 +1032,7 @@ else if (textField == _physicalAddressTextfield)
          [HUD removeFromSuperview];
      }andFailure:^(NSString *String){
          
-         NSLog(@"Bills String..%@", String);
+         NSLog(@"Bills category String..%@", String);
          NSError *error;
          NSData *jsonData = [String dataUsingEncoding:NSUTF8StringEncoding];
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -1004,13 +1044,11 @@ else if (textField == _physicalAddressTextfield)
          if ( Status  == YES)
          {
              //             int x = 0;
-             categoryArray= [ payLoadDic valueForKeyPath:@"data.categories.title"];
-
+             categoryArray= [ payLoadDic valueForKeyPath:@"data.categories"];
              [_categoryTableView reloadData];
-
-             [HUD removeFromSuperview];
              
-                     }
+             [HUD removeFromSuperview];
+         }
          else{
              [HUD removeFromSuperview];
              NSArray *errorArray =[ payLoadDic valueForKeyPath:@"PayLoad.error"];
@@ -1084,48 +1122,48 @@ else if (textField == _physicalAddressTextfield)
             if (httpResp.statusCode == 200)
             {
                 NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"result string %@", resultString);
+                NSLog(@"BAnk result string %@", resultString);
                 
                 NSData *data = [resultString dataUsingEncoding:NSUTF8StringEncoding];
                 id responseDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
-                 NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"]integerValue];
+                NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"]integerValue];
                 
                 if (status == 0)
+                {
+                    [HUD removeFromSuperview];
+                    NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                    NSLog(@"error ..%@", errorArray);
+                    
+                    NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                    
+                    if(!errorString || [errorString isEqualToString:@"(null)"])
                     {
-                        [HUD removeFromSuperview];
-                        NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
-                        NSLog(@"error ..%@", errorArray);
+                        errorString = @"Your sesssion has been expired.";
                         
-                        NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        alertview.tag = 1003;
                         
-                        if(!errorString || [errorString isEqualToString:@"(null)"])
-                        {
-                            errorString = @"Your sesssion has been expired.";
-                            
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            alertview.tag = 1003;
-                            
-                            [alertview show];
-                        }
-                        else
-                        {
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            
-                            [alertview show];
-                        }
+                        [alertview show];
                     }
                     else
                     {
-                        [HUD removeFromSuperview];
-                        NSLog(@"Bank String..%@",responseDic );
-
-                        bankArray= [ responseDic valueForKeyPath:@"PayLoad.data.banks.title"];
-                        [_bankTableView reloadData];
+                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                         
-                        [HUD removeFromSuperview];
-
+                        [alertview show];
                     }
+                }
+                else
+                {
+                    [HUD removeFromSuperview];
+                    NSLog(@"Bank String..%@",responseDic );
+                    
+                    bankArray= [ responseDic valueForKeyPath:@"PayLoad.data.banks"];
+                    [_bankTableView reloadData];
+                    
+                    [HUD removeFromSuperview];
+                    
+                }
             }
             else{
                 [HUD removeFromSuperview];
@@ -1139,3 +1177,4 @@ else if (textField == _physicalAddressTextfield)
 
 
 @end
+

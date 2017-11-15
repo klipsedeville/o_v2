@@ -70,9 +70,12 @@
         _lastView.frame = CGRectMake(0, 378+_fieldView.frame.size.height, SCREEN_WIDTH, _lastView.frame.size.height);
     }
     
-    for ( NSDictionary *fieldDic in _paymentUserData) {
+    for (int i=0; i< _paymentUserData.count; i++)
+    {
+        NSDictionary *fieldDic = [ _paymentUserData objectAtIndex:i];
+        NSDictionary *valueDic = [ _DataArray objectAtIndex:i];
         
-        UITextView *fldText = [ fieldDic objectForKey:@"reqFldTextField"];
+        UITextView *fldText = [ valueDic objectForKey:@"collected_data"];
         
         UILabel *titleLbl = [[UILabel alloc] init];
         titleLbl.frame = CGRectMake(20, 10+(i*93), SCREEN_WIDTH-40, 26);
@@ -352,15 +355,32 @@
     
     NSLog(@"Bill DATA ADDED...%@",dictA);
     
-    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
-    [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
-    [dictB setValue:@"" forKey:@"bill_required_field_id"];
-    [dictB setValue:@"" forKey:@"collected_data"];
+    NSMutableArray *billCollectionArry = [[ NSMutableArray alloc] init];
     
-    [_DataArray addObject:dictB];
-    NSLog(@"Bill DATA ADDED...%@",_DataArray);
+    if (_paymentUserData.count == 0)
+    {
+        for(int i=0; i< _paymentUserData.count; i++)
+        {
+            NSDictionary *valuedic =[_DataArray objectAtIndex:i];
+            
+            NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
+            [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
+            [dictB setValue:[valuedic valueForKey:@"bill_required_field_id"] forKey:@"bill_required_field_id"];
+            [dictB setValue:[valuedic valueForKey:@"collected_data"] forKey:@"collected_data"];
+            
+            [billCollectionArry addObject:dictB];
+        }
+    }
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", _DataArray, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data;
+    
+    if (billCollectionArry.count ==0) {
+        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    }
+    else{
+        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", billCollectionArry, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    }
+    
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
     // Encrypt the user token using public data and iv data
@@ -431,7 +451,7 @@
                     else
                     {
                         [HUD removeFromSuperview];
-                        payBillDict = [responseDic valueForKeyPath:@"PayLoad.data.bill_payment"];
+                        payBillDict = [responseDic valueForKeyPath:@"PayLoad.data"];
                         NSLog(@"Transfer request...%@",responseDic );
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self performSegueWithIdentifier:@"TransferPayment" sender:self];

@@ -20,6 +20,9 @@
 // SignUp Method
 +(void) createAccountWithName :(NSString *)firstName SurName:(NSString *)surname EmailAddress:(NSString *)emailAddress PhoneNumber:(NSString *)phoneNumber address:(NSString*)address CountryID:(NSString *)countryID Password:(NSString*)password ReferralCode:(NSString*)referralCode withSuccess:(void (^)(id))success andFailure:(void (^)(NSString *))failure;
 
+// Add Biller Method
++(void) addBiller :(NSDictionary *)billerDic  withSuccess:(void (^)(id))success andFailure:(void (^)(NSString *))failure;
+
 // SignUp Method
 +(void) authPhone :(NSDictionary *)Mobile  withSuccess:(void (^)(id))success andFailure:(void (^)(NSString *))failure;
 

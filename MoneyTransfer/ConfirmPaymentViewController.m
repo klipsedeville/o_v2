@@ -66,7 +66,6 @@
         NSLog(@"User Session not expired");
     }
     NSLog(@"UserPaymentData... %@",paymentData);
-    NSLog(@"PaymentUserData... %@",_paymentUserData);
     
     _billLbl.text = _descriptionBillLbl;
     _optionLbl.text = [paymentData valueForKey:@"option_name"];
@@ -85,9 +84,12 @@
         _lastView.frame = CGRectMake(0, 378+_fieldView.frame.size.height, SCREEN_WIDTH, _lastView.frame.size.height);
     }
     
-    for ( NSDictionary *fieldDic in _paymentUserData) {
+    for (int i=0; i< _paymentUserData.count; i++)
+    {
+        NSDictionary *fieldDic = [ _paymentUserData objectAtIndex:i];
+        NSDictionary *valueDic = [ _DataArray objectAtIndex:i];
         
-        UITextView *fldText = [ fieldDic objectForKey:@"reqFldTextField"];
+        UITextView *fldText = [ valueDic objectForKey:@"collected_data"];
         
         UILabel *titleLbl = [[UILabel alloc] init];
         titleLbl.frame = CGRectMake(10, 10+(i*55), SCREEN_WIDTH-20, 20);
@@ -344,6 +346,7 @@
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
     NSArray * billArray = [billUserData valueForKey:@"bill_options"];
     NSDictionary *billIDDict = [billArray objectAtIndex:0];
+    
     [dictA setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
     [dictA setValue:[billUserData valueForKeyPath:@"bill_provider.bill_provider_id"] forKey:@"bill_provider_id"];
     [dictA setValue:[paymentData valueForKey:@"bill_optionID"] forKey:@"bill_option_id"];
@@ -361,15 +364,32 @@
     
     NSLog(@"Bill DATA ADDED...%@",dictA);
   
-    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
-    [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
-    [dictB setValue:@"" forKey:@"bill_required_field_id"];
-    [dictB setValue:@"" forKey:@"collected_data"];
-    [_DataArray addObject:dictB];
-    NSLog(@"Bill DATA ADDED...%@",_DataArray);
+    NSMutableArray *billCollectionArry = [[ NSMutableArray alloc] init];
     
+    if (_paymentUserData.count == 0)
+    {
+        for(int i=0; i< _paymentUserData.count; i++)
+        {
+            NSDictionary *valuedic =[_DataArray objectAtIndex:i];
+
+            NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
+            [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
+            [dictB setValue:[valuedic valueForKey:@"bill_required_field_id"] forKey:@"bill_required_field_id"];
+            [dictB setValue:[valuedic valueForKey:@"collected_data"] forKey:@"collected_data"];
+            
+           [billCollectionArry addObject:dictB];
+        }
+    }
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *data;
+    
+    if (billCollectionArry.count ==0) {
+        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    }
+    else{
+        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", billCollectionArry, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
+    }
+    
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
     // Encrypt the user token using public data and iv data
@@ -441,7 +461,7 @@
                     else
                     {
                         [HUD removeFromSuperview];
-                        payBillDict = [responseDic valueForKeyPath:@"PayLoad.data.bill_payment"];
+                        payBillDict = [responseDic valueForKeyPath:@"PayLoad.data"];
                         NSLog(@"Transfer request...%@",responseDic );
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self performSegueWithIdentifier:@"TransferPayment" sender:self];

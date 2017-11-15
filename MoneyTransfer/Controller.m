@@ -155,6 +155,86 @@
     
     [reqOp start];
 }
++(void) addBiller :(NSDictionary *)billerDic  withSuccess:(void (^)(id))success andFailure:(void (^)(NSString *))failure
+{
+    NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    
+    NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
+    
+    // Decode KeyString form base64
+    NSString *base64KeyString =[ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"public_key"]];
+    NSData *decodedKeyData = [[NSData alloc] initWithBase64EncodedString:base64KeyString options:0];
+    
+    // Decode IvString form base64
+    NSString *base64IVString = [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"iv"]];
+    NSData *decodedIVData = [[NSData alloc] initWithBase64EncodedString:base64IVString options:0];
+    
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:BaseUrl]];
+    [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [client setDefaultHeader:@"Accept" value:@"application/json"];
+    [client setDefaultHeader:@"Content-Type" value:@"application/json"];
+    [client setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
+    [client setDefaultHeader:@"token" value:userTokenString];
+    
+    NSString *apiURl = [NSString stringWithFormat:@"%@",RecommendBiller];
+    
+    NSMutableURLRequest *req = [client requestWithMethod:@"POST" path:apiURl parameters:billerDic];
+    AFJSONRequestOperation *reqOp = [[AFJSONRequestOperation alloc] initWithRequest:req];
+    
+    [reqOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"Succeeded with object %@", responseObject);
+        NSLog(@"Request was %@", operation);
+        
+        success(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Failed with error %@", operation.responseString);
+        NSLog(@"Failed with error %li", (long)[operation.response statusCode]);
+        
+        if ([operation.response statusCode] == 200)
+        {
+            NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:operation.responseString options:0];
+            
+            NSString * result;
+            NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
+            if (data1)
+            {
+                result= [[NSString alloc] initWithData:data1
+                                              encoding:NSUTF8StringEncoding];
+            } else
+            {
+                result = operation.responseString;
+            }
+            failure(result);
+        }
+        else
+        {
+            if ([error.userInfo objectForKey:@"NSLocalizedRecoverySuggestion"])
+            {
+                NSString * errorMessage = [ error.userInfo objectForKey:@"NSLocalizedRecoverySuggestion"];
+                
+                NSError *error;
+                NSData *jsonData = [errorMessage dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                     options:NSJSONReadingMutableContainers error:&error];
+                
+                NSString *message = [ json valueForKey:@"message"];
+                
+                failure(message);
+            }
+            else
+            {
+                failure(@"Please try after some time, as the server is not responding.");
+            }
+        }
+        
+    }];
+    
+    [reqOp start];
+    
+}
 
 #pragma mark User Register method
 +(void) createAccountWithName :(NSString *)firstName SurName:(NSString *)surname EmailAddress:(NSString *)emailAddress PhoneNumber:(NSString *)phoneNumber address:(NSString*)address CountryID:(NSString *)countryID Password:(NSString*)password ReferralCode:(NSString*)referralCode withSuccess:(void (^)(id))success andFailure:(void (^)(NSString *))failure

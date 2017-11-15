@@ -28,8 +28,8 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
+-(void)viewWillAppear:(BOOL)animated
+{
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -388,7 +388,6 @@
     }
     
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceCharacterSet];
-    
     NSString *billID = [_billUserData valueForKeyPath:@"bill_category_id"];
     
     for ( NSDictionary *fieldDic in requiredFldArray) {
@@ -425,15 +424,7 @@
     [PaymentUserData setValue:_billOptionLbl.text forKey:@"option_name"];
     [PaymentUserData setValue:_amountTextField.text forKey:@"amount"];
     [PaymentUserData setValue:billOptionID forKey:@"bill_optionID"];
-    
-        [self performSegueWithIdentifier:@"confirmpayment" sender:self];
-//    // call pay bill
-//    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//    [self.view addSubview:HUD];
-//    HUD.labelText = NSLocalizedString(@"Loading...", nil);
-//    [HUD show:YES];
-//    [self callPayBill];
-    
+    [self performSegueWithIdentifier:@"confirmpayment" sender:self];
 }
 
 #pragma mark ########
