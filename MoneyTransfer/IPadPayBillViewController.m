@@ -533,7 +533,8 @@
     }
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceCharacterSet];
     
-    NSString *billID = [_billUserData valueForKeyPath:@"BillCategory.id"];
+   NSString *billID =[ NSString stringWithFormat:@"%@", [_billUserData valueForKeyPath:@"bill_provider.bill_category_id"]];
+    
     for ( NSDictionary *fieldDic in requiredFldArray) {
         NSString *textString;
         
@@ -562,24 +563,29 @@
         [DataArray addObject:dict1];
     }
     
-    [PaymentUserData setValue:_titleLbl.text forKey:@"bill"];
-    [PaymentUserData setValue:_billOptionLbl.text forKey:@"optionName"];
-    [PaymentUserData setValue:_amountTextField.text forKey:@"amount"];
-    [PaymentUserData setValue:_meterTextField.text forKey:@"meter"];
-    [PaymentUserData setValue:_receiverPhnNoTextField.text forKey:@"receiverPhnNo"];
-    [PaymentUserData setValue:_emailAddressTextField.text forKey:@"emailAddress"];
-    [PaymentUserData setValue:_fullNameTextField.text forKey:@"fullName"];
-    [PaymentUserData setValue:_phnNoTextField.text forKey:@"phnNo"];
-    [PaymentUserData setValue:_fullNameProTextField.text forKey:@"_fullNamePro"];
-    [PaymentUserData setValue:_ageTextField.text forKey:@"age"];
-    [PaymentUserData setValue:_studentRegistartionnumberTextField.text forKey:@"studentRegNo"];
-    [PaymentUserData setValue:_studentFullNameTextField.text forKey:@"studentFullName"];
-    [PaymentUserData setValue:_classTextField.text forKey:@"class"];
-    [PaymentUserData setValue:_clientTextField.text forKey:@"client"];
-    [PaymentUserData setValue:_equipmentIDTextField.text forKey:@"equipmentID"];
-    [PaymentUserData setValue:billOptionID forKey:@"billOptionID"];
+//    [PaymentUserData setValue:_titleLbl.text forKey:@"bill"];
+//    [PaymentUserData setValue:_billOptionLbl.text forKey:@"optionName"];
+//    [PaymentUserData setValue:_amountTextField.text forKey:@"amount"];
+//    [PaymentUserData setValue:_meterTextField.text forKey:@"meter"];
+//    [PaymentUserData setValue:_receiverPhnNoTextField.text forKey:@"receiverPhnNo"];
+//    [PaymentUserData setValue:_emailAddressTextField.text forKey:@"emailAddress"];
+//    [PaymentUserData setValue:_fullNameTextField.text forKey:@"fullName"];
+//    [PaymentUserData setValue:_phnNoTextField.text forKey:@"phnNo"];
+//    [PaymentUserData setValue:_fullNameProTextField.text forKey:@"_fullNamePro"];
+//    [PaymentUserData setValue:_ageTextField.text forKey:@"age"];
+//    [PaymentUserData setValue:_studentRegistartionnumberTextField.text forKey:@"studentRegNo"];
+//    [PaymentUserData setValue:_studentFullNameTextField.text forKey:@"studentFullName"];
+//    [PaymentUserData setValue:_classTextField.text forKey:@"class"];
+//    [PaymentUserData setValue:_clientTextField.text forKey:@"client"];
+//    [PaymentUserData setValue:_equipmentIDTextField.text forKey:@"equipmentID"];
+//    [PaymentUserData setValue:billOptionID forKey:@"billOptionID"];
     
-        [self performSegueWithIdentifier:@"confirmpayment" sender:self];
+    
+    [PaymentUserData setValue:_billOptionLbl.text forKey:@"option_name"];
+    [PaymentUserData setValue:_amountTextField.text forKey:@"amount"];
+    [PaymentUserData setValue:billOptionID forKey:@"bill_optionID"];
+    [self performSegueWithIdentifier:@"confirmpayment" sender:self];
+    
     
 //     // call pay bill
 //    HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -588,6 +594,21 @@
 //    [HUD show:YES];
 //
 //    [self callPayBill];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"segue to Beneficiary screen");
+    if([[segue identifier] isEqualToString:@"confirmpayment"])
+    {
+        
+        IPadConfirmPaymentViewController *vc = [segue destinationViewController];
+        vc.paymentData = PaymentUserData;
+        vc.paymentUserData = requiredFldArray;
+        vc.DataArray = DataArray;
+        vc.descriptionBillLbl = _billNameLbl.text;
+        vc.billCategoryId = [_billUserData valueForKeyPath:@"bill_category_id"];
+    }
 }
 
 #pragma mark ########
@@ -2334,19 +2355,19 @@
 #pragma mark Segue Delegate
 #pragma mark ########
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"segue to Beneficiary screen");
-    if([[segue identifier] isEqualToString:@"confirmpayment"]){
-        
-        IPadConfirmPaymentViewController*vc = [segue destinationViewController];
-        vc.paymentData = PaymentUserData;
-        vc.paymentUserData = requiredFldArray;
-        vc.DataArray = DataArray;
-        vc.descriptionBillLbl = _billNameLbl.text;
-        vc.billCategoryId = [_billUserData valueForKeyPath:@"BillCategory.id"];
-    }
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    NSLog(@"segue to Beneficiary screen");
+//    if([[segue identifier] isEqualToString:@"confirmpayment"]){
+//
+//        IPadConfirmPaymentViewController*vc = [segue destinationViewController];
+//        vc.paymentData = PaymentUserData;
+//        vc.paymentUserData = requiredFldArray;
+//        vc.DataArray = DataArray;
+//        vc.descriptionBillLbl = _billNameLbl.text;
+//        vc.billCategoryId = [_billUserData valueForKeyPath:@"BillCategory.id"];
+//    }
+//}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
     NSLog(@"touches began");

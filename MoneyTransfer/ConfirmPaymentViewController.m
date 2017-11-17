@@ -89,7 +89,7 @@
         NSDictionary *fieldDic = [ _paymentUserData objectAtIndex:i];
         NSDictionary *valueDic = [ _DataArray objectAtIndex:i];
         
-        UITextView *fldText = [ valueDic objectForKey:@"collected_data"];
+        NSString *fldText = [ valueDic objectForKey:@"collected_data"];
         
         UILabel *titleLbl = [[UILabel alloc] init];
         titleLbl.frame = CGRectMake(10, 10+(i*55), SCREEN_WIDTH-20, 20);
@@ -100,7 +100,7 @@
         
         UILabel *valueLbl = [[UILabel alloc] init];
         valueLbl.frame = CGRectMake(10,titleLbl.frame.size.height+titleLbl.frame.origin.y-5, SCREEN_WIDTH-20, 30);
-        valueLbl.text = fldText.text;
+        valueLbl.text = fldText;
         valueLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
         valueLbl.textColor = [self colorWithHexString:@"51595c"];
         [_fieldView addSubview:valueLbl];
@@ -108,9 +108,8 @@
         UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(10,valueLbl.frame.size.height+valueLbl.frame.origin.y-5, SCREEN_WIDTH-20, 1)];
         newView.backgroundColor=[self colorWithHexString:@"51595c"];
         [_fieldView addSubview:newView];
-        i++;
-        
     }
+    
     billUserData = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"PayBillDetail"]];
     
     _billerCategoryLbl.text = [NSString stringWithFormat:@"%@",[billUserData valueForKeyPath:@"bill_provider.title"]];;
@@ -133,6 +132,7 @@
     _emailAddressTextFielf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: color}];
     _phoneNumberTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Phone Number" attributes:@{NSForegroundColorAttributeName: color}];
 }
+
 #pragma  mark ############
 #pragma  mark Click Action methods
 #pragma  mark ############
@@ -366,7 +366,7 @@
   
     NSMutableArray *billCollectionArry = [[ NSMutableArray alloc] init];
     
-    if (_paymentUserData.count == 0)
+    if (_paymentUserData.count != 0)
     {
         for(int i=0; i< _paymentUserData.count; i++)
         {
@@ -387,7 +387,7 @@
         data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", nil] options:NSJSONWritingPrettyPrinted error:nil];
     }
     else{
-        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", billCollectionArry, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
+        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", billCollectionArry, @"BillCollectedField", nil] options:NSJSONWritingPrettyPrinted error:nil];
     }
     
     NSString *jsonString = [[NSString alloc] initWithData:data

@@ -131,9 +131,11 @@
     NSArray *requiredFieldArray = [_billUserData valueForKey:@"bill_required_fields"];
     
     [requiredInfoView removeFromSuperview];
+   
     requiredInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, _amountView.frame.origin.y+_amountView.frame.size.height +17 , SCREEN_WIDTH, 50)];
     requiredInfoView.backgroundColor = [UIColor whiteColor];
     [_scrollView addSubview:requiredInfoView];
+    
     UILabel *requiredInfoTitleLbl = [[UILabel alloc] init];
     requiredInfoTitleLbl.frame = CGRectMake(10, 15, SCREEN_WIDTH-20, 20);
     requiredInfoTitleLbl.text = @"REQUIRED INFORMATION";
@@ -388,7 +390,7 @@
     }
     
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceCharacterSet];
-    NSString *billID = [_billUserData valueForKeyPath:@"bill_category_id"];
+    NSString *billID =[ NSString stringWithFormat:@"%@", [_billUserData valueForKeyPath:@"bill_provider.bill_category_id"]];
     
     for ( NSDictionary *fieldDic in requiredFldArray) {
         
@@ -734,13 +736,14 @@
     genderTableView.hidden = YES;
     NSLog(@"textfield y %f",textField.frame.origin.y + requiredInfoView.frame.origin.y);
     [_scrollView setContentSize:CGSizeMake(_scrollView.contentSize.width,_scrollView.contentSize.height + 200)];
+    
     if([textField.superview isEqual:requiredInfoView] )
     {
         if(textField.frame.origin.y + requiredInfoView.frame.origin.y > 195)
         {
             UIView *tempVW = [[ UIView alloc] init];
             
-            tempVW.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y+250, textField.frame.size.width, textField.frame.size.height );
+            tempVW.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y+350, textField.frame.size.width, textField.frame.size.height );
             [self scrollViewToCenterOfScreen:tempVW];
         }
     }

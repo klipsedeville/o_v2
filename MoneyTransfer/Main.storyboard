@@ -13,7 +13,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="MyriadPro-Light.ttf">
+        <array key="MyriadPro-Light.otf">
             <string>MyriadPro-Light</string>
         </array>
         <array key="MyriadPro-Regular.otf">
@@ -1141,7 +1141,7 @@
                     <navigationItem key="navigationItem" id="vrB-rs-1Vx">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="9XG-IB-ewU">
                             <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Transfer Completed" textAlignment="natural" minimumFontSize="17" id="Mp3-GH-r6m">
-                                <rect key="frame" x="16" y="4.5" width="200" height="35"/>
+                                <rect key="frame" x="16" y="5" width="200" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2475,7 +2475,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="VMN-qa-AxX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="522"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="1eQ-uc-QGE">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
@@ -6081,7 +6081,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <segue reference="grh-wt-qaU"/>
         <segue reference="3cZ-OU-4ze"/>
         <segue reference="Tqv-jz-eq5"/>
-        <segue reference="jGI-Fp-ahB"/>
+        <segue reference="xDA-QG-zCN"/>
         <segue reference="FTP-UI-ipj"/>
         <segue reference="t9r-dy-TH6"/>
         <segue reference="n75-l5-JXV"/>

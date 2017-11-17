@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.25771"
+            timestampString = "532624102.179314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "430"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.258336"
+            timestampString = "532624102.179559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
@@ -346,13 +346,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.258636"
+            timestampString = "532624102.179964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "481"
             endingLineNumber = "481"
-            landmarkName = "ConfirmPaymentViewController"
-            landmarkType = "3">
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.258719"
+            timestampString = "532624102.18005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1541"
-            endingLineNumber = "1541"
+            startingLineNumber = "1562"
+            endingLineNumber = "1562"
             landmarkName = "-textFieldDidBeginEditing:"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,12 +378,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.258785"
+            timestampString = "532624102.180118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2341"
-            endingLineNumber = "2341"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "2371"
+            endingLineNumber = "2371"
+            landmarkName = "-scrollViewToCenterOfScreen:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.258848"
+            timestampString = "532624102.180183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -410,12 +410,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.258919"
+            timestampString = "532624102.180248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
-            landmarkName = "-callPayBill"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.258984"
+            timestampString = "532624102.180315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "526"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.259074"
+            timestampString = "532624102.180418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "441"
@@ -490,12 +490,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.259166"
+            timestampString = "532624102.180531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2273"
-            endingLineNumber = "2273"
-            landmarkName = "-textFieldShouldReturn:"
+            startingLineNumber = "2294"
+            endingLineNumber = "2294"
+            landmarkName = "-textFieldDidBeginEditing:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.259257"
+            timestampString = "532624102.180662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "300"
@@ -856,7 +856,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SendMoneyViewController.m"
-                  timestampString = "532443533.554047"
+                  timestampString = "532623206.22711"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -871,7 +871,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SendMoneyViewController.m"
-                  timestampString = "532443533.55769"
+                  timestampString = "532623206.230618"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -904,7 +904,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/AddBeneFiciaryViewController.m"
-                  timestampString = "532443533.565447"
+                  timestampString = "532623206.241084"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
@@ -919,7 +919,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/AddBeneFiciaryViewController.m"
-                  timestampString = "532443533.568867"
+                  timestampString = "532623206.244659"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
@@ -952,7 +952,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/ForgetPasswordViewController.m"
-                  timestampString = "532443533.576555"
+                  timestampString = "532623206.252969"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
@@ -967,7 +967,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/ForgetPasswordViewController.m"
-                  timestampString = "532443533.579871"
+                  timestampString = "532623206.256474"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
@@ -1016,7 +1016,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/IPadBillPayViewController.m"
-                  timestampString = "532443533.594394"
+                  timestampString = "532623206.279045"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
@@ -1031,7 +1031,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/IPadBillPayViewController.m"
-                  timestampString = "532443533.597708"
+                  timestampString = "532623206.283031"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
@@ -1064,7 +1064,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532443533.605624"
+                  timestampString = "532623206.298584"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -1079,7 +1079,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532443533.609133"
+                  timestampString = "532623206.303502"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -1224,7 +1224,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532443533.663801"
+                  timestampString = "532623206.357407"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -1239,7 +1239,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532443533.667567"
+                  timestampString = "532623206.360917"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -1576,7 +1576,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/BeneficiariesViewController.m"
-                  timestampString = "532443533.820077"
+                  timestampString = "532623206.494685"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "333"
@@ -1591,7 +1591,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/BeneficiariesViewController.m"
-                  timestampString = "532443533.823729"
+                  timestampString = "532623206.497978"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "333"
@@ -2344,7 +2344,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532443534.160631"
+                  timestampString = "532623206.794348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "197"
@@ -2359,7 +2359,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532443534.163954"
+                  timestampString = "532623206.797652"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "197"
@@ -2600,7 +2600,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532443534.272383"
+                  timestampString = "532623206.888379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -2615,7 +2615,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532443534.276044"
+                  timestampString = "532623206.891968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -2776,7 +2776,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/iPadBeneficiariesViewController.m"
-                  timestampString = "532443534.343519"
+                  timestampString = "532623206.95076"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -2791,7 +2791,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/iPadBeneficiariesViewController.m"
-                  timestampString = "532443534.346952"
+                  timestampString = "532623206.954049"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -3272,11 +3272,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.267374"
+            timestampString = "532624102.186051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "675"
-            endingLineNumber = "675"
+            startingLineNumber = "677"
+            endingLineNumber = "677"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3416,7 +3416,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268383"
+            timestampString = "532624102.186464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -3432,11 +3432,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268455"
+            timestampString = "532624102.186585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3448,11 +3448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268542"
+            timestampString = "532624102.186683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "-callPayBill"
             landmarkType = "7">
          </BreakpointContent>
@@ -3464,7 +3464,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268612"
+            timestampString = "532624102.186809"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.186941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.187057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "503"
@@ -3480,43 +3512,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268689"
+            timestampString = "532624102.187162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
-            landmarkName = "-callPayBill"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268759"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
-            landmarkName = "-callPayBill"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268827"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "-callPayBill"
             landmarkType = "7">
          </BreakpointContent>
@@ -3560,7 +3560,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532443534.685493"
+                  timestampString = "532623207.407173"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3575,7 +3575,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532443534.691022"
+                  timestampString = "532623207.410656"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3590,7 +3590,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532443534.694852"
+                  timestampString = "532623207.41467"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3605,7 +3605,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532443534.698675"
+                  timestampString = "532623207.418437"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3620,7 +3620,7 @@
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/graycell/Desktop/GraycellTech/GITLabProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532443534.702467"
+                  timestampString = "532623207.421758"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3669,7 +3669,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.268991"
+            timestampString = "532624102.18749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -3861,11 +3861,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/IPadPayBillViewController.m"
-            timestampString = "532444852.269432"
+            timestampString = "532624102.188194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "619"
-            endingLineNumber = "619"
+            startingLineNumber = "640"
+            endingLineNumber = "640"
             landmarkName = "-callPayBill"
             landmarkType = "7">
          </BreakpointContent>
@@ -3877,7 +3877,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/PayBillViewController.m"
-            timestampString = "532444852.269512"
+            timestampString = "532624102.188303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -3909,11 +3909,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.269644"
+            timestampString = "532624102.188515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3957,7 +3957,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.269776"
+            timestampString = "532624102.188779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "424"
@@ -3973,7 +3973,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.26987"
+            timestampString = "532624102.188929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
@@ -3989,7 +3989,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.269952"
+            timestampString = "532624102.189033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
@@ -4021,7 +4021,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.270069"
+            timestampString = "532624102.189216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -4037,7 +4037,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.270145"
+            timestampString = "532624102.189333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -4213,7 +4213,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.270442"
+            timestampString = "532624102.189914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "332"
@@ -4677,7 +4677,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.271161"
+            timestampString = "532624102.190969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "435"
@@ -4693,7 +4693,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
-            timestampString = "532444852.271262"
+            timestampString = "532624102.191066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "437"
@@ -4859,6 +4859,342 @@
             startingLineNumber = "180"
             endingLineNumber = "180"
             landmarkName = "+addBiller:withSuccess:andFailure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191475"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191562"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
+            landmarkName = "-payBillBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191715"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
+            landmarkName = "-payBillBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191791"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
+            landmarkName = "-payBillBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
+            landmarkName = "-payBillBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.191943"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
+            landmarkName = "-payBillBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.192019"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
+            landmarkName = "-payBillBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.192096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.192174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.192251"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.192323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.192393"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "742"
+            endingLineNumber = "742"
+            landmarkName = "-textFieldDidBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.192465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "745"
+            endingLineNumber = "745"
+            landmarkName = "-textFieldDidBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.192535"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "-textFieldDidBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/PayBillViewController.m"
+            timestampString = "532624102.192647"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
+            landmarkName = "-textFieldDidBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.192772"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.192895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.193091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.193227"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
+            landmarkName = "-callPayBill"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/ConfirmPaymentViewController.m"
+            timestampString = "532624102.193393"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "-callPayBill"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

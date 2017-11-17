@@ -75,7 +75,7 @@
         NSDictionary *fieldDic = [ _paymentUserData objectAtIndex:i];
         NSDictionary *valueDic = [ _DataArray objectAtIndex:i];
         
-        UITextView *fldText = [ valueDic objectForKey:@"collected_data"];
+       NSString * fldText = [ valueDic objectForKey:@"collected_data"];
         
         UILabel *titleLbl = [[UILabel alloc] init];
         titleLbl.frame = CGRectMake(20, 10+(i*93), SCREEN_WIDTH-40, 26);
@@ -86,7 +86,7 @@
         
         UILabel *valueLbl = [[UILabel alloc] init];
         valueLbl.frame = CGRectMake(20,titleLbl.frame.size.height+titleLbl.frame.origin.y, SCREEN_WIDTH-40, 40);
-        valueLbl.text = fldText.text;
+        valueLbl.text = fldText;
         valueLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:30];
         valueLbl.textColor = [self colorWithHexString:@"51595c"];
         [_fieldView addSubview:valueLbl];
@@ -94,8 +94,6 @@
         UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(20,valueLbl.frame.size.height+valueLbl.frame.origin.y, SCREEN_WIDTH-40, 2)];
         newView.backgroundColor=[self colorWithHexString:@"51595c"];
         [_fieldView addSubview:newView];
-        
-        i++;
     }
     
     billUserData = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"PayBillDetail"]];
@@ -357,7 +355,7 @@
     
     NSMutableArray *billCollectionArry = [[ NSMutableArray alloc] init];
     
-    if (_paymentUserData.count == 0)
+    if (_paymentUserData.count != 0)
     {
         for(int i=0; i< _paymentUserData.count; i++)
         {
@@ -378,7 +376,7 @@
         data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", nil] options:NSJSONWritingPrettyPrinted error:nil];
     }
     else{
-        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", billCollectionArry, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
+        data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"BillPayment", billCollectionArry, @"BillCollectedField", nil] options:NSJSONWritingPrettyPrinted error:nil];
     }
     
     NSString *jsonString = [[NSString alloc] initWithData:data
