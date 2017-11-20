@@ -1715,7 +1715,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = XPW3LP8963;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -2431,10 +2431,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Munish Jauhar (DH4SEZ8LT9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Munish Jauhar (DH4SEZ8LT9)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = XPW3LP8963;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoneyTransfer/BloodDonorOman(\\ 13th\\ july)\\ ",
@@ -2442,12 +2442,12 @@
 					"$(PROJECT_DIR)/MoneyTransfer/BloodDonorOman(\\ 13th\\ july)\\ ",
 				);
 				INFOPLIST_FILE = MoneyTransfer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uve.MoneyTransferApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "15665ee0-f55b-4b22-94b2-fee04759dd92";
-				PROVISIONING_PROFILE_SPECIFIER = "MoneyTransfer App- 14Nov 17";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MoneyTransfer/MoneyTransfer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2462,10 +2462,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Munish Jauhar (DH4SEZ8LT9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Munish Jauhar (DH4SEZ8LT9)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = XPW3LP8963;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoneyTransfer/BloodDonorOman(\\ 13th\\ july)\\ ",
@@ -2473,12 +2473,12 @@
 					"$(PROJECT_DIR)/MoneyTransfer/BloodDonorOman(\\ 13th\\ july)\\ ",
 				);
 				INFOPLIST_FILE = MoneyTransfer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uve.MoneyTransferApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "15665ee0-f55b-4b22-94b2-fee04759dd92";
-				PROVISIONING_PROFILE_SPECIFIER = "MoneyTransfer App- 14Nov 17";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MoneyTransfer/MoneyTransfer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

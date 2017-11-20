@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MJPopupBackgroundView.h"
 #import <objc/runtime.h>
+#import "Constants.h"
 
 #define kPopupModalAnimationDuration 0.35
 #define kMJPopupViewController @"kMJPopupViewController"
@@ -145,7 +146,15 @@ static void * const keypath = (void*)&keypath;
     [overlayView addSubview:popupView];
     [sourceView addSubview:overlayView];
     
-    [dismissButton addTarget:self action:@selector(dismissPopupViewControllerWithanimation:) forControlEvents:UIControlEventTouchUpInside];
+//    [dismissButton addTarget:self action:@selector(dismissPopupViewControllerWithanimation:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+[button addTarget:self action:@selector(dismissPopupViewControllerWithanimation:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"X" forState:UIControlStateNormal];
+    button.titleLabel.textColor = [UIColor whiteColor];
+    button.frame = CGRectMake(popupView.frame.size.width+popupView.frame.origin.x+50.0, SCREEN_HEIGHT/2-170, 20.0, 20.0);
+    [overlayView addSubview:button];
+    
     switch (animationType) {
         case MJPopupViewAnimationSlideBottomTop:
             [self slideViewIn:popupView sourceView:sourceView overlayView:overlayView withAnimationType:animationType];
@@ -197,9 +206,17 @@ static void * const keypath = (void*)&keypath;
     }
     return recentView.view;
 }
+-(void)aMethod1{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+}
 
 - (void)dismissPopupViewControllerWithanimation:(id)sender
 {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
 //    if ([sender isKindOfClass:[UIButton class]]) {
 //        UIButton* dismissButton = sender;
 //        switch (dismissButton.tag) {

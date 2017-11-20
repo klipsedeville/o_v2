@@ -30,41 +30,18 @@
 }
 
 - (IBAction)okBtnClicked:(id)sender{
-//    NSURL *phoneUrl = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:@"+16507639534"]];
-//    NSURL *phoneFallbackUrl = [NSURL URLWithString:[@"tel://" stringByAppendingString:@"+16507639534"]];
-//    
-//    if ([UIApplication.sharedApplication canOpenURL:phoneUrl]) {
-//        
-//        [UIApplication.sharedApplication openURL:phoneUrl];
-//        
-//        AppDelegate *app = [[AppDelegate alloc]init];
-//        app.callStatusValue = @"YES";
+
     [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
      [[NSUserDefaults standardUserDefaults] synchronize];
     
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
-//    }
-//    else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
-//        [UIApplication.sharedApplication openURL:phoneFallbackUrl];
-//    }
-//    else {
-//        // Show an error message: Your device can not do phone calls.
-//        AppDelegate *app = [[AppDelegate alloc]init];
-//        app.callStatusValue = @"YES";
-//    }
 
-//    if (self.delegate && [self.delegate conformsToProtocol:@protocol(CustomPopUpDelegate)])
-//    {
-//    [self.delegate popUpDelegateOkBtnClicked:self];
-//    }
 }
 
 - (IBAction)ActionCrossBtn:(id)sender
 {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//   [self performSegueWithIdentifier:@"CreateAccount" sender:self];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
@@ -75,31 +52,52 @@
 {
     [super viewDidLoad];
     self.view.layer.cornerRadius = 10.0f;
-    counter = 900;
+    counter = 300;
     _timelbl.text = [NSString stringWithFormat: @"%d", counter];
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(hideManual) userInfo:nil repeats:YES];
     [self hideManual];
-//    self.popUpMsgLbl.text = self.popUpMsg;
     self.callFromLbl.text = self.callFrom;
-
+    
+   
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    UITapGestureRecognizer *tapGestureCall = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidRecognizeTapGesture:)];
+    [_popUpMsgLbl addGestureRecognizer:tapGestureCall];
+}
 - (void)hideManual
 {
+    if ([[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"] != nil){
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSDate *d1 = [NSDate date];
+    NSDate *d2 = [NSDate dateWithTimeIntervalSince1970:[[[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"]doubleValue]];
+    NSDateComponents *components = [c components:NSSecondCalendarUnit fromDate:d1 toDate:d2 options:0];
+    counter = components.second;
+    _timelbl.text = [NSString stringWithFormat: @"%d", counter];
+    }
+    else{
     counter = counter - 1;
     if(counter >= 1)
     {
         _timelbl.text = [NSString stringWithFormat: @"%d", counter];
-        //show its Value
     }
-    
     if(counter == 0)
     {
         [timer invalidate];
         timer = nil;
-        
-        //Do other stuff
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+    }
     }
 }
 
+#pragma mark ######
+#pragma Gesture Recognize methods
+#pragma mark ######
+
+- (void)DidRecognizeTapGesture:(UITapGestureRecognizer*)gesture
+{
+    NSLog(@"tap");
+    NSString *phoneNumber = [@"tel://" stringByAppendingString:callFrom];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+}
 @end

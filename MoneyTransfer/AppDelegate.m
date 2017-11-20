@@ -24,6 +24,7 @@
     // Override point for customization after application launch.
     [self loadStoryboards];
     [Stripe setDefaultPublishableKey:@"pk_test_MJD7VPvX8eEsgr7F2dapMGjl"];
+    [[ NSUserDefaults standardUserDefaults]removeObjectForKey:@"timeStamp"];
     return YES;
 }
 
