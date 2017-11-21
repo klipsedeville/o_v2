@@ -25,7 +25,7 @@
     
     CALayer *firstNameLayer,*surNameLayer,*physicalAddressLayer,*referralCodeLayer;
     IBOutlet UIButton *registerBtn;
-    NSString *userPhoneNumber;
+    NSString *userPhoneNumber, *callingPhoneNumber;
 }
 // Define properties
 @property (strong, nonatomic) UIImage *iconimage;

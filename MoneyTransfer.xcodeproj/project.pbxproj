@@ -264,6 +264,8 @@
 		9A7705EC1D20F1B600EF5B32 /* Share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7705EB1D20F1B600EF5B32 /* Share@3x.png */; };
 		9A7705F81D213E8200EF5B32 /* PayPlus_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7705F71D213E8200EF5B32 /* PayPlus_ipad@2x.png */; };
 		9A7705FA1D213E8B00EF5B32 /* PayPlus_ipadpng.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7705F91D213E8B00EF5B32 /* PayPlus_ipadpng.png */; };
+		9A790B1A1FC3FA2E00F1CAD0 /* BackPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A790B181FC3FA2E00F1CAD0 /* BackPopUp.m */; };
+		9A790B1D1FC3FFCA00F1CAD0 /* BackPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A790B1C1FC3FFCA00F1CAD0 /* BackPopUp.xib */; };
 		9A7C36771D8179D80059C147 /* failed-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C36731D8179D80059C147 /* failed-ipad.png */; };
 		9A7C36781D8179D80059C147 /* failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C36741D8179D80059C147 /* failed.png */; };
 		9A7C36791D8179D80059C147 /* failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C36751D8179D80059C147 /* failed@2x.png */; };
@@ -686,6 +688,9 @@
 		9A7705EB1D20F1B600EF5B32 /* Share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Share@3x.png"; sourceTree = "<group>"; };
 		9A7705F71D213E8200EF5B32 /* PayPlus_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PayPlus_ipad@2x.png"; sourceTree = "<group>"; };
 		9A7705F91D213E8B00EF5B32 /* PayPlus_ipadpng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PayPlus_ipadpng.png; sourceTree = "<group>"; };
+		9A790B171FC3FA2E00F1CAD0 /* BackPopUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackPopUp.h; sourceTree = "<group>"; };
+		9A790B181FC3FA2E00F1CAD0 /* BackPopUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackPopUp.m; sourceTree = "<group>"; };
+		9A790B1C1FC3FFCA00F1CAD0 /* BackPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackPopUp.xib; sourceTree = "<group>"; };
 		9A7C36731D8179D80059C147 /* failed-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed-ipad.png"; sourceTree = "<group>"; };
 		9A7C36741D8179D80059C147 /* failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failed.png; sourceTree = "<group>"; };
 		9A7C36751D8179D80059C147 /* failed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed@2x.png"; sourceTree = "<group>"; };
@@ -1489,6 +1494,9 @@
 				73F67F221F9FCFC200C7B79A /* CustomPopUp.h */,
 				73F67F231F9FCFC200C7B79A /* CustomPopUp.m */,
 				73F67F241F9FCFC200C7B79A /* CustomPopUp_iPhone.xib */,
+				9A790B171FC3FA2E00F1CAD0 /* BackPopUp.h */,
+				9A790B181FC3FA2E00F1CAD0 /* BackPopUp.m */,
+				9A790B1C1FC3FFCA00F1CAD0 /* BackPopUp.xib */,
 				9A5229361F864A94005104C5 /* MJPopupBackgroundView.h */,
 				9A5229371F864A94005104C5 /* MJPopupBackgroundView.m */,
 				9A5229381F864A94005104C5 /* UIViewController+MJPopupViewController.h */,
@@ -1917,6 +1925,7 @@
 				73F67F261F9FCFC200C7B79A /* CustomPopUp_iPhone.xib in Resources */,
 				9A305ECF1D9270FB00C87A27 /* sucess-ipad.png in Resources */,
 				9A1F86531D49EBF2003A7E28 /* piles@2x.png in Resources */,
+				9A790B1D1FC3FFCA00F1CAD0 /* BackPopUp.xib in Resources */,
 				9A3E31441CF5C651008A69EC /* add-beneficiary-logo_ipad@2x.png in Resources */,
 				9A18C8041D058FB700033D8F /* ok@3x.png in Resources */,
 				9A1A14211CF571B10049EA4D /* add-icon-sm.png in Resources */,
@@ -2241,6 +2250,7 @@
 				9AAF13EF1CE9DFE800C36706 /* ipadAddCardViewController.m in Sources */,
 				9AA4D9681CE202C1000E331B /* JFMapAnnotation.m in Sources */,
 				9A8427671D06E8FC001E74A1 /* ConfirmTransferMoneyViewController.m in Sources */,
+				9A790B1A1FC3FA2E00F1CAD0 /* BackPopUp.m in Sources */,
 				9AA4D9661CE202C1000E331B /* Reachability.m in Sources */,
 				9A54F7191F8CC4E800B33C0A /* iPadBillViewController.m in Sources */,
 				9A9B635F1F8B60F100BD390E /* iPadAgentProfileViewController.m in Sources */,

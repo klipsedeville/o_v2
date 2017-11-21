@@ -20,6 +20,7 @@
 @property (assign, nonatomic) IBOutlet UILabel *popUpMsgLbl;
 @property (assign, nonatomic) NSString *popUpMsg;
 @property (assign, nonatomic) NSString *callFrom;
+@property (assign, nonatomic) NSString *callTo;
 @property (assign, nonatomic) NSString *popUpTitle;
 
 @property (assign, nonatomic) id <CustomPopUpDelegate>delegate;

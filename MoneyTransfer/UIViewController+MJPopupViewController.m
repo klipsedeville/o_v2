@@ -126,12 +126,13 @@ static void * const keypath = (void*)&keypath;
     UIView *overlayView = [[UIView alloc] initWithFrame:sourceView.bounds];
     overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     overlayView.tag = kMJOverlayViewTag;
-    overlayView.backgroundColor = [UIColor clearColor];
+    overlayView.backgroundColor =  [UIColor colorWithWhite:0.0 alpha:0.5];
+//    [UIColor clearColor];
     
     // BackgroundView
     self.mj_popupBackgroundView = [[MJPopupBackgroundView alloc] initWithFrame:sourceView.bounds];
     self.mj_popupBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.mj_popupBackgroundView.backgroundColor = [UIColor clearColor];
+    self.mj_popupBackgroundView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
     self.mj_popupBackgroundView.alpha = 0.0f;
     [overlayView addSubview:self.mj_popupBackgroundView];
     
@@ -152,7 +153,12 @@ static void * const keypath = (void*)&keypath;
 [button addTarget:self action:@selector(dismissPopupViewControllerWithanimation:) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"X" forState:UIControlStateNormal];
     button.titleLabel.textColor = [UIColor whiteColor];
-    button.frame = CGRectMake(popupView.frame.size.width+popupView.frame.origin.x+50.0, SCREEN_HEIGHT/2-170, 20.0, 20.0);
+    if ([[[NSUserDefaults standardUserDefaults]valueForKey:@"hudView"]  isEqual: @"normal"]){
+     button.frame = CGRectMake((SCREEN_WIDTH-50), SCREEN_HEIGHT/2-150, 20.0, 20.0);
+    }
+    else{
+    button.frame = CGRectMake((SCREEN_WIDTH-50), SCREEN_HEIGHT/2-200, 20.0, 20.0);
+    }
     [overlayView addSubview:button];
     
     switch (animationType) {

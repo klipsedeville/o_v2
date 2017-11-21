@@ -15,6 +15,7 @@
 #import "MJPopupBackgroundView.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "AsyncImageView.h"
+#import "BackPopUp.h"
 
 @interface SignUpViewController ()
 {
@@ -32,6 +33,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -40,8 +42,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
 
     // Remove the notifications
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
     
     
     _scrollView.bounces = NO;
@@ -170,28 +172,32 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 }
 
 -(void) removeShade {
-    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-    
+     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
     {
-        if ([[[ NSUserDefaults standardUserDefaults]valueForKey:@"CallDuphluxAuth"]boolValue] == YES){
-            NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
-            
-            [HUD removeFromSuperview];
-            HUD = [[MBProgressHUD alloc] initWithView:self.view];
-            [self.view addSubview:HUD];
-            HUD.labelText = NSLocalizedString(@"Loading...", nil);
-            [HUD show:YES];
-            [self getAuthStatusWebService:referneceString];
-        }
-        else{
-        [HUD removeFromSuperview];
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:HUD];
-        HUD.labelText = NSLocalizedString(@"Loading...", nil);
-        [HUD show:YES];
-        [self callAuthWebService:userPhoneNumber];
-        }
+        CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+        popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+        popUp.callFrom = userPhoneNumber;
+        popUp.callTo = callingPhoneNumber;
+        popUp.delegate = self;
+        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+        
+//            NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
+//        BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+//        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+//        [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+//        [HUD removeFromSuperview];
+//        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//        [self.view addSubview:HUD];
+//        HUD.labelText = NSLocalizedString(@"Loading...", nil);
+//        [HUD show:YES];
+//            [self getAuthStatusWebService:referneceString];
+    }
+    else{
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 1001;
+        [alertview show];
     }
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
 }
@@ -431,19 +437,16 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         else
         {
             userPhoneNumber = phone_number;
-            CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
-            popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-            popUp.callFrom = phone_number;
-            popUp.delegate = self;
-        
+            BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+            [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-            
-//            [HUD removeFromSuperview];
-//            HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//            [self.view addSubview:HUD];
-//            HUD.labelText = NSLocalizedString(@"Loading...", nil);
-//            [HUD show:YES];
-//             [self callAuthWebService:phone_number];
+            [HUD removeFromSuperview];
+            HUD = [[MBProgressHUD alloc] initWithView:self.view];
+            [self.view addSubview:HUD];
+            HUD.labelText = NSLocalizedString(@"Loading...", nil);
+            [HUD show:YES];
+            [self callAuthWebService:userPhoneNumber];
         }
     }
 }
@@ -451,7 +454,9 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 - (void)DuphluxAuthStatusCall:(NSNotification *)notification
 {
     NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
-
+    BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+    [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+    [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
     [HUD removeFromSuperview];
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
@@ -512,53 +517,55 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                     NSString *redirectURl = [ responseDic valueForKey:@"verification_url"];
                     NSURL *url = [NSURL URLWithString:redirectURl];
             
-                    double timeStamp = [[responseDic valueForKey:@"expires_at"]doubleValue];
-                     [[ NSUserDefaults standardUserDefaults] setDouble:timeStamp forKey:@"timeStamp"];
-//                    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp];
-//                    NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
-//                    [dateformatter setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
-//                    NSString *dateString=[dateformatter stringFromDate:date];
-//
-//                    NSDate *today = [NSDate date];
-//                    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//                    [dateFormat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
-//                    NSString *datePresent = [dateFormat stringFromDate:today];
-//
-//                    NSTimeInterval ti =  [dateString timeIntervalSinceDate:datePresent];
-//                    NSUInteger h, m, s;
-//                    h = (ti / 3600);
-//                    m = ((NSUInteger)(ti / 60)) % 60;
-//                    s = ((NSUInteger) ti) % 60;
-//
+//                    double timeStamp = [[responseDic valueForKey:@"expires_at"]doubleValue];
+//                   if ([[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"] == nil){
+//                       [[ NSUserDefaults standardUserDefaults] setInteger:900 forKey:@"timeStamp"];
+//                    }
+                    
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         NSLog(@"%@",url );
-                         [HUD removeFromSuperview];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                            [HUD removeFromSuperview];
+                        });
                         [[ NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CallDuphluxAuth"];
-//                        [[ NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"DuphuluxReferenceNumber"];
-                        [self getAuthStatusWebService:dateString];
-//                        if (![[UIApplication sharedApplication] openURL:url]) {
-//                            NSLog(@"%@%@",@"Failed to open url:",[url description]);
-//                        }
+        callingPhoneNumber = [NSString stringWithFormat:@"%@", [responseDic valueForKey:@"number"]];
+        CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+                        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+        popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+        popUp.callFrom = userPhoneNumber;
+        popUp.callTo = callingPhoneNumber;
+        popUp.delegate = self;
+        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+                        
                     });
                 }
                 else{
                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
                          [HUD removeFromSuperview];
                     NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
                     
-                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Errors Encountered:" message:[NSString stringWithFormat:@"1. %@",[errorArray objectAtIndex:0]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        alertview.tag = 1001;
                     [alertview show];
                     });
                 }
             }
             else{
-                 [HUD removeFromSuperview];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                    [HUD removeFromSuperview];
+                });
             }
         }
         else{
-             [HUD removeFromSuperview];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                [HUD removeFromSuperview];
+            });
         }
     }];
     [postDataTask resume];
@@ -603,13 +610,17 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                                                                        error:&jsonError];
                 
                 NSLog(@"json string %@", json);
+               
+                
                 if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
                 {
                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
                      [HUD removeFromSuperview];
                          if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
                     {
                     [[ NSUserDefaults standardUserDefaults] setValue:nil forKey:@"DuphuluxReferenceNumber"];
+                    
                     [HUD removeFromSuperview];
                     HUD = [[MBProgressHUD alloc] initWithView:self.view];
                     [self.view addSubview:HUD];
@@ -621,6 +632,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                         
                         CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
                         popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+                        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+                        popUp.callTo = callingPhoneNumber;
                         popUp.callFrom = userPhoneNumber;
                         popUp.delegate = self;
                         
@@ -630,19 +643,30 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                      });
                 }
                 else{
-                     [HUD removeFromSuperview];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                        [HUD removeFromSuperview];
+                    });
                     NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
-                    
+                    if (errorArray != nil){
                     UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alertview show];
+                    }
                 }
             }
             else{
-                 [HUD removeFromSuperview];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                    [HUD removeFromSuperview];
+                });
+                
             }
         }
         else{
-             [HUD removeFromSuperview];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                [HUD removeFromSuperview];
+            });
         }
     }];
     [postDataTask resume];
@@ -771,10 +795,11 @@ static NSString *kCellIdentifier = @"cellIdentifier";
          {
              NSArray *errorArray =[ responseObject valueForKeyPath:@"PayLoad.error"];
              NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+             if (errorArray != nil){
              UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
              
              [alertview show];
-             
+             }
          }else
          {
              NSDictionary *userProfile = [[ NSDictionary alloc] initWithDictionary:[[responseObject valueForKey:@"PayLoad"] valueForKey:@"data"]];
@@ -3277,5 +3302,19 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         vc.lastSourceView = @"SingUp";
     }
 }
+
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (alertView.tag ==1001) {
+//        NSTimer *timer= [NSTimer scheduledTimerWithTimeInterval:2.0
+//                                                                   target:self selector:@selector(test)
+//                                                                 userInfo:nil
+//                                                                  repeats:NO];
+//        if(timer!=nil){
+//            [timer invalidate];
+//            timer=nil;
+//        }
+//    }
+//}
 
 @end

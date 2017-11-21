@@ -19,4 +19,5 @@ target 'MoneyTransfer' do
 pod 'Stripe'
 pod 'CardIO'
 pod 'Toast', '~> 3.1.0'
+pod 'SVProgressHUD'
 end

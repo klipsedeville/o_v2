@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.341174"
+            timestampString = "532964620.471894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2648"
-            endingLineNumber = "2648"
+            startingLineNumber = "2677"
+            endingLineNumber = "2677"
             landmarkName = "-DidRecognizeTapGesture:"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.341348"
+            timestampString = "532964620.472875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1651"
-            endingLineNumber = "1651"
+            startingLineNumber = "1680"
+            endingLineNumber = "1680"
             landmarkName = "-textViewShouldBeginEditing:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.341464"
+            timestampString = "532964620.47416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1937"
-            endingLineNumber = "1937"
+            startingLineNumber = "1966"
+            endingLineNumber = "1966"
             landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
             landmarkType = "7">
          </BreakpointContent>
@@ -855,8 +855,8 @@
                   symbolName = "-[SendMoneyViewController GetRecentTransferList]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SendMoneyViewController.m"
-                  timestampString = "532874786.320274"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SendMoneyViewController.m"
+                  timestampString = "532964621.144934"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -870,8 +870,8 @@
                   symbolName = "__48-[SendMoneyViewController GetRecentTransferList]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SendMoneyViewController.m"
-                  timestampString = "532874786.3218"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SendMoneyViewController.m"
+                  timestampString = "532964621.1466"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -903,8 +903,8 @@
                   symbolName = "-[AddBeneFiciaryViewController getReceivingCurrencyList]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/AddBeneFiciaryViewController.m"
-                  timestampString = "532874786.325345"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/AddBeneFiciaryViewController.m"
+                  timestampString = "532964621.150267"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
@@ -918,8 +918,8 @@
                   symbolName = "__56-[AddBeneFiciaryViewController getReceivingCurrencyList]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/AddBeneFiciaryViewController.m"
-                  timestampString = "532874786.327078"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/AddBeneFiciaryViewController.m"
+                  timestampString = "532964621.151741"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
@@ -951,8 +951,8 @@
                   symbolName = "-[ForgetPasswordViewController callForgotPasswordMethod]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/ForgetPasswordViewController.m"
-                  timestampString = "532874786.330943"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/ForgetPasswordViewController.m"
+                  timestampString = "532964621.155227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
@@ -966,8 +966,8 @@
                   symbolName = "__56-[ForgetPasswordViewController callForgotPasswordMethod]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/ForgetPasswordViewController.m"
-                  timestampString = "532874786.332529"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/ForgetPasswordViewController.m"
+                  timestampString = "532964621.156716"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
@@ -1015,8 +1015,8 @@
                   symbolName = "-[IPadBillPayViewController getReceivingCurrencyList]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/IPadBillPayViewController.m"
-                  timestampString = "532874786.339252"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/IPadBillPayViewController.m"
+                  timestampString = "532964621.16336"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
@@ -1030,8 +1030,8 @@
                   symbolName = "__53-[IPadBillPayViewController getReceivingCurrencyList]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/IPadBillPayViewController.m"
-                  timestampString = "532874786.340918"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/IPadBillPayViewController.m"
+                  timestampString = "532964621.164811"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
@@ -1063,8 +1063,8 @@
                   symbolName = "-[iPadForgetPasswordViewController callForgotPasswordMethod]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532874786.344771"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
+                  timestampString = "532964621.168284"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -1078,8 +1078,8 @@
                   symbolName = "__60-[iPadForgetPasswordViewController callForgotPasswordMethod]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532874786.346264"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
+                  timestampString = "532964621.169756"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -1144,11 +1144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.342228"
+            timestampString = "532964620.476403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
+            startingLineNumber = "793"
+            endingLineNumber = "793"
             landmarkName = "-userRegsiteration"
             landmarkType = "7">
          </BreakpointContent>
@@ -1223,8 +1223,8 @@
                   symbolName = "-[TransferHistoryViewController GetRecentTransferList]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532874786.375288"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
+                  timestampString = "532964621.195848"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -1238,8 +1238,8 @@
                   symbolName = "__54-[TransferHistoryViewController GetRecentTransferList]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532874786.377682"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
+                  timestampString = "532964621.197712"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -1288,11 +1288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.342434"
+            timestampString = "532964620.477315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
             landmarkName = "-userRegsiteration"
             landmarkType = "7">
          </BreakpointContent>
@@ -1575,8 +1575,8 @@
                   symbolName = "__51-[BeneficiariesViewController deleteBeneficaryBtn:]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/BeneficiariesViewController.m"
-                  timestampString = "532874786.442817"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/BeneficiariesViewController.m"
+                  timestampString = "532964621.261514"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "333"
@@ -1590,8 +1590,8 @@
                   symbolName = "__51-[BeneficiariesViewController deleteBeneficaryBtn:]_block_invoke_2"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/BeneficiariesViewController.m"
-                  timestampString = "532874786.444291"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/BeneficiariesViewController.m"
+                  timestampString = "532964621.263326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "333"
@@ -2343,8 +2343,8 @@
                   symbolName = "-[TransferHistoryViewController GetRecentBillPaymentList]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532874786.596755"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
+                  timestampString = "532964621.415979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "197"
@@ -2358,8 +2358,8 @@
                   symbolName = "__57-[TransferHistoryViewController GetRecentBillPaymentList]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/TransferHistoryViewController.m"
-                  timestampString = "532874786.598342"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/TransferHistoryViewController.m"
+                  timestampString = "532964621.417421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "197"
@@ -2488,11 +2488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.343949"
+            timestampString = "532964620.478934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "-registerBtn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2504,11 +2504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.344087"
+            timestampString = "532964620.479602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "761"
-            endingLineNumber = "761"
+            startingLineNumber = "789"
+            endingLineNumber = "789"
             landmarkName = "-userRegsiteration"
             landmarkType = "7">
          </BreakpointContent>
@@ -2583,8 +2583,8 @@
                   symbolName = "-[iPadForgetPasswordViewController callForgotPasswordMethod]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532874786.641133"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
+                  timestampString = "532964621.459298"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -2598,8 +2598,8 @@
                   symbolName = "__60-[iPadForgetPasswordViewController callForgotPasswordMethod]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/iPadForgetPasswordViewController.m"
-                  timestampString = "532874786.643223"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/iPadForgetPasswordViewController.m"
+                  timestampString = "532964621.460749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -2743,8 +2743,8 @@
                   symbolName = "-[iPadBeneficiariesViewController swiperight:]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/iPadBeneficiariesViewController.m"
-                  timestampString = "532874786.669691"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/iPadBeneficiariesViewController.m"
+                  timestampString = "532964621.487018"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -2758,8 +2758,8 @@
                   symbolName = "__46-[iPadBeneficiariesViewController swiperight:]_block_invoke"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/iPadBeneficiariesViewController.m"
-                  timestampString = "532874786.671181"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/iPadBeneficiariesViewController.m"
+                  timestampString = "532964621.488738"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -3096,7 +3096,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.344641"
+            timestampString = "532952581.708491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -3112,7 +3112,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.344717"
+            timestampString = "532952581.708547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "247"
@@ -3128,7 +3128,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.344778"
+            timestampString = "532952581.708595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
@@ -3144,7 +3144,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.344835"
+            timestampString = "532952581.70864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "273"
@@ -3160,7 +3160,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.344892"
+            timestampString = "532952581.708684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
@@ -3176,7 +3176,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.344948"
+            timestampString = "532952581.708728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -3192,7 +3192,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/LoginViewController.m"
-            timestampString = "532875207.345004"
+            timestampString = "532952581.708772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "238"
@@ -3511,8 +3511,8 @@
                   symbolName = "-[SelectAmountViewController viewDidLoad]"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532874786.818783"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
+                  timestampString = "532964621.628675"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3526,8 +3526,8 @@
                   symbolName = "__41-[SelectAmountViewController viewDidLoad]_block_invoke.145"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532874786.820364"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
+                  timestampString = "532964621.630452"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3541,8 +3541,8 @@
                   symbolName = "__copy_helper_block_.151"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532874786.821827"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
+                  timestampString = "532964621.632357"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3556,8 +3556,8 @@
                   symbolName = "__destroy_helper_block_.152"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532874786.823246"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
+                  timestampString = "532964621.635248"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -3571,8 +3571,8 @@
                   symbolName = "__41-[SelectAmountViewController viewDidLoad]_block_invoke.154"
                   moduleName = "MoneyTransfer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2%202/MoneyTransfer/SelectAmountViewController.m"
-                  timestampString = "532874786.824701"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SelectAmountViewController.m"
+                  timestampString = "532964621.637492"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -4724,38 +4724,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/AppDelegate.m"
-            timestampString = "532875207.346782"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-application:openURL:sourceApplication:annotation:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/AppDelegate.m"
-            timestampString = "532875207.34688"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-applicationDidBecomeActive:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/AddBillerViewController.m"
             timestampString = "532444852.271699"
             startingColumnNumber = "9223372036854775807"
@@ -5157,11 +5125,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.347445"
+            timestampString = "532964620.482517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "-callAuthWebService:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5173,11 +5141,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.34757"
+            timestampString = "532964620.483321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "-callAuthWebService:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5189,11 +5157,74 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.34767"
+            timestampString = "532964620.484464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
+            landmarkName = "-callAuthWebService:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[SignUpViewController callAuthWebService:]_block_invoke.421"
+                  moduleName = "MoneyTransfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SignUpViewController.m"
+                  timestampString = "532964621.956161"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "554"
+                  endingLineNumber = "554"
+                  offsetFromSymbolStart = "409">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.430"
+                  moduleName = "MoneyTransfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SignUpViewController.m"
+                  timestampString = "532964621.957618"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "554"
+                  endingLineNumber = "554"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.431"
+                  moduleName = "MoneyTransfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/graycell/Desktop/GrayCellTech/GITProjects/OnlineProjects/o_v2/MoneyTransfer/SignUpViewController.m"
+                  timestampString = "532964621.959059"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "554"
+                  endingLineNumber = "554"
+                  offsetFromSymbolStart = "59">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/SignUpViewController.m"
+            timestampString = "532964620.48553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
             landmarkName = "-callAuthWebService:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5205,27 +5236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.34777"
+            timestampString = "532964620.486197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
-            landmarkName = "-callAuthWebService:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.347872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "580"
+            endingLineNumber = "580"
             landmarkName = "-getAuthStatusWebService:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5237,59 +5252,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.34797"
+            timestampString = "532964620.486883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "594"
-            endingLineNumber = "594"
-            landmarkName = "-getAuthStatusWebService:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/CustomPopUp.m"
-            timestampString = "532875207.348108"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/CustomPopUp.m"
-            timestampString = "532875207.348214"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-okBtnClicked:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.34831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "605"
+            endingLineNumber = "605"
             landmarkName = "-getAuthStatusWebService:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5301,11 +5268,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.348409"
+            timestampString = "532964620.487522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "589"
+            endingLineNumber = "589"
+            landmarkName = "-getAuthStatusWebService:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/SignUpViewController.m"
+            timestampString = "532964620.488182"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "-DuphluxAuthStatusCall:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5317,11 +5300,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/SignUpViewController.m"
-            timestampString = "532875207.34851"
+            timestampString = "532964620.488886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "606"
-            endingLineNumber = "606"
+            startingLineNumber = "619"
+            endingLineNumber = "619"
             landmarkName = "-getAuthStatusWebService:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5332,44 +5315,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/CustomPopUp.m"
-            timestampString = "532875207.348603"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-DidRecognizeTapGesture:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoneyTransfer/CustomPopUp.m"
-            timestampString = "532875207.348674"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-viewWillAppear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/UIViewController+MJPopupViewController.m"
-            timestampString = "532875207.348746"
+            timestampString = "532964620.489571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-aMethod1"
             landmarkType = "7">
          </BreakpointContent>
@@ -5381,12 +5332,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoneyTransfer/UIViewController+MJPopupViewController.m"
-            timestampString = "532875207.349103"
+            timestampString = "532964620.489968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-presentPopupView:animationType:dismissed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/BackPopUp.m"
+            timestampString = "532964620.490317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "BackPopUp"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/CustomPopUp.m"
+            timestampString = "532964620.490399"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "-initWithNibName:bundle:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/UIViewController+MJPopupViewController.m"
+            timestampString = "532964620.490472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-presentPopupViewController:animationType:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoneyTransfer/CustomPopUp.m"
+            timestampString = "532964620.49083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-okBtnClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1141,7 +1140,7 @@
                     <navigationItem key="navigationItem" id="vrB-rs-1Vx">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="9XG-IB-ewU">
                             <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Transfer Completed" textAlignment="natural" minimumFontSize="17" id="Mp3-GH-r6m">
-                                <rect key="frame" x="16" y="5" width="200" height="35"/>
+                                <rect key="frame" x="16" y="4.5" width="200" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
@@ -2373,7 +2372,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1" id="DJC-H3-lVS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1" id="DJC-H3-lVS">
                                 <rect key="frame" x="0.0" y="65" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2477,7 +2476,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="522"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="1eQ-uc-QGE">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="1eQ-uc-QGE">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -2660,7 +2659,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="2" id="fuM-ou-RSZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="2" id="fuM-ou-RSZ">
                                 <rect key="frame" x="0.0" y="65" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2755,7 +2754,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="3" id="w0s-kF-U4t">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="3" id="w0s-kF-U4t">
                                 <rect key="frame" x="0.0" y="64" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -3066,7 +3065,7 @@
                                     </view>
                                 </subviews>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="ysi-7g-xsb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="ysi-7g-xsb">
                                 <rect key="frame" x="0.0" y="64" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -3869,7 +3868,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" id="H5U-mE-C5S">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" id="H5U-mE-C5S">
                                 <rect key="frame" x="0.0" y="64" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -6076,18 +6075,18 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <image name="white-money" width="46" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kBb-Bo-xsT"/>
+        <segue reference="0dG-vw-BGe"/>
         <segue reference="bBa-D3-heG"/>
         <segue reference="grh-wt-qaU"/>
         <segue reference="3cZ-OU-4ze"/>
-        <segue reference="Tqv-jz-eq5"/>
-        <segue reference="xDA-QG-zCN"/>
+        <segue reference="xVY-TE-YLb"/>
+        <segue reference="Uzm-Bi-rsu"/>
         <segue reference="FTP-UI-ipj"/>
         <segue reference="t9r-dy-TH6"/>
         <segue reference="n75-l5-JXV"/>
         <segue reference="uNU-aK-i7R"/>
         <segue reference="Y8j-6T-1q0"/>
-        <segue reference="3Ra-aF-vjH"/>
+        <segue reference="Tvk-Ng-cd5"/>
         <segue reference="6iI-9c-gcQ"/>
         <segue reference="I9G-Of-vCD"/>
     </inferredMetricsTieBreakers>
