@@ -154,10 +154,10 @@ static void * const keypath = (void*)&keypath;
     [button setTitle:@"X" forState:UIControlStateNormal];
     button.titleLabel.textColor = [UIColor whiteColor];
     if ([[[NSUserDefaults standardUserDefaults]valueForKey:@"hudView"]  isEqual: @"normal"]){
-     button.frame = CGRectMake((SCREEN_WIDTH-50), SCREEN_HEIGHT/2-150, 20.0, 20.0);
+     button.frame = CGRectMake((SCREEN_WIDTH-87), SCREEN_HEIGHT/2-145, 20.0, 20.0);
     }
     else{
-    button.frame = CGRectMake((SCREEN_WIDTH-50), SCREEN_HEIGHT/2-200, 20.0, 20.0);
+    button.frame = CGRectMake((SCREEN_WIDTH-87), SCREEN_HEIGHT/2-170, 20.0, 20.0);
     }
     [overlayView addSubview:button];
     

@@ -30,7 +30,13 @@
 }
 
 - (IBAction)okBtnClicked:(id)sender{
-    
+     if ([_OkBtnTitle  isEqual: @"verify"]){
+         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+         [[NSUserDefaults standardUserDefaults] setValue:@"Continue" forKey:@"callStatusValue"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+     }
+     else{
     NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
     NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
     
@@ -48,6 +54,7 @@
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+     }
 }
 
 - (IBAction)ActionCrossBtn:(id)sender
@@ -71,22 +78,48 @@
     
     UITapGestureRecognizer *tapGestureCall = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidRecognizeTapGesture:)];
     [self.view addGestureRecognizer:tapGestureCall];
+    if ([_OkBtnTitle  isEqual: @"verify"]){
+        [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
+        _statusImage.image = [UIImage imageNamed:@"verify"];
+        _verifyView.hidden = NO;
+    }
+    else if ([_OkBtnTitle  isEqual: @"expire"]){
+        [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
+        _statusImage.image = [UIImage imageNamed:@"expire"];
+        _verifyView.hidden = NO;
+    }
+    else{
+         [_OkBtn setTitle:_OkBtnTitle forState:UIControlStateNormal];
+        _verifyView.hidden = YES;
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     
 }
 - (void)hideManual
 {
-//    if ([[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"] != nil){
-//    NSCalendar *c = [NSCalendar currentCalendar];
-//    NSDate *d1 = [NSDate date];
-//    NSDate *d2 = [NSDate dateWithTimeIntervalSince1970:[[[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"]doubleValue]];
-//    NSDateComponents *components = [c components:NSSecondCalendarUnit fromDate:d1 toDate:d2 options:0];
-//  counter = components.second;
+    if ([[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"] != nil){
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSDate *d1 = [NSDate date];
+    NSDate *d2 = [NSDate dateWithTimeIntervalSince1970:[[[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"]doubleValue]];
+    NSDateComponents *components = [c components:NSSecondCalendarUnit fromDate:d1 toDate:d2 options:0];
+  counter = components.second;
 //        counter = [[[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"] intValue];
-//    _timelbl.text = [NSString stringWithFormat: @"%d", counter];
-//    }
-//    else{
+        
+        if(counter >= 1)
+        {
+            _timelbl.text = [NSString stringWithFormat: @"%d", counter];
+        }
+        if(counter == 0)
+        {
+            [timer invalidate];
+            timer = nil;
+            [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
+            _statusImage.image = [UIImage imageNamed:@"expire"];
+            _verifyView.hidden = NO;
+        }
+    }
+    else{
     counter = counter - 1;
     if(counter >= 1)
     {
@@ -96,11 +129,16 @@
     {
         [timer invalidate];
         timer = nil;
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+        [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
+        _statusImage.image = [UIImage imageNamed:@"expire"];
+        _verifyView.hidden = NO;
+//        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//        _OkBtnTitle = @"expire";
+//        [self viewDidLoad];
+//     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
     }
-//        [[ NSUserDefaults standardUserDefaults] setInteger:counter forKey:@"timeStamp"];
-//    }
+        [[ NSUserDefaults standardUserDefaults] setInteger:counter forKey:@"timeStamp"];
+    }
 }
 
 #pragma mark ######
@@ -109,8 +147,6 @@
 
 - (void)DidRecognizeTapGesture:(UITapGestureRecognizer*)gesture
 {
-//    NSLog(@"tap");
-    
     NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
     NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
     
@@ -128,17 +164,4 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
 }
 
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (alertView.tag ==1001) {
-//        NSTimer *   timer= [NSTimer scheduledTimerWithTimeInterval:2.0
-//                                                            target:self selector:@selector(test)
-//                                                          userInfo:nil
-//                                                           repeats:NO];
-//        if(timer!=nil){
-//            [timer invalidate];
-//            timer=nil;
-//        }
-//    }
-//}
 @end
