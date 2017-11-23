@@ -10,7 +10,7 @@
 
 @interface CustomPopUp : UIViewController
 {
-    NSTimer *timer;
+    NSTimer *timer, *timer2;
     int counter;
 //    IBOutlet UIImageView *bgImage;
 }
@@ -24,6 +24,7 @@
 @property (assign, nonatomic) NSString *callTo;
 @property (assign, nonatomic) NSString *popUpTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImage;
+@property (weak, nonatomic) IBOutlet UIView *touchView;
 
 @property (assign, nonatomic) id <CustomPopUpDelegate>delegate;
 

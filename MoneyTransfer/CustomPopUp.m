@@ -77,7 +77,7 @@
     self.callFromLbl.text = [NSString stringWithFormat:@"Call from %@", self.callFrom];
     
     UITapGestureRecognizer *tapGestureCall = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidRecognizeTapGesture:)];
-    [self.view addGestureRecognizer:tapGestureCall];
+    [_touchView addGestureRecognizer:tapGestureCall];
     if ([_OkBtnTitle  isEqual: @"verify"]){
         [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
         _statusImage.image = [UIImage imageNamed:@"verify"];
@@ -92,9 +92,23 @@
          [_OkBtn setTitle:_OkBtnTitle forState:UIControlStateNormal];
         _verifyView.hidden = YES;
     }
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
-    
+   timer2 = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(statusValue) userInfo:nil repeats:YES];
+
+}
+
+-(void)statusValue{
+    NSString *value = [[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"];
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"]  isEqual: @"Yes"]){
+       [timer2 invalidate];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"timerActive"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"statusTimer" object:self];
+       
+    }
 }
 - (void)hideManual
 {

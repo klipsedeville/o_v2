@@ -715,54 +715,82 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 -(void) userRegsiteration
 {
     // User registeration
-    [Controller createAccountWithName:self.firstNameTextField.text SurName:self.surNameTextField.text EmailAddress:self.emailAddressTextField.text PhoneNumber:self.phoneNumberTextField.text address:self.physicalAddressTextField.text CountryID:selectCountryCode Password:self.passwordTextField.text ReferralCode:self.referralCodeTextField.text withSuccess:^(id responseObject)
-     {
-         [HUD removeFromSuperview];
-         NSLog(@"Response Object ...%@",responseObject);
-         NSInteger status = [[responseObject valueForKeyPath:@"PayLoad.status"] integerValue];
-         if (status == 0)
-         {
-             NSArray *errorArray =[ responseObject valueForKeyPath:@"PayLoad.error"];
-             NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
-             if(!errorString || [errorString isEqualToString:@"(null)"])
-             {
-                 errorString = @"Your session has been expired.";
-                 
-                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                 alertview.tag = 1003;
-                 
-                 [alertview show];
-             }
-             else
-             {
-                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                 
-                 [alertview show];
-             }
-         }else
-         {
-             NSDictionary *userProfile = [[ NSDictionary alloc] initWithDictionary:[[responseObject valueForKey:@"PayLoad"] valueForKey:@"data"]];
-             [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:userProfile] forKey:@"loginUserData"];
-             [self performSegueWithIdentifier:@"AddCreditCard" sender:self];
-         }
-     }andFailure:^(NSString *errorString)
-     {
-         if(!errorString || [errorString isEqualToString:@"(null)"])
-         {
-             errorString = @"Your session has been expired.";
-             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-             alertview.tag = 1003;
-             [alertview show];
-         }
-         else
-         {
-             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-             
-             [alertview show];
-         }
-         
-         [HUD removeFromSuperview];
-     }];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:self.firstNameTextField.text, @"first_name",@"middle", @"middle_name",self.surNameTextField.text, @"last_name", self.emailAddressTextField.text, @"email_address", self.phoneNumberTextField.text, @"phone_number", selectCountryCode, @"country_currency_id",self.passwordTextField.text, @"password", self.referralCodeTextField.text, @"referral_code", nil]options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSMutableData *PostData =[[NSMutableData alloc]initWithData:data];
+    
+    NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@", BaseUrl, SignUp];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        //if communication was successful
+        
+        if (!error) {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+            if (httpResp.statusCode == 200)
+            {
+                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"result string %@", resultString);
+                
+                NSData *data = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+                
+                if (data)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [HUD removeFromSuperview];
+                    });
+                    id responseDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                    
+                    NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
+                    
+                    if (status == 0)
+                    {
+                        NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                        NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                        if (errorArray != nil){
+                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                            
+                            [alertview show];
+                        }
+                    }
+                    else
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            NSDictionary *userProfile = [[ NSDictionary alloc] initWithDictionary:[[responseDic valueForKey:@"PayLoad"] valueForKey:@"data"]];
+                            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:userProfile] forKey:@"loginUserData"];
+                            
+                            
+                            [self performSegueWithIdentifier:@"AddCreditCard" sender:self];
+                            
+                        });
+                    }
+                }
+                
+            }
+            else{
+                [HUD removeFromSuperview];
+                
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection failed. Please make sure you have an active internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertview show];
+            }
+        }
+        
+    }];
+    
+    [postDataTask resume];
 }
 
 #pragma mark #############

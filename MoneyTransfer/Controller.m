@@ -241,9 +241,10 @@
 {
     AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:BaseUrl]];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [client setDefaultHeader:@"Accept" value:@"application/json"];
-    [client setDefaultHeader:@"Content-Type" value:@"application/json"];
-    [client setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
+//    [client setDefaultHeader:@"Accept" value:@"application/json"];
+//    [client setDefaultHeader:@"Content-Type" value:@"application/json"];
+//    [client setDefaultHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+//    [client setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setValue:firstName forKey:@"first_name"];
@@ -256,6 +257,7 @@
     [dict setValue:countryID forKey:@"country_currency_id"];
     [dict setValue:password forKey:@"password"];
     [dict setValue:referralCode forKey:@"referral_code"];
+
     
     NSMutableURLRequest *req = [client requestWithMethod:@"POST" path:SignUp parameters:dict];
     NSLog(@"Dictionary %@", dict);
