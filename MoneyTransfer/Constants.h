@@ -52,3 +52,8 @@
 #define Duphlux1 @"https://duphlux.com/webservice/authe/verify.json"
 #define Duphlux2 @"https://duphlux.com/webservice/authe/status.json"
 
+#define ConfirmBillPaymentFulfillment @"webservice/bills/confirm_fulfillment.json"
+#define OpenDisputeBillPayment @"webservice/bills/open_dispute.jso"
+#define cancelBill @"webservice/bills/cancel.json"
+
+

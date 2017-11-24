@@ -184,7 +184,6 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [self getAuthStatusWebService:referneceString];
 }
 
-
 -(void) removeShade {
      [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
@@ -212,12 +211,12 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 //        [HUD show:YES];
             [self getAuthStatusWebService:referneceString];
     }
-//    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"]  isEqual: @"Yes"]){
+//    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
 //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 //        alertview.tag = 1001;
 //        [alertview show];
 //    }
-    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
+    else{
         
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alertview.tag = 1001;
@@ -227,9 +226,9 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
-    
+     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
     _phoneNumberLbl.hidden = YES;
     [self.scrollView setBackgroundColor: [self colorWithHexString:@"073245"]];
     self.firstNameTextField.text = @"";
@@ -517,7 +516,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
-    [request addValue:@"54d5a2b10ecc8252d17108c6ad04a8a1f4cf9b66" forHTTPHeaderField:@"token"];
+    [request addValue:@"0529a925f2afca8e20f770abd6378ed8805b5593" forHTTPHeaderField:@"token"];
     
 //    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
 //                                                          dateStyle:NSDateFormatterShortStyle
@@ -526,7 +525,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
      [[ NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"DuphuluxReferenceNumber"];
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
     [dictA setValue:phoneNumber forKey:@"phone_number"];
-    [dictA setValue:@"100" forKey:@"timeout"];
+    [dictA setValue:@"900" forKey:@"timeout"];
     [dictA setValue:dateString forKey:@"transaction_reference"];
     [dictA setValue:@"com.uve.MoneyTransferApp" forKey:@"redirect_url"];
     
@@ -611,9 +610,6 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 
 -(void) getAuthStatusWebService:( NSString *)referneceString
 {
-    [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/status.json"];
     NSURL *url = [NSURL URLWithString:ApiUrl];
     
@@ -626,7 +622,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
-    [request addValue:@"54d5a2b10ecc8252d17108c6ad04a8a1f4cf9b66" forHTTPHeaderField:@"token"];
+    [request addValue:@"0529a925f2afca8e20f770abd6378ed8805b5593" forHTTPHeaderField:@"token"];
     
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
     [dictA setValue:referneceString forKey:@"transaction_reference"];
@@ -660,6 +656,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                      [HUD removeFromSuperview];
                          if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
                     {
+                        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
                         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
                         [[NSUserDefaults standardUserDefaults] synchronize];
                          [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
@@ -705,8 +702,11 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                     });
                     NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.error"];
                     if (errorArray != nil){
-                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    [alertview show];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                            [alertview show];
+                        });
+                    
                     }
                 }
             }
@@ -3418,6 +3418,20 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     
     NSLog(@"## randomString: %@ ##", randomString);
     return randomString;
+}
+
+#pragma mark ######
+#pragma mark AlertView Delegate method
+#pragma mark ######
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag ==1001) {
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"stop"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    
 }
 
 @end

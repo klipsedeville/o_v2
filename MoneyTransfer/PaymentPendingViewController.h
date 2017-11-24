@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h> 
+#import <MessageUI/MessageUI.h>
+#import "MBProgressHUD.h"
 
-@interface PaymentPendingViewController : UIViewController<MFMailComposeViewControllerDelegate>
+@interface PaymentPendingViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate>{
+    MBProgressHUD *HUD;
+    NSString *billPaymentID;
+}
 
 @property (strong, nonatomic) NSMutableDictionary *transferStatusData;
 
 // property
+@property (weak, nonatomic) IBOutlet UILabel *billRefLbl;
 @property (strong, nonatomic) IBOutlet UILabel *exchangeRateLbl;
 @property (strong, nonatomic) IBOutlet UILabel *inclusiveFeeLbl;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

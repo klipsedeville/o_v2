@@ -68,6 +68,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     self.view.layer.cornerRadius = 10.0f;
     counter = 900;
     _timelbl.text = [NSString stringWithFormat: @"%d", counter];
@@ -95,6 +96,8 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+   
+     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
    timer2 = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(statusValue) userInfo:nil repeats:YES];
 
 }
@@ -103,6 +106,9 @@
     NSString *value = [[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"];
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"]  isEqual: @"Yes"]){
        [timer2 invalidate];
+    }
+    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"stop"]  isEqual: @"Yes"]){
+        [timer2 invalidate];
     }
     else{
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"timerActive"];
@@ -126,6 +132,9 @@
         }
         if(counter == 0)
         {
+//            [[NSUserDefaults standardUserDefaults] setValue:@"No" forKey:@"verifying"];
+//            [NSUserDefaults standardUserDefaults]synchronize
+            [timer2 invalidate];
             [timer invalidate];
             timer = nil;
             [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
@@ -141,10 +150,14 @@
     }
     if(counter == 0)
     {
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [timer2 invalidate];
         [timer invalidate];
         timer = nil;
         [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
         _statusImage.image = [UIImage imageNamed:@"expire"];
+        
         _verifyView.hidden = NO;
 //        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
 //        _OkBtnTitle = @"expire";
