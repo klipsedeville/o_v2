@@ -2373,7 +2373,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1" id="UPX-yI-gUA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1" id="UPX-yI-gUA">
                                 <rect key="frame" x="0.0" y="64" width="768" height="120"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2739,7 +2739,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="0Dn-MP-VxT">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="0Dn-MP-VxT">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="120"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -4856,7 +4856,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="2" id="DKn-ne-ryK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="2" id="DKn-ne-ryK">
                                 <rect key="frame" x="0.0" y="65" width="768" height="120"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -4951,7 +4951,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" id="gQD-3O-z5A">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" id="gQD-3O-z5A">
                                 <rect key="frame" x="0.0" y="65" width="768" height="120"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -5070,7 +5070,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" id="PZ6-eP-rJc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" id="PZ6-eP-rJc">
                                 <rect key="frame" x="0.0" y="65" width="768" height="120"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -5636,19 +5636,20 @@ xADGAMhoMmg3aEJoS2heaGJobWh2aHtog2iGaItommieaKVorWi6aL9owWjDaMho0GjTaNho4GjjaPVo
         <image name="white-money" width="46" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="m1G-Nw-g2R"/>
         <segue reference="tSc-Uh-F4I"/>
         <segue reference="50H-qR-uZo"/>
-        <segue reference="MyY-N9-gVm"/>
+        <segue reference="x9z-D8-QAa"/>
         <segue reference="nqm-jv-PCM"/>
         <segue reference="51i-nT-k0n"/>
         <segue reference="zaG-vv-5Kt"/>
         <segue reference="cvD-b8-MMN"/>
-        <segue reference="tSg-t3-BVg"/>
+        <segue reference="eTV-CR-Xnn"/>
         <segue reference="FaF-Rk-1EH"/>
         <segue reference="PhX-Fx-UF9"/>
         <segue reference="rnG-N6-FN6"/>
         <segue reference="g9c-Rr-bNO"/>
-        <segue reference="Bfi-fP-yg3"/>
+        <segue reference="wcA-xo-1FH"/>
         <segue reference="yyS-et-hcW"/>
         <segue reference="SR9-CN-TCQ"/>
     </inferredMetricsTieBreakers>

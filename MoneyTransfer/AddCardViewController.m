@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "LoginViewController.h"
 #import <Foundation/Foundation.h>
+#import "BackPopUp.h"
 
 @interface AddCardViewController ()
 
@@ -25,8 +26,7 @@
 #pragma mark ######
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    [super viewDidLoad]; self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     
     self.cardNumberTextField.delegate = self;
     self.monthTextField.delegate = self;

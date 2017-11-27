@@ -15,6 +15,7 @@
     NSMutableDictionary *payBillDict;
     NSMutableDictionary *billUserData;
     NSDictionary *rateDic;
+    NSString *userPhoneNumber, *callingPhoneNumber;
 }
 
 // Property

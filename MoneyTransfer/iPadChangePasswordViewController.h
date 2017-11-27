@@ -7,11 +7,14 @@
 //
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "CoreText/CoreText.h"
+#import "CustomPopUp_iPad.h"
 
 @interface iPadChangePasswordViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate>
 {
     MBProgressHUD *HUD;
     IBOutlet UIButton *changePwdBtn;
+    NSString *userPhoneNumber, *callingPhoneNumber;
 }
 
 // property
@@ -28,7 +31,5 @@
 // Click Action Events
 - (IBAction)SaveBtnClicked:(id)sender;
 - (IBAction)backBtnClicked:(id)sender;
-
-
 
 @end

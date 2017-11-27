@@ -13,6 +13,7 @@
 {
     MBProgressHUD *HUD;
     NSString *sending_country_currency,*receiving_country_currency,*sending_amount,*receiving_amount,*fee,*exchange_rate,*beneficiary_id,*source;
+     NSString *userPhoneNumber, *callingPhoneNumber;
 }
 
 // property

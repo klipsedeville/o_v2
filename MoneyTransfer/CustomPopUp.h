@@ -25,14 +25,12 @@
 @property (assign, nonatomic) NSString *popUpTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImage;
 @property (weak, nonatomic) IBOutlet UIView *touchView;
-
-@property (assign, nonatomic) id <CustomPopUpDelegate>delegate;
-
 @property (strong, nonatomic) IBOutlet UILabel *callFromLbl;
 @property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timelbl;
-
 @property (weak, nonatomic) IBOutlet UIView *verifyView;
+
+@property (assign, nonatomic) id <CustomPopUpDelegate>delegate;
 
 - (IBAction)okBtnClicked:(id)sender;
 - (IBAction)ActionCrossBtn:(id)sender;

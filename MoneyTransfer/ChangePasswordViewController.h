@@ -16,7 +16,7 @@
 {
     MBProgressHUD *HUD;
     IBOutlet UIButton *changePwdBtn;
-    
+    NSString *userPhoneNumber, *callingPhoneNumber;
 }
 
 // Property
@@ -33,9 +33,5 @@
 //Click Events
 - (IBAction)SaveBtnClicked:(id)sender;
 - (IBAction)backBtnClicked:(id)sender;
-
-
-
-
 
 @end

@@ -301,6 +301,7 @@
 		9A941DD91D78337E00088AF5 /* arrow_down_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A941DD51D78337E00088AF5 /* arrow_down_white@3x.png */; };
 		9A9B635C1F8B4B5900BD390E /* iPadResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B635B1F8B4B5900BD390E /* iPadResetPasswordViewController.m */; };
 		9A9B635F1F8B60F100BD390E /* iPadAgentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B635E1F8B60F100BD390E /* iPadAgentProfileViewController.m */; };
+		9AA012551FCC0F92006282E6 /* SignUpViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA012541FCC0F92006282E6 /* SignUpViewViewController.m */; };
 		9AA3DBD21CEF06D5006E8CA1 /* downArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA3DBD11CEF06D5006E8CA1 /* downArrow@3x.png */; };
 		9AA3DBD41CEF06DE006E8CA1 /* downArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA3DBD31CEF06DE006E8CA1 /* downArrow@2x.png */; };
 		9AA3DBD61CEF06EF006E8CA1 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA3DBD51CEF06EF006E8CA1 /* downArrow.png */; };
@@ -735,6 +736,8 @@
 		9A9B635B1F8B4B5900BD390E /* iPadResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadResetPasswordViewController.m; sourceTree = "<group>"; };
 		9A9B635D1F8B60F100BD390E /* iPadAgentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadAgentProfileViewController.h; sourceTree = "<group>"; };
 		9A9B635E1F8B60F100BD390E /* iPadAgentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadAgentProfileViewController.m; sourceTree = "<group>"; };
+		9AA012531FCC0F92006282E6 /* SignUpViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewViewController.h; sourceTree = "<group>"; };
+		9AA012541FCC0F92006282E6 /* SignUpViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewViewController.m; sourceTree = "<group>"; };
 		9AA3DBD11CEF06D5006E8CA1 /* downArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@3x.png"; sourceTree = "<group>"; };
 		9AA3DBD31CEF06DE006E8CA1 /* downArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@2x.png"; sourceTree = "<group>"; };
 		9AA3DBD51CEF06EF006E8CA1 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
@@ -1012,6 +1015,8 @@
 				9ACBB1AD1CDA0D90009E5595 /* LoginViewController.m */,
 				9ACBB1B61CDA2587009E5595 /* SignUpViewController.h */,
 				9ACBB1B71CDA2587009E5595 /* SignUpViewController.m */,
+				9AA012531FCC0F92006282E6 /* SignUpViewViewController.h */,
+				9AA012541FCC0F92006282E6 /* SignUpViewViewController.m */,
 				9A6B36F61D4778710006EDEB /* ForgetPasswordViewController.h */,
 				9A6B36F71D4778710006EDEB /* ForgetPasswordViewController.m */,
 				9A8FE3BA1F6FAF3700A5AB2C /* ResetPasswordViewController.h */,
@@ -2288,6 +2293,7 @@
 				9A52293A1F864A94005104C5 /* MJPopupBackgroundView.m in Sources */,
 				9A3FEDD31CF42B49006D3AD4 /* iPadChannelViewController.m in Sources */,
 				9A18C8071D05B3DB00033D8F /* iPadSelectAmountViewController.m in Sources */,
+				9AA012551FCC0F92006282E6 /* SignUpViewViewController.m in Sources */,
 				9A682AE81D1D71FA0073EFB2 /* IpadShareOroboViewController.m in Sources */,
 				9A1CDA8C1D0A7C6200B812AF /* IpadConfirmTransferMoneyViewControllerViewController.m in Sources */,
 				9A3E3DFC1D47488700B5ECB0 /* iPadBeneficiaryConfirmationViewController.m in Sources */,

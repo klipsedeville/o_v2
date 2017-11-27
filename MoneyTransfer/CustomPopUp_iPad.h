@@ -11,23 +11,27 @@
 @protocol CustomPopUpDelegate;
 
 @interface CustomPopUp_iPad : UIViewController{
-    NSTimer *timer;
+    NSTimer *timer, *timer2;
     int counter;
     //    IBOutlet UIImageView *bgImage;
 }
 
 @property(nonatomic) int tag;
 @property (assign, nonatomic) IBOutlet UIButton *OkBtn;
+@property (assign, nonatomic) IBOutlet NSString *OkBtnTitle;
 @property (assign, nonatomic) IBOutlet UILabel *popUpMsgLbl;
 @property (assign, nonatomic) NSString *popUpMsg;
 @property (assign, nonatomic) NSString *callFrom;
+@property (assign, nonatomic) NSString *callTo;
 @property (assign, nonatomic) NSString *popUpTitle;
-
-@property (assign, nonatomic) id <CustomPopUpDelegate>delegate;
-
+@property (weak, nonatomic) IBOutlet UIImageView *statusImage;
+@property (weak, nonatomic) IBOutlet UIView *touchView;
 @property (strong, nonatomic) IBOutlet UILabel *callFromLbl;
 @property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timelbl;
+@property (weak, nonatomic) IBOutlet UIView *verifyView;
+
+@property (assign, nonatomic) id <CustomPopUpDelegate>delegate;
 
 - (IBAction)okBtnClicked:(id)sender;
 - (IBAction)ActionCrossBtn:(id)sender;

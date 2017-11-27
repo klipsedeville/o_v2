@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
-
 #import "MBProgressHUD.h"
 #import "CoreText/CoreText.h"
+#import "CustomPopUp_iPad.h"
 
-@interface iPadSignUpViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UITextFieldDelegate,UITextViewDelegate>
+@interface iPadSignUpViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UITextFieldDelegate,UITextViewDelegate, CustomPopUpDelegate>
 
 {
     NSMutableArray *allCurrencyArray,*ImageArray;
@@ -26,6 +26,7 @@
     
     CALayer *firstNameLayer,*surNameLayer,*physicalAddressLayer,*referralCodeLayer;
     IBOutlet UIButton *registerBtn;
+    NSString *userPhoneNumber, *callingPhoneNumber;
 }
 // property
 @property (strong, nonatomic) UIImage *iconimage;
