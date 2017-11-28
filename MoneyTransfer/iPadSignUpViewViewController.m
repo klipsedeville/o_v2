@@ -1,14 +1,14 @@
 //
-//  SignUpViewViewController.m
+//  iPadSignUpViewViewController.m
 //  MoneyTransfer
 //
-//  Created by apple on 27/11/17.
+//  Created by GrayCell Technologies on 28/11/17.
 //  Copyright © 2017 UVE. All rights reserved.
 //
 
-#import "SignUpViewViewController.h"
-#import "LoginViewController.h"
-#import "AddCardViewController.h"
+#import "iPadSignUpViewViewController.h"
+#import "iPadLoginViewController.h"
+#import "ipadAddCardViewController.h"
 #import "Constants.h"
 #import "Controller.h"
 #import "AppDelegate.h"
@@ -17,23 +17,22 @@
 #import "AsyncImageView.h"
 #import "BackPopUp.h"
 
-@interface SignUpViewViewController ()
+@interface iPadSignUpViewViewController ()
 {
     AppDelegate *appDel;
 }
-
 @end
 
-@implementation SignUpViewViewController
+@implementation iPadSignUpViewViewController
 static NSString *kCellIdentifier = @"cellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
+    
     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
+    self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     
@@ -72,7 +71,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     [_currencyTableView setAllowsSelection:YES];
     [_currencyTableView setScrollEnabled:YES];
     [self.view2_number addSubview:_currencyTableView];
- [self.currencyTableView setBackgroundColor: [self colorWithHexString:@"073245"]];
+    [self.currencyTableView setBackgroundColor: [self colorWithHexString:@"073245"]];
     _currencyTableView.backgroundColor=[UIColor lightGrayColor];
     _currencyTableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _currencyTableView.layer.borderWidth= 0.5;
@@ -120,7 +119,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
         _view3_details.hidden = NO;
         _view4_password.hidden = YES;
         return;
-
+        
     }
     else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
     {
@@ -148,11 +147,11 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 
 -(void) viewWillAppear:(BOOL)animated
 {
- [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
-  
+    
     self.emailTextfield.text = @"";
     self.numberTextfield.text = @"";
     self.firstNameTextfield.text = @"";
@@ -175,123 +174,123 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 }
 
 - (IBAction)ActionCrossBtn:(id)sender {
-        [ self.navigationController popViewControllerAnimated:YES];
+    [ self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)ActionNextBtn:(id)sender {
-     if (_view1_email.hidden == NO){
-    if([_emailTextfield.text   isEqual: @""]){
-        // If email address empty
-        NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-        NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-        int checkValue = [emailTest evaluateWithObject:self.emailTextfield.text];
-        if (checkValue==0)
-        {
-            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Email address is not a valid one." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alertview show];
+    if (_view1_email.hidden == NO){
+        if([_emailTextfield.text   isEqual: @""]){
+            // If email address empty
+            NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+            NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+            int checkValue = [emailTest evaluateWithObject:self.emailTextfield.text];
+            if (checkValue==0)
+            {
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Email address is not a valid one." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertview show];
+            }
+        }
+        else{
+            NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+            NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+            int checkValue = [emailTest evaluateWithObject:self.emailTextfield.text];
+            if (checkValue==0)
+            {
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Email address is not a valid one." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertview show];
+            }
+            
+            else{
+                _view1_email.hidden = YES;
+                _view2_number.hidden = NO;
+                _view3_details.hidden = YES;
+                _view4_password.hidden = YES;
+                return;
+            }
         }
     }
-    else{
-        NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-        NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-        int checkValue = [emailTest evaluateWithObject:self.emailTextfield.text];
-        if (checkValue==0)
+    if (_view2_number.hidden == NO){
+        if ((_numberTextfield.text.length) == 0){
+            //  If phone number empty
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No phone number was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+            [self.numberTextfield becomeFirstResponder];
+        }
+        else{
+            NSString *codeString = [_numberLabel.text
+                                    stringByReplacingOccurrencesOfString:@" (" withString:@""];
+            userPhoneNumber = [NSString stringWithFormat:@"%@%@", codeString, self.numberTextfield.text];
+            
+            BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+            [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+            [self callAuthWebService:userPhoneNumber];
+            
+//                            _view1_email.hidden = YES;
+//                            _view2_number.hidden = YES;
+//                            _view3_details.hidden = NO;
+//                            _view4_password.hidden = YES;
+//                            return;
+        }
+    }
+    if (_view3_details.hidden == NO){
+        if([_firstNameTextfield.text   isEqual: @""])
         {
-            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Email address is not a valid one." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            // If First name empty
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No first name was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alertview show];
         }
-        
+        else if ([_lastnameTextfield.text   isEqual: @""])
+        {
+            // If last name empty
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No last name was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+        }
+        else if ([_addressTextfield.text   isEqual: @""])
+        {
+            // If last name empty
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No address was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+        }
         else{
             _view1_email.hidden = YES;
-            _view2_number.hidden = NO;
+            _view2_number.hidden = YES;
             _view3_details.hidden = YES;
-            _view4_password.hidden = YES;
+            _view4_password.hidden = NO;
+            [_nextBtn setTitle:@"CONTINUE" forState:normal];
             return;
         }
     }
- }
-    if (_view2_number.hidden == NO){
-            if ((_numberTextfield.text.length) == 0){
-                //  If phone number empty
-                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No phone number was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                [alertview show];
-                [self.numberTextfield becomeFirstResponder];
-            }
-            else{
-                NSString *codeString = [_numberLabel.text
-                                        stringByReplacingOccurrencesOfString:@" (" withString:@""];
-                userPhoneNumber = [NSString stringWithFormat:@"%@%@", codeString, self.numberTextfield.text];
-                
-                BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
-                [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-                [self callAuthWebService:userPhoneNumber];
-
-//                _view1_email.hidden = YES;
-//                _view2_number.hidden = YES;
-//                _view3_details.hidden = NO;
-//                _view4_password.hidden = YES;
-//                return;
-            }
+    if (_view4_password.hidden == NO){
+        if ([_passwordTextfield.text   isEqual: @""])
+        {
+            // If password emptyd
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops" message:@"No password was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+        }
+        else if ([_repeatPssTextfield.text   isEqual: @""])
+        {
+            // If repeat password empty
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No repeat password was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+        }
+        else if (![_passwordTextfield.text  isEqualToString:_repeatPssTextfield.text])
+        {
+            // If password & repeat password does not matched
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Password & Repeat password do not match. " delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+        }
+        else
+        {
+            [HUD removeFromSuperview];
+            HUD = [[MBProgressHUD alloc] initWithView:self.view];
+            [self.view addSubview:HUD];
+            HUD.labelText = NSLocalizedString(@"Loading...", nil);
+            [HUD show:YES];
+            [self userRegsiteration];
+        }
     }
-     if (_view3_details.hidden == NO){
-                if([_firstNameTextfield.text   isEqual: @""])
-                {
-                    // If First name empty
-                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No first name was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    [alertview show];
-                }
-                else if ([_lastnameTextfield.text   isEqual: @""])
-                {
-                    // If last name empty
-                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No last name was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    [alertview show];
-                }
-                else if ([_addressTextfield.text   isEqual: @""])
-                {
-                    // If last name empty
-                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No address was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    [alertview show];
-                }
-                else{
-                    _view1_email.hidden = YES;
-                    _view2_number.hidden = YES;
-                    _view3_details.hidden = YES;
-                    _view4_password.hidden = NO;
-                    [_nextBtn setTitle:@"CONTINUE" forState:normal];
-                    return;
-                }
-     }
-     if (_view4_password.hidden == NO){
-                if ([_passwordTextfield.text   isEqual: @""])
-                    {
-                        // If password emptyd
-                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops" message:@"No password was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                        [alertview show];
-                    }
-                    else if ([_repeatPssTextfield.text   isEqual: @""])
-                    {
-                        // If repeat password empty
-                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"No repeat password was provided." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                        [alertview show];
-                    }
-                    else if (![_passwordTextfield.text  isEqualToString:_repeatPssTextfield.text])
-                    {
-                        // If password & repeat password does not matched
-                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Password & Repeat password do not match. " delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                        [alertview show];
-                    }
-                    else
-                    {
-                        [HUD removeFromSuperview];
-                        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-                        [self.view addSubview:HUD];
-                        HUD.labelText = NSLocalizedString(@"Loading...", nil);
-                        [HUD show:YES];
-                        [self userRegsiteration];
-                    }
-                }
     
 }
 
@@ -328,14 +327,14 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     if (_view3_details.hidden == NO){
         CGFloat viewCenterY = _view3_details.frame.origin.y;
         CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
-
+        
         CGFloat availableHeight = applicationFrame.size.height - 350;
         
         CGFloat y = viewCenterY - availableHeight / 7.0;
         if (y < 0) {
             y = 0;
         }
-            y = 160;
+        y = 160;
         [_scrollView setContentOffset:CGPointMake(0, y) animated:YES];
     }
     if (_view4_password.hidden == NO){
@@ -355,14 +354,14 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 
 -(void)cancelNumberPad
 {
-//    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    //    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     [self.view endEditing:YES];
 }
 
 -(void)doneWithNumberPad
 {
-//    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-      [self.view endEditing:YES];
+    //    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [self.view endEditing:YES];
 }
 
 - (IBAction)countryBtn:(id)sender {
@@ -375,7 +374,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     }
     else if (_currencyTableView.hidden == YES) {
         _currencyTableView.hidden = NO;
-     
+        
         _currencyTableView.frame =CGRectMake(_currencyBtn.frame.origin.x,_currencyBtn.frame.origin.y ,_currencyBtn.frame.size.width, 40*(allCurrencyArray.count));
         [_currencyTableView reloadData];
     }
@@ -469,7 +468,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                         
                         [[ NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CallDuphluxAuth"];
                         callingPhoneNumber = [NSString stringWithFormat:@"%@", [responseDic valueForKey:@"number"]];
-                        CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+                        CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
                         [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
                         popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
                         popUp.callFrom = userPhoneNumber;
@@ -560,7 +559,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                             [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
                             [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                            CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+                            CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
                             popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
                             popUp.OkBtnTitle = @"verify";
                             [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
@@ -575,7 +574,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                             }
                             else{
                                 [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                                CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+                                CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
                                 popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
                                 popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
                                 [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
@@ -728,14 +727,14 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                     if (status == 0)
                     {
                         dispatch_async(dispatch_get_main_queue(), ^{
-                        NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
-                        NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
-                        if (errorArray != nil){
-                            
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            
-                            [alertview show];
-                        }
+                            NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                            NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
+                            if (errorArray != nil){
+                                
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                
+                                [alertview show];
+                            }
                         });
                     }
                     else
@@ -754,11 +753,11 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
             }
             else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                [HUD removeFromSuperview];
-                
-                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection failed. Please make sure you have an active internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                
-                [alertview show];
+                    [HUD removeFromSuperview];
+                    
+                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection failed. Please make sure you have an active internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    
+                    [alertview show];
                 });
             }
         }
@@ -782,7 +781,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -796,10 +795,10 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     NSDictionary *dict;
     dict = [ allCurrencyArray objectAtIndex:indexPath.row];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, 70, 30)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, 70, 50)];
     
     titleLabel.textColor = [UIColor whiteColor];
-    [titleLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:15]];
+    [titleLabel setFont:[UIFont fontWithName:@"MyriadPro-Regular" size:30]];
     titleLabel.text = [dict valueForKey:@"currency_code"];
     [cell.contentView setBackgroundColor: [self colorWithHexString:@"073245"]];
     [cell.contentView addSubview:titleLabel];
@@ -807,7 +806,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     
     
     AsyncImageView *iconImage = [[AsyncImageView alloc] init];
-    iconImage.frame = CGRectMake(10,10,20, 20);
+    iconImage.frame = CGRectMake(10,10,30, 30);
     NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[dict valueForKey:@"flag"]];
     
     NSString  *urlStr = [logoimageURl stringByReplacingOccurrencesOfString:@"" withString:@"%20"];
@@ -879,7 +878,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"AddCreditCard"]){
-        AddCardViewController *vc = [segue destinationViewController];
+        ipadAddCardViewController *vc = [segue destinationViewController];
         vc.lastSourceView = @"SingUp";
     }
 }
@@ -969,9 +968,10 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     if (textField == _firstNameTextfield){
         
     }
-        UIView *tempVW = [[ UIView alloc] init];
-        tempVW.frame = CGRectMake(textField.frame.origin.x, 0, textField.frame.size.width, textField.frame.size.height );
-        [self scrollViewToCenterOfScreen:tempVW];
+    UIView *tempVW = [[ UIView alloc] init];
+    tempVW.frame = CGRectMake(textField.frame.origin.x, 0, textField.frame.size.width, textField.frame.size.height );
+    [self scrollViewToCenterOfScreen:tempVW];
     
 }
 @end
+

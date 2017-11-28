@@ -1,18 +1,18 @@
 //
-//  SignUpViewViewController.h
+//  iPadSignUpViewViewController.h
 //  MoneyTransfer
 //
-//  Created by apple on 27/11/17.
+//  Created by GrayCell Technologies on 28/11/17.
 //  Copyright © 2017 UVE. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginViewController.h"
+#import "iPadLoginViewController.h"
 #import "MBProgressHUD.h"
 #import "CoreText/CoreText.h"
-#import "CustomPopUp.h"
+#import "CustomPopUp_iPad.h"
 
-@interface SignUpViewViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UITextFieldDelegate,UITextViewDelegate, CustomPopUpDelegate>
+@interface iPadSignUpViewViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UITextFieldDelegate,UITextViewDelegate, CustomPopUpDelegate>
 {
     NSMutableArray *allCurrencyArray,*ImageArray;
     NSString *selectedAction;
@@ -52,3 +52,4 @@
 - (IBAction)ActionNextBtn:(id)sender;
 
 @end
+

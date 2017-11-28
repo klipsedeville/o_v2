@@ -281,6 +281,7 @@
 		9A7C368F1D81AB590059C147 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C36841D81AB590059C147 /* MyriadPro-Regular.otf */; };
 		9A7C36901D81AB590059C147 /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C36851D81AB590059C147 /* MyriadPro-Semibold.otf */; };
 		9A7C36911D81AB590059C147 /* MyriadPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C36861D81AB590059C147 /* MyriadPro-SemiboldIt.otf */; };
+		9A7E258D1FCD6A6700E3CA15 /* iPadSignUpViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E258C1FCD6A6700E3CA15 /* iPadSignUpViewViewController.m */; };
 		9A8321DD1D0EBB540050C191 /* M4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8321DC1D0EBB540050C191 /* M4.png */; };
 		9A8321DF1D0EBB5C0050C191 /* M4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8321DE1D0EBB5C0050C191 /* M4@2x.png */; };
 		9A8321E11D0EBB640050C191 /* M4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8321E01D0EBB640050C191 /* M4@3x.png */; };
@@ -707,6 +708,8 @@
 		9A7C36841D81AB590059C147 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		9A7C36851D81AB590059C147 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
 		9A7C36861D81AB590059C147 /* MyriadPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiboldIt.otf"; sourceTree = "<group>"; };
+		9A7E258B1FCD6A6700E3CA15 /* iPadSignUpViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iPadSignUpViewViewController.h; sourceTree = "<group>"; };
+		9A7E258C1FCD6A6700E3CA15 /* iPadSignUpViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPadSignUpViewViewController.m; sourceTree = "<group>"; };
 		9A8321DC1D0EBB540050C191 /* M4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = M4.png; sourceTree = "<group>"; };
 		9A8321DE1D0EBB5C0050C191 /* M4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "M4@2x.png"; sourceTree = "<group>"; };
 		9A8321E01D0EBB640050C191 /* M4@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "M4@3x.png"; sourceTree = "<group>"; };
@@ -1642,6 +1645,8 @@
 				9ACBB1B01CDA0DA1009E5595 /* iPadLoginViewController.m */,
 				9A1A7FF11CE45BC500D4E2EE /* iPadSignUpViewController.h */,
 				9A1A7FF21CE45BC500D4E2EE /* iPadSignUpViewController.m */,
+				9A7E258B1FCD6A6700E3CA15 /* iPadSignUpViewViewController.h */,
+				9A7E258C1FCD6A6700E3CA15 /* iPadSignUpViewViewController.m */,
 				9A31641A1D48DBC4001EF794 /* iPadForgetPasswordViewController.h */,
 				9A31641B1D48DBC4001EF794 /* iPadForgetPasswordViewController.m */,
 				9A9B635A1F8B4B5900BD390E /* iPadResetPasswordViewController.h */,
@@ -2261,6 +2266,7 @@
 				9A9B635F1F8B60F100BD390E /* iPadAgentProfileViewController.m in Sources */,
 				9AAF13EC1CE9CEBE00C36706 /* AddCardViewController.m in Sources */,
 				9A3FEDDC1CF42BB8006D3AD4 /* iPadUserProfileViewController.m in Sources */,
+				9A7E258D1FCD6A6700E3CA15 /* iPadSignUpViewViewController.m in Sources */,
 				9A682AF01D1D733A0073EFB2 /* IPadPayBillViewController.m in Sources */,
 				9ACBB1791CDA0D33009E5595 /* main.m in Sources */,
 				9AA4D95C1CE20256000E331B /* UIImageView+AFNetworking.m in Sources */,
@@ -2389,7 +2395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "15665ee0-f55b-4b22-94b2-fee04759dd92";
@@ -2430,7 +2436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "15665ee0-f55b-4b22-94b2-fee04759dd92";
 				SDKROOT = iphoneos;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="grK-gE-ycP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="E1f-Ww-xdu">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,7 +65,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="gQC-Kg-8bK" kind="push" id="6iI-9c-gcQ"/>
+                                            <segue destination="grK-gE-ycP" kind="push" id="Lu3-hg-9mo"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" id="r9Z-Ga-uIx">
@@ -141,7 +141,7 @@
                         <outlet property="view" destination="Thc-FE-VX2" id="VOO-Ci-eBG"/>
                         <segue destination="vgZ-VX-wAD" kind="push" identifier="SendMoney" id="NOF-Oo-GTq"/>
                         <segue destination="aC0-aj-XGv" kind="push" identifier="ForgotPassword" id="lvB-gi-JOl"/>
-                        <segue destination="gQC-Kg-8bK" kind="push" identifier="CreateAccount" id="T4A-vd-WzB"/>
+                        <segue destination="grK-gE-ycP" kind="push" identifier="CreateAccount" id="jGp-kX-LkX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7v-Jq-Jt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -571,12 +571,11 @@
                         <outlet property="surNameTextField" destination="NEG-8s-dVM" id="Coh-HM-YNC"/>
                         <outlet property="upperMiddleView" destination="kad-2U-L8b" id="eh9-CD-gZr"/>
                         <outlet property="upperView" destination="uDN-lG-E88" id="GIW-F1-qP3"/>
-                        <segue destination="2NZ-Ea-FJL" kind="push" identifier="AddCreditCard" id="eac-t9-gaW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lS2-wj-AY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1413.5" y="-265.5"/>
+            <point key="canvasLocation" x="-946" y="-963"/>
         </scene>
         <!--Send Money View Controller-->
         <scene sceneID="svg-9V-ZZ6">
@@ -3325,7 +3324,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="aJp-YO-t2X">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Share Orobo" minimumFontSize="17" id="doe-6x-UYX">
-                                    <rect key="frame" x="52" y="9.5" width="196" height="25"/>
+                                    <rect key="frame" x="52" y="10" width="196" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="19"/>
@@ -3934,7 +3933,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SEg-Ib-UjY">
-                                        <rect key="frame" x="15" y="15" width="25" height="25"/>
+                                        <rect key="frame" x="15" y="5" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -3947,7 +3946,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                     </button>
                                     <view contentMode="scaleToFill" misplaced="YES" id="1Tp-IF-Y3I">
                                         <rect key="frame" x="0.0" y="165" width="320" height="250"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail" id="bh0-lc-Toc">
                                                 <rect key="frame" x="135" y="5" width="50" height="50"/>
@@ -4004,7 +4003,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" id="GoQ-h8-SfY">
                                         <rect key="frame" x="0.0" y="170" width="320" height="235"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" id="3x8-Ef-sM2">
                                                 <rect key="frame" x="135" y="5" width="50" height="50"/>
@@ -4038,7 +4037,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="oCQ-rv-Ey0">
-                                                <rect key="frame" x="55" y="160" width="20" height="20"/>
+                                                <rect key="frame" x="55" y="165" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ebH-Hb-oPa">
@@ -4049,11 +4048,11 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="downArrow.png" id="9Zo-d9-FcH">
-                                                <rect key="frame" x="132" y="168" width="14" height="14"/>
+                                                <rect key="frame" x="130" y="168" width="14" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PY4-Up-bk0">
-                                                <rect key="frame" x="55" y="160" width="89" height="30"/>
+                                                <rect key="frame" x="55" y="160" width="90" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                                 <connections>
@@ -4061,8 +4060,22 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                                     <action selector="countryBtn:" destination="grK-gE-ycP" eventType="touchUpInside" id="zUV-Go-u8e"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your number" textAlignment="natural" minimumFontSize="17" id="8Xd-Cc-DoN">
-                                                <rect key="frame" x="100" y="160" width="170" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dqc-df-qH5">
+                                                <rect key="frame" x="160" y="160" width="42" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text=")" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d0o-wD-3Y8">
+                                                <rect key="frame" x="255" y="160" width="5" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your number" minimumFontSize="17" id="8Xd-Cc-DoN">
+                                                <rect key="frame" x="202" y="160" width="55" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
@@ -4081,7 +4094,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" id="qQH-1u-qzc">
                                         <rect key="frame" x="0.0" y="110" width="320" height="340"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal" id="TJ3-0N-I3J">
                                                 <rect key="frame" x="135" y="5" width="50" height="50"/>
@@ -4164,7 +4177,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" id="CfC-MR-ksQ">
                                         <rect key="frame" x="0.0" y="135" width="320" height="285"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" id="0g6-7J-vBQ">
                                                 <rect key="frame" x="135" y="5" width="50" height="50"/>
@@ -4253,6 +4266,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                         <color key="backgroundColor" red="0.031372549020000001" green="0.1960784314" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.031372549020000001" green="0.1960784314" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9FW-to-E4Y"/>
                     <connections>
                         <outlet property="addressTextfield" destination="aJz-Qi-uTu" id="l2h-wr-4uL"/>
                         <outlet property="countryImage" destination="oCQ-rv-Ey0" id="tOv-yX-riM"/>
@@ -4263,6 +4277,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                         <outlet property="firstNameTextfield" destination="adk-pW-DbM" id="KNP-4x-Xx3"/>
                         <outlet property="lastnameTextfield" destination="VN3-WP-TrL" id="2z3-e3-v30"/>
                         <outlet property="nextBtn" destination="3zn-Pw-SdL" id="tCh-uz-RyA"/>
+                        <outlet property="numberLabel" destination="dqc-df-qH5" id="a7P-ep-iRg"/>
                         <outlet property="numberTextfield" destination="8Xd-Cc-DoN" id="Z8N-N6-sSE"/>
                         <outlet property="passwordTextfield" destination="7Ir-HZ-ptC" id="gym-kW-zOl"/>
                         <outlet property="repeatPssTextfield" destination="juL-Kd-Of0" id="uiy-tL-6vm"/>
@@ -4271,11 +4286,12 @@ too.   Tip : Include your referral code in your app review  when you rate us
                         <outlet property="view2_number" destination="GoQ-h8-SfY" id="Ogd-zL-Tya"/>
                         <outlet property="view3_details" destination="qQH-1u-qzc" id="D9Z-nS-bmG"/>
                         <outlet property="view4_password" destination="CfC-MR-ksQ" id="dEh-63-0HN"/>
+                        <segue destination="2NZ-Ea-FJL" kind="push" identifier="AddCreditCard" id="5Oa-Ea-ieW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHL-tJ-FPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3206" y="494"/>
+            <point key="canvasLocation" x="-1394" y="-262"/>
         </scene>
         <!--Add Biller View Controller-->
         <scene sceneID="kIx-ss-S8M">
@@ -6085,7 +6101,8 @@ too.   Tip : Include your referral code in your app review  when you rate us
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0dG-vw-BGe"/>
-        <segue reference="eac-t9-gaW"/>
+        <segue reference="jGp-kX-LkX"/>
+        <segue reference="5Oa-Ea-ieW"/>
         <segue reference="grh-wt-qaU"/>
         <segue reference="3cZ-OU-4ze"/>
         <segue reference="xVY-TE-YLb"/>
@@ -6095,8 +6112,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <segue reference="25i-ua-Osb"/>
         <segue reference="4y5-1w-y0n"/>
         <segue reference="Y8j-6T-1q0"/>
-        <segue reference="by3-Us-jIv"/>
-        <segue reference="6iI-9c-gcQ"/>
-        <segue reference="I9G-Of-vCD"/>
+        <segue reference="NOF-Oo-GTq"/>
+        <segue reference="f4M-Zl-5Mx"/>
     </inferredMetricsTieBreakers>
 </document>
