@@ -27,6 +27,19 @@
     NSMutableArray *parameterValueArray;
     int currentTag;
     NSMutableArray *title_array;
+    NSMutableArray *settlement_channel_parameters_options_array;
+    NSMutableArray *Main_array;
+    NSMutableArray *MainArrayValue;
+    NSMutableDictionary *MainSelectedValue;
+    NSArray *MainValueArr;
+    NSMutableArray *settlement_channel_parameters_array;
+    UITableView *dataTableView;
+    NSString *selectedTag;
+    UIButton *button;
+    NSString *tfTagValue;
+    NSIndexPath *indexPathValue;
+    UIToolbar* numberToolbar;
+    NSString *selectedFieldTag;
 
 }
 
@@ -50,7 +63,9 @@
 @property (strong, nonatomic) IBOutlet UITableView *selectedBankTable;
 
 @property (strong, nonatomic) IBOutlet UITableView *titletableView;
-
+@property (weak, nonatomic) IBOutlet UIView *mobileNoBtm;
+@property (weak, nonatomic) IBOutlet UIView *accNamebtm;
+@property (weak, nonatomic) IBOutlet UIView *accNoBtm;
 
 // Click Event method
 - (IBAction)methodsListShowClick:(id)sender;

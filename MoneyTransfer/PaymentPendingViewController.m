@@ -61,7 +61,7 @@
     billPaymentID = [ NSString stringWithFormat:@"%@",[[requiredFieldArray objectAtIndex:0] valueForKey:@"bill_payment_id"]];
     
     if ([requiredFieldArray count] > 0){
-        NSMutableArray *stageValue = [[NSMutableArray alloc]init];
+        stageValue = [[NSMutableArray alloc]init];
         NSDictionary *newData = [[NSDictionary alloc]init];
         for (NSDictionary *newData in requiredFieldArray) {
             [stageValue addObject:newData[@"stage"]];
@@ -102,6 +102,17 @@
                 infoTitleLbl.textColor = [UIColor whiteColor];
                 [addView addSubview:infoTitleLbl];
                 
+                stageMessage = i;
+                
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                button.tag = i;
+                [button addTarget:self
+                           action:@selector(buttonPressedMethod:)
+                 forControlEvents:UIControlEventTouchDown];
+                [button setTitle:@"" forState:UIControlStateNormal];
+                button.frame = CGRectMake(10, 50+(i*50), 50, 20);
+                [addView addSubview:button];
+                
                 UILabel *infoDateLbl = [[UILabel alloc] init];
                 infoDateLbl.frame = CGRectMake(35, 70+(i*50), SCREEN_WIDTH-20, 20);
                 NSString *myString = [ NSString stringWithFormat:@"%@",[selectedStageValue valueForKeyPath:@"modified"]];
@@ -126,9 +137,19 @@
 //    NSInteger ht = _statusView.frame.size.height+45;
 //    sizeOfContent = wd+ht;
 //    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
-
+    UITapGestureRecognizer * single = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnreferenceNumberLbl:)];
+    [self.referenceNumberLbl addGestureRecognizer:single];
+    single.numberOfTapsRequired = 1;
+    self.referenceNumberLbl.userInteractionEnabled = YES;
 }
 
+- (void) buttonPressedMethod : (id) sender {
+    UIButton *selectedButton = (UIButton *)sender;
+    NSLog(@"buttonTag: %li", (long)selectedButton.tag);
+    NSDictionary *selectedStageValue = [stageValue objectAtIndex:selectedButton.tag];
+    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Status" message:[ NSString stringWithFormat:@"%@",[selectedStageValue valueForKeyPath:@"message"]] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+    [alertview show];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -137,6 +158,19 @@
 #pragma mark ########
 #pragma mark Click Action methods
 #pragma mark ########
+
+- (void)tapOnreferenceNumberLbl:(UITapGestureRecognizer *)tapGesture
+{
+    if (tapGesture.state == UIGestureRecognizerStateEnded)
+    {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.referenceNumberLbl.text;
+        // toast with a specific duration and position
+        [self.view makeToast:[NSString stringWithFormat:@"%@",@"Reference copied to clipboard."]
+                    duration:2.0
+                    position:CSToastPositionBottom];
+    }
+}
 
 -(IBAction)backBtnClicked:(id)sender{
     

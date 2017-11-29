@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "UIView+Toast.h"
 #import "MBProgressHUD.h"
 
 @interface PaymentPendingViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate>{
     MBProgressHUD *HUD;
     NSString *billPaymentID;
+    int *stageMessage;
+    NSMutableArray *stageValue;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *transferStatusData;

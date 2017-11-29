@@ -122,7 +122,7 @@
     billOptionID =[ NSString stringWithFormat:@"%@",[[amountArr objectAtIndex:0] valueForKey:@"id"]];
     _descriptionLabel.text = [ NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"bill_provider.title"]];
     _navigationTitleTextField.text = @"Bill Details";
-    _billNameLbl.text = [[amountArr objectAtIndex:0] valueForKeyPath:@"title"];
+    _billNameLbl.text = [ NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"title"]];
     _billOptionLbl.text = [NSString stringWithFormat:@"%@",[billOptionArray objectAtIndex:0]];
     
     // -----------------------  Dynamic view  --------------------------------------
@@ -169,7 +169,7 @@
             
             NSString *typeStr = [tempDict valueForKeyPath:@"bill_field_type.type"];
             
-            if([typeStr isEqualToString:@"text"])
+            if([typeStr isEqualToString:@"text"] || [typeStr isEqualToString:@"textarea"] )
             {
                 HoshiTextField *parameterTextField = [[HoshiTextField alloc] initWithFrame:CGRectMake(10.0f, 50+(i*55), SCREEN_WIDTH-20, 40.0f)];
                 

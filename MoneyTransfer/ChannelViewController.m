@@ -95,7 +95,7 @@
     [numberToolbar sizeToFit];
 //    _mobileNumberTextfield.inputAccessoryView = numberToolbar;
     
-    //     Call Receiving Currency List
+    //     Get Channel Settlement List
     [HUD removeFromSuperview];
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
@@ -515,7 +515,10 @@
                 
                 NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
                 if (data1)
-                {[HUD removeFromSuperview];
+                {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [HUD removeFromSuperview];
+                     });
                     NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
                     
                     NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];

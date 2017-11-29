@@ -230,11 +230,11 @@
     billOptionArray = [[NSMutableArray alloc]init];
     DataArray = [[NSMutableArray alloc]init];
     
-    billOptionArray = [_billUserData valueForKeyPath:@"BillOption.title"];
+    billOptionArray = [_billUserData valueForKeyPath:@"bill_options.title"];
     
     _billOptionLbl.text = [billOptionArray objectAtIndex:0];
     
-    NSArray *amountArr = [_billUserData valueForKeyPath:@"BillOption"];
+    NSArray *amountArr = [_billUserData valueForKeyPath:@"bill_options"];
     NSString *amountstr = [[amountArr objectAtIndex:0]valueForKey:@"amount"];
     
     if (billOptionArray.count>0) {
@@ -254,19 +254,19 @@
     _amountTextField.text = [NSString stringWithFormat:@"%@",amountstr];
     
     billOptionID =[[amountArr objectAtIndex:0]valueForKey:@"id"];
-    _descriptionLabel.text = [ NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"BillProvider.title"]];
+    _descriptionLabel.text = [ NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"bill_provider.title"]];
     _navigationTitleTextField.text = @"Bill Details";
-    _billNameLbl.text = [_billUserData valueForKeyPath:@"Bill.title"];
+    _billNameLbl.text = [_billUserData valueForKeyPath:@"title"];
     _instructionLbl.text=[_billUserData valueForKeyPath:@"Bill.instructions"];
     _instructionLbl.lineBreakMode = UILineBreakModeWordWrap;
     _instructionLbl.numberOfLines = 2;
     [_instructionLbl sizeToFit];
-    _providerLbl.text = [NSString stringWithFormat:@"Provider: %@",[_billUserData valueForKeyPath:@"BillProvider.title"]];
+    _providerLbl.text = [NSString stringWithFormat:@"Provider: %@",[_billUserData valueForKeyPath:@"bill_provider.title"]];
     _providerLbl.lineBreakMode = UILineBreakModeWordWrap;
     _providerLbl.numberOfLines = 2;
     [_providerLbl sizeToFit];
     
-    _categoryLbl.text =[NSString stringWithFormat:@"Category: %@",[_billUserData valueForKeyPath:@"BillCategory.title"]];
+    _categoryLbl.text =[NSString stringWithFormat:@"Category: %@",[_billUserData valueForKeyPath:@"bill_category.title"]];
     
     _instructionLbl.frame = CGRectMake(_instructionLbl.frame.origin.x,_instructionLbl.frame.origin.y,_instructionLbl.frame.size.width,_instructionLbl.frame.size.height);
     _providerLbl.frame = CGRectMake(_providerLbl.frame.origin.x,_instructionLbl.frame.origin.y+_instructionLbl.frame.size.height+10,_providerLbl.frame.size.width,_providerLbl.frame.size.height);
@@ -276,7 +276,7 @@
     // -----------------------  Dynamic view  ---------------------------
     
     
-    NSArray *requiredFieldArray = [_billUserData valueForKey:@"BillRequiredField"];
+    NSArray *requiredFieldArray = [_billUserData valueForKey:@"bill_required_fields"];
     
     [requiredInfoView removeFromSuperview];
     requiredInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, _amountView.frame.origin.y+_amountView.frame.size.height +40 , SCREEN_WIDTH, (requiredFieldArray.count * 110) + 100)];
@@ -313,9 +313,9 @@
         NSDictionary *tempDict = [requiredFieldArray objectAtIndex:i];
         NSString * placeholderString = [[tempDict valueForKey:@"title"] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
         
-        NSString *typeStr = [tempDict valueForKeyPath:@"BillFieldType.type"];
+        NSString *typeStr = [tempDict valueForKeyPath:@"bill_field_type.type"];
         
-        if([typeStr isEqualToString:@"text"])
+        if([typeStr isEqualToString:@"text"] || [typeStr isEqualToString:@"textarea"])
         {
             
             

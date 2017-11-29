@@ -29,8 +29,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     [self.navigationController setNavigationBarHidden:YES animated:YES];
     // Do any additional setup after loading the view.
-   
     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -133,9 +133,9 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
         [self getAuthStatusWebService:referneceString];
     }
     //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
-    //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //        alertview.tag = 1001;
-    //        [alertview show];
+//            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//            alertview.tag = 1001;
+//            [alertview show];
     //    }
     else{
         
@@ -148,7 +148,9 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 
 -(void) viewWillAppear:(BOOL)animated
 {
- [self.navigationController setNavigationBarHidden:YES animated:YES];
+     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+    [_scrollView setContentOffset:CGPointMake(0, 22) animated:YES];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
@@ -218,10 +220,10 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                 [self.numberTextfield becomeFirstResponder];
             }
             else{
-                NSString *codeString = [_numberLabel.text
-                                        stringByReplacingOccurrencesOfString:@" (" withString:@""];
-                userPhoneNumber = [NSString stringWithFormat:@"%@%@", codeString, self.numberTextfield.text];
-                
+//                NSString *codeString = [_numberLabel.text
+//                                        stringByReplacingOccurrencesOfString:@" (" withString:@""];
+//                userPhoneNumber = [NSString stringWithFormat:@"%@%@", codeString, self.numberTextfield.text];
+                userPhoneNumber = [NSString stringWithFormat:@"%@", self.numberTextfield.text];
                 BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
                 [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
@@ -556,18 +558,12 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                         [HUD removeFromSuperview];
                         if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
                         {
-                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
-                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
-                            [[NSUserDefaults standardUserDefaults] synchronize];
-                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                            CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
-                            popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-                            popUp.OkBtnTitle = @"verify";
-                            [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
-                            popUp.callTo = callingPhoneNumber;
-                            popUp.callFrom = userPhoneNumber;
-                            popUp.delegate = self;
-                            [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Success!" message:@"Your number has been verified." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                alertview.tag = 222;
+                                [alertview show];
+                            });
+                            
                         }
                         else{
                             
@@ -608,7 +604,9 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
                     [HUD removeFromSuperview];
-                });
+                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection error. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        [alertview show];
+                    });
                 
             }
         }
@@ -616,6 +614,8 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
                 [HUD removeFromSuperview];
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection error. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertview show];
             });
         }
     }];
@@ -911,7 +911,20 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"stop"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
+    if (alertView.tag == 222){
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+        CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+        popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+        popUp.OkBtnTitle = @"verify";
+        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+        popUp.callTo = callingPhoneNumber;
+        popUp.callFrom = userPhoneNumber;
+        popUp.delegate = self;
+        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+    }
 }
 
 #pragma mark ########
@@ -966,12 +979,31 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (textField == _firstNameTextfield){
-        
-    }
         UIView *tempVW = [[ UIView alloc] init];
         tempVW.frame = CGRectMake(textField.frame.origin.x, 0, textField.frame.size.width, textField.frame.size.height );
         [self scrollViewToCenterOfScreen:tempVW];
     
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    BOOL value;
+    value = YES;
+    if (textField == _numberTextfield){
+        if ([textField.text   isEqual: @"0"]) {
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Please exclude '0' not required." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+
+            textField.text = @"";
+             value = YES;
+        }
+        else{
+            value = NO;
+        }
+    }
+
+
+    return YES;
+}
+
+
 @end

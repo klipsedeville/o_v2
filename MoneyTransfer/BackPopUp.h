@@ -13,5 +13,6 @@
 {
     MBProgressHUD *HUD;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *hudImage;
 @property (weak, nonatomic) IBOutlet UIView *hudView;
 @end

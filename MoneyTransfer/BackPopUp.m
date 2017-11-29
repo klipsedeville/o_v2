@@ -32,13 +32,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.layer.cornerRadius = 10.0f;
-    HUD = [[MBProgressHUD alloc] initWithFrame:_hudView.frame];
-    [_hudView addSubview:HUD];
-    HUD.labelText = NSLocalizedString(@"", nil);
-    [HUD show:YES];
+//    HUD = [[MBProgressHUD alloc] initWithFrame:_hudView.frame];
+//    [_hudView addSubview:HUD];
+//    HUD.labelText = NSLocalizedString(@"", nil);
+//    [HUD show:YES];
+    [self performRotationAnimated];
 }
 
-
+- (void)performRotationAnimated
+{
+    [UIView animateWithDuration:0.5
+                          delay:0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         
+                         self.hudImage.transform = CGAffineTransformMakeRotation(M_PI);
+                     }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.5
+                                               delay:0
+                                             options:UIViewAnimationOptionCurveLinear
+                                          animations:^{
+                                              
+                                              self.hudImage.transform = CGAffineTransformMakeRotation(0);
+                                          }
+                                          completion:^(BOOL finished){
+                                                  
+                                                  [self performRotationAnimated];
+                                          }];
+                     }];
+}
 
 @end
 

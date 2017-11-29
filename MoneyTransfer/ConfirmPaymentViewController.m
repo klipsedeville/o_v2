@@ -77,15 +77,15 @@
     
     int i = 0;
     
-    _fieldView.frame = CGRectMake(_fieldView.frame.origin.x, _fieldView.frame.origin.y, _fieldView.frame.size.width, (55 * _paymentUserData.count)+10);
+    _fieldView.frame = CGRectMake(_fieldView.frame.origin.x, _fieldView.frame.origin.y, _fieldView.frame.size.width, (76 * _paymentUserData.count)+30);
     
     if (_paymentUserData.count == 0){
-        _exchangeRateLbl.frame = CGRectMake(0, 330, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
-          _lastView.frame = CGRectMake(0, 378, SCREEN_WIDTH, _lastView.frame.size.height);
+        _exchangeRateLbl.frame = CGRectMake(0, 360, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
+          _lastView.frame = CGRectMake(0, 400, SCREEN_WIDTH, _lastView.frame.size.height);
     }
     else{
         _exchangeRateLbl.frame = CGRectMake(0, 330+_fieldView.frame.size.height, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
-        _lastView.frame = CGRectMake(0, 378+_fieldView.frame.size.height, SCREEN_WIDTH, _lastView.frame.size.height);
+        _lastView.frame = CGRectMake(0, 370+_fieldView.frame.size.height, SCREEN_WIDTH, _lastView.frame.size.height);
     }
     
     for (int i=0; i< _paymentUserData.count; i++)
@@ -96,14 +96,14 @@
         NSString *fldText = [ valueDic objectForKey:@"collected_data"];
         
         UILabel *titleLbl = [[UILabel alloc] init];
-        titleLbl.frame = CGRectMake(10, 10+(i*55), SCREEN_WIDTH-20, 20);
+        titleLbl.frame = CGRectMake(10, 29+(i*76), SCREEN_WIDTH-20, 20);
         titleLbl.text = [fieldDic objectForKey:@"placeHolder"];
         titleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:15];
         titleLbl.textColor = [self colorWithHexString:@"51595c"];
         [_fieldView addSubview:titleLbl];
         
         UILabel *valueLbl = [[UILabel alloc] init];
-        valueLbl.frame = CGRectMake(10,titleLbl.frame.size.height+titleLbl.frame.origin.y-5, SCREEN_WIDTH-20, 30);
+        valueLbl.frame = CGRectMake(10,titleLbl.frame.size.height+titleLbl.frame.origin.y, SCREEN_WIDTH-20, 30);
         valueLbl.text = fldText;
         valueLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:18];
         valueLbl.textColor = [self colorWithHexString:@"51595c"];

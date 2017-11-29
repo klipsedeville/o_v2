@@ -415,6 +415,7 @@
                     
                     if (status == 0)
                     {
+                         dispatch_async(dispatch_get_main_queue(), ^{
                         [HUD removeFromSuperview];
                         NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
                         NSLog(@"error ..%@", errorArray);
@@ -436,9 +437,11 @@
                             
                             [alertview show];
                         }
+                         });
                     }
                     else
                     {
+                         dispatch_async(dispatch_get_main_queue(), ^{
                         [HUD removeFromSuperview];
                         NSLog(@"Add Card Response...%@",responseDic );
                         NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
@@ -454,7 +457,6 @@
                         
                         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dic] forKey:@"loginUserData"];
                         
-                        dispatch_async(dispatch_get_main_queue(), ^{
                             
                             NSString *cardTitle = [ responseDic valueForKeyPath:@"PayLoad.data.Card.title"];
                             NSLog(@"Card title.. %@",cardTitle);
@@ -465,12 +467,16 @@
                             
                         });
                     }
+                     dispatch_async(dispatch_get_main_queue(), ^{
                     [HUD removeFromSuperview];
+                     });
                 }
                 
             }
             else{
+                 dispatch_async(dispatch_get_main_queue(), ^{
                 [HUD removeFromSuperview];
+                 });
             }
         }
         
