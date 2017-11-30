@@ -26,10 +26,10 @@
     
     [super viewDidLoad];
     
-    myImageView = [[UIImageView alloc] init];
-    myImageView1 = [[UIImageView alloc] init];
-    myImageView.hidden = YES;
-    myImageView1.hidden = YES;
+//    myImageView = [[UIImageView alloc] init];
+//    myImageView1 = [[UIImageView alloc] init];
+//    myImageView.hidden = YES;
+//    myImageView1.hidden = YES;
     
     self.loginView.hidden = YES;
     [_passwordTextField setSecureTextEntry:YES];
@@ -398,11 +398,11 @@
                     self.passwordLbl.frame = _passwordTextField.frame;
                     self.passwordLbl.font = [UIFont systemFontOfSize:17];
                     self.passwordLbl.textColor = [self colorWithHexString:@"51595c"];
-                myImageView1.hidden = NO;
-                myImageView.hidden = YES;
-                   [myImageView1 setFrame:CGRectMake(0.0f, self.passwordTextField.frame.size.height - 5, self.passwordTextField.frame.size.width, 10)];
-                    myImageView1.image = [UIImage imageNamed:@"textbox"];
-                    [self.passwordTextField insertSubview:myImageView1 atIndex:0];
+//                myImageView1.hidden = NO;
+//                myImageView.hidden = YES;
+//                   [myImageView1 setFrame:CGRectMake(0.0f, self.passwordTextField.frame.size.height - 5, self.passwordTextField.frame.size.width, 10)];
+//                    myImageView1.image = [UIImage imageNamed:@"textbox"];
+//                    [self.passwordTextField insertSubview:myImageView1 atIndex:0];
                     
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
@@ -422,12 +422,12 @@
                 self.emailAddressLbl.frame = CGRectMake(self.emailAddressLbl.frame.origin.x,self.emailAddressLbl.frame.origin.y-self.emailAddressLbl.frame.size.height, self.emailAddressLbl.frame.size.width, self.emailAddressLbl.frame.size.height );
                 self.emailAddressLbl.font = [UIFont systemFontOfSize:12];
                 [self.emailAddressLbl setTextColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
-                myImageView.hidden = NO;
-                myImageView1.hidden = YES;
+//                myImageView.hidden = NO;
+//                myImageView1.hidden = YES;
               
-                [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 10)];
-                myImageView.image = [UIImage imageNamed:@"textbox"];
-                [self.emailAddressTextField insertSubview:myImageView atIndex:0];
+//                [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 10)];
+//                myImageView.image = [UIImage imageNamed:@"textbox"];
+//                [self.emailAddressTextField insertSubview:myImageView atIndex:0];
                 
                 CALayer *FirstNameLayer = [CALayer layer];
                 FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
@@ -450,11 +450,11 @@
                     self.emailAddressLbl.font = [UIFont systemFontOfSize:17];
                     self.emailAddressLbl.textColor = [self colorWithHexString:@"51595c"];
                     
-                    myImageView.hidden = NO;
-                    myImageView1.hidden = YES;
-                   [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 10)];
-                    myImageView.image = [UIImage imageNamed:@"textbox"];
-                    [self.emailAddressTextField insertSubview:myImageView atIndex:0];
+//                    myImageView.hidden = NO;
+//                    myImageView1.hidden = YES;
+//                   [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 10)];
+//                    myImageView.image = [UIImage imageNamed:@"textbox"];
+//                    [self.emailAddressTextField insertSubview:myImageView atIndex:0];
                     
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
@@ -476,11 +476,11 @@
                 
                 [self.passwordLbl setTextColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
                 
-                myImageView1.hidden = NO;
-                myImageView.hidden = YES;
-                [myImageView1 setFrame:CGRectMake(0.0f, 5, self.passwordTextField.frame.size.width, 10)];
-                myImageView1.image = [UIImage imageNamed:@"textbox"];
-                [self.passwordTextField insertSubview:myImageView1 atIndex:0];
+//                myImageView1.hidden = NO;
+//                myImageView.hidden = YES;
+//                [myImageView1 setFrame:CGRectMake(0.0f, 5, self.passwordTextField.frame.size.width, 10)];
+//                myImageView1.image = [UIImage imageNamed:@"textbox"];
+//                [self.passwordTextField insertSubview:myImageView1 atIndex:0];
                 
             }completion:^(BOOL finished){
             }];
@@ -506,8 +506,8 @@
             [UIView animateWithDuration:0.5f animations:^{
                 if (textField == _emailAddressTextField && [ _passwordTextField.text isEqual:@""]){
                     
-                    myImageView1.hidden = YES;
-                    myImageView.hidden = YES;
+//                    myImageView1.hidden = YES;
+//                    myImageView.hidden = YES;
 
                 CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
@@ -520,8 +520,8 @@
                 }
                 else if(textField == _emailAddressTextField && ![ _passwordTextField.text isEqual:@""])
                 {
-                    myImageView.hidden = YES;
-                    myImageView1.hidden = YES;
+//                    myImageView.hidden = YES;
+//                    myImageView1.hidden = YES;
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
                     FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;
@@ -529,11 +529,11 @@
                     [_passwordTextField resignFirstResponder];
                     [_emailAddressTextField becomeFirstResponder];
                 }
-                myImageView.hidden = NO;
-                myImageView1.hidden = YES;
-               [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 5)];
-                myImageView.image = [UIImage imageNamed:@"textbox"];
-                [self.emailAddressTextField insertSubview:myImageView atIndex:0];
+//                myImageView.hidden = NO;
+//                myImageView1.hidden = YES;
+//               [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 5)];
+//                myImageView.image = [UIImage imageNamed:@"textbox"];
+//                [self.emailAddressTextField insertSubview:myImageView atIndex:0];
                 
                 CALayer *FirstNameLayer = [CALayer layer];
                 FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
@@ -553,8 +553,8 @@
             [UIView animateWithDuration:0.5f animations:^{
                 if (textField == _passwordTextField && [ _emailAddressTextField.text isEqual:@""])
                 {
-                   myImageView.hidden = YES;
-                    myImageView1.hidden = YES;
+//                   myImageView.hidden = YES;
+//                    myImageView1.hidden = YES;
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
                     FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;
@@ -566,8 +566,8 @@
                 }
                 else if(textField == _passwordTextField && ![ _emailAddressTextField.text isEqual:@""])
                 {
-                   myImageView.hidden = YES;
-                    myImageView1.hidden = YES;
+//                   myImageView.hidden = YES;
+//                    myImageView1.hidden = YES;
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
                     FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;
@@ -576,12 +576,12 @@
                     [_emailAddressTextField resignFirstResponder];
                     [_passwordTextField becomeFirstResponder];
                 }
-                myImageView.hidden = YES;
-                myImageView1.hidden = NO;
+//                myImageView.hidden = YES;
+//                myImageView1.hidden = NO;
               
-               [myImageView1 setFrame:CGRectMake(0.0f, self.passwordTextField.frame.size.height - 5, self.passwordTextField.frame.size.width, 10)];
-                myImageView1.image = [UIImage imageNamed:@"textbox"];
-                [self.passwordTextField insertSubview:myImageView1 atIndex:0];
+//               [myImageView1 setFrame:CGRectMake(0.0f, self.passwordTextField.frame.size.height - 5, self.passwordTextField.frame.size.width, 10)];
+//                myImageView1.image = [UIImage imageNamed:@"textbox"];
+//                [self.passwordTextField insertSubview:myImageView1 atIndex:0];
                 
                 CALayer *FirstNameLayer = [CALayer layer];
                 FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
@@ -601,8 +601,8 @@
     
     if(textField == _passwordTextField && [ _passwordTextField.text isEqual:@""])
     {
-        myImageView.hidden = YES;
-        myImageView1.hidden = YES;
+//        myImageView.hidden = YES;
+//        myImageView1.hidden = YES;
         CALayer *FirstNameLayer = [CALayer layer];
         FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
         FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;
@@ -611,8 +611,8 @@
     if(textField == _emailAddressTextField && [ _emailAddressTextField.text isEqual:@""])
     {
         
-       myImageView.hidden = YES;
-        myImageView1.hidden = YES;
+//       myImageView.hidden = YES;
+//        myImageView1.hidden = YES;
         CALayer *FirstNameLayer = [CALayer layer];
         FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
         FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;

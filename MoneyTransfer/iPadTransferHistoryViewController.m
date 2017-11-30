@@ -370,7 +370,7 @@
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
         NSDate *date = [df dateFromString:myString];
-        [df setDateFormat:@"MMMM dd, HH:MM"];
+        [df setDateFormat:@"MMMM dd, HH:mm"];
         NSString *dateString = [df stringFromDate:date];
         dateTimeLabel.text = dateString;
     }

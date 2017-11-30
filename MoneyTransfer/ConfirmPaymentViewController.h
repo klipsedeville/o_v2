@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *amountHeadingLbl;
 @property (strong, nonatomic) IBOutlet UILabel *amountLbl;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UILabel *amountValueS;
 @property (strong, nonatomic) NSString *descriptionBillLbl;
 @property (strong, nonatomic) NSString *billCategoryId;
 

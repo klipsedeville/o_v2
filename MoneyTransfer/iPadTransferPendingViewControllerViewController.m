@@ -24,9 +24,9 @@
     
     _scrollView.bounces = NO;
     
-    _navigationTitleTextField.text = [ NSString stringWithFormat:@"Transfer %@",[[_transferStatusData valueForKeyPath:@"Status.title"]uppercaseString]];
+    _navigationTitleTextField.text = [ NSString stringWithFormat:@"Transfer %@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
     
-    _referenceNumberLbl.text = [ NSString stringWithFormat:@"#%@",[_transferStatusData valueForKeyPath:@"transaction_reference"]];
+    _referenceNumberLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"transaction_reference"]];
     
     _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service Fee: %@%@.00",[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKeyPath:@"receiving_currency.currency_symbol"],[_transferStatusData valueForKey:@"exchange_rate"],[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKey:@"fee"]];
     
@@ -35,7 +35,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     NSDate *date = [df dateFromString:myString];
-    [df setDateFormat:@"MMMM dd, HH:MM"];
+    [df setDateFormat:@"MMMM dd, HH:mm"];
     NSString *dateString = [df stringFromDate:date];
     _dateLbl.text = dateString;
     _beneficiaryUserNameLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"beneficiary.full_name"]];
@@ -48,7 +48,10 @@
     _SendingCountryNameLbl.frame = CGRectMake( _sendingAmountLbl.frame.origin.x+_sendingAmountLbl.frame.size.width+3, _SendingCountryNameLbl.frame.origin.y-1, _SendingCountryNameLbl.frame.size.width, _SendingCountryNameLbl.frame.size.height);
     
     _receivingAmountLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"receiving_amount"]];
-    [_receivingAmountLbl sizeToFit];
+    
+//    _receivingCountryNameLbl.text = [NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"receiving_currency.currency_code"]];
+    
+//    [_receivingAmountLbl sizeToFit];
     
     _statusLbl.text = [ NSString stringWithFormat:@"%@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
     
@@ -58,33 +61,33 @@
 
     _receivingAmountLbl.text = [ NSString stringWithFormat:@"%@ %@",[_transferStatusData valueForKeyPath:@"receiving_amount"],[_transferStatusData valueForKeyPath:@"receiving_currency.currency_code"]];
     
-    NSString *big = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"receiving_amount"]];
+//    NSString *big = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"receiving_amount"]];
+//
+//    NSString *small = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"receiving_currency.currency_code"]];
+//
+//    _receivingAmountLbl.text = [ NSString stringWithFormat:@"%@ %@",big,small];
+//
+//    int textLength = (int)big.length;
+//
+//    NSMutableAttributedString* content2 =
+//    [[NSMutableAttributedString alloc]
+//     initWithString:_receivingAmountLbl.text
+//     attributes:
+//     @{
+//       NSFontAttributeName:
+//           [UIFont fontWithName:@"MyriadPro-Regular" size:30]
+//       }];
+//    [content2 setAttributes:
+//     @{
+//       NSFontAttributeName:[UIFont fontWithName:@"MyriadPro-Regular" size:40]
+//       } range:NSMakeRange(0,textLength)];
+//    [content2 addAttributes:
+//     @{
+//       NSKernAttributeName:@-4
+//       } range:NSMakeRange(0,1)];
+//
     
-    NSString *small = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"receiving_currency.currency_code"]];
-    
-    _receivingAmountLbl.text = [ NSString stringWithFormat:@"%@ %@",big,small];
-    
-    int textLength = (int)big.length;
-    
-    NSMutableAttributedString* content2 =
-    [[NSMutableAttributedString alloc]
-     initWithString:_receivingAmountLbl.text
-     attributes:
-     @{
-       NSFontAttributeName:
-           [UIFont fontWithName:@"MyriadPro-Regular" size:30]
-       }];
-    [content2 setAttributes:
-     @{
-       NSFontAttributeName:[UIFont fontWithName:@"MyriadPro-Regular" size:40]
-       } range:NSMakeRange(0,textLength)];
-    [content2 addAttributes:
-     @{
-       NSKernAttributeName:@-4
-       } range:NSMakeRange(0,1)];
-    
-    
-    _receivingAmountLbl.attributedText = content2;
+//    _receivingAmountLbl.attributedText = content2;
     
      // ---------------------Dynamic View----------------------------
     
@@ -104,60 +107,78 @@
             UILabel *requiredInfoTitleLbl = [[UILabel alloc] init];
             requiredInfoTitleLbl.frame = CGRectMake(20,_settlementChannelNameLbl.frame.origin.y+_settlementChannelNameLbl.frame.size.height+(i*35),SCREEN_WIDTH-20,35);
             
-            NSArray *parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
+            NSArray *parameterOptionsArray ;
+            
+            if([ tempDict valueForKeyPath:@"settlement_channel_parameter.has_options"] != [NSNull null]  && [ tempDict valueForKeyPath:@"settlement_channel_parameter.options_model"] != [NSNull null])
+            {
+                parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.options_data"];
+            }
+            else{
+                parameterOptionsArray = [tempDict valueForKeyPath:@"settlement_channel_parameter.settlement_channel_parameter_options"];
+            }
+            
             NSString *txt;
             if(parameterOptionsArray.count > 0)
             {
-                for (int j = 0; j<parameterOptionsArray.count; j++) {
-                    
+                BOOL valueFound = false;
+                
+                for (int j = 0; j<parameterOptionsArray.count; j++)
+                {
                     NSDictionary * dict = [parameterOptionsArray objectAtIndex:j];
                     if([[dict valueForKey:@"id"] integerValue] == [[tempDict valueForKey:@"collected_data"] integerValue])
                     {
-                        txt = [ NSString stringWithFormat:@"%@: %@",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"],[dict valueForKey:@"title"]];
+                        valueFound = YES;
+                        if([ tempDict valueForKeyPath:@"settlement_channel_parameter.has_options"] != [NSNull null]  && [ tempDict valueForKeyPath:@"settlement_channel_parameter.options_model"] != [NSNull null])
+                        {
+                            txt = [ NSString stringWithFormat:@"%@: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"], [dict valueForKey:@"sort_code"], [dict valueForKey:@"title"]];
+                            txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
+                                                                  withString:@""];
+                        }
+                        else{
+                            
+                            txt = [ NSString stringWithFormat:@"%@: %@",[[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]capitalizedString],[dict valueForKey:@"title"]];
+                            txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
+                                                                  withString:@""];
+                        }
                         
-                        txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
-                                                              withString:@""];
                         break;
                     }
+                }
+                
+                if (valueFound == NO) {
+                    txt = [ NSString stringWithFormat:@"%@:",[[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]capitalizedString]];
+                    txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
+                                                          withString:@""];
                 }
             }
             else
             {
                 if(![[tempDict valueForKeyPath:@"collected_data"] isEqualToString:@""])
                 {
-                    txt = [ NSString stringWithFormat:@"%@: %@",[tempDict valueForKeyPath:@"ettlement_channel_parameter.parameter"],[tempDict valueForKeyPath:@"collected_data"]];
+                    txt = [ NSString stringWithFormat:@"%@: %@",[[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"]capitalizedString],[tempDict valueForKeyPath:@"collected_data"]];
                 }
                 else
                 {
-                    _statusView.frame = CGRectMake(_statusView.frame.origin.x, _statusView.frame.origin.y, _statusView.frame.size.width, _statusView.frame.size.height-35);
+                    _statusView.frame = CGRectMake(_statusView.frame.origin.x, _statusView.frame.origin.y, _statusView.frame.size.width, _statusView.frame.size.height-20);
                 }
             }
             
             txt = [txt stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[txt substringToIndex:1] uppercaseString]];
-            
             txt =  [txt stringByReplacingOccurrencesOfString:@"_"
                                                   withString:@" "];
-            
             requiredInfoTitleLbl.text = txt;
-            
-            requiredInfoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:30];
+            requiredInfoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Semibold" size:20];
             requiredInfoTitleLbl.textColor = [self colorWithHexString:@"51595c"];
             [_statusView addSubview:requiredInfoTitleLbl];
+            
             _lastView.frame = CGRectMake(10,requiredInfoTitleLbl.frame.origin.y+requiredInfoTitleLbl.frame.size.height+5,SCREEN_WIDTH-20,1);
         }
     }
-
-    float sizeOfContent = 0;
-    NSInteger wd = _statusView.frame.origin.y;
-    NSInteger ht = _statusView.frame.size.height+40;
-    sizeOfContent = wd+ht;
-    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     
     UITapGestureRecognizer * single = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnreferenceNumberLbl:)];
     [self.referenceNumberLbl addGestureRecognizer:single];
     single.numberOfTapsRequired = 1;
     self.referenceNumberLbl.userInteractionEnabled = YES;
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

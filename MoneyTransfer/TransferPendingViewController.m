@@ -32,7 +32,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     NSDate *date = [df dateFromString:myString];
-    [df setDateFormat:@"MMMM dd YYYY, HH:MM"];
+    [df setDateFormat:@"MMMM dd YYYY, HH:mm"];
     NSString *dateString = [df stringFromDate:date];
     _dateLbl.text = dateString;
     

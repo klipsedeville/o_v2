@@ -160,7 +160,9 @@
         
     }];
 }
-
+-(void)viewDidDisappear:(BOOL)animated{
+       [ _currencyView removeFromSuperview];
+}
 #pragma mark ######
 #pragma mark Click Action method
 #pragma mark ######

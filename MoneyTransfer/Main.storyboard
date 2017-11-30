@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="MyriadPro-Light.otf">
+        <array key="MyriadPro-Light.ttf">
             <string>MyriadPro-Light</string>
         </array>
         <array key="MyriadPro-Regular.otf">
@@ -2972,11 +2971,11 @@
                                                 <color key="textColor" red="0.32549019610000002" green="0.34509803919999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cQL-9r-PP6">
-                                                <rect key="frame" x="8" y="278" width="285" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hua-E9-syJ">
+                                                <rect key="frame" x="91" y="278" width="144" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
-                                                <color key="textColor" red="0.32549019610000002" green="0.34509803919999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="12"/>
+                                                <color key="textColor" red="0.031372549020000001" green="0.1960784314" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" misplaced="YES" id="Xpq-fB-NJH">
@@ -2984,6 +2983,13 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cQL-9r-PP6">
+                                                <rect key="frame" x="10" y="278" width="293" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                                <color key="textColor" red="0.32549019610000002" green="0.34509803919999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -3065,7 +3071,7 @@
                                     </view>
                                 </subviews>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="4" id="ysi-7g-xsb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="con" id="ysi-7g-xsb">
                                 <rect key="frame" x="0.0" y="64" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -3099,6 +3105,7 @@
                     <connections>
                         <outlet property="amountHeadingLbl" destination="owE-UE-Sdq" id="aOU-6c-RKz"/>
                         <outlet property="amountLbl" destination="cQL-9r-PP6" id="G6i-fT-6G9"/>
+                        <outlet property="amountValueS" destination="hua-E9-syJ" id="dWS-4W-v7a"/>
                         <outlet property="amountView" destination="28h-MP-Jw0" id="BbW-Jm-o2m"/>
                         <outlet property="billHeadingLbl" destination="jer-ha-IPt" id="UyF-zT-AnH"/>
                         <outlet property="billLbl" destination="H7m-u0-D6X" id="ILO-jh-Nud"/>
@@ -3326,7 +3333,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                             </barButtonItem>
                             <barButtonItem style="plain" id="aJp-YO-t2X">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Share Orobo" minimumFontSize="17" id="doe-6x-UYX">
-                                    <rect key="frame" x="52" y="10" width="196" height="25"/>
+                                    <rect key="frame" x="52" y="9.5" width="196" height="25"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="19"/>
@@ -5180,6 +5187,13 @@ too.   Tip : Include your referral code in your app review  when you rate us
                                                 <color key="textColor" red="0.32549019610000002" green="0.34509803919999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cep-JR-Nca">
+                                                <rect key="frame" x="90" y="242" width="150" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.031372549020000001" green="0.1960784314" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" misplaced="YES" id="vW5-Cj-B6b">
                                                 <rect key="frame" x="10" y="273" width="300" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -5245,6 +5259,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="AmountLbl" destination="Wzf-nT-FJA" id="qrv-c6-0YZ"/>
+                        <outlet property="amountValueS" destination="cep-JR-Nca" id="D3V-It-Uaj"/>
                         <outlet property="bankAccDescLabl" destination="vQ3-Tm-KsY" id="8j9-Ss-rZk"/>
                         <outlet property="bankAccNameLbl" destination="86E-Th-sS6" id="u0L-fb-0VD"/>
                         <outlet property="billOptionTitleLbl" destination="vyw-ZP-4NR" id="2oc-Ad-5R2"/>
@@ -6069,6 +6084,7 @@ too.   Tip : Include your referral code in your app review  when you rate us
         <image name="bars.png" width="20" height="20"/>
         <image name="camera.png" width="20" height="20"/>
         <image name="card.png" width="40" height="40"/>
+        <image name="con" width="239" height="53"/>
         <image name="downArrow.png" width="20" height="20"/>
         <image name="email.png" width="20" height="20"/>
         <image name="fwd" width="15" height="13"/>

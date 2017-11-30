@@ -36,7 +36,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     NSDate *date = [df dateFromString:myString];
-    [df setDateFormat:@"MMMM dd yyyy, HH:MM"];
+    [df setDateFormat:@"MMMM dd yyyy, HH:mm"];
     NSString *dateString = [df stringFromDate:date];
     _dateLbl.text = dateString;
     
@@ -50,7 +50,9 @@
     if( ![sendingAmount containsString:@"."]){
         sendingAmount = [ NSString stringWithFormat:@"%@.00", sendingAmount];
     }
-    _AmountLbl.text = [ NSString stringWithFormat:@"₦%@.00 ($%@)",[_transferStatusData valueForKeyPath:@"receiving_amount"], sendingAmount];
+    _AmountLbl.text = [ NSString stringWithFormat:@"₦%@.00",[_transferStatusData valueForKeyPath:@"receiving_amount"]];
+    _amountValueS.text = [ NSString stringWithFormat:@"($%@)", sendingAmount];
+    _amountValueS.frame = CGRectMake((_AmountLbl.text.length*10), _amountValueS.frame.origin.y, _amountValueS.frame.size.width, _amountValueS.frame.size.height);
        _statusLbl.text = [ NSString stringWithFormat:@"%@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
     
     // ---------------------Dynamic View----------------------------
@@ -102,8 +104,6 @@
                 infoTitleLbl.textColor = [UIColor whiteColor];
                 [addView addSubview:infoTitleLbl];
                 
-                stageMessage = i;
-                
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
                 button.tag = i;
                 [button addTarget:self
@@ -115,11 +115,11 @@
                 
                 UILabel *infoDateLbl = [[UILabel alloc] init];
                 infoDateLbl.frame = CGRectMake(35, 70+(i*50), SCREEN_WIDTH-20, 20);
-                NSString *myString = [ NSString stringWithFormat:@"%@",[selectedStageValue valueForKeyPath:@"modified"]];
+                NSString *myString = [ NSString stringWithFormat:@"%@",[[requiredFieldArray objectAtIndex:i] valueForKeyPath:@"created"]];
                 NSDateFormatter *df = [[NSDateFormatter alloc] init];
                 [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
                 NSDate *date = [df dateFromString:myString];
-                [df setDateFormat:@"MMMM dd yyyy, HH:MM"];
+                [df setDateFormat:@"MMMM dd yyyy, HH:mm"];
                 NSString *dateString = [df stringFromDate:date];
                 infoDateLbl.text = dateString;
                 infoDateLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:10];
@@ -316,13 +316,19 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag ==100) {
+        if (buttonIndex == 1){
         [ self confirmPaymentAPI];
+        }
     }
     else if (alertView.tag ==200) {
+        if (buttonIndex == 1){
         [ self cancelBillAPI];
+        }
     }
     else if (alertView.tag ==300) {
+        if (buttonIndex == 1){
         [self openDisputeAPI];
+        }
     }
     
 }

@@ -741,8 +741,9 @@
                             
                             _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service fee %@%@.00",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"],[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
                             
-                            _amountLbl.text = [ NSString stringWithFormat:@"%@ %@ (%@ %.02f)",[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],amountText,[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[[responseDic valueForKeyPath:@"PayLoad.data.sending_amount"]floatValue]];
-                            
+                            _amountLbl.text = [ NSString stringWithFormat:@"%@ %@)",[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],amountText];
+                            _amountValueS.text = [ NSString stringWithFormat:@"(%@ %.02f)",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[[responseDic valueForKeyPath:@"PayLoad.data.sending_amount"]floatValue]];
+                            _amountValueS.frame = CGRectMake((_amountLbl.text.length*10), _amountValueS.frame.origin.y, _amountValueS.frame.size.width, _amountValueS.frame.size.height);
                         });
                     }
                 }

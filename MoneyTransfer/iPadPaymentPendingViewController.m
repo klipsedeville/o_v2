@@ -31,7 +31,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     NSDate *date = [df dateFromString:myString];
-    [df setDateFormat:@"MMMM dd, HH:MM"];
+    [df setDateFormat:@"MMMM dd, HH:mm"];
     NSString *dateString = [df stringFromDate:date];
     _dateLbl.text = dateString;
     
@@ -45,7 +45,10 @@
     if( ![sendingAmount containsString:@"."]){
         sendingAmount = [ NSString stringWithFormat:@"%@.00", sendingAmount];
     }
-    _AmountLbl.text = [ NSString stringWithFormat:@"₦%@.00 ($%@)",[_transferStatusData valueForKeyPath:@"receiving_amount"], sendingAmount];
+    _AmountLbl.text = [ NSString stringWithFormat:@"₦%@.00",[_transferStatusData valueForKeyPath:@"receiving_amount"]];
+    _amountValueS.text = [ NSString stringWithFormat:@"($%@)", sendingAmount];
+    _amountValueS.frame = CGRectMake((_AmountLbl.text.length*17), _amountValueS.frame.origin.y, _amountValueS.frame.size.width, _amountValueS.frame.size.height);
+    
     _ExRateLbl.text = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service Fee: %@%@.00",[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKeyPath:@"receiving_currency.currency_symbol"],[_transferStatusData valueForKey:@"exchange_rate"],[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKey:@"fee"]];
     
     _statusLbl.text = [ NSString stringWithFormat:@"%@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
@@ -58,7 +61,7 @@
     billPaymentID = [ NSString stringWithFormat:@"%@",[[requiredFieldArray objectAtIndex:0] valueForKey:@"bill_payment_id"]];
     
     if ([requiredFieldArray count] > 0){
-        NSMutableArray *stageValue = [[NSMutableArray alloc]init];
+        stageValue = [[NSMutableArray alloc]init];
         NSDictionary *newData = [[NSDictionary alloc]init];
         for (NSDictionary *newData in requiredFieldArray) {
             [stageValue addObject:newData[@"stage"]];
@@ -67,15 +70,15 @@
         if ([stageValue count] > 0)
         {
             UIView *addView = [[UIView alloc]init];
-            addView.frame = CGRectMake(0, _ExRateLbl.frame.origin.y+_ExRateLbl.frame.size.height+20, SCREEN_WIDTH, ((stageValue.count * 60) + 50));
+            addView.frame = CGRectMake(0, _ExRateLbl.frame.origin.y+_ExRateLbl.frame.size.height+20, SCREEN_WIDTH, ((stageValue.count * 70) + 50));
             addView.backgroundColor = [UIColor clearColor];
             //            addView.backgroundColor = [self colorWithHexString:@"51595c"];
             [_scrollView addSubview:addView];
             
             UILabel *trackingLbl = [[UILabel alloc] init];
-            trackingLbl.frame = CGRectMake(10, 15, SCREEN_WIDTH-20, 20);
+            trackingLbl.frame = CGRectMake(10, 15, SCREEN_WIDTH-20, 30);
             trackingLbl.text = @"TRACKING";
-            trackingLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:14];
+            trackingLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:25];
             trackingLbl.textColor = [UIColor whiteColor];
             [addView addSubview:trackingLbl];
             
@@ -88,27 +91,36 @@
                 NSDictionary *selectedStageValue = [stageValue objectAtIndex:i];
                 
                 UIImageView *stageImage = [[UIImageView alloc]init];
-                stageImage.frame = CGRectMake(10, 50+(i*50), 20, 20);
+                stageImage.frame = CGRectMake(10, 62+(i*50), 25, 25);
                 stageImage.image = [UIImage imageNamed:@"track"];
                 [addView addSubview:stageImage];
                 
                 UILabel *infoTitleLbl = [[UILabel alloc] init];
-                infoTitleLbl.frame = CGRectMake(35, 50+(i*50), SCREEN_WIDTH-20, 20);
+                infoTitleLbl.frame = CGRectMake(40, 60+(i*50), SCREEN_WIDTH-20, 30);
                 infoTitleLbl.text = [ NSString stringWithFormat:@"%@",[selectedStageValue valueForKeyPath:@"title"]];
-                infoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:12];
+                infoTitleLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:25];
                 infoTitleLbl.textColor = [UIColor whiteColor];
                 [addView addSubview:infoTitleLbl];
                 
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                button.tag = i;
+                [button addTarget:self
+                           action:@selector(buttonPressedMethod:)
+                 forControlEvents:UIControlEventTouchDown];
+                [button setTitle:@"" forState:UIControlStateNormal];
+                button.frame = CGRectMake(10, 60+(i*50), 200, 30);
+                [addView addSubview:button];
+                
                 UILabel *infoDateLbl = [[UILabel alloc] init];
-                infoDateLbl.frame = CGRectMake(35, 70+(i*50), SCREEN_WIDTH-20, 20);
-                NSString *myString = [ NSString stringWithFormat:@"%@",[selectedStageValue valueForKeyPath:@"modified"]];
+                infoDateLbl.frame = CGRectMake(45, 80+(i*50), SCREEN_WIDTH-20, 30);
+                NSString *myString = [ NSString stringWithFormat:@"%@",[[requiredFieldArray objectAtIndex:i] valueForKeyPath:@"created"]];
                 NSDateFormatter *df = [[NSDateFormatter alloc] init];
                 [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
                 NSDate *date = [df dateFromString:myString];
-                [df setDateFormat:@"MMMM dd yyyy, HH:MM"];
+                [df setDateFormat:@"MMMM dd yyyy, HH:mm"];
                 NSString *dateString = [df stringFromDate:date];
                 infoDateLbl.text = dateString;
-                infoDateLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:10];
+                infoDateLbl.font = [UIFont fontWithName:@"MyriadPro-Regular" size:16];
                 infoDateLbl.textColor = [UIColor whiteColor];
                 [addView addSubview:infoDateLbl];
             }
@@ -122,7 +134,18 @@
 //    NSInteger ht = _statusView.frame.size.height+45;
 //    sizeOfContent = wd+ht;
 //    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
+    UITapGestureRecognizer * single = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnreferenceNumberLbl:)];
+    [self.referenceNumberLbl addGestureRecognizer:single];
+    single.numberOfTapsRequired = 1;
+    self.referenceNumberLbl.userInteractionEnabled = YES;
+}
 
+- (void) buttonPressedMethod : (id) sender {
+    UIButton *selectedButton = (UIButton *)sender;
+    NSLog(@"buttonTag: %li", (long)selectedButton.tag);
+    NSDictionary *selectedStageValue = [stageValue objectAtIndex:selectedButton.tag];
+    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Status" message:[ NSString stringWithFormat:@"%@",[selectedStageValue valueForKeyPath:@"message"]] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+    [alertview show];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -133,6 +156,19 @@
 #pragma mark ########
 #pragma mark Click Action methods
 #pragma mark ########
+
+- (void)tapOnreferenceNumberLbl:(UITapGestureRecognizer *)tapGesture
+{
+    if (tapGesture.state == UIGestureRecognizerStateEnded)
+    {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.referenceNumberLbl.text;
+        // toast with a specific duration and position
+        [self.view makeToast:[NSString stringWithFormat:@"%@",@"Reference copied to clipboard."]
+                    duration:2.0
+                    position:CSToastPositionBottom];
+    }
+}
 
 -(IBAction)backBtnClicked:(id)sender{
     
@@ -279,13 +315,19 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag ==100) {
+        if (buttonIndex == 1){
         [ self confirmPaymentAPI];
+        }
     }
     else if (alertView.tag ==200) {
+         if (buttonIndex == 1){
         [ self cancelBillAPI];
+         }
     }
     else if (alertView.tag ==300) {
+         if (buttonIndex == 1){
         [self openDisputeAPI];
+         }
     }
     
 }

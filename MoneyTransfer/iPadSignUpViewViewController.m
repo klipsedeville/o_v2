@@ -29,7 +29,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+   
     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -148,6 +148,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 -(void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
@@ -375,7 +376,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     else if (_currencyTableView.hidden == YES) {
         _currencyTableView.hidden = NO;
         
-        _currencyTableView.frame =CGRectMake(_currencyBtn.frame.origin.x,_currencyBtn.frame.origin.y ,_currencyBtn.frame.size.width, 40*(allCurrencyArray.count));
+        _currencyTableView.frame =CGRectMake(_currencyBtn.frame.origin.x,_currencyBtn.frame.origin.y ,_currencyBtn.frame.size.width, 60*(allCurrencyArray.count));
         [_currencyTableView reloadData];
     }
     else
@@ -567,6 +568,11 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                             popUp.callFrom = userPhoneNumber;
                             popUp.delegate = self;
                             [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Success!" message:@"Your number has been verified." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//                                alertview.tag = 222;
+                                [alertview show];
+                            });
                         }
                         else{
                             
@@ -607,6 +613,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
                     [HUD removeFromSuperview];
+                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection error. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alertview show];
                 });
                 
             }
@@ -615,6 +623,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
             dispatch_async(dispatch_get_main_queue(), ^{
                 [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
                 [HUD removeFromSuperview];
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection error. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertview show];
             });
         }
     }];
@@ -910,7 +920,9 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"stop"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
+    if (alertView.tag == 222){
+      
+    }
 }
 
 #pragma mark ########
@@ -965,13 +977,30 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (textField == _firstNameTextfield){
-        
-    }
     UIView *tempVW = [[ UIView alloc] init];
     tempVW.frame = CGRectMake(textField.frame.origin.x, 0, textField.frame.size.width, textField.frame.size.height );
     [self scrollViewToCenterOfScreen:tempVW];
     
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    BOOL value;
+    value = YES;
+    if (textField == _numberTextfield){
+        if ([textField.text   isEqual: @"0"]) {
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Please exclude '0' not required." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertview show];
+            
+            textField.text = @"";
+            value = YES;
+        }
+        else{
+            value = NO;
+        }
+    }
+    
+    
+    return YES;
 }
 @end
 

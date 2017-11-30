@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h> 
 #import "MBProgressHUD.h"
+#import "UIView+Toast.h"
 
 @interface iPadPaymentPendingViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate>{
     MBProgressHUD *HUD;
     NSString *billPaymentID;
+    NSMutableArray *stageValue;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *transferStatusData;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *billTitleLbl;
 @property (strong, nonatomic) IBOutlet UILabel *billOptionTitleLbl;
 @property (strong, nonatomic) IBOutlet UILabel *AmountLbl;
+@property (weak, nonatomic) IBOutlet UILabel *amountValueS;
 @property (strong, nonatomic) IBOutlet UILabel *ExRateLbl;
 
 // Click Events

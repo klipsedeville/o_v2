@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="MyriadPro-Light.otf">
+        <array key="MyriadPro-Light.ttf">
             <string>MyriadPro-Light</string>
         </array>
         <array key="MyriadPro-Regular.otf">
@@ -2505,7 +2506,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ceC-7U-s5k">
-                                                <rect key="frame" x="20" y="118" width="212" height="45"/>
+                                                <rect key="frame" x="20" y="118" width="728" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="26"/>
                                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2896,6 +2897,13 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q4p-Uq-IUC">
+                                                <rect key="frame" x="150" y="247" width="300" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="25"/>
+                                                <color key="textColor" red="0.031372549020000001" green="0.1960784314" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" id="XTv-sc-hob">
                                                 <rect key="frame" x="20" y="284" width="728" height="2"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -3016,6 +3024,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                     <connections>
                         <outlet property="amountHeadingLbl" destination="lYS-TK-CxB" id="Zpe-ZZ-vbZ"/>
                         <outlet property="amountLbl" destination="uxl-4o-60O" id="ezf-5T-6Kh"/>
+                        <outlet property="amountValueS" destination="Q4p-Uq-IUC" id="2Sx-G3-nFD"/>
                         <outlet property="amountView" destination="z0d-zI-sb8" id="xbL-wd-Bxw"/>
                         <outlet property="billHeadingLbl" destination="eQ0-YQ-mem" id="ajz-lD-V7z"/>
                         <outlet property="billLbl" destination="bA6-Yc-OZ5" id="YYf-o1-RrR"/>
@@ -4067,6 +4076,13 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                                 <color key="textColor" red="0.32549019610000002" green="0.34509803919999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S9C-h7-g6j">
+                                                <rect key="frame" x="100" y="375" width="300" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="25"/>
+                                                <color key="textColor" red="0.031372549020000001" green="0.1960784314" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" misplaced="YES" id="WXB-3b-zgc">
                                                 <rect key="frame" x="10" y="410" width="748" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -4120,6 +4136,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                     <connections>
                         <outlet property="AmountLbl" destination="yhA-v6-Ig3" id="t4E-7u-VWx"/>
                         <outlet property="ExRateLbl" destination="Vxl-oq-qQx" id="SBd-nR-I7S"/>
+                        <outlet property="amountValueS" destination="S9C-h7-g6j" id="6Pf-T2-zj4"/>
                         <outlet property="bankAccDescLabl" destination="zfI-Oc-ogc" id="v8s-TV-HXd"/>
                         <outlet property="bankAccNameLbl" destination="MuC-Xj-74I" id="cVW-Ay-Dp9"/>
                         <outlet property="billOptionTitleLbl" destination="6oE-Mu-t4Q" id="boQ-gg-inW"/>
@@ -5062,7 +5079,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="p29-nh-EBB">
-                                        <rect key="frame" x="20" y="10" width="30" height="30"/>
+                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>

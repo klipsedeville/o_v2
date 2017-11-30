@@ -220,10 +220,10 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                 [self.numberTextfield becomeFirstResponder];
             }
             else{
-//                NSString *codeString = [_numberLabel.text
-//                                        stringByReplacingOccurrencesOfString:@" (" withString:@""];
-//                userPhoneNumber = [NSString stringWithFormat:@"%@%@", codeString, self.numberTextfield.text];
-                userPhoneNumber = [NSString stringWithFormat:@"%@", self.numberTextfield.text];
+                NSString *codeString = [_numberLabel.text
+                                        stringByReplacingOccurrencesOfString:@" (" withString:@""];
+                userPhoneNumber = [NSString stringWithFormat:@"%@%@", codeString, self.numberTextfield.text];
+//                userPhoneNumber = [NSString stringWithFormat:@"%@", self.numberTextfield.text];
                 BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
                 [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
@@ -558,9 +558,21 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                         [HUD removeFromSuperview];
                         if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
                         {
+                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
+                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                            CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
+                            popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+                            popUp.OkBtnTitle = @"verify";
+                            [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+                            popUp.callTo = callingPhoneNumber;
+                            popUp.callFrom = userPhoneNumber;
+                            popUp.delegate = self;
+                            [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Success!" message:@"Your number has been verified." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                                alertview.tag = 222;
+//                                alertview.tag = 222;
                                 [alertview show];
                             });
                             
@@ -912,18 +924,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (alertView.tag == 222){
-        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
-        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-        CustomPopUp *popUp = [[CustomPopUp alloc]initWithNibName:@"CustomPopUp_iPhone"  bundle:nil];
-        popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-        popUp.OkBtnTitle = @"verify";
-        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
-        popUp.callTo = callingPhoneNumber;
-        popUp.callFrom = userPhoneNumber;
-        popUp.delegate = self;
-        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+        
     }
 }
 
