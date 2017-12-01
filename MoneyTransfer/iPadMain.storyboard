@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="MyriadPro-Light.ttf">
+        <array key="MyriadPro-Light.otf">
             <string>MyriadPro-Light</string>
         </array>
         <array key="MyriadPro-Regular.otf">
@@ -5132,9 +5131,10 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your email address here" textAlignment="natural" minimumFontSize="17" id="Mbv-ir-UnA">
                                                 <rect key="frame" x="240" y="230" width="368" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lw5-mh-vsE" id="m45-5E-B7E"/>
                                                 </connections>
@@ -5222,9 +5222,10 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your number" minimumFontSize="17" id="3ax-18-70m">
                                                 <rect key="frame" x="400" y="230" width="200" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lw5-mh-vsE" id="cB6-j0-JLv"/>
                                                 </connections>
@@ -5275,6 +5276,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your first name" textAlignment="center" minimumFontSize="17" id="6Yf-DK-xyT">
                                                 <rect key="frame" x="160" y="230" width="481" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5290,6 +5292,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your last name" textAlignment="center" minimumFontSize="17" id="nIf-3f-gff">
                                                 <rect key="frame" x="160" y="320" width="481" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5305,6 +5308,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your address" textAlignment="center" minimumFontSize="17" id="P7c-8t-LQo">
                                                 <rect key="frame" x="160" y="410" width="481" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5358,6 +5362,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="your password" textAlignment="center" minimumFontSize="17" id="feR-2n-mjt">
                                                 <rect key="frame" x="160" y="230" width="481" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5373,6 +5378,7 @@ a discount on their first order, you 'll get a discount too.  Tip : Include 
                                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" textAlignment="center" minimumFontSize="17" id="XlA-8s-88a">
                                                 <rect key="frame" x="160" y="320" width="481" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>

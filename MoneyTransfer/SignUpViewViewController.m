@@ -29,6 +29,9 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"status"];
+     
      [self.navigationController setNavigationBarHidden:YES animated:YES];
     // Do any additional setup after loading the view.
     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
@@ -113,14 +116,18 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 
 -(void) removeShade {
     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
-        
-        _view1_email.hidden = YES;
-        _view2_number.hidden = YES;
-        _view3_details.hidden = NO;
-        _view4_password.hidden = YES;
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"status"]  isEqual: @"verify"]){
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Success!" message:@"Your number has been verified." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 222;
+        [alertview show];
+       
         return;
-
+    }
+    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"status"]  isEqual: @"fail"]){
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Oops!" message:@"Number verification was not successful. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alertview show];
+        
+        return;
     }
     else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
     {
@@ -132,11 +139,11 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
         [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
         [self getAuthStatusWebService:referneceString];
     }
-    //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
+//    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
 //            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 //            alertview.tag = 1001;
 //            [alertview show];
-    //    }
+//        }
     else{
         
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -167,13 +174,14 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
     [self getCurrencyList];
     
     UIColor *color = [UIColor whiteColor];
-    _emailTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your email address here" attributes:@{NSForegroundColorAttributeName: color}];
-    _numberTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your number" attributes:@{NSForegroundColorAttributeName: color}];
-    _firstNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your first name" attributes:@{NSForegroundColorAttributeName: color}];
-    _lastnameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your last name" attributes:@{NSForegroundColorAttributeName: color}];
-    _addressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your address" attributes:@{NSForegroundColorAttributeName: color}];
-    _passwordTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your password" attributes:@{NSForegroundColorAttributeName: color}];
-    _repeatPssTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"repeat password" attributes:@{NSForegroundColorAttributeName: color}];
+    _emailTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" your email address here" attributes:@{NSForegroundColorAttributeName: color}];
+    _numberTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" your number" attributes:@{NSForegroundColorAttributeName: color}];
+    _firstNameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" your first name" attributes:@{NSForegroundColorAttributeName: color}];
+    _lastnameTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" your last name" attributes:@{NSForegroundColorAttributeName: color}];
+    _addressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" your address" attributes:@{NSForegroundColorAttributeName: color}];
+    _passwordTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" your password" attributes:@{NSForegroundColorAttributeName: color}];
+    _repeatPssTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" repeat password" attributes:@{NSForegroundColorAttributeName: color}];
+
 }
 
 - (IBAction)ActionCrossBtn:(id)sender {
@@ -234,7 +242,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
 //                _view2_number.hidden = YES;
 //                _view3_details.hidden = NO;
 //                _view4_password.hidden = YES;
-//                return;
+                return;
             }
     }
      if (_view3_details.hidden == NO){
@@ -261,7 +269,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                     _view2_number.hidden = YES;
                     _view3_details.hidden = YES;
                     _view4_password.hidden = NO;
-                    [_nextBtn setTitle:@"CONTINUE" forState:normal];
+                    [_nextBtn setTitle:@"COMPLETE" forState:normal];
                     return;
                 }
      }
@@ -558,6 +566,7 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                         [HUD removeFromSuperview];
                         if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
                         {
+                            dispatch_async(dispatch_get_main_queue(), ^{
                             [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
                             [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
@@ -570,10 +579,6 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
                             popUp.callFrom = userPhoneNumber;
                             popUp.delegate = self;
                             [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Success!" message:@"Your number has been verified." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//                                alertview.tag = 222;
-                                [alertview show];
                             });
                             
                         }
@@ -924,7 +929,10 @@ self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (alertView.tag == 222){
-        
+        _view1_email.hidden = YES;
+        _view2_number.hidden = YES;
+        _view3_details.hidden = NO;
+        _view4_password.hidden = YES;
     }
 }
 

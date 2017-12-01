@@ -30,11 +30,10 @@
 }
 
 - (IBAction)okBtnClicked:(id)sender{
+    
      if ([_OkBtnTitle  isEqual: @"verify"]){
-         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
          [[NSUserDefaults standardUserDefaults] setValue:@"Continue" forKey:@"callStatusValue"];
          [[NSUserDefaults standardUserDefaults] synchronize];
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
      }
      else{
     NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
@@ -49,12 +48,11 @@
         alert.tag = 1001;
         [alert show];
     }
-
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
      }
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
 }
 
 - (IBAction)ActionCrossBtn:(id)sender
@@ -68,9 +66,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+             _touchView.frame = CGRectMake(3, 60, 240, 155);
      [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     self.view.layer.cornerRadius = 10.0f;
+//    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"status"]  isEqual: @"fail"]){
+//        ([[NSUserDefaults standardUserDefaults]removeObjectForKey:@"timeStamp"]);
+//        counter = 0;
+//    }
+//    else{
     counter = 900;
+//    }
     _timelbl.text = [NSString stringWithFormat: @"%d", counter];
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(hideManual) userInfo:nil repeats:YES];
     [self hideManual];
@@ -80,11 +85,15 @@
     UITapGestureRecognizer *tapGestureCall = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidRecognizeTapGesture:)];
     [_touchView addGestureRecognizer:tapGestureCall];
     if ([_OkBtnTitle  isEqual: @"verify"]){
+        [[NSUserDefaults standardUserDefaults] setValue:@"verify" forKey:@"status"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
         _statusImage.image = [UIImage imageNamed:@"verify"];
         _verifyView.hidden = NO;
     }
     else if ([_OkBtnTitle  isEqual: @"expire"]){
+         [[NSUserDefaults standardUserDefaults] setValue:@"fail" forKey:@"status"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
         [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
         _statusImage.image = [UIImage imageNamed:@"expire"];
         _verifyView.hidden = NO;
@@ -137,6 +146,9 @@
             [timer2 invalidate];
             [timer invalidate];
             timer = nil;
+            [[NSUserDefaults standardUserDefaults] setValue:@"fail" forKey:@"status"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            _touchView.frame = CGRectMake(11, 230, 225, 40);
             [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
             _statusImage.image = [UIImage imageNamed:@"expire"];
             _verifyView.hidden = NO;
@@ -155,6 +167,9 @@
         [timer2 invalidate];
         [timer invalidate];
         timer = nil;
+        [[NSUserDefaults standardUserDefaults] setValue:@"fail" forKey:@"status"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        _touchView.frame = CGRectMake(11, 230, 225, 40);
         [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
         _statusImage.image = [UIImage imageNamed:@"expire"];
         
@@ -174,6 +189,13 @@
 
 - (void)DidRecognizeTapGesture:(UITapGestureRecognizer*)gesture
 {
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"status"]  isEqual: @"fail"]){
+        
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+    }
+    else{
+    
     NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
     NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
     
@@ -189,6 +211,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+    }
 }
 
 @end
