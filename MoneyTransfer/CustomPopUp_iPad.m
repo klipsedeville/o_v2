@@ -24,46 +24,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
-    
-    
     return self;
 }
 
-- (IBAction)okBtnClicked:(id)sender{
-    if ([_OkBtnTitle  isEqual: @"verify"]){
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-        [[NSUserDefaults standardUserDefaults] setValue:@"Continue" forKey:@"callStatusValue"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
-    }
-    else{
-        NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
-        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
-        
-        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
-            [[UIApplication sharedApplication] openURL:phoneUrl];
-            
-        } else
-        {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            alert.tag = 1001;
-            [alert show];
-        }
-        
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
-    }
-}
 
-- (IBAction)ActionCrossBtn:(id)sender
-{
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShadeiPad" object:self];
-    
-}
 
 - (void)viewDidLoad
 {
@@ -79,6 +43,7 @@
     
     UITapGestureRecognizer *tapGestureCall = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidRecognizeTapGesture:)];
     [_touchView addGestureRecognizer:tapGestureCall];
+    
     if ([_OkBtnTitle  isEqual: @"verify"]){
         [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
         _statusImage.image = [UIImage imageNamed:@"verify"];
@@ -102,6 +67,39 @@
     
 }
 
+- (IBAction)okBtnClicked:(id)sender{
+    if ([_OkBtnTitle  isEqual: @"verify"])
+    {
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+        [[NSUserDefaults standardUserDefaults] setValue:@"Continue" forKey:@"callStatusValue"];
+    }
+    else{
+        NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
+        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+            [[UIApplication sharedApplication] openURL:phoneUrl];
+            
+        } else
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            alert.tag = 1001;
+            [alert show];
+        }
+        
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+}
+
+- (IBAction)ActionCrossBtn:(id)sender
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShadeiPad" object:self];
+    
+}
 -(void)statusValue{
     NSString *value = [[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"];
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"verifying"]  isEqual: @"Yes"]){
@@ -125,6 +123,7 @@
         NSDate *d2 = [NSDate dateWithTimeIntervalSince1970:[[[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"]doubleValue]];
         NSDateComponents *components = [c components:NSSecondCalendarUnit fromDate:d1 toDate:d2 options:0];
         counter = components.second;
+        
         if(counter >= 1)
         {
             _timelbl.text = [NSString stringWithFormat: @"%d", counter];
@@ -134,6 +133,9 @@
             [timer2 invalidate];
             [timer invalidate];
             timer = nil;
+            [[NSUserDefaults standardUserDefaults] setValue:@"fail" forKey:@"status"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            _touchView.frame = CGRectMake(11, 230, self.touchView.frame.size.width, 40);
             [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
             _statusImage.image = [UIImage imageNamed:@"expire"];
             _verifyView.hidden = NO;
@@ -152,6 +154,9 @@
             [timer2 invalidate];
             [timer invalidate];
             timer = nil;
+            [[NSUserDefaults standardUserDefaults] setValue:@"fail" forKey:@"status"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            _touchView.frame = CGRectMake(11, 230, self.touchView.frame.size.width, 40);
             [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
             _statusImage.image = [UIImage imageNamed:@"expire"];
             
@@ -159,6 +164,47 @@
         }
         [[ NSUserDefaults standardUserDefaults] setInteger:counter forKey:@"timeStamp"];
     }
+    
+    //    if ([[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"] != nil){
+    //        NSCalendar *c = [NSCalendar currentCalendar];
+    //        NSDate *d1 = [NSDate date];
+    //        NSDate *d2 = [NSDate dateWithTimeIntervalSince1970:[[[NSUserDefaults standardUserDefaults]valueForKey:@"timeStamp"]doubleValue]];
+    //        NSDateComponents *components = [c components:NSSecondCalendarUnit fromDate:d1 toDate:d2 options:0];
+    //        counter = components.second;
+    //        if(counter >= 1)
+    //        {
+    //            _timelbl.text = [NSString stringWithFormat: @"%d", counter];
+    //        }
+    //        if(counter == 0)
+    //        {
+    //            [timer2 invalidate];
+    //            [timer invalidate];
+    //            timer = nil;
+    //            [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
+    //            _statusImage.image = [UIImage imageNamed:@"expire"];
+    //            _verifyView.hidden = NO;
+    //        }
+    //    }
+    //    else{
+    //        counter = counter - 1;
+    //        if(counter >= 1)
+    //        {
+    //            _timelbl.text = [NSString stringWithFormat: @"%d", counter];
+    //        }
+    //        if(counter == 0)
+    //        {
+    //            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
+    //            [[NSUserDefaults standardUserDefaults] synchronize];
+    //            [timer2 invalidate];
+    //            [timer invalidate];
+    //            timer = nil;
+    //            [_OkBtn setTitle:@"CONTINUE" forState:UIControlStateNormal];
+    //            _statusImage.image = [UIImage imageNamed:@"expire"];
+    //
+    //            _verifyView.hidden = NO;
+    //        }
+    //        [[ NSUserDefaults standardUserDefaults] setInteger:counter forKey:@"timeStamp"];
+    //    }
 }
 
 #pragma mark ######
@@ -167,22 +213,29 @@
 
 - (void)DidRecognizeTapGesture:(UITapGestureRecognizer*)gesture
 {
-    NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
-    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
-    
-    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
-        [[UIApplication sharedApplication] openURL:phoneUrl];
-    } else
-    {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        alert.tag = 1001;
-        [alert show];
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"status"]  isEqual: @"fail"]){
+        
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
     }
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-    [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+    else{
+        
+        NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
+        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+            [[UIApplication sharedApplication] openURL:phoneUrl];
+        } else
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            alert.tag = 1001;
+            [alert show];
+        }
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"callStatusValue"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
+    }
 }
-
-
 @end
+

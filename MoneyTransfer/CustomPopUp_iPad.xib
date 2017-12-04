@@ -141,6 +141,6 @@
         </view>
     </objects>
     <resources>
-        <image name="verify" width="132" height="121"/>
+        <image name="verify" width="100" height="92"/>
     </resources>
 </document>
