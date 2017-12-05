@@ -45,15 +45,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
     
     // Remove the notifications
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
-    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
     // Check User Session or not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
- userDataDict = [userDataDict valueForKeyPath:@"User"];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
     double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
     {
@@ -72,7 +69,7 @@
     _last4DigitCreditCardLbl.text = [ NSString stringWithFormat:@"%@",[userDataDict valueForKeyPath:@"card.title"]];
     
     _sendingAmountTransferLbl.text = [ NSString stringWithFormat:@"%@%@",[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKeyPath:@"sending_amount"]];
-
+    
     _SendingMoneyUserNameLbl.text = [ NSString stringWithFormat:@"%@",[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_username"]];
     NSString *str = [[ NSString stringWithFormat:@"%@",[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_username_country"]]lowercaseString];
     NSMutableString *result = [str mutableCopy];
@@ -84,9 +81,9 @@
                             }];
     NSLog(@"%@", result);
     _sendingMoneyUserCountryNameLbl.text = result;
-
+    
     _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 to %@%@.00 Fee %@%@.00",[_transferConfirmMoneyInfo valueForKey:@"sending_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKey:@"receiving_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKey:@"exchange_rate"],[_transferConfirmMoneyInfo valueForKeyPath:@"sending_money_user_CurrencySymbol"],[_transferConfirmMoneyInfo valueForKey:@"fee"]];
-
+    
     sending_country_currency = [_transferConfirmMoneyInfo valueForKey:@"sending_country_currency"];
     receiving_country_currency = [_transferConfirmMoneyInfo valueForKey:@"receiving_country_currency"];
     sending_amount = [_transferConfirmMoneyInfo valueForKey:@"sending_amount"];
@@ -591,3 +588,4 @@
 }
 
 @end
+

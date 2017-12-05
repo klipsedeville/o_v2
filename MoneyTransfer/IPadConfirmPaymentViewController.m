@@ -31,8 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
-
+    [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
@@ -49,9 +49,9 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
     
     // Remove the notifications
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
-//
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
+    //
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -82,7 +82,7 @@
         NSDictionary *fieldDic = [ _paymentUserData objectAtIndex:i];
         NSDictionary *valueDic = [ _DataArray objectAtIndex:i];
         
-       NSString * fldText = [ valueDic objectForKey:@"collected_data"];
+        NSString * fldText = [ valueDic objectForKey:@"collected_data"];
         
         UILabel *titleLbl = [[UILabel alloc] init];
         titleLbl.frame = CGRectMake(20, 10+(i*93), SCREEN_WIDTH-40, 26);
@@ -784,11 +784,6 @@
         [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
         [self getAuthStatusWebService:referneceString];
     }
-    //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
-    //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //        alertview.tag = 2001;
-    //        [alertview show];
-    //    }
     else{
         
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -815,3 +810,4 @@
 }
 
 @end
+

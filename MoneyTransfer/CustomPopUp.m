@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _touchView.frame = CGRectMake(3, 60, 240, 155);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     self.view.layer.cornerRadius = 10.0f;

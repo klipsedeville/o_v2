@@ -35,7 +35,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
+    [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -44,8 +44,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShadeiPad" object:nil];
     
     // Remove the notifications
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
     
     _scrollView.bounces = NO;
     
@@ -194,27 +194,6 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [self.view addGestureRecognizer:gueture];
     
 }
-
--(void) viewWillDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-}
-
--(void)handletap:(UITapGestureRecognizer*)sender
-{
-    [self.currencyTableView setHidden:YES];
-    
-    self.scrollView.scrollEnabled = YES;
-    
-}
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if ([touch.view isDescendantOfView:self.currencyTableView]) {
-        return NO;
-    }
-    return YES;
-}
-
-
 -(void) viewWillAppear:(BOOL)animated{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
@@ -263,6 +242,28 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     
     [self getCurrencyList];
 }
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+}
+
+-(void)handletap:(UITapGestureRecognizer*)sender
+{
+    [self.currencyTableView setHidden:YES];
+    
+    self.scrollView.scrollEnabled = YES;
+    
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isDescendantOfView:self.currencyTableView]) {
+        return NO;
+    }
+    return YES;
+}
+
+
+
 
 
 #pragma mark #####
@@ -724,7 +725,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
              
              NSDictionary *dict = [ allCurrencyArray objectAtIndex:0];
              _currencyIDLbl.text = [dict valueForKey:@"currency_code"];
-
+             
              NSString *phoneSTR = [dict valueForKey:@"country_code"];
              if([[dict valueForKey:@"country_code"] isEqualToString:@""]){
                  
@@ -912,7 +913,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 {
     NSDictionary *dict = [ allCurrencyArray objectAtIndex:indexPath.row];
     _currencyIDLbl.text = [dict valueForKey:@"currency_code"];
-
+    
     NSString *phoneSTR = [dict valueForKey:@"country_code"];
     if([[dict valueForKey:@"country_code"] isEqualToString:@""]){
         
@@ -927,7 +928,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         _phoneNumberTextField.text = [NSString stringWithFormat:@"+%@", [dict valueForKey:@"country_code"]];
         
     }
-
+    
     selectCountryCode = [dict valueForKey:@"id"];
     NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[dict valueForKey:@"flag"]];
     
@@ -3414,7 +3415,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 -(void) removeShade {
     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
     
-     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
         
         // Call change password
         [HUD removeFromSuperview];
@@ -3426,59 +3427,54 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         
         
     }
-         else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
-         {
-             
-             
-             NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
-             BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
-             [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-             [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
-             [self getAuthStatusWebService:referneceString];
-         }
-         //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
-         //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-         //        alertview.tag = 1001;
-         //        [alertview show];
-         //    }
-         else{
-             
-             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-             alertview.tag = 1001;
-             [alertview show];
-         }
+    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
+    {
+        
+        
+        NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
+        BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+        [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+        [self getAuthStatusWebService:referneceString];
+    }
+    else{
+        
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 1001;
+        [alertview show];
+    }
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValueiPad"];
 }
 
 - (NSString *)stringWithRandomSuffixForFile:(NSString *)file withLength:(int)length
-    {
-        NSString *alphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        NSString *fileExtension = [file pathExtension];
-        NSString *fileName = [file stringByDeletingPathExtension];
-        NSMutableString *randomString = [NSMutableString stringWithFormat:@"%@_", fileName];
-        
-        for (int x = 0; x < length; x++) {
-            [randomString appendFormat:@"%C", [alphabet characterAtIndex: arc4random_uniform((int)[alphabet length]) % [alphabet length]]];
-        }
-        [randomString appendFormat:@".%@", fileExtension];
-        
-        NSLog(@"## randomString: %@ ##", randomString);
-        return randomString;
-    }
+{
+    NSString *alphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSString *fileExtension = [file pathExtension];
+    NSString *fileName = [file stringByDeletingPathExtension];
+    NSMutableString *randomString = [NSMutableString stringWithFormat:@"%@_", fileName];
     
+    for (int x = 0; x < length; x++) {
+        [randomString appendFormat:@"%C", [alphabet characterAtIndex: arc4random_uniform((int)[alphabet length]) % [alphabet length]]];
+    }
+    [randomString appendFormat:@".%@", fileExtension];
+    
+    NSLog(@"## randomString: %@ ##", randomString);
+    return randomString;
+}
+
 #pragma mark ######
 #pragma mark AlertView Delegate method
 #pragma mark ######
-    
-    - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-    {
-        if (alertView.tag ==1001) {
-            
-            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"stop"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag ==1001) {
         
+        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"stop"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
+}
+
 @end
-    
+
+

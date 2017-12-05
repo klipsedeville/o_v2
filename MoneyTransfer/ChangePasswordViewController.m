@@ -31,13 +31,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Check user Session Expired  or not
-     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
+    [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
-      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
     // Remove the notifications
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
-
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
+    
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     //
     userDataDict = [userDataDict valueForKeyPath:@"User"];
@@ -100,10 +100,7 @@
     _userConfirmPwdLbl.tag = 3;
     
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(void) viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
 }
@@ -112,7 +109,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
-
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -172,7 +169,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
         
-         [self callAuthWebService:userPhoneNumber];
+        [self callAuthWebService:userPhoneNumber];
         
     }
     
@@ -419,7 +416,7 @@
 -(void)GetChangePassword
 {
     // Change password
-
+    
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     
     userDataDict = [ userDataDict valueForKey:@"User"] ;
@@ -437,32 +434,32 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:_userNewPwdTextField.text , @"password", _userConfirmPwdTextField.text, @"cpassword", nil] options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
-                            // Encrypt the user token using public data and iv data
-                            NSData *EncodedData = [FBEncryptorAES encryptData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
-                                                                          key:decodedKeyData
-                                                                           iv:decodedIVData];
-                            
-                            NSString *base64TokenString = [EncodedData base64EncodedStringWithOptions:0];
-                            
-                            NSMutableData *PostData =[[NSMutableData alloc] initWithData:[base64TokenString dataUsingEncoding:NSUTF8StringEncoding]];
-                            
-                            NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@", BaseUrl, ChangePassword];
-                            NSURL *url = [NSURL URLWithString:ApiUrl];
-                            
-                            NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-                            NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-                            
-                            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-                            request.HTTPMethod = @"POST";
-                            
-                            [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                            [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                            [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
-                            [request addValue: userTokenString forHTTPHeaderField:@"token"];
-                            
-                            [request setHTTPBody:PostData];
-                            
-                            NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    // Encrypt the user token using public data and iv data
+    NSData *EncodedData = [FBEncryptorAES encryptData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                  key:decodedKeyData
+                                                   iv:decodedIVData];
+    
+    NSString *base64TokenString = [EncodedData base64EncodedStringWithOptions:0];
+    
+    NSMutableData *PostData =[[NSMutableData alloc] initWithData:[base64TokenString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@", BaseUrl, ChangePassword];
+    NSURL *url = [NSURL URLWithString:ApiUrl];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request addValue: userTokenString forHTTPHeaderField:@"token"];
+    
+    [request setHTTPBody:PostData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         //if communication was successful
         
@@ -509,12 +506,12 @@
                     {
                         [HUD removeFromSuperview];
                         NSLog(@"Change Password...%@",responseDic );
-                       
+                        
                         dispatch_async(dispatch_get_main_queue(), ^{
                             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Your password has been changed" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
                             alertview.tag = 100;                        [alertview show];
                             [HUD removeFromSuperview];
-
+                            
                         });
                     }
                 }
@@ -523,9 +520,9 @@
         }
         
     }];
-                            
+    
     [postDataTask resume];
-                            
+    
 }
 
 #pragma  mark ############
@@ -1030,31 +1027,22 @@
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"])
     {
         
-               // Call change password
-                [HUD removeFromSuperview];
-                HUD = [[MBProgressHUD alloc] initWithView:self.view];
-                [self.view addSubview:HUD];
-                HUD.labelText = NSLocalizedString(@"Loading...", nil);
-                [HUD show:YES];
-                [self GetChangePassword ];
-        
-        
+        // Call change password
+        [HUD removeFromSuperview];
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        HUD.labelText = NSLocalizedString(@"Loading...", nil);
+        [HUD show:YES];
+        [self GetChangePassword ];
     }
     else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
     {
-        
-        
         NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
         BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
         [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
         [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
         [self getAuthStatusWebService:referneceString];
     }
-    //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
-    //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //        alertview.tag = 2001;
-    //        [alertview show];
-    //    }
     else{
         
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -1081,3 +1069,4 @@
 }
 
 @end
+

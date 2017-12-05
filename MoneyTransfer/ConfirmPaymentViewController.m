@@ -29,16 +29,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
-    // Remove the notifications
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
+    [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     
+    // Remove the notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
     payBillDict= [[NSMutableDictionary alloc]init];
     
-    // Do any additional setup after loading the view.
 }
 -(void) viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
@@ -53,9 +50,9 @@
     
     // Check User Session expire or Not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-//    
-        userDataDict = [userDataDict valueForKeyPath:@"User"];
-        double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
+    //
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
     {
         NSLog(@"User Session expired");
@@ -75,13 +72,11 @@
     _optionLbl.text = [paymentData valueForKey:@"option_name"];
     _amountLbl.text = [paymentData valueForKey:@"amount"];
     
-    int i = 0;
-    
     _fieldView.frame = CGRectMake(_fieldView.frame.origin.x, _fieldView.frame.origin.y, _fieldView.frame.size.width, (76 * _paymentUserData.count)+30);
     
     if (_paymentUserData.count == 0){
         _exchangeRateLbl.frame = CGRectMake(0, 360, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
-          _lastView.frame = CGRectMake(0, 400, SCREEN_WIDTH, _lastView.frame.size.height);
+        _lastView.frame = CGRectMake(0, 400, SCREEN_WIDTH, _lastView.frame.size.height);
     }
     else{
         _exchangeRateLbl.frame = CGRectMake(0, 330+_fieldView.frame.size.height, SCREEN_WIDTH, _exchangeRateLbl.frame.size.height);
@@ -132,7 +127,7 @@
     
     UIColor *color = [self colorWithHexString:@"51595c"];
     _fullNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
-
+    
     _emailAddressTextFielf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: color}];
     _phoneNumberTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Phone Number" attributes:@{NSForegroundColorAttributeName: color}];
 }
@@ -157,7 +152,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
     
-      [self callAuthWebService:userPhoneNumber];
+    [self callAuthWebService:userPhoneNumber];
 }
 - (void)DuphluxAuthStatusCall:(NSNotification *)notification
 {
@@ -394,7 +389,7 @@
     // Pay Bill
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userDataDict = [userDataDict valueForKeyPath:@"User"];
-   
+    
     NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
     
     // Decode KeyString form base64
@@ -426,7 +421,7 @@
     
     
     NSLog(@"Bill DATA ADDED...%@",dictA);
-  
+    
     NSMutableArray *billCollectionArry = [[ NSMutableArray alloc] init];
     
     if (_paymentUserData.count != 0)
@@ -434,13 +429,13 @@
         for(int i=0; i< _paymentUserData.count; i++)
         {
             NSDictionary *valuedic =[_DataArray objectAtIndex:i];
-
+            
             NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
             [dictB setValue:[billIDDict valueForKeyPath:@"bill_id"] forKey:@"bill_id"];
             [dictB setValue:[valuedic valueForKey:@"bill_required_field_id"] forKey:@"bill_required_field_id"];
             [dictB setValue:[valuedic valueForKey:@"collected_data"] forKey:@"collected_data"];
             
-           [billCollectionArry addObject:dictB];
+            [billCollectionArry addObject:dictB];
         }
     }
     
@@ -534,7 +529,7 @@
                 
             }
             else{
-                 [HUD removeFromSuperview];
+                [HUD removeFromSuperview];
             }
         }
         
@@ -580,7 +575,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     
                     [self.navigationController popToViewController:controller
@@ -657,7 +652,7 @@
 -(void) removeShade {
     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
     
-     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
         
         // Call change password
         [HUD removeFromSuperview];
@@ -668,25 +663,21 @@
         [self callPayBill];
         
     }
-     else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
-     {
-         NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
-         BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
-         [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-         [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
-         [self getAuthStatusWebService:referneceString];
-     }
-    //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
-    //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //        alertview.tag = 2001;
-    //        [alertview show];
-    //    }
-     else{
-         
-         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-         alertview.tag = 2001;
-         [alertview show];
-     }
+    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
+    {
+        NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
+        BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+        [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+        [self getAuthStatusWebService:referneceString];
+    }
+  
+    else{
+        
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 2001;
+        [alertview show];
+    }
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
 }
 
@@ -805,7 +796,7 @@
                             _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service fee %@%@.00",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"],[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
                             
                             _amountLbl.text = [ NSString stringWithFormat:@"%@ %@",[billUserData valueForKeyPath:@"bill_provider.country_currency.currency_symbol"],amountText];
-                             _amountValueS.text = [ NSString stringWithFormat:@"(%@ %.02f)",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[[responseDic valueForKeyPath:@"PayLoad.data.sending_amount"]floatValue]];
+                            _amountValueS.text = [ NSString stringWithFormat:@"(%@ %.02f)",[userDataDict valueForKeyPath:@"country_currency.currency_symbol"],[[responseDic valueForKeyPath:@"PayLoad.data.sending_amount"]floatValue]];
                             _amountValueS.frame = CGRectMake((_amountLbl.text.length*10)+ 10, _amountValueS.frame.origin.y, _amountValueS.frame.size.width, _amountValueS.frame.size.height);
                             
                         });
@@ -930,3 +921,4 @@
 }
 
 @end
+

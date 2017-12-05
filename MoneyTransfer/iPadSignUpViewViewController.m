@@ -29,7 +29,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
+    
     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
@@ -105,50 +105,10 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
 }
 
--(void) statusTimer{
-    NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
-    [self getAuthStatusWebService:referneceString];
-}
-
--(void) removeShade {
-    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
-        
-        _view1_email.hidden = YES;
-        _view2_number.hidden = YES;
-        _view3_details.hidden = NO;
-        _view4_password.hidden = YES;
-        return;
-        
-    }
-    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
-    {
-        
-        
-        NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
-        BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
-        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-        [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
-        [self getAuthStatusWebService:referneceString];
-    }
-    //    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"cancel"]  isEqual: @"Yes"]){
-    //        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Authentication has been cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //        alertview.tag = 1001;
-    //        [alertview show];
-    //    }
-    else{
-        
-        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        alertview.tag = 1001;
-        [alertview show];
-    }
-    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
-}
-
 -(void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cancel"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
@@ -172,6 +132,39 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     _addressTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your address" attributes:@{NSForegroundColorAttributeName: color}];
     _passwordTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"your password" attributes:@{NSForegroundColorAttributeName: color}];
     _repeatPssTextfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"repeat password" attributes:@{NSForegroundColorAttributeName: color}];
+}
+
+-(void) statusTimer{
+    NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
+    [self getAuthStatusWebService:referneceString];
+}
+
+-(void) removeShade {
+    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Continue"]){
+        
+        _view1_email.hidden = YES;
+        _view2_number.hidden = YES;
+        _view3_details.hidden = NO;
+        _view4_password.hidden = YES;
+        return;
+        
+    }
+    else if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"callStatusValue"]  isEqual: @"Yes"])
+    {
+        NSString *referneceString =  [[ NSUserDefaults standardUserDefaults] valueForKey:@"DuphuluxReferenceNumber"];
+        BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
+        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+        [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
+        [self getAuthStatusWebService:referneceString];
+    }
+    else{
+        
+        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alertview.tag = 1001;
+        [alertview show];
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"callStatusValue"];
 }
 
 - (IBAction)ActionCrossBtn:(id)sender {
@@ -228,11 +221,11 @@ static NSString *kCellIdentifier = @"cellIdentifier";
             [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
             [self callAuthWebService:userPhoneNumber];
             
-//                            _view1_email.hidden = YES;
-//                            _view2_number.hidden = YES;
-//                            _view3_details.hidden = NO;
-//                            _view4_password.hidden = YES;
-//                            return;
+            //                            _view1_email.hidden = YES;
+            //                            _view2_number.hidden = YES;
+            //                            _view3_details.hidden = NO;
+            //                            _view4_password.hidden = YES;
+            //                            return;
         }
     }
     if (_view3_details.hidden == NO){
@@ -570,7 +563,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
                             [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Success!" message:@"Your number has been verified." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//                                alertview.tag = 222;
+                                //                                alertview.tag = 222;
                                 [alertview show];
                             });
                         }
@@ -921,7 +914,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (alertView.tag == 222){
-      
+        
     }
 }
 
@@ -998,8 +991,6 @@ static NSString *kCellIdentifier = @"cellIdentifier";
             value = NO;
         }
     }
-    
-    
     return YES;
 }
 @end
