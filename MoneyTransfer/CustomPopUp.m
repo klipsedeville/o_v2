@@ -77,15 +77,18 @@
         [[NSUserDefaults standardUserDefaults] setValue:@"Continue" forKey:@"callStatusValue"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    else{
+    else
+    {
         NSString *phNo = [NSString stringWithFormat:@"%@",_callTo];
         NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phNo]];
         
         if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
             [[UIApplication sharedApplication] openURL:phoneUrl];
-            
-        } else
+            [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"MakeContactCall"];
+        }
+        else
         {
+            [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"MakeContactCall"];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             alert.tag = 1001;
             [alert show];
@@ -101,7 +104,6 @@
 {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeShade" object:self];
-    
 }
 
 -(void)statusValue{
@@ -187,8 +189,11 @@
         
         if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
             [[UIApplication sharedApplication] openURL:phoneUrl];
+            [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"MakeContactCall"];
+
         } else
         {
+            [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"MakeContactCall"];
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             alert.tag = 1001;
             [alert show];

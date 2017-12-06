@@ -79,9 +79,13 @@
         
         if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
             [[UIApplication sharedApplication] openURL:phoneUrl];
+            [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"MakeContactCall"];
+
             
         } else
         {
+            [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"MakeContactCall"];
+
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             alert.tag = 1001;
             [alert show];
@@ -225,8 +229,13 @@
         
         if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
             [[UIApplication sharedApplication] openURL:phoneUrl];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"MakeContactCall"];
+
         } else
         {
+            [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"MakeContactCall"];
+
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Call facility is not available." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             alert.tag = 1001;
             [alert show];
