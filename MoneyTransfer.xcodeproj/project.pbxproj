@@ -342,6 +342,7 @@
 		9ACBB1AE1CDA0D90009E5595 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBB1AD1CDA0D90009E5595 /* LoginViewController.m */; };
 		9ACBB1B11CDA0DA1009E5595 /* iPadLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBB1B01CDA0DA1009E5595 /* iPadLoginViewController.m */; };
 		9ACBB1B81CDA2587009E5595 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBB1B71CDA2587009E5595 /* SignUpViewController.m */; };
+		9AD246371FD9608A009A4863 /* DuphluxAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD246361FD9608A009A4863 /* DuphluxAuth.m */; };
 		9AD88FCB1D86DCA80039D944 /* Beneficiaries-ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD88FC91D86DCA80039D944 /* Beneficiaries-ipad@2x.png */; };
 		9AD88FCC1D86DCA80039D944 /* Beneficiaries-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD88FCA1D86DCA80039D944 /* Beneficiaries-ipad.png */; };
 		9ADB27E01F7278740025E914 /* AddBillerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB27DF1F7278740025E914 /* AddBillerViewController.m */; };
@@ -812,6 +813,8 @@
 		9ACBB1B01CDA0DA1009E5595 /* iPadLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadLoginViewController.m; sourceTree = "<group>"; };
 		9ACBB1B61CDA2587009E5595 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		9ACBB1B71CDA2587009E5595 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		9AD246351FD9608A009A4863 /* DuphluxAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DuphluxAuth.h; sourceTree = "<group>"; };
+		9AD246361FD9608A009A4863 /* DuphluxAuth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DuphluxAuth.m; sourceTree = "<group>"; };
 		9AD88FC91D86DCA80039D944 /* Beneficiaries-ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Beneficiaries-ipad@2x.png"; sourceTree = "<group>"; };
 		9AD88FCA1D86DCA80039D944 /* Beneficiaries-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Beneficiaries-ipad.png"; sourceTree = "<group>"; };
 		9ADB27DE1F7278740025E914 /* AddBillerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBillerViewController.h; sourceTree = "<group>"; };
@@ -1470,6 +1473,7 @@
 		9ACBB1761CDA0D33009E5595 /* MoneyTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				9AD246341FD95DCF009A4863 /* Duphlux Classes */,
 				9A890DE81F7E117200DBE82C /* AsyncImageView.h */,
 				9A890DE61F7E115D00DBE82C /* AsyncImageView.m */,
 				9A56AADE1D8407DE00BA3EA6 /* CCTextFieldEffects.h */,
@@ -1566,6 +1570,15 @@
 				9A682AEA1D1D72F30073EFB2 /* Pay Bills */,
 			);
 			name = "iPad Classes";
+			sourceTree = "<group>";
+		};
+		9AD246341FD95DCF009A4863 /* Duphlux Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9AD246351FD9608A009A4863 /* DuphluxAuth.h */,
+				9AD246361FD9608A009A4863 /* DuphluxAuth.m */,
+			);
+			name = "Duphlux Classes";
 			sourceTree = "<group>";
 		};
 		9AEEF2A81CF6DA6D00DF6D8B /* Change Password Classes */ = {
@@ -2305,6 +2318,7 @@
 				9A3E3DFC1D47488700B5ECB0 /* iPadBeneficiaryConfirmationViewController.m in Sources */,
 				9AA4D96D1CE203D2000E331B /* Controller.m in Sources */,
 				9A56AAE41D8407FD00BA3EA6 /* HoshiTextField.m in Sources */,
+				9AD246371FD9608A009A4863 /* DuphluxAuth.m in Sources */,
 				9A682AF61D1D73D40073EFB2 /* IPadPaymentCompletedViewController.m in Sources */,
 				9A1F5EDE1CEB32C3006C5775 /* SendMoneyViewController.m in Sources */,
 				73F67F2A1F9FD02600C7B79A /* CustomPopUp_iPad.m in Sources */,

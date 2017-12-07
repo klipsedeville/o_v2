@@ -17,6 +17,7 @@
 #import "AsyncImageView.h"
 #import "CustomPopUp_iPad.h"
 #import "BackPopUp.h"
+#import "DuphluxAuth.h"
 
 @interface iPadSignUpViewController ()
 {
@@ -432,22 +433,8 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
     [self getAuthStatusWebService:referneceString];
 }
-
 -(void) callAuthWebService:(NSString *) phoneNumber
 {
-    NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/verify.json"];
-    NSURL *url = [NSURL URLWithString:ApiUrl];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"POST";
-    
-    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
-    [request addValue:@"0529a925f2afca8e20f770abd6378ed8805b5593" forHTTPHeaderField:@"token"];
     
     NSString *dateString = [self stringWithRandomSuffixForFile:@"file.pdf" withLength:4];
     [[ NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"DuphuluxReferenceNumber"];
@@ -457,204 +444,381 @@ static NSString *kCellIdentifier = @"cellIdentifier";
     [dictA setValue:dateString forKey:@"transaction_reference"];
     [dictA setValue:@"com.uve.MoneyTransferApp" forKey:@"redirect_url"];
     
-    NSData *PostData = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
-    
-    [request setHTTPBody:PostData];
-    
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //if communication was successful
-        if (!error) {
-            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-            if (httpResp.statusCode == 200)
-            {
-                
-                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"result string %@", resultString);
-                NSError *jsonError;
-                NSData *objectData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                     options:NSJSONReadingMutableContainers
-                                                                       error:&jsonError];
-                
-                NSLog(@"json string %@", json);
-                if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
-                {
-                    NSDictionary *responseDic = [ json valueForKeyPath:@"PayLoad.data"];
-                    NSString *redirectURl = [ responseDic valueForKey:@"verification_url"];
-                    NSURL *url = [NSURL URLWithString:redirectURl];
-                    
-                    double timeStamp = [[responseDic valueForKey:@"expires_at"]doubleValue];
-                    [[ NSUserDefaults standardUserDefaults] setInteger:timeStamp forKey:@"timeStamp"];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        NSLog(@"%@",url );
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                            [HUD removeFromSuperview];
-                        });
-                        
-                        [[ NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CallDuphluxAuth"];
-                        callingPhoneNumber = [NSString stringWithFormat:@"%@", [responseDic valueForKey:@"number"]];
-                        CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
-                        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
-                        popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-                        popUp.callFrom = userPhoneNumber;
-                        popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
-                        popUp.callTo = callingPhoneNumber;
-                        popUp.delegate = self;
-                        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-                    });
-                }
-                else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                        [HUD removeFromSuperview];
-                        NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
-                        
-                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Errors Encountered:" message:[NSString stringWithFormat:@"1. %@",[errorArray objectAtIndex:0]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                        alertview.tag = 1001;
-                        [alertview show];
-                    });
-                }
-            }
-            else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                    [HUD removeFromSuperview];
-                });
-            }
-        }
-        else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                [HUD removeFromSuperview];
-            });
-        }
-    }];
-    [postDataTask resume];
+    [DuphluxAuth callAuthMethod:dictA  withSuccess:^( NSString *sucessString)
+     {
+         [HUD removeFromSuperview];
+         NSLog(@"result string %@", sucessString);
+         
+         NSError *jsonError;
+         NSData *objectData = [sucessString dataUsingEncoding:NSUTF8StringEncoding];
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&jsonError];
+         
+         NSLog(@"json string %@", json);
+         if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
+         {
+             NSDictionary *responseDic = [ json valueForKeyPath:@"PayLoad.data"];
+             NSString *redirectURl = [ responseDic valueForKey:@"verification_url"];
+             NSURL *url = [NSURL URLWithString:redirectURl];
+             
+             double timeStamp = [[responseDic valueForKey:@"expires_at"]doubleValue];
+             [[ NSUserDefaults standardUserDefaults] setInteger:timeStamp forKey:@"timeStamp"];
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 NSLog(@"%@",url );
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     
+                     [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                     [HUD removeFromSuperview];
+                 });
+                 
+                 [[ NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CallDuphluxAuth"];
+                 callingPhoneNumber = [NSString stringWithFormat:@"%@", [responseDic valueForKey:@"number"]];
+                 CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+                 [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+                 popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+                 popUp.callFrom = userPhoneNumber;
+                 popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
+                 popUp.callTo = callingPhoneNumber;
+                 popUp.delegate = self;
+                 [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+             });
+         }
+         else{
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                 [HUD removeFromSuperview];
+                 NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
+                 
+                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Errors Encountered:" message:[NSString stringWithFormat:@"1. %@",[errorArray objectAtIndex:0]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                 alertview.tag = 1001;
+                 [alertview show];
+             });
+         }
+         
+     }andFailure:^( NSString *errorString)
+     {
+         [HUD removeFromSuperview];
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+             [HUD removeFromSuperview];
+         });
+         
+     }];
 }
 
 -(void) getAuthStatusWebService:( NSString *)referneceString
 {
-    NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/status.json"];
-    NSURL *url = [NSURL URLWithString:ApiUrl];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"POST";
-    
-    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
-    [request addValue:@"0529a925f2afca8e20f770abd6378ed8805b5593" forHTTPHeaderField:@"token"];
-    
     NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
     [dictA setValue:referneceString forKey:@"transaction_reference"];
     
-    NSData *PostData = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
-    
-    [request setHTTPBody:PostData];
-    
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //if communication was successful
-        if (!error) {
-            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-            if (httpResp.statusCode == 200)
-            {
-                
-                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"result string %@", resultString);
-                NSError *jsonError;
-                NSData *objectData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                     options:NSJSONReadingMutableContainers
-                                                                       error:&jsonError];
-                
-                NSLog(@"json string %@", json);
-                
-                
-                if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        [HUD removeFromSuperview];
-                        if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
-                        {
-                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
-                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
-                            [[NSUserDefaults standardUserDefaults] synchronize];
-                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                            CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
-                            popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-                            popUp.OkBtnTitle = @"verify";
-                            [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
-                            popUp.callTo = callingPhoneNumber;
-                            popUp.callFrom = userPhoneNumber;
-                            popUp.delegate = self;
-                            [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-                            //                    [HUD removeFromSuperview];
-                            //                    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-                            //                    [self.view addSubview:HUD];
-                            //                    HUD.labelText = NSLocalizedString(@"Loading...", nil);
-                            //                    [HUD show:YES];
-                            //                    [self userRegsiteration];
-                        }
-                        else{
-                            
-                            if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"timerActive"]  isEqual: @"Yes"]){
-                            }
-                            else{
-                                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                                CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
-                                popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
-                                popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
-                                [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
-                                popUp.callTo = callingPhoneNumber;
-                                popUp.callFrom = userPhoneNumber;
-                                popUp.delegate = self;
-                                
-                                
-                                [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
-                            }
-                        }
-                    });
-                }
-                else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                        [HUD removeFromSuperview];
-                    });
-                    NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.error"];
-                    if (errorArray != nil){
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            [alertview show];
-                        });
-                        
-                    }
-                }
-            }
-            else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                    [HUD removeFromSuperview];
-                });
-                
-            }
-        }
-        else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
-                [HUD removeFromSuperview];
-            });
-        }
-    }];
-    [postDataTask resume];
+    [DuphluxAuth checkAuthStatusMethod:dictA  withSuccess:^( NSString *sucessString)
+     {
+         [HUD removeFromSuperview];
+         
+         NSLog(@"result string %@", sucessString);
+         NSError *jsonError;
+         NSData *objectData = [sucessString dataUsingEncoding:NSUTF8StringEncoding];
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&jsonError];
+         
+         NSLog(@"json string %@", json);
+         
+         if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [HUD removeFromSuperview];
+                 if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
+                 {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
+                         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                         CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+                         popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+                         popUp.OkBtnTitle = @"verify";
+                         [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+                         popUp.callTo = callingPhoneNumber;
+                         popUp.callFrom = userPhoneNumber;
+                         popUp.delegate = self;
+                         [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+                     });
+                 }
+                 else{
+                     
+                     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"timerActive"]  isEqual: @"Yes"]){
+                     }
+                     else{
+                         [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                         CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+                         popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+                         popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
+                         [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+                         popUp.callTo = callingPhoneNumber;
+                         popUp.callFrom = userPhoneNumber;
+                         popUp.delegate = self;
+                         
+                         
+                         [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+                     }
+                 }
+             });
+         }
+         else{
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+                 [HUD removeFromSuperview];
+             });
+             NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.error"];
+             if (errorArray != nil){
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                     [alertview show];
+                 });
+                 
+             }
+         }
+     }andFailure:^( NSString *errorString)
+     {
+         [HUD removeFromSuperview];
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+             [HUD removeFromSuperview];
+             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection error. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+             [alertview show];
+         });
+         
+     }];
 }
+
+//-(void) callAuthWebService:(NSString *) phoneNumber
+//{
+//    NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/verify.json"];
+//    NSURL *url = [NSURL URLWithString:ApiUrl];
+//
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+//
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+//    request.HTTPMethod = @"POST";
+//
+//    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+//    [request addValue:@"0529a925f2afca8e20f770abd6378ed8805b5593" forHTTPHeaderField:@"token"];
+//
+//    NSString *dateString = [self stringWithRandomSuffixForFile:@"file.pdf" withLength:4];
+//    [[ NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"DuphuluxReferenceNumber"];
+//    NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
+//    [dictA setValue:phoneNumber forKey:@"phone_number"];
+//    [dictA setValue:@"900" forKey:@"timeout"];
+//    [dictA setValue:dateString forKey:@"transaction_reference"];
+//    [dictA setValue:@"com.uve.MoneyTransferApp" forKey:@"redirect_url"];
+//
+//    NSData *PostData = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
+//
+//    [request setHTTPBody:PostData];
+//
+//    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        //if communication was successful
+//        if (!error) {
+//            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+//            if (httpResp.statusCode == 200)
+//            {
+//
+//                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//                NSLog(@"result string %@", resultString);
+//                NSError *jsonError;
+//                NSData *objectData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+//                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+//                                                                     options:NSJSONReadingMutableContainers
+//                                                                       error:&jsonError];
+//
+//                NSLog(@"json string %@", json);
+//                if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
+//                {
+//                    NSDictionary *responseDic = [ json valueForKeyPath:@"PayLoad.data"];
+//                    NSString *redirectURl = [ responseDic valueForKey:@"verification_url"];
+//                    NSURL *url = [NSURL URLWithString:redirectURl];
+//
+//                    double timeStamp = [[responseDic valueForKey:@"expires_at"]doubleValue];
+//                    [[ NSUserDefaults standardUserDefaults] setInteger:timeStamp forKey:@"timeStamp"];
+//
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                        NSLog(@"%@",url );
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                            [HUD removeFromSuperview];
+//                        });
+//
+//                        [[ NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CallDuphluxAuth"];
+//                        callingPhoneNumber = [NSString stringWithFormat:@"%@", [responseDic valueForKey:@"number"]];
+//                        CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+//                        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+//                        popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+//                        popUp.callFrom = userPhoneNumber;
+//                        popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
+//                        popUp.callTo = callingPhoneNumber;
+//                        popUp.delegate = self;
+//                        [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+//                    });
+//                }
+//                else{
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                        [HUD removeFromSuperview];
+//                        NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.errors"];
+//
+//                        UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Errors Encountered:" message:[NSString stringWithFormat:@"1. %@",[errorArray objectAtIndex:0]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//                        alertview.tag = 1001;
+//                        [alertview show];
+//                    });
+//                }
+//            }
+//            else{
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                    [HUD removeFromSuperview];
+//                });
+//            }
+//        }
+//        else{
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                [HUD removeFromSuperview];
+//            });
+//        }
+//    }];
+//    [postDataTask resume];
+//}
+//
+//-(void) getAuthStatusWebService:( NSString *)referneceString
+//{
+//    NSString *ApiUrl = [ NSString stringWithFormat:@"%@", @"https://duphlux.com/webservice/authe/status.json"];
+//    NSURL *url = [NSURL URLWithString:ApiUrl];
+//
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+//
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+//    request.HTTPMethod = @"POST";
+//
+//    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request addValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+//    [request addValue:@"0529a925f2afca8e20f770abd6378ed8805b5593" forHTTPHeaderField:@"token"];
+//
+//    NSMutableDictionary *dictA = [[NSMutableDictionary alloc]init];
+//    [dictA setValue:referneceString forKey:@"transaction_reference"];
+//
+//    NSData *PostData = [NSJSONSerialization dataWithJSONObject:dictA options:NSJSONWritingPrettyPrinted error:nil];
+//
+//    [request setHTTPBody:PostData];
+//
+//    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        //if communication was successful
+//        if (!error) {
+//            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+//            if (httpResp.statusCode == 200)
+//            {
+//
+//                NSString* resultString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//                NSLog(@"result string %@", resultString);
+//                NSError *jsonError;
+//                NSData *objectData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+//                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+//                                                                     options:NSJSONReadingMutableContainers
+//                                                                       error:&jsonError];
+//
+//                NSLog(@"json string %@", json);
+//
+//
+//                if ([[json valueForKeyPath:@"PayLoad.status"] boolValue] == YES)
+//                {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                        [HUD removeFromSuperview];
+//                        if ([[json valueForKeyPath:@"PayLoad.data.verification_status"]  isEqual: @"verified"])
+//                        {
+//                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"cancel"];
+//                            [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"verifying"];
+//                            [[NSUserDefaults standardUserDefaults] synchronize];
+//                            [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                            CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+//                            popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+//                            popUp.OkBtnTitle = @"verify";
+//                            [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+//                            popUp.callTo = callingPhoneNumber;
+//                            popUp.callFrom = userPhoneNumber;
+//                            popUp.delegate = self;
+//                            [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+//                            //                    [HUD removeFromSuperview];
+//                            //                    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//                            //                    [self.view addSubview:HUD];
+//                            //                    HUD.labelText = NSLocalizedString(@"Loading...", nil);
+//                            //                    [HUD show:YES];
+//                            //                    [self userRegsiteration];
+//                        }
+//                        else{
+//
+//                            if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"timerActive"]  isEqual: @"Yes"]){
+//                            }
+//                            else{
+//                                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                                CustomPopUp_iPad *popUp = [[CustomPopUp_iPad alloc]initWithNibName:@"CustomPopUp_iPad"  bundle:nil];
+//                                popUp.popUpMsg = @"You appear to be offline. Please check your net connection and retry.";
+//                                popUp.OkBtnTitle = @"CALL TO AUTHENTICATE";
+//                                [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"hudView"];
+//                                popUp.callTo = callingPhoneNumber;
+//                                popUp.callFrom = userPhoneNumber;
+//                                popUp.delegate = self;
+//
+//
+//                                [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
+//                            }
+//                        }
+//                    });
+//                }
+//                else{
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                        [HUD removeFromSuperview];
+//                    });
+//                    NSArray *errorArray = [ json valueForKeyPath:@"PayLoad.error"];
+//                    if (errorArray != nil){
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:[errorArray objectAtIndex:0] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//                            [alertview show];
+//                        });
+//
+//                    }
+//                }
+//            }
+//            else{
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                    [HUD removeFromSuperview];
+//                });
+//
+//            }
+//        }
+//        else{
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [ self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade1];
+//                [HUD removeFromSuperview];
+//            });
+//        }
+//    }];
+//    [postDataTask resume];
+//}
 #pragma mark ######
 #pragma mark Get currency list method
 #pragma mark ######
