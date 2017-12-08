@@ -35,8 +35,8 @@
     
     NSString *loginUserName = [[userDataDict valueForKeyPath:@"User.first_name"]uppercaseString];
     
-        userDataDict = [userDataDict valueForKeyPath:@"User"];
-        double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
     {
         NSLog(@"User Session expired");
@@ -150,3 +150,4 @@
 
 
 @end
+

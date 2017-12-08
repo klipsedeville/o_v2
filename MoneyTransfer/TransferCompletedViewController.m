@@ -32,7 +32,7 @@
     // Check user Session expired or not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     
-
+    
     NSString *loginUserName = [userDataDict valueForKeyPath:@"User.first_name"];
     NSString *messageString = [ NSString stringWithFormat:@"Smile %@!",loginUserName];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:messageString];
@@ -43,7 +43,7 @@
     
     [_userNameLbl setAttributedText: attrString];
     [attrString endEditing];
-
+    
     
     userDataDict = [userDataDict valueForKeyPath:@"User"];
     double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
@@ -104,7 +104,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -154,3 +154,4 @@
 }
 
 @end
+

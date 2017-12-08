@@ -39,11 +39,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
-     self.logoImageView.hidden = NO;
+    self.logoImageView.hidden = NO;
     
     // Check user Session Expired or not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-   userDataDict = [userDataDict valueForKeyPath:@"User"];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
     
     double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
@@ -267,7 +267,7 @@
             
             NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
             [def setObject:@"NO"  forKey:@"UserLogined"];
-
+            
             // Call User logout
             [HUD removeFromSuperview];
             HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -299,7 +299,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -502,3 +502,4 @@
 }
 
 @end
+

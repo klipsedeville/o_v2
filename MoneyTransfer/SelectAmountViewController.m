@@ -124,9 +124,9 @@
     
     // Call get Commercial
     
-//    [HUD hide:YES afterDelay:1.5];
+    //    [HUD hide:YES afterDelay:1.5];
     [ self getCommercials];
-
+    
     [UIView animateWithDuration:1.5f animations:^{
         scrollProgessVW.frame = CGRectMake( SCREEN_WIDTH, scrollProgessVW.frame.origin.y, scrollProgessVW.frame.size.width, scrollProgessVW.frame.size.height);
     }completion:^(BOOL finished){
@@ -240,7 +240,7 @@
         
         NSLog(@"Selected user Amount...%@",selectedUserAmount);
         
-       [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:selectedUserAmount] forKey:@"ConfirmTransferData"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:selectedUserAmount] forKey:@"ConfirmTransferData"];
         
         [self performSegueWithIdentifier:@"ConfirmTransferMoney" sender:self];
     }
@@ -383,11 +383,11 @@
                             exRateValue = [ NSString stringWithFormat:@"%@",[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"]];
                             _benificiaryGetCurrencySymbolLbl.text = [beneficiaryUserInfo valueForKeyPath:@"country_currency.currency_symbol"];
                             
-                           _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service fee %@%@.00",@"$",[beneficiaryUserInfo valueForKeyPath:@"country_currency.currency_symbol"],[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"],@"$",[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
+                            _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service fee %@%@.00",@"$",[beneficiaryUserInfo valueForKeyPath:@"country_currency.currency_symbol"],[ responseDic valueForKeyPath:@"PayLoad.data.exchange_rate"],@"$",[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
                             feeValue = [ NSString stringWithFormat:@"%@",[responseDic valueForKeyPath:@"PayLoad.data.fee"]];
                             _amountLbl.text = [NSString stringWithFormat:@"%.2f",[[ responseDic valueForKeyPath:@"PayLoad.data.sending_amount"] floatValue]];
                             _sendMoneyUserCurrencySymbol1.frame = CGRectMake(_sendMoneyUserCurrencySymbol1.frame.origin.x,_sendMoneyUserCurrencySymbol1.frame.origin.y,_sendMoneyUserCurrencySymbol1.frame.size.width,_sendMoneyUserCurrencySymbol1.frame.size.height);
-
+                            
                             amount = _amountLbl.text;
                             _amountLbl.text = [NSString stringWithFormat:@"%@ %@", _sendMoneyUserCurrencySymbol1.text, _amountLbl.text];
                             NSMutableAttributedString* content2 =
@@ -436,7 +436,7 @@
     }];
     
     [postDataTask resume];
-
+    
 }
 
 #pragma  mark ############
@@ -467,7 +467,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -632,8 +632,8 @@
         if (![textField.text isEqualToString: @""] ) {
             
             // Call get Commercial
-
-//            [HUD hide:YES afterDelay:2.0];
+            
+            //            [HUD hide:YES afterDelay:2.0];
             [ self getCommercials];
         }
     }
@@ -709,3 +709,4 @@
 }
 
 @end
+

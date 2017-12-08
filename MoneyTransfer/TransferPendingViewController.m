@@ -98,7 +98,7 @@
                         valueFound = YES;
                         if([ tempDict valueForKeyPath:@"settlement_channel_parameter.has_options"] != [NSNull null]  && [ tempDict valueForKeyPath:@"settlement_channel_parameter.options_model"] != [NSNull null])
                         {
-                             txt = [ NSString stringWithFormat:@"%@: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"], [dict valueForKey:@"sort_code"], [dict valueForKey:@"title"]];
+                            txt = [ NSString stringWithFormat:@"%@: %@ (%@)",[tempDict valueForKeyPath:@"settlement_channel_parameter.parameter"], [dict valueForKey:@"sort_code"], [dict valueForKey:@"title"]];
                             txt =  [txt stringByReplacingOccurrencesOfString:@"_id"
                                                                   withString:@""];
                         }
@@ -170,8 +170,8 @@
         pasteboard.string = self.referenceNumberLbl.text;
         // toast with a specific duration and position
         [self.view makeToast:[NSString stringWithFormat:@"%@",@"Reference copied to clipboard."]
-                      duration:2.0
-                      position:CSToastPositionBottom];
+                    duration:2.0
+                    position:CSToastPositionBottom];
     }
 }
 

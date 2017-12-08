@@ -37,7 +37,7 @@
     // Check user Session expire or Not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userDataDict = [userDataDict valueForKeyPath:@"User"] ;
-
+    
     if (![[userDataDict valueForKeyPath:@"card.user_id"] isKindOfClass:[NSNull class]])
         //stripe_customerID
     {
@@ -71,92 +71,92 @@
 {
     NSDictionary *userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userInfo = [userInfo valueForKeyPath:@"User"];
-                if ([[userInfo valueForKeyPath:@"full_name"] isKindOfClass:[NSNull class]])
-                {
-                    _userNameLbl.text = @"null";
-                }
-                else
-                {
-                    _userNameLbl.text = [userInfo valueForKeyPath:@"full_name"];
-                }
-                
-                if ([[userInfo valueForKeyPath:@"phone_number"] isKindOfClass:[NSNull class]])
-                {
-                    _userMobileNumberLbl.text = @"null";
-                }
-                else
-                {
-                    _userMobileNumberLbl.text = [userInfo valueForKeyPath:@"phone_number"];
-                }
-                
-                if ([[userInfo valueForKeyPath:@"email_address"] isKindOfClass:[NSNull class]])
-                {
-                    _userEmailAddressLbl.text = @"null";
-                }
-                else
-                {
-                    _userEmailAddressLbl.text  = [userInfo valueForKeyPath:@"email_address"];
-                }
-                
-                if ([ [userInfo valueForKeyPath:@"address"] isKindOfClass:[NSNull class]])
-                {
-                    _userAddressLbl.text = @"null";
-                }
-                else
-                {
-                    _userAddressLbl.text  = [userInfo valueForKeyPath:@"address"];
-                }
-                
-                
-                if ([[userInfo valueForKeyPath:@"card.title"] isKindOfClass:[NSNull class]])
-                {
-                    _creditCardAddLbl.text = @"****null";
-                }
-                else
-                    
-                {
-                    NSString *name = [userInfo valueForKeyPath:@"card.title"];
-                    NSLog(@"Card name %@",name);
-                    _creditCardAddLbl.text  = [ NSString stringWithFormat:@"%@",[userInfo valueForKeyPath:@"card.title"]];
-                }
+    if ([[userInfo valueForKeyPath:@"full_name"] isKindOfClass:[NSNull class]])
+    {
+        _userNameLbl.text = @"null";
+    }
+    else
+    {
+        _userNameLbl.text = [userInfo valueForKeyPath:@"full_name"];
+    }
     
-                if ([[userInfo valueForKeyPath:@"tier.title"] isKindOfClass:[NSNull class]])
-                {
-                    _accountTierLbl.text = @"";
-                }
-                else
-                {
-                    _accountTierLbl.text  = [userInfo valueForKeyPath:@"tier.title"];
-                }
+    if ([[userInfo valueForKeyPath:@"phone_number"] isKindOfClass:[NSNull class]])
+    {
+        _userMobileNumberLbl.text = @"null";
+    }
+    else
+    {
+        _userMobileNumberLbl.text = [userInfo valueForKeyPath:@"phone_number"];
+    }
+    
+    if ([[userInfo valueForKeyPath:@"email_address"] isKindOfClass:[NSNull class]])
+    {
+        _userEmailAddressLbl.text = @"null";
+    }
+    else
+    {
+        _userEmailAddressLbl.text  = [userInfo valueForKeyPath:@"email_address"];
+    }
+    
+    if ([ [userInfo valueForKeyPath:@"address"] isKindOfClass:[NSNull class]])
+    {
+        _userAddressLbl.text = @"null";
+    }
+    else
+    {
+        _userAddressLbl.text  = [userInfo valueForKeyPath:@"address"];
+    }
+    
+    
+    if ([[userInfo valueForKeyPath:@"card.title"] isKindOfClass:[NSNull class]])
+    {
+        _creditCardAddLbl.text = @"****null";
+    }
+    else
+        
+    {
+        NSString *name = [userInfo valueForKeyPath:@"card.title"];
+        NSLog(@"Card name %@",name);
+        _creditCardAddLbl.text  = [ NSString stringWithFormat:@"%@",[userInfo valueForKeyPath:@"card.title"]];
+    }
+    
+    if ([[userInfo valueForKeyPath:@"tier.title"] isKindOfClass:[NSNull class]])
+    {
+        _accountTierLbl.text = @"";
+    }
+    else
+    {
+        _accountTierLbl.text  = [userInfo valueForKeyPath:@"tier.title"];
+    }
+    
+    NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[userInfo valueForKeyPath:@"country_currency.flag"]];
+    
+    NSString *imagePath = @"";
+    NSString * flagName = @"";
+    flagName = [logoimageURl lastPathComponent];
+    imagePath = [appDel getImagePathbyflagName:flagName];
+    
+    if(imagePath.length > 0){
+        NSData *img = nil;
+        img= [NSData dataWithContentsOfFile:imagePath];
+        _userImageView.image =[UIImage imageWithData:img];
+    }
+    else
+    {
+        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        //this will start the image loading in bg
+        dispatch_async(concurrentQueue, ^{
+            NSData *image = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:logoimageURl]];
+            
+            //this will set the image when loading is finished
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _userImageView.image = [UIImage imageWithData:image];
                 
-                NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[userInfo valueForKeyPath:@"country_currency.flag"]];
+                [appDel saveflagsImageToFolder:_userImageView.image imageName:flagName];
                 
-                NSString *imagePath = @"";
-                NSString * flagName = @"";
-                flagName = [logoimageURl lastPathComponent];
-                imagePath = [appDel getImagePathbyflagName:flagName];
-                
-                if(imagePath.length > 0){
-                    NSData *img = nil;
-                    img= [NSData dataWithContentsOfFile:imagePath];
-                    _userImageView.image =[UIImage imageWithData:img];
-                }
-                else
-                {
-                    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-                    //this will start the image loading in bg
-                    dispatch_async(concurrentQueue, ^{
-                        NSData *image = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:logoimageURl]];
-                        
-                        //this will set the image when loading is finished
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            _userImageView.image = [UIImage imageWithData:image];
-                            
-                            [appDel saveflagsImageToFolder:_userImageView.image imageName:flagName];
-                            
-                        });
-                    });
-                }
+            });
+        });
+    }
 }
 
 #pragma  mark ############
@@ -192,7 +192,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     
                     [self.navigationController popToViewController:controller
@@ -239,7 +239,7 @@
     
     // back Button
     [ _passwordView removeFromSuperview];
-        [self performSegueWithIdentifier:@"ShowMoney" sender:self];
+    [self performSegueWithIdentifier:@"ShowMoney" sender:self];
 }
 
 - (IBAction)ActionAgentProfile:(id)sender {
@@ -302,3 +302,4 @@
 
 
 @end
+

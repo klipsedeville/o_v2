@@ -415,48 +415,48 @@
                     
                     if (status == 0)
                     {
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                        [HUD removeFromSuperview];
-                        NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
-                        NSLog(@"error ..%@", errorArray);
-                        
-                        NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
-                        
-                        if(!errorString || [errorString isEqualToString:@"(null)"])
-                        {
-                            errorString = @"Your sesssion has been expired.";
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [HUD removeFromSuperview];
+                            NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                            NSLog(@"error ..%@", errorArray);
                             
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            alertview.tag = 1003;
+                            NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
                             
-                            [alertview show];
-                        }
-                        else
-                        {
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            
-                            [alertview show];
-                        }
-                         });
+                            if(!errorString || [errorString isEqualToString:@"(null)"])
+                            {
+                                errorString = @"Your sesssion has been expired.";
+                                
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                alertview.tag = 1003;
+                                
+                                [alertview show];
+                            }
+                            else
+                            {
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                
+                                [alertview show];
+                            }
+                        });
                     }
                     else
                     {
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                        [HUD removeFromSuperview];
-                        NSLog(@"Add Card Response...%@",responseDic );
-                        NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-                        
-                        NSMutableDictionary *dic = [ userDataDict mutableCopy];
-                        NSMutableDictionary *Userdic = [[ dic valueForKey:@"User"] mutableCopy];
-                        
-                        NSDictionary *cardData = [responseDic valueForKeyPath:@"PayLoad.data.Card"];
-                        [Userdic  setObject:cardData forKey:@"card"];
-                        [dic setObject:Userdic forKey:@"User"];
-                        
-                        NSLog(@"%@", dic);
-                        
-                        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dic] forKey:@"loginUserData"];
-                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [HUD removeFromSuperview];
+                            NSLog(@"Add Card Response...%@",responseDic );
+                            NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
+                            
+                            NSMutableDictionary *dic = [ userDataDict mutableCopy];
+                            NSMutableDictionary *Userdic = [[ dic valueForKey:@"User"] mutableCopy];
+                            
+                            NSDictionary *cardData = [responseDic valueForKeyPath:@"PayLoad.data.Card"];
+                            [Userdic  setObject:cardData forKey:@"card"];
+                            [dic setObject:Userdic forKey:@"User"];
+                            
+                            NSLog(@"%@", dic);
+                            
+                            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dic] forKey:@"loginUserData"];
+                            
                             
                             NSString *cardTitle = [ responseDic valueForKeyPath:@"PayLoad.data.Card.title"];
                             NSLog(@"Card title.. %@",cardTitle);
@@ -467,16 +467,16 @@
                             
                         });
                     }
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                    [HUD removeFromSuperview];
-                     });
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [HUD removeFromSuperview];
+                    });
                 }
                 
             }
             else{
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                [HUD removeFromSuperview];
-                 });
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [HUD removeFromSuperview];
+                });
             }
         }
         

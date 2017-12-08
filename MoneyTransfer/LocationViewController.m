@@ -89,7 +89,6 @@
         }
     }
 }
-
 - (IBAction)backBtnClicked:(id)sender {
     
     // back button
@@ -99,9 +98,6 @@
 - (IBAction)ActionAddBiller:(id)sender {
     [self performSegueWithIdentifier:@"AddBillerSegue" sender:self];
 }
-
-
-
 #pragma mark ##########
 #pragma mark Get Bills List With Currency ID
 #pragma mark ##########

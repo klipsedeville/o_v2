@@ -43,8 +43,8 @@
     // Check user Session Expired or not.
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     
-       userDataDict = [userDataDict valueForKeyPath:@"User"];
-        double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
     {
         NSLog(@"User Session expired");
@@ -204,7 +204,7 @@
                 _beneficiaryBtn.hidden = NO;
                 _beneficiaryView.hidden = YES;
             }
-
+            
             [_beneficiaryListTableView reloadData];
         }
         else
@@ -241,7 +241,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     
@@ -293,7 +293,7 @@
     
     NSMutableData *PostData =[[NSMutableData alloc] initWithData:[[NSString stringWithFormat:@"%@=%@",EncryptKey,EncryptValue] dataUsingEncoding:NSUTF8StringEncoding]];
     
-//    NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@", BaseUrl, DeletBeneficary];
+    //    NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@", BaseUrl, DeletBeneficary];
     NSString *ApiUrl = [ NSString stringWithFormat:@"%@/%@?%@=%@", BaseUrl, DeletBeneficary,
                         @"beneficiary_id", selectedBeneficaryID];
     NSURL *url = [NSURL URLWithString:ApiUrl];
@@ -408,7 +408,7 @@
     userDataDict = [userDataDict valueForKeyPath:@"User"];
     
     if (![[userDataDict valueForKeyPath:@"card.user_id"] isKindOfClass:[NSNull class]])
-    //stripe_customerID
+        //stripe_customerID
     {
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[beneficiaryArray objectAtIndex:index]] forKey:@"beneficiaryUserInfo"];
         [self performSegueWithIdentifier:@"SelectAmount" sender:self];
@@ -467,7 +467,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-
+    
     NSDictionary *billerDic = [beneficiaryArray objectAtIndex:indexPath.row];
     
     UILabel *userName = [[UILabel alloc] initWithFrame:CGRectMake(10,5, SCREEN_WIDTH-100, 25)];
@@ -493,20 +493,20 @@
     userCountryname.text = [ NSString stringWithFormat:@"%@",[billerDic valueForKeyPath:@"country_currency.currency_code"]];
     [cell.contentView addSubview:userCountryname];
     
-   
+    
     AsyncImageView *iconImage = [[AsyncImageView alloc] init];
     iconImage.frame = CGRectMake(SCREEN_WIDTH-27,5,15,20);
-   NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[billerDic valueForKeyPath:@"country_currency.flag"]];
+    NSString *logoimageURl=[ NSString stringWithFormat:@"%@/%@/%@",BaseUrl, URLImage,[billerDic valueForKeyPath:@"country_currency.flag"]];
     
     NSString  *urlStr = [logoimageURl stringByReplacingOccurrencesOfString:@"" withString:@"%20"];
-
+    
     NSURL * imgUrl = [NSURL URLWithString:urlStr];
     iconImage.imageURL = imgUrl;
     
     NSString * flagName = @"";
     flagName = [logoimageURl lastPathComponent];
     [cell.contentView addSubview:iconImage];
-
+    
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     tapGestureRecognizer.numberOfTouchesRequired = 1;
@@ -618,3 +618,4 @@
 }
 
 @end
+

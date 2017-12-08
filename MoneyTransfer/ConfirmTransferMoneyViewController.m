@@ -42,12 +42,12 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"verifying"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"stop"];
     // Remove the notifications
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DuphluxAuthStatus" object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DuphluxAuthStatusCall:) name:@"DuphluxAuthStatus" object:nil];
     
-     [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
+    [[ NSUserDefaults standardUserDefaults] setInteger:nil forKey:@"timeStamp"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeShade) name:@"removeShade" object:nil];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusTimer) name:@"statusTimer" object:nil];
     transferConfirmMoneyInfoNew = [[NSDictionary alloc]init];
     transferConfirmMoneyInfoNew = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"ConfirmTransferData"]];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -57,8 +57,8 @@
     
     // Check user Session Expire or not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-        userDataDict = [userDataDict valueForKeyPath:@"User"];
-        double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
+    double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
     {
         NSLog(@"User Session expired");
@@ -73,10 +73,10 @@
     _last4DigitCreditCardLbl.text = [ NSString stringWithFormat:@"%@",[userDataDict valueForKeyPath:@"card.title"]];
     
     if ([transferConfirmMoneyInfoNew valueForKeyPath:@"sending_amount"] != nil){
-    _sendingAmountTransferLbl.text = [ NSString stringWithFormat:@"%@%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_amount"]];
+        _sendingAmountTransferLbl.text = [ NSString stringWithFormat:@"%@%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_user_CurrencySymbol"],[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_amount"]];
     }
- 
-   _SendingMoneyUserNameLbl.text = [ NSString stringWithFormat:@"%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_username"]];
+    
+    _SendingMoneyUserNameLbl.text = [ NSString stringWithFormat:@"%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_username"]];
     
     NSString *str = [[ NSString stringWithFormat:@"%@",[transferConfirmMoneyInfoNew valueForKeyPath:@"sending_money_username_country"]]lowercaseString];
     NSMutableString *result = [str mutableCopy];
@@ -104,7 +104,7 @@
 - (IBAction)sendMoneyBtn:(id)sender {
     
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-   
+    
     userPhoneNumber = [userDataDict valueForKeyPath:@"User.phone_number"];
     BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
     [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
@@ -520,7 +520,7 @@
     
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userDataDict = [userDataDict valueForKeyPath:@"User"];
-
+    
     NSString *userTokenString= [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"token"]];
     
     // Decode KeyString form base64
@@ -673,7 +673,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -788,3 +788,4 @@
 }
 
 @end
+

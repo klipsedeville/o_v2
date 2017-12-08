@@ -25,10 +25,10 @@
     myImageView = [[UIImageView alloc]init];
     myImageView.image = [UIImage imageNamed:@"textbox"];
     myImageView.hidden = YES;
-  [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 10)];
+    [myImageView setFrame:CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 5, self.emailAddressTextField.frame.size.width, 10)];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
-
+    
     // Add tool bar on number key pad
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -50,7 +50,7 @@
     FirstNameLayer2.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
     FirstNameLayer2.backgroundColor = [self colorWithHexString:@"3ec6f0"].CGColor;
     [self.emailAddressTextField.layer addSublayer:FirstNameLayer2];
-
+    
     
 }
 #pragma mark ######
@@ -144,7 +144,7 @@
     }andFailure:^( NSString *errorString)
      {
          if (errorString == nil){
-           errorString = @"Connection failed. Please make sure you have an active internet connection.";
+             errorString = @"Connection failed. Please make sure you have an active internet connection.";
          }
          [HUD removeFromSuperview];
          UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -167,7 +167,7 @@
     if (alertView.tag == 101) {
         if (buttonIndex == 0)
         {
-           [self performSegueWithIdentifier:@"resetSegue" sender:self];
+            [self performSegueWithIdentifier:@"resetSegue" sender:self];
         }
         else
         {
@@ -273,3 +273,4 @@
 }
 
 @end
+

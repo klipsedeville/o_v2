@@ -382,7 +382,7 @@
                     self.passwordLbl.frame = _passwordTextField.frame;
                     self.passwordLbl.font = [UIFont systemFontOfSize:17];
                     self.passwordLbl.textColor = [self colorWithHexString:@"51595c"];
-                   
+                    
                     
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
@@ -402,7 +402,7 @@
                 self.emailAddressLbl.frame = CGRectMake(self.emailAddressLbl.frame.origin.x,self.emailAddressLbl.frame.origin.y-self.emailAddressLbl.frame.size.height, self.emailAddressLbl.frame.size.width, self.emailAddressLbl.frame.size.height );
                 self.emailAddressLbl.font = [UIFont systemFontOfSize:12];
                 [self.emailAddressLbl setTextColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
-               
+                
                 
                 CALayer *FirstNameLayer = [CALayer layer];
                 FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
@@ -470,7 +470,7 @@
             [UIView animateWithDuration:0.5f animations:^{
                 if (textField == _emailAddressTextField && [ _passwordTextField.text isEqual:@""]){
                     
-                
+                    
                     
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
@@ -483,7 +483,7 @@
                 }
                 else if(textField == _emailAddressTextField && ![ _passwordTextField.text isEqual:@""])
                 {
-                   
+                    
                     CALayer *FirstNameLayer = [CALayer layer];
                     FirstNameLayer.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
                     FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;
@@ -491,7 +491,7 @@
                     [_passwordTextField resignFirstResponder];
                     [_emailAddressTextField becomeFirstResponder];
                 }
-               
+                
                 CALayer *FirstNameLayer = [CALayer layer];
                 FirstNameLayer.frame = CGRectMake(0.0f, self.emailAddressTextField.frame.size.height - 1, self.emailAddressTextField.frame.size.width, 1.0f);
                 FirstNameLayer.backgroundColor = [self colorWithHexString:@"3ec6f0"].CGColor;

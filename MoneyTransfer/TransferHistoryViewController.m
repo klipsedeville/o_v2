@@ -31,7 +31,7 @@
     self.tableView.delegate = self;
     self.tableView.bounces = NO;
     self.tableView.separatorColor = [UIColor clearColor];
-   }
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -60,7 +60,7 @@
     _transferView.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:192.0/255.0 blue:235.0/255.0 alpha:1.0] ;
     
     _billView.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:80.0/255.0 blue:107.0/255.0 alpha:1.0];
-
+    
     // Check user session Expire or Not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     userDataDict = [userDataDict valueForKeyPath:@"User"];
@@ -76,7 +76,7 @@
         NSLog(@"User Session not expired");
     }
     
-    }
+}
 
 #pragma  mark ############
 #pragma Click Action Method
@@ -112,7 +112,7 @@
     {
         _tableView.hidden = NO;
     }
-
+    
 }
 
 - (IBAction)ActionBillBtn:(id)sender {
@@ -121,7 +121,7 @@
     
     _billView.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:192.0/255.0 blue:235.0/255.0 alpha:1.0] ;
     
-     [transferHistoryArray removeAllObjects];
+    [transferHistoryArray removeAllObjects];
     
     // Get recent  bills list
     [HUD removeFromSuperview];
@@ -140,7 +140,7 @@
     {
         _tableView.hidden = NO;
     }
-
+    
 }
 
 #pragma mark #####
@@ -258,7 +258,7 @@
                 
                 NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                 [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -324,24 +324,10 @@
     sendingAmountLabel.textAlignment = NSTextAlignmentRight;
     
     UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-32,0, 30, 30)];
-    
-//    if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"PENDING"] )
-//    {
-//        imv.image=[UIImage imageNamed:@"Ques.png"];
-//    }
-//    
     if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"FAILED"] )
     {
         imv.image=[UIImage imageNamed:@"failed.png"];
     }
-//    else if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"PROCESSING"] )
-//    {
-//        imv.image=[UIImage imageNamed:@"Ques.png"];
-//    }
-//    else if([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"AWAITING-COLLECTION"] )
-//    {
-//        imv.image=[UIImage imageNamed:@"Ques.png"];
-//    }
     else if ([[transferReqDic valueForKeyPath:@"status.title"] isEqualToString:@"SUCCESSFUL"] )
     {
         imv.image=[UIImage imageNamed:@"sucess.png"];
@@ -366,7 +352,7 @@
     {
         myString = [transferReqDic valueForKeyPath:@"created"];
     }
-
+    
     if ([transferReqDic valueForKeyPath:@"bill_provider.title"] != nil)
     {
         businessNameLabel.text = [ NSString stringWithFormat:@"%@",[transferReqDic valueForKeyPath:@"bill_provider.title"]];
@@ -397,20 +383,20 @@
     {
         statusLabel.text = [ NSString stringWithFormat:@"%@ %@",[transferReqDic valueForKeyPath:@"receiving_currency.currency_code"],[transferReqDic valueForKeyPath:@"receiving_amount"]];
     }
-
+    
     if ([myString isKindOfClass:[NSNull class]])
-            {
+    {
         dateTimeLabel.text = @"null";
-            }
-            else
-            {
-                NSDateFormatter *df = [[NSDateFormatter alloc] init];
-                [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-                NSDate *date = [df dateFromString:myString];
-                [df setDateFormat:@"MMMM dd, HH:mm"];
-                NSString *dateString = [df stringFromDate:date];
-           dateTimeLabel.text = dateString;
-            }
+    }
+    else
+    {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        NSDate *date = [df dateFromString:myString];
+        [df setDateFormat:@"MMMM dd, HH:mm"];
+        NSString *dateString = [df stringFromDate:date];
+        dateTimeLabel.text = dateString;
+    }
     [cell.contentView addSubview:newView];
     [cell.contentView addSubview:businessNameLabel];
     [cell.contentView addSubview:statusLabel];
@@ -425,10 +411,10 @@
 {
     transferStatusDict = [ transferHistoryArray objectAtIndex:indexPath.row];
     if ([listTypes  isEqual: @"Transfer"]){
-    [self performSegueWithIdentifier:@"TransferPending" sender:self];
+        [self performSegueWithIdentifier:@"TransferPending" sender:self];
     }
     else{
-       [self performSegueWithIdentifier:@"PaymentPending" sender:self];  
+        [self performSegueWithIdentifier:@"PaymentPending" sender:self];
     }
     [_tableView reloadData];
 }
@@ -489,3 +475,4 @@
 
 
 @end
+

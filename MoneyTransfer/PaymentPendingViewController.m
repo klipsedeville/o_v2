@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     _exchangeRateLbl.text  = [ NSString stringWithFormat:@"Ex. Rate: %@1.00 = %@%@.00 Service Fee: %@%@.00",[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKeyPath:@"receiving_currency.currency_symbol"],[_transferStatusData valueForKey:@"exchange_rate"],[_transferStatusData valueForKeyPath:@"sending_currency.currency_symbol"],[_transferStatusData valueForKey:@"fee"]];
-
+    
     _scrollView.bounces = NO;
     _navigationTitleTextField.text = [ NSString stringWithFormat:@"Bill Payment Status"];
     _referenceNumberLbl.text = [ NSString stringWithFormat:@"%@",[_transferStatusData valueForKeyPath:@"reference"]];
@@ -53,7 +53,7 @@
     _AmountLbl.text = [ NSString stringWithFormat:@"₦%@.00",[_transferStatusData valueForKeyPath:@"receiving_amount"]];
     _amountValueS.text = [ NSString stringWithFormat:@"($%@)", sendingAmount];
     _amountValueS.frame = CGRectMake((_AmountLbl.text.length*10), _amountValueS.frame.origin.y, _amountValueS.frame.size.width, _amountValueS.frame.size.height);
-       _statusLbl.text = [ NSString stringWithFormat:@"%@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
+    _statusLbl.text = [ NSString stringWithFormat:@"%@",[[_transferStatusData valueForKeyPath:@"status.title"]uppercaseString]];
     
     // ---------------------Dynamic View----------------------------
     NSLog(@"Transfer Status Data is :- %@",_transferStatusData);
@@ -74,9 +74,9 @@
             UIView *addView = [[UIView alloc]init];
             addView.frame = CGRectMake(0, _exchangeRateLbl.frame.origin.y+_exchangeRateLbl.frame.size.height+20, SCREEN_WIDTH, ((stageValue.count * 60) + 50));
             addView.backgroundColor = [UIColor clearColor];
-//            addView.backgroundColor = [self colorWithHexString:@"51595c"];
+            //            addView.backgroundColor = [self colorWithHexString:@"51595c"];
             [_scrollView addSubview:addView];
-
+            
             UILabel *trackingLbl = [[UILabel alloc] init];
             trackingLbl.frame = CGRectMake(10, 15, SCREEN_WIDTH-20, 20);
             trackingLbl.text = @"TRACKING";
@@ -127,16 +127,9 @@
                 [addView addSubview:infoDateLbl];
             }
             
-             _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, addView.frame.origin.y+addView.frame.size.height);
+            _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, addView.frame.origin.y+addView.frame.size.height);
         }
     }
-    
-    
-//    float sizeOfContent = 0;
-//    NSInteger wd = _statusView.frame.origin.y;
-//    NSInteger ht = _statusView.frame.size.height+45;
-//    sizeOfContent = wd+ht;
-//    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     UITapGestureRecognizer * single = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnreferenceNumberLbl:)];
     [self.referenceNumberLbl addGestureRecognizer:single];
     single.numberOfTapsRequired = 1;
@@ -175,40 +168,40 @@
 -(IBAction)backBtnClicked:(id)sender{
     
     // back button
-   
+    
     [ self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)contactCustomerSupportBtnClicked:(id)sender{
-        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Support Actions" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                                @"Confirm Payment",
-                                @"Cancel Bill",
-                                @"Open Dispute",
-                                @"Contact Support",
-                                nil];
-        [popup showInView:self.view];
-
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Support Actions" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            @"Confirm Payment",
+                            @"Cancel Bill",
+                            @"Open Dispute",
+                            @"Contact Support",
+                            nil];
+    [popup showInView:self.view];
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-            switch (buttonIndex) {
-                case 0:
-                    [self confirm];
-                    break;
-                case 1:
-                    [self cancel];
-                    break;
-                case 2:
-                    [self open];
-                    break;
-                case 3:
-                    [self mail];
-                    break;
-                default:
-                    break;
-            }
-
+    
+    switch (buttonIndex) {
+        case 0:
+            [self confirm];
+            break;
+        case 1:
+            [self cancel];
+            break;
+        case 2:
+            [self open];
+            break;
+        case 3:
+            [self mail];
+            break;
+        default:
+            break;
+    }
+    
 }
 -(void)confirm{
     UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Confirm Receipt" message:@"Are you sure you want to confirm this payment as fulfilled?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
@@ -244,7 +237,7 @@
         // Present mail view controller on screen
         [self.navigationController presentViewController:mc animated:YES completion:NULL];
     }
-
+    
 }
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
@@ -317,17 +310,17 @@
 {
     if (alertView.tag ==100) {
         if (buttonIndex == 1){
-        [ self confirmPaymentAPI];
+            [ self confirmPaymentAPI];
         }
     }
     else if (alertView.tag ==200) {
         if (buttonIndex == 1){
-        [ self cancelBillAPI];
+            [ self cancelBillAPI];
         }
     }
     else if (alertView.tag ==300) {
         if (buttonIndex == 1){
-        [self openDisputeAPI];
+            [self openDisputeAPI];
         }
     }
     
@@ -409,28 +402,28 @@
                     if (status == 0)
                     {
                         dispatch_sync(dispatch_get_main_queue(), ^{
-                        [HUD removeFromSuperview];
-                        [HUD hide:YES];
-                        NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
-                        NSLog(@"error ..%@", errorArray);
-                        
-                        NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
-                        
-                        if(!errorString || [errorString isEqualToString:@"(null)"])
-                        {
-                            errorString = @"Your sesssion has been expired.";
+                            [HUD removeFromSuperview];
+                            [HUD hide:YES];
+                            NSArray *errorArray =[ responseDic valueForKeyPath:@"PayLoad.error"];
+                            NSLog(@"error ..%@", errorArray);
                             
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Error!" message:[NSString stringWithFormat:@"1. %@", errorString] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            alertview.tag = 1003;
+                            NSString * errorString =[ NSString stringWithFormat:@"%@",[errorArray objectAtIndex:0]];
                             
-                            [alertview show];
-                        }
-                        else
-                        {
-                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Error!" message:[NSString stringWithFormat:@"1. %@", errorString] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                            
-                            [alertview show];
-                        }
+                            if(!errorString || [errorString isEqualToString:@"(null)"])
+                            {
+                                errorString = @"Your sesssion has been expired.";
+                                
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Error!" message:[NSString stringWithFormat:@"1. %@", errorString] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                alertview.tag = 1003;
+                                
+                                [alertview show];
+                            }
+                            else
+                            {
+                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Error!" message:[NSString stringWithFormat:@"1. %@", errorString] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                
+                                [alertview show];
+                            }
                         });
                     }
                     else
@@ -441,7 +434,7 @@
                             NSLog(@"Response...%@",responseDic );
                             
                             NSDictionary *myData = [responseDic valueForKeyPath:@"Payload.data"];
-                     
+                            
                         });
                     }
                 }
@@ -449,8 +442,8 @@
             }
             else{
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                [HUD removeFromSuperview];
-                [HUD hide:YES];
+                    [HUD removeFromSuperview];
+                    [HUD hide:YES];
                 });
             }
         }
@@ -458,7 +451,7 @@
     }];
     
     [postDataTask resume];
-
+    
 }
 -(void)cancelBillAPI{
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
@@ -584,3 +577,4 @@
     [postDataTask resume];
 }
 @end
+

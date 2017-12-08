@@ -1,4 +1,4 @@
- //
+//
 //  PayBillViewController.m
 //  MoneyTransfer
 //
@@ -89,20 +89,20 @@
     [self.amountLbl addGestureRecognizer:tapGestureAmount];
     
     billOptionArray = [_billUserData valueForKeyPath:@"bill_options.title"];
-        _billOptionLbl.text = [billOptionArray objectAtIndex:0];
+    _billOptionLbl.text = [billOptionArray objectAtIndex:0];
     
-        if (billOptionArray.count>0) {
-            float height = 40;
-            height = height* billOptionArray.count;
-    
-            if (height> 160) {
-                self.billOptionTableView.frame = CGRectMake(self.billOptionTableView.frame.origin.x, self.billOptionTableView.frame.origin.y, self.billOptionTableView.frame.size.width,160 );
-    
-            }
-            else{
-                self.billOptionTableView.frame = CGRectMake(self.billOptionTableView.frame.origin.x, self.billOptionTableView.frame.origin.y, self.billOptionTableView.frame.size.width,height );
-            }
+    if (billOptionArray.count>0) {
+        float height = 40;
+        height = height* billOptionArray.count;
+        
+        if (height> 160) {
+            self.billOptionTableView.frame = CGRectMake(self.billOptionTableView.frame.origin.x, self.billOptionTableView.frame.origin.y, self.billOptionTableView.frame.size.width,160 );
+            
         }
+        else{
+            self.billOptionTableView.frame = CGRectMake(self.billOptionTableView.frame.origin.x, self.billOptionTableView.frame.origin.y, self.billOptionTableView.frame.size.width,height );
+        }
+    }
     NSArray *amountArr = [_billUserData valueForKeyPath:@"bill_options"];
     NSString *amountstr = [[amountArr objectAtIndex:0]valueForKey:@"amount"];
     
@@ -116,7 +116,7 @@
         
     }
     if ( !([_amountTextField.text containsString:@".00"])) {
-          _amountTextField.text = [_amountTextField.text stringByAppendingString:@".00"];
+        _amountTextField.text = [_amountTextField.text stringByAppendingString:@".00"];
     }
     
     billOptionID =[ NSString stringWithFormat:@"%@",[[amountArr objectAtIndex:0] valueForKey:@"id"]];
@@ -126,12 +126,10 @@
     _billOptionLbl.text = [NSString stringWithFormat:@"%@",[billOptionArray objectAtIndex:0]];
     
     // -----------------------  Dynamic view  --------------------------------------
-    
-    
     NSArray *requiredFieldArray = [_billUserData valueForKey:@"bill_required_fields"];
     
     [requiredInfoView removeFromSuperview];
-   
+    
     requiredInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, _amountView.frame.origin.y+_amountView.frame.size.height +17 , SCREEN_WIDTH, 50)];
     requiredInfoView.backgroundColor = [UIColor whiteColor];
     [_scrollView addSubview:requiredInfoView];
@@ -457,17 +455,17 @@
     [dictA setValue:billOptionID forKey:@"bill_option_id"];
     [dictA setValue:_amountTextField.text forKey:@"amount"];
     
-//    [dictA setValue:billOptionID forKey:@"exchange_rate"];
-//    [dictA setValue:billOptionID forKey:@"fee"];
-//    [dictA setValue:billOptionID forKey:@"sending_amount"];
-//    [dictA setValue:billOptionID forKey:@"receiving_amount"];
-//    [dictA setValue:billOptionID forKey:@"bill_option_id"];
-//    [dictA setValue:billOptionID forKey:@"bill_option_id"];
-//    
-//    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
-//    [dictB setValue:[NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"bill_category_id"]] forKey:@"bill_id"];
-//    [dictB setValue:@"" forKey:@"bill_required_field_id"];
-//    [dictB setValue:@"" forKey:@"collected_data"];
+    //    [dictA setValue:billOptionID forKey:@"exchange_rate"];
+    //    [dictA setValue:billOptionID forKey:@"fee"];
+    //    [dictA setValue:billOptionID forKey:@"sending_amount"];
+    //    [dictA setValue:billOptionID forKey:@"receiving_amount"];
+    //    [dictA setValue:billOptionID forKey:@"bill_option_id"];
+    //    [dictA setValue:billOptionID forKey:@"bill_option_id"];
+    //
+    //    NSMutableDictionary *dictB = [[NSMutableDictionary alloc]init];
+    //    [dictB setValue:[NSString stringWithFormat:@"%@",[_billUserData valueForKeyPath:@"bill_category_id"]] forKey:@"bill_id"];
+    //    [dictB setValue:@"" forKey:@"bill_required_field_id"];
+    //    [dictB setValue:@"" forKey:@"collected_data"];
     
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"bill_payment", DataArray, @"bill_collected_field", nil] options:NSJSONWritingPrettyPrinted error:nil];
@@ -802,7 +800,6 @@
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
     return YES;
 }
-
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {

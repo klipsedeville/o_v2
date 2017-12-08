@@ -102,10 +102,10 @@
         {
             for (UIViewController *controller in self.navigationController.viewControllers) {
                 if ([controller isKindOfClass:[LoginViewController class]]) {
-                  
+                    
                     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                     [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                    
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
                     [self.navigationController setNavigationBarHidden:NO];
@@ -158,3 +158,4 @@
 
 
 @end
+

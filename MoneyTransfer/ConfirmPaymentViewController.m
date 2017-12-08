@@ -836,7 +836,7 @@
         [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
         [self getAuthStatusWebService:referneceString];
     }
-  
+    
     else{
         
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"" message:@"Verification cancelled." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];

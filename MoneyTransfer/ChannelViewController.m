@@ -43,7 +43,7 @@
     _ChannelsTableView.bounces = NO;
     
     _blankView.hidden = YES;
-
+    
     self.mobileNumberTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Mobile number" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
     self.accNameTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Account name" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
     self.accNumberTextfield.attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Account number" attributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] }];
@@ -93,7 +93,7 @@
                             [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                             [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
     [numberToolbar sizeToFit];
-//    _mobileNumberTextfield.inputAccessoryView = numberToolbar;
+    //    _mobileNumberTextfield.inputAccessoryView = numberToolbar;
     
     //     Get Channel Settlement List
     [HUD removeFromSuperview];
@@ -102,16 +102,16 @@
     HUD.labelText = NSLocalizedString(@"Fetching settlement channels...", nil);
     [HUD show:YES];
     [ self GetChannelSettleMentlist];
-
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handletap:)];
-
+    
     [self.scrollView addGestureRecognizer:tapGesture];
 }
 
 -(void)handletap:(UITapGestureRecognizer*)sender
 {
     [self.view endEditing:YES];
-     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     _ChannelsTableView.hidden = YES;
     dataTableView.hidden = YES;
     self.scrollView.scrollEnabled = YES;
@@ -214,8 +214,8 @@
                          }
                      }
                      if (title_array.count != 0){
-                     title_array = [title_array objectAtIndex:0];
-                     NSLog(@"%@",[title_array objectAtIndex:0]);
+                         title_array = [title_array objectAtIndex:0];
+                         NSLog(@"%@",[title_array objectAtIndex:0]);
                      }
                  }
                  [self firstView];
@@ -224,10 +224,10 @@
          else
          {
              NSString *errorMessage  = [ payLoadDic valueForKey:@"error"];
-                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                 
-                 alertview.tag = 1002;
-                 [alertview show];
+             UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:errorMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+             
+             alertview.tag = 1002;
+             [alertview show];
          }
          
      }];
@@ -423,7 +423,7 @@
             if ([[[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"options_data"] count] == 0)
             {
                 parameterID = [NSString stringWithFormat:@"%@", [[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"id"]];
-//                int k = 0;
+                //                int k = 0;
                 for (UIView *i in _blankView.subviews){
                     if([i isKindOfClass:[UITextField class]]){
                         UITextField *newLbl = (UITextField *)i;
@@ -436,7 +436,7 @@
                             NSLog(@"%@", newLbl.text);
                             collectedValue = [NSString stringWithFormat:@"%@", newLbl.text];
                         }
-//                        if(i.tag == k){
+                        //                        if(i.tag == k){
                     }
                 }
                 
@@ -444,9 +444,9 @@
             else{
                 NSArray *arr = [[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"options_data"];
                 [settlement_channel_parameters_options_array addObject:arr];
-                 parameterID = [NSString stringWithFormat:@"%@", [[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"id"]];
-                 collectedValue = [NSString stringWithFormat:@"%@", [[[settlement_channel_parameters_options_array objectAtIndex:j]objectAtIndex:indexPathValue.row] valueForKey:@"id"]];
-               
+                parameterID = [NSString stringWithFormat:@"%@", [[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"id"]];
+                collectedValue = [NSString stringWithFormat:@"%@", [[[settlement_channel_parameters_options_array objectAtIndex:j]objectAtIndex:indexPathValue.row] valueForKey:@"id"]];
+                
             }
         }
         else
@@ -469,7 +469,7 @@
         [dictj setValue:collectedValue forKey:@"collected_data"];
         [dictBArr addObject:dictj];
     }
-
+    
     NSLog(@"USER BENFICIARY DATA ADDED2...%@",dictBArr);
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObjectsAndKeys:dictA, @"Beneficiary", dictBArr, @"BeneficiarySettlementChannelData", nil] options:NSJSONWritingPrettyPrinted error:nil];
@@ -516,9 +516,9 @@
                 NSData* data1 = [FBEncryptorAES decryptData:decodedData key:decodedKeyData iv:decodedIVData];
                 if (data1)
                 {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         [HUD removeFromSuperview];
-                     });
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [HUD removeFromSuperview];
+                    });
                     NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data1  options:NSJSONReadingMutableContainers error:&error];
                     
                     NSInteger status = [[responseDic valueForKeyPath:@"PayLoad.status"] integerValue];
@@ -584,7 +584,7 @@
         return [channelArray count];
     }
     else{
-
+        
         return [title_array count];
     }
 }
@@ -629,7 +629,7 @@
         bankslistTableView.hidden =  YES;
         
         _blankView.hidden = NO;
-
+        
         
         for (UIView *view in [_blankView subviews])
         {
@@ -645,7 +645,7 @@
         settlement_channel_parameters_array = [[NSMutableArray alloc]init];
         settlement_channel_parameters_options_array = [[NSMutableArray alloc]init];
         Main_array = [[NSMutableArray alloc]init];
-
+        
         if ([[[channelArray objectAtIndex:indexPath.row] valueForKey:@"settlement_channel_parameters"] count] == 0)
         {
             _blankView.frame = CGRectMake(0, 81, SCREEN_WIDTH, 150);
@@ -658,12 +658,12 @@
                 
             }
             NSLog(@"%@",settlement_channel_parameters_array);
-      
+            
             for (int j = 0; j < settlement_channel_parameters_array.count; j++)
             {
                 if ([[[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"settlement_channel_parameter_options"] count] == 0)
                 {
-                   
+                    
                     if ([[[settlement_channel_parameters_array objectAtIndex:j] valueForKey:@"options_data"] count] == 0)
                     {
                         UITextField *parameterTextfield = [[UITextField alloc]init];
@@ -678,15 +678,15 @@
                         bottomView.backgroundColor = [UIColor lightGrayColor];
                         [_blankView addSubview:parameterTextfield];
                         [_blankView addSubview:bottomView];
-                         parameterTextfield.inputAccessoryView = numberToolbar;
+                        parameterTextfield.inputAccessoryView = numberToolbar;
                     }
                     else{
                         NSArray *arr = [[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"options_data"];
                         
-                       [settlement_channel_parameters_options_array addObject:arr];
+                        [settlement_channel_parameters_options_array addObject:arr];
                         UILabel *parameterLabel = [[UILabel alloc]init];
                         parameterLabel.frame = CGRectMake(10, (30+(j*30)+(j*30)), SCREEN_WIDTH-20, 30);
-//                        UIColor *color = [self colorWithHexString:@"51595c"];
+                        //                        UIColor *color = [self colorWithHexString:@"51595c"];
                         parameterLabel.text = [NSString stringWithFormat:@"%@", [[[settlement_channel_parameters_options_array objectAtIndex:j]objectAtIndex:0] valueForKey:@"title"]];
                         UIImageView *bottom = [[UIImageView alloc]init];
                         bottom.frame = CGRectMake(10, (55+(j*30)+(j*30)), SCREEN_WIDTH-20, 5);
@@ -698,8 +698,8 @@
                         [_blankView addSubview:bottom];
                         [_blankView addSubview:button];
                     }
-                 
-                   
+                    
+                    
                 }
                 else
                 {
@@ -714,7 +714,7 @@
                     }
                     UILabel *parameterLabel = [[UILabel alloc]init];
                     parameterLabel.frame = CGRectMake(10, (30+(j*30)+(j*30)), SCREEN_WIDTH-20, 30);
-//                    UIColor *color = [self colorWithHexString:@"51595c"];
+                    //                    UIColor *color = [self colorWithHexString:@"51595c"];
                     parameterLabel.text = [NSString stringWithFormat:@"%@", [[[settlement_channel_parameters_options_array objectAtIndex:j]objectAtIndex:0] valueForKey:@"title"]];
                     UIImageView *bottom = [[UIImageView alloc]init];
                     bottom.frame = CGRectMake(10, (55+(j*30)+(j*30)), SCREEN_WIDTH-20, 5);
@@ -730,9 +730,9 @@
             NSLog(@"%@",settlement_channel_parameters_options_array);
             _blankView.frame = CGRectMake(0, 81, SCREEN_WIDTH, ((settlement_channel_parameters_array.count)*60)+30);
         }
-
+        
     }
-
+    
     else if(tableView == dataTableView){
         NSString *selectedData = [title_array objectAtIndex:indexPath.row];
         indexPathValue = indexPath;
@@ -806,9 +806,9 @@
     _ChannelsTableView.hidden = YES;
     dataTableView.hidden = YES;
     [_scrollView setContentSize:CGSizeMake(_scrollView.contentSize.width,_scrollView.contentSize.height + 200)];
-        UIView *tempVW = [[ UIView alloc] init];
-        tempVW.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y+5, textField.frame.size.width, textField.frame.size.height );
-        [self scrollViewToCenterOfScreen:tempVW];
+    UIView *tempVW = [[ UIView alloc] init];
+    tempVW.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y+5, textField.frame.size.width, textField.frame.size.height );
+    [self scrollViewToCenterOfScreen:tempVW];
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -903,26 +903,26 @@
 }
 
 -(void)aMethod:(UIButton*)sender {
-     MainArrayValue = [[NSMutableArray alloc]init];
+    MainArrayValue = [[NSMutableArray alloc]init];
     if (title_array.count == 0){
-    for (int k = 0; k < settlement_channel_parameters_options_array.count; k++)
-    {
-        
-        [Main_array addObject:[settlement_channel_parameters_options_array objectAtIndex:k]];
-       
-        for (int l = 0; l < [Main_array count]; l++)
+        for (int k = 0; k < settlement_channel_parameters_options_array.count; k++)
         {
-            [MainArrayValue addObject:[Main_array objectAtIndex:l]];
-            [title_array addObject:[[Main_array objectAtIndex:l] valueForKey:@"title"]];
+            
+            [Main_array addObject:[settlement_channel_parameters_options_array objectAtIndex:k]];
+            
+            for (int l = 0; l < [Main_array count]; l++)
+            {
+                [MainArrayValue addObject:[Main_array objectAtIndex:l]];
+                [title_array addObject:[[Main_array objectAtIndex:l] valueForKey:@"title"]];
+            }
         }
-    }
-    title_array = [title_array objectAtIndex:0];
+        title_array = [title_array objectAtIndex:0];
     }
     NSLog(@"%@",title_array);
     dataTableView.hidden = NO;
     _ChannelsTableView.hidden = YES;
     if (title_array.count <= 7){
-       dataTableView.frame = CGRectMake(0, 204+sender.frame.origin.y, SCREEN_WIDTH-20, ((title_array.count)*30));
+        dataTableView.frame = CGRectMake(0, 204+sender.frame.origin.y, SCREEN_WIDTH-20, ((title_array.count)*30));
     }
     else{
         dataTableView.frame = CGRectMake(0, 204+sender.frame.origin.y, SCREEN_WIDTH-20, 210);
@@ -985,7 +985,7 @@
                     bottomView.backgroundColor = [UIColor lightGrayColor];
                     [_blankView addSubview:parameterTextfield];
                     [_blankView addSubview:bottomView];
-                 parameterTextfield.inputAccessoryView = numberToolbar;
+                    parameterTextfield.inputAccessoryView = numberToolbar;
                 }
                 else{
                     NSArray *arr = [[settlement_channel_parameters_array objectAtIndex:j]valueForKey:@"options_data"];

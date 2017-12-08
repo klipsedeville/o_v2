@@ -30,7 +30,7 @@
     myImageView.hidden = YES;
     myImageView1.hidden = YES;
     myImageView2.hidden = YES;
-
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.barTintColor =[self colorWithHexString:@"10506b"];
     
@@ -45,7 +45,7 @@
     myImageView2.hidden = YES;
     myImageView1.hidden = YES;
     myImageView.hidden = YES;
-   
+    
     CALayer *FirstNameLayer = [CALayer layer];
     FirstNameLayer.frame = CGRectMake(0.0f, self.ResetCodeTextfield.frame.size.height - 1, self.ResetCodeTextfield.frame.size.width, 1.0f);
     FirstNameLayer.backgroundColor = [UIColor blackColor].CGColor;
@@ -127,7 +127,7 @@
     // Decode IvString form base64
     NSString *base64IVString = [ NSString stringWithFormat:@"%@",[[ userDataDict valueForKey:@"api_access_token"] valueForKey:@"iv"]];
     NSData *decodedIVData = [[NSData alloc] initWithBase64EncodedString:base64IVString options:0];
- 
+    
     NSString *EncryptPasswordKey = [[FBEncryptorAES encryptData:[@"password" dataUsingEncoding:NSUTF8StringEncoding] key:decodedKeyData iv:decodedIVData] base64EncodedStringWithOptions:0];
     
     NSString *EncryptPasswordValue = [[FBEncryptorAES encryptData:[self.PasswordTextfield.text  dataUsingEncoding:NSUTF8StringEncoding] key:decodedKeyData iv:decodedIVData] base64EncodedStringWithOptions:0];
@@ -136,10 +136,10 @@
     NSString *EncryptResetCodeValue = [[FBEncryptorAES encryptData:[self.ResetCodeTextfield.text dataUsingEncoding:NSUTF8StringEncoding] key:decodedKeyData iv:decodedIVData] base64EncodedStringWithOptions:0];
     
     NSDictionary *headers = @{@"token": @"",
-
-                               @"cache-control": @"no-cache",
-                               @"postman-token": @"e052d2a7-928b-0406-a9a6-d859b881496c",
-                               @"content-type": @"application/x-www-form-urlencoded" };
+                              
+                              @"cache-control": @"no-cache",
+                              @"postman-token": @"e052d2a7-928b-0406-a9a6-d859b881496c",
+                              @"content-type": @"application/x-www-form-urlencoded" };
     
     
     
@@ -218,11 +218,11 @@
                                                                 });
                                                             }
                                                             else{                    [HUD removeFromSuperview];
-                                                            
-                                                            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection failed. Please make sure you have an active internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                                                            
-                                                            [alertview show];
-                                         
+                                                                
+                                                                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Connection failed. Please make sure you have an active internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                                                                
+                                                                [alertview show];
+                                                                
                                                             }
                                                         }
                                                     }
@@ -244,10 +244,10 @@
         if (buttonIndex==0)
         {
             for (UIViewController *controller in self.navigationController.viewControllers) {
-            
-            NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-            [def setObject:@"YES"  forKey:@"UserLogined"];
-
+                
+                NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+                [def setObject:@"YES"  forKey:@"UserLogined"];
+                
                 if ([controller isKindOfClass:[LoginViewController class]]) {
                     [self.navigationController popToViewController:controller
                                                           animated:YES];
@@ -760,3 +760,4 @@
 }
 
 @end
+

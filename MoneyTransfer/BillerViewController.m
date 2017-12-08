@@ -24,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -59,8 +57,6 @@
     HUD.labelText = NSLocalizedString(@"Fetching billers...", nil);
     [HUD show:YES];
     [self GetStatesList];
-    
-    
     // Check user Session Expired or Not
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
     
@@ -110,7 +106,6 @@
     // back button
     [self performSegueWithIdentifier:@"locationsegue" sender:self];
 }
-
 
 #pragma mark ##########
 #pragma mark Get Bills List With Currency ID
@@ -295,7 +290,6 @@ NSString *selectCountryCode = [NSString stringWithFormat:@"%@", [[NSUserDefaults
 - (IBAction)ActionAddBiller:(id)sender {
     [self performSegueWithIdentifier:@"AddBillerSegue" sender:self];
 }
-
 -(void)cancelNumberPad
 {
     [self.view endEditing:YES];
@@ -305,9 +299,6 @@ NSString *selectCountryCode = [NSString stringWithFormat:@"%@", [[NSUserDefaults
 {
     [self.view endEditing:YES];
 }
-
-
-
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     

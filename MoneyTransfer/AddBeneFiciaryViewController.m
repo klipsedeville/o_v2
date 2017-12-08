@@ -99,7 +99,7 @@
     
     // Check user Session Expired or not.
     NSDictionary *userDataDict = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginUserData"]];
-     userDataDict = [userDataDict valueForKeyPath:@"User"];
+    userDataDict = [userDataDict valueForKeyPath:@"User"];
     double timeStampFromJSON = [[userDataDict valueForKeyPath:@"api_access_token.expires_on"] doubleValue];
     if([[NSDate date] timeIntervalSince1970] > timeStampFromJSON)
     {
@@ -107,7 +107,7 @@
         
         UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Your session has been expired." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alertview.tag = 1003;
-
+        
         [alertview show];
         
     }
@@ -345,7 +345,7 @@
     }
 }
 - (IBAction)beneficiaryBtnClicked:(id)sender {
-   
+    
     // Address Book
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10) {
         
@@ -356,7 +356,7 @@
     }
     else
     {
-         // When IOS version less than 10
+        // When IOS version less than 10
         ABPeoplePickerNavigationController *personPicker = [ABPeoplePickerNavigationController new];
         personPicker.peoplePickerDelegate = self;
         [self presentViewController:personPicker animated:YES completion:nil];
@@ -589,7 +589,7 @@
     NSInteger ht = _lowerView.frame.size.height;
     sizeOfContent = wd+ht;
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, sizeOfContent);
-//    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, 350);
+    //    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, 350);
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     return YES;
 }
@@ -657,3 +657,4 @@
     [self.view endEditing:YES];
 }
 @end
+

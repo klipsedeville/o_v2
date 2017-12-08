@@ -244,7 +244,7 @@ static NSString *kCellIdentifier = @"cellIdentifier";
         BackPopUp *popUp = [[BackPopUp alloc]initWithNibName:@"BackPopUp"  bundle:nil];
         [self presentPopupViewController:popUp animationType:MJPopupViewAnimationFade1];
         [[NSUserDefaults standardUserDefaults]setObject:@"normal" forKey:@"hudView"];
-       
+        
         [self getAuthStatusWebService:referneceString];
     }
     else{
