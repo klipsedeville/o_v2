@@ -1,0 +1,812 @@
+
+/* Class = "UITextField"; text = "Confirm Payment"; ObjectID = "0O8-eM-19k"; */
+"0O8-eM-19k.text" = "Confirmer le paiement";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "0a4-V8-AlN"; */
+"0a4-V8-AlN.placeholder" = "Numéro de téléphone";
+
+/* Class = "UILabel"; text = "Account Number"; ObjectID = "0cj-cU-qN6"; */
+"0cj-cU-qN6.text" = "Numéro de compte";
+
+/* Class = "UILabel"; text = "Card Number"; ObjectID = "0kS-QZ-rWn"; */
+"0kS-QZ-rWn.text" = "Numéro de carte";
+
+/* Class = "UILabel"; text = "Credit Card"; ObjectID = "0pQ-Ya-7CM"; */
+"0pQ-Ya-7CM.text" = "Carte de crédit";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "11g-91-1HZ"; */
+"11g-91-1HZ.text" = "Montant";
+
+/* Class = "UITextField"; placeholder = "Bill Name"; ObjectID = "13p-oX-Co4"; */
+"13p-oX-Co4.placeholder" = "Nom de la facture";
+
+/* Class = "UILabel"; text = "You send"; ObjectID = "1DF-dP-zc1"; */
+"1DF-dP-zc1.text" = "Vous envoyez";
+
+/* Class = "UILabel"; text = "Provide a valid phone number"; ObjectID = "1Nr-mm-FuF"; */
+"1Nr-mm-FuF.text" = "Fournir un numéro de téléphone valide";
+
+/* Class = "UILabel"; text = "Ex. Rate: $1.00 = ₦350.00 Service Fee $4.00"; ObjectID = "1R8-nL-m1C"; */
+"1R8-nL-m1C.text" = "Ex. Tarif: 1,00 $ = ₦ 350,00 Frais de service 4,00 $";
+
+/* Class = "UIButton"; normalTitle = "Already have an Account? Log in"; ObjectID = "1Td-Lm-fkK"; */
+"1Td-Lm-fkK.normalTitle" = "Vous avez déjà un compte? S'identifier";
+
+/* Class = "UILabel"; text = "Airline"; ObjectID = "1Tv-3S-wMJ"; */
+"1Tv-3S-wMJ.text" = "Compagnie aérienne";
+
+/* Class = "UILabel"; text = "Reset Code"; ObjectID = "1Wh-TD-BRk"; */
+"1Wh-TD-BRk.text" = "Réinitialiser le code";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "1dV-Er-2IQ"; */
+"1dV-Er-2IQ.text" = "Nom de famille";
+
+/* Class = "UILabel"; text = "Date "; ObjectID = "1mp-Kq-o1E"; */
+"1mp-Kq-o1E.text" = "Rendez-vous amoureux ";
+
+/* Class = "UILabel"; text = "Agent Name"; ObjectID = "1nD-lr-lG7"; */
+"1nD-lr-lG7.text" = "Nom d'agent";
+
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "1pf-Bt-Iq8"; */
+"1pf-Bt-Iq8.placeholder" = "Nom complet";
+
+/* Class = "UIButton"; normalTitle = "Send Money"; ObjectID = "1xG-YD-FYw"; */
+"1xG-YD-FYw.normalTitle" = "Envoyer de l'argent";
+
+/* Class = "UILabel"; text = "What would you like to pay for?"; ObjectID = "3QM-Kr-YoA"; */
+"3QM-Kr-YoA.text" = "Que voulez-vous payer?";
+
+/* Class = "UILabel"; text = "Select a category"; ObjectID = "3fe-5q-4K0"; */
+"3fe-5q-4K0.text" = "Choisir une catégorie";
+
+/* Class = "UIButton"; disabledTitle = "Sign in"; ObjectID = "3zn-Pw-SdL"; */
+"3zn-Pw-SdL.disabledTitle" = "Se connecter";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "3zn-Pw-SdL"; */
+"3zn-Pw-SdL.normalTitle" = "PROCHAIN";
+
+/* Class = "UILabel"; text = "Ex. Rate: $1.00 = ₦350.00 Service Fee $4.00"; ObjectID = "4gx-Nk-eWS"; */
+"4gx-Nk-eWS.text" = "Ex. Tarif: 1,00 $ = ₦ 350,00 Frais de service 4,00 $";
+
+/* Class = "UITextField"; text = "Create your account"; ObjectID = "4pg-kz-sTp"; */
+"4pg-kz-sTp.text" = "Créez votre compte";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "5tY-Ly-W9U"; */
+"5tY-Ly-W9U.placeholder" = "Nom de famille";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "6cF-Po-DBc"; */
+"6cF-Po-DBc.placeholder" = "Adresse e-mail";
+
+/* Class = "UIButton"; normalTitle = "Pay Bill"; ObjectID = "6dM-Ok-G5C"; */
+"6dM-Ok-G5C.normalTitle" = "Masse salariale";
+
+/* Class = "UITextField"; placeholder = "your password"; ObjectID = "7Ir-HZ-ptC"; */
+"7Ir-HZ-ptC.placeholder" = "votre mot de passe";
+
+/* Class = "UILabel"; text = "Add Biller"; ObjectID = "7pM-ZN-rar"; */
+"7pM-ZN-rar.text" = "Ajouter Biller";
+
+/* Class = "UILabel"; text = "Select your biller's country"; ObjectID = "801-rd-biw"; */
+"801-rd-biw.text" = "Sélectionnez le pays de votre émetteur de factures";
+
+/* Class = "UILabel"; text = "MM"; ObjectID = "82L-jP-cNc"; */
+"82L-jP-cNc.text" = "MM";
+
+/* Class = "UILabel"; text = "bank_account_name"; ObjectID = "86E-Th-sS6"; */
+"86E-Th-sS6.text" = "nom du compte bancaire";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "8IU-dT-uTn"; */
+"8IU-dT-uTn.placeholder" = "Adresse e-mail";
+
+/* Class = "UILabel"; text = "LIKE US?"; ObjectID = "8Q4-rB-NTw"; */
+"8Q4-rB-NTw.text" = "COMME NOUS?";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "8WZ-uB-1Vb"; */
+"8WZ-uB-1Vb.text" = "Prénom";
+
+/* Class = "UITextField"; placeholder = "Account name"; ObjectID = "8Xb-eq-Utf"; */
+"8Xb-eq-Utf.placeholder" = "Nom du compte";
+
+/* Class = "UITextField"; placeholder = "your number"; ObjectID = "8Xd-Cc-DoN"; */
+"8Xd-Cc-DoN.placeholder" = "ton numéro";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "95G-dJ-xNQ"; */
+"95G-dJ-xNQ.text" = "Montant";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "9Q5-XK-5IU"; */
+"9Q5-XK-5IU.placeholder" = "Nom de famille";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "9WO-5E-Crc"; */
+"9WO-5E-Crc.text" = "Répéter le mot de passe";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "A6r-mW-gF5"; */
+"A6r-mW-gF5.text" = "Adresse e-mail";
+
+/* Class = "UILabel"; text = "History"; ObjectID = "A6x-fu-6b0"; */
+"A6x-fu-6b0.text" = "Histoire";
+
+/* Class = "UILabel"; text = "Physical Address"; ObjectID = "Ayo-qw-sL9"; */
+"Ayo-qw-sL9.text" = "Adresse physique";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "B4Y-7l-ist"; */
+"B4Y-7l-ist.text" = "Prénom";
+
+/* Class = "UILabel"; text = "UserName"; ObjectID = "B6e-0p-LoK"; */
+"B6e-0p-LoK.text" = "Nom d'utilisateur";
+
+/* Class = "UIButton"; normalTitle = "     Agent Profile"; ObjectID = "BWT-He-gUl"; */
+"BWT-He-gUl.normalTitle" = "    Profil de l'agent";
+
+/* Class = "UILabel"; text = "bill Title"; ObjectID = "Bdy-dX-UVB"; */
+"Bdy-dX-UVB.text" = "Titre de la facture";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "C0D-Kx-uyN"; */
+"C0D-Kx-uyN.text" = "Répéter le mot de passe";
+
+/* Class = "UILabel"; text = "Airtime"; ObjectID = "CKx-9Z-dzN"; */
+"CKx-9Z-dzN.text" = "Temps d'antenne";
+
+/* Class = "UILabel"; text = "Referral Code"; ObjectID = "CpZ-Wz-0bQ"; */
+"CpZ-Wz-0bQ.text" = "Code de Parrainage";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "Cua-KR-Qxm"; */
+"Cua-KR-Qxm.text" = "Numéro de téléphone";
+
+/* Class = "UITextField"; text = "Method Of Collection "; ObjectID = "DOG-hy-bRe"; */
+"DOG-hy-bRe.text" = "Méthode de collection ";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "DbN-B9-WJe"; */
+"DbN-B9-WJe.normalTitle" = "Continuer";
+
+/* Class = "UIButton"; normalTitle = "Pay Bill"; ObjectID = "Ddj-7L-ij4"; */
+"Ddj-7L-ij4.normalTitle" = "Masse salariale";
+
+/* Class = "UITextField"; text = "Reset Password"; ObjectID = "Dwu-ZB-loW"; */
+"Dwu-ZB-loW.text" = "réinitialiser le mot de passe";
+
+/* Class = "UILabel"; text = "Mobile"; ObjectID = "E2s-Ev-3hp"; */
+"E2s-Ev-3hp.text" = "Mobile";
+
+/* Class = "UILabel"; text = "Beneficiaries"; ObjectID = "EKG-kY-KXO"; */
+"EKG-kY-KXO.text" = "Les bénéficiaires";
+
+/* Class = "UILabel"; text = "Account Tier"; ObjectID = "F15-lA-ne0"; */
+"F15-lA-ne0.text" = "Niveau de compte";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "FfQ-Id-Baz"; */
+"FfQ-Id-Baz.text" = "Montant";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "G2A-Dc-YyX"; */
+"G2A-Dc-YyX.placeholder" = "Prénom";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "G2Z-Kd-ZcV"; */
+"G2Z-Kd-ZcV.text" = "Montant";
+
+/* Class = "UILabel"; text = "MM"; ObjectID = "GHF-YP-jop"; */
+"GHF-YP-jop.text" = "MM";
+
+/* Class = "UILabel"; text = "Option"; ObjectID = "GNi-tE-MZR"; */
+"GNi-tE-MZR.text" = "Option";
+
+/* Class = "UIButton"; normalTitle = "TRANSFERS"; ObjectID = "GVm-UD-EUq"; */
+"GVm-UD-EUq.normalTitle" = "TRANSFERS";
+
+/* Class = "UILabel"; text = "Bill "; ObjectID = "H7m-u0-D6X"; */
+"H7m-u0-D6X.text" = "Facture ";
+
+/* Class = "UILabel"; text = "0987654321"; ObjectID = "HWS-8e-4uM"; */
+"HWS-8e-4uM.text" = "0987654321";
+
+/* Class = "UILabel"; text = "Fee inclusive"; ObjectID = "Hmi-6f-mI6"; */
+"Hmi-6f-mI6.text" = "Frais inclus";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "Hmx-b9-60Y"; */
+"Hmx-b9-60Y.text" = "Montant";
+
+/* Class = "UITextField"; text = "Bill Details"; ObjectID = "IEO-2d-u1J"; */
+"IEO-2d-u1J.text" = "Bill Détails";
+
+/* Class = "UITextField"; text = "Select a biller"; ObjectID = "IZG-ii-QG2"; */
+"IZG-ii-QG2.text" = "Sélectionnez un émetteur de factures";
+
+/* Class = "UILabel"; text = "Select location"; ObjectID = "IxL-S6-VUV"; */
+"IxL-S6-VUV.text" = "Sélectionnez l'emplacement";
+
+/* Class = "UILabel"; text = "Rate Us"; ObjectID = "Iym-WR-BFc"; */
+"Iym-WR-BFc.text" = "Évaluez nous";
+
+/* Class = "UILabel"; text = "Can't find your biller? Add here"; ObjectID = "JJ4-go-rgL"; */
+"JJ4-go-rgL.text" = "Vous ne trouvez pas votre émetteur de factures? Ajouter ici";
+
+/* Class = "UILabel"; text = "Card nickname"; ObjectID = "JNo-YY-qb6"; */
+"JNo-YY-qb6.text" = "Surnom de la carte";
+
+/* Class = "UILabel"; text = "Reference Number"; ObjectID = "JS3-xn-Gz9"; */
+"JS3-xn-Gz9.text" = "Numéro de réference";
+
+/* Class = "UILabel"; text = "New Password"; ObjectID = "JYX-LC-Yv7"; */
+"JYX-LC-Yv7.text" = "nouveau mot de passe";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password"; ObjectID = "Jol-OF-dPY"; */
+//"Jol-OF-dPY.normalTitle" = "Forgot Password";
+"Jol-OF-dPY.normalTitle" = "Mot de passe oublié";
+
+/* Class = "UILabel"; text = "Beneficiary"; ObjectID = "K2c-3G-Ew5"; */
+"K2c-3G-Ew5.text" = "Bénéficiaire";
+
+/* Class = "UILabel"; text = "Okeyson Limited"; ObjectID = "Kq9-PM-nhr"; */
+"Kq9-PM-nhr.text" = "Okeyson Limited";
+
+/* Class = "UILabel"; text = "Earnings"; ObjectID = "L0Z-xf-141"; */
+"L0Z-xf-141.text" = "Gains";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "L5m-Sl-gZy"; */
+"L5m-Sl-gZy.text" = "Adresse e-mail";
+
+/* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "LUm-qX-DoZ"; */
+"LUm-qX-DoZ.normalTitle" = "EFFACER";
+
+/* Class = "UILabel"; text = "Bill "; ObjectID = "LpW-l2-3mA"; */
+"LpW-l2-3mA.text" = "Facture ";
+
+/* Class = "UIButton"; disabledTitle = "Sign in"; ObjectID = "M8R-fa-Imh"; */
+"M8R-fa-Imh.disabledTitle" = "Se connecter";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "M8R-fa-Imh"; */
+"M8R-fa-Imh.normalTitle" = "PROCHAIN";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "MYu-pr-VjL"; */
+"MYu-pr-VjL.text" = "Statut";
+
+/* Class = "UITextField"; text = "Transfer Completed"; ObjectID = "Mp3-GH-r6m"; */
+"Mp3-GH-r6m.text" = "Transfert terminé";
+
+/* Class = "UILabel"; text = "YYYY"; ObjectID = "MpZ-4J-cQf"; */
+"MpZ-4J-cQf.text" = "YYYY";
+
+/* Class = "UITextField"; text = "Select Amount"; ObjectID = "Nac-k5-Ug5"; */
+"Nac-k5-Ug5.text" = "Sélectionnez le montant";
+
+/* Class = "UILabel"; text = "Biller Category"; ObjectID = "Ng2-EN-RWp"; */
+"Ng2-EN-RWp.text" = "Catégorie de Biller";
+
+/* Class = "UILabel"; text = "Ex. Rate: $1.00 = ₦350.00 Service Fee $4.00"; ObjectID = "Nyz-H4-JYM"; */
+"Nyz-H4-JYM.text" = "Ex. Tarif: 1,00 $ = ₦ 350,00 Frais de service 4,00 $";
+
+/* Class = "UIButton"; normalTitle = "Recover Password"; ObjectID = "O2R-go-rwi"; */
+"O2R-go-rwi.normalTitle" = "Récupérer mot de passe";
+
+/* Class = "UILabel"; text = "Ex. Rate: $1.00 = ₦350.00 Service Fee $4.00"; ObjectID = "O4T-Dv-0Iq"; */
+"O4T-Dv-0Iq.text" = "Ex. Tarif: 1,00 $ = ₦ 350,00 Frais de service 4,00 $";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "OsK-65-YdY"; */
+"OsK-65-YdY.text" = "Mot de passe";
+
+/* Class = "UILabel"; text = "Provide your personal information"; ObjectID = "POd-Hq-bNR"; */
+"POd-Hq-bNR.text" = "Fournissez vos informations personnelles";
+
+/* Class = "UILabel"; text = "Share your referral code with friends and give them\na discount on their first order, you 'll get a discount \ntoo.   Tip : Include your referral code in your app review  when you rate us on the App Store."; ObjectID = "PaC-1K-vdI"; */
+"PaC-1K-vdI.text" = "Partagez votre code de parrainage avec des amis et donnez-les \ n rabais sur leur première commande, vous obtiendrez un rabais \ ntoo. Conseil: Incluez votre code de parrainage dans votre avis d'application lorsque vous nous notez sur l'App Store.";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "Pcb-zt-Yp2"; */
+"Pcb-zt-Yp2.text" = "0,00";
+
+/* Class = "UILabel"; text = "Agent Commission"; ObjectID = "Pxs-Xb-UZF"; */
+"Pxs-Xb-UZF.text" = "Commission de l'agent";
+
+/* Class = "UITextField"; text = " Beneficiary Added"; ObjectID = "QbW-xr-fRa"; */
+"QbW-xr-fRa.text" = " Bénéficiaire ajouté";
+
+/* Class = "UILabel"; text = "Bill"; ObjectID = "Qep-QB-Zqm"; */
+"Qep-QB-Zqm.text" = "Facture";
+
+/* Class = "UITextField"; text = "Forgot Password"; ObjectID = "Qhu-zg-OrM"; */
+"Qhu-zg-OrM.text" = "Mot de passe oublié";
+
+/* Class = "UILabel"; text = "Biller"; ObjectID = "RRL-Df-Yvv"; */
+"RRL-Df-Yvv.text" = "Biller";
+
+/* Class = "UIButton"; normalTitle = "Home"; ObjectID = "S8e-0s-vhB"; */
+"S8e-0s-vhB.normalTitle" = "Accueil";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "SEg-Ib-UjY"; */
+"SEg-Ib-UjY.normalTitle" = "X";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "SvO-4q-Y9v"; */
+"SvO-4q-Y9v.placeholder" = "Prénom";
+
+/* Class = "UIButton"; normalTitle = "CONTACT CUSTOMER CARE"; ObjectID = "TTv-eX-gLW"; */
+"TTv-eX-gLW.normalTitle" = "CONTACTER LE SERVICE CLIENT";
+
+/* Class = "UILabel"; text = "BENEFICIARY ADDED"; ObjectID = "Tb2-JI-P6Q"; */
+"Tb2-JI-P6Q.text" = "BÉNÉFICIAIRE AJOUTÉ";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "U1t-os-xfS"; */
+"U1t-os-xfS.text" = "Montant";
+
+/* Class = "UILabel"; text = "Select a method"; ObjectID = "URk-O1-qQh"; */
+"URk-O1-qQh.text" = "Sélectionnez une méthode";
+
+/* Class = "UILabel"; text = "You've earned"; ObjectID = "UcQ-K2-lBq"; */
+"UcQ-K2-lBq.text" = "Tu as gagné";
+
+/* Class = "UILabel"; text = "Select biller category"; ObjectID = "UpD-2j-MXu"; */
+"UpD-2j-MXu.text" = "Sélectionner la catégorie de l'émetteur de factures";
+
+/* Class = "UIButton"; normalTitle = "Send Money"; ObjectID = "V3z-Zp-Aj8"; */
+"V3z-Zp-Aj8.normalTitle" = "Envoyer de l'argent";
+
+/* Class = "UILabel"; text = "Add Beneficiary"; ObjectID = "VF3-pw-225"; */
+"VF3-pw-225.text" = "Ajouter un bénéficiaire";
+
+/* Class = "UITextField"; placeholder = "Physical Address"; ObjectID = "VGy-Ud-Sq5"; */
+"VGy-Ud-Sq5.placeholder" = "Adresse physique";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "VJZ-c7-bVY"; */
+"VJZ-c7-bVY.placeholder" = "0,00";
+
+/* Class = "UITextField"; placeholder = "your last name"; ObjectID = "VN3-WP-TrL"; */
+"VN3-WP-TrL.placeholder" = "votre nom de famille";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Vnf-1e-NY5"; */
+//"Vnf-1e-NY5.placeholder" = "Password";
+"Vnf-1e-NY5.placeholder" = "Mot de passe";
+
+/* Class = "UITextField"; text = "Add Beneficiary"; ObjectID = "Vve-YK-17r"; */
+"Vve-YK-17r.text" = "Ajouter un bénéficiaire";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "WJN-g3-BmE"; */
+"WJN-g3-BmE.placeholder" = "Prénom";
+
+/* Class = "UITextField"; text = "My Profile"; ObjectID = "WsO-km-Tsz"; */
+"WsO-km-Tsz.text" = "Mon profil";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "Wzf-nT-FJA"; */
+"Wzf-nT-FJA.text" = "Montant";
+
+/* Class = "UITextField"; text = "Payment Method"; ObjectID = "X2W-ys-noA"; */
+"X2W-ys-noA.text" = "Mode de paiement";
+
+/* Class = "UILabel"; text = "Select location"; ObjectID = "XGy-db-4K5"; */
+"XGy-db-4K5.text" = "Sélectionnez l'emplacement";
+
+/* Class = "UITextField"; placeholder = "Biller Name"; ObjectID = "XdP-E4-aur"; */
+"XdP-E4-aur.placeholder" = "Nom du tueur";
+
+/* Class = "UIButton"; normalTitle = "Send Money"; ObjectID = "Y0p-kt-nAn"; */
+"Y0p-kt-nAn.normalTitle" = "Envoyer de l'argent";
+
+/* Class = "UILabel"; text = "Reset Code"; ObjectID = "Y5o-zc-GrD"; */
+"Y5o-zc-GrD.text" = "Réinitialiser le code";
+
+/* Class = "UILabel"; text = "Welcome back"; ObjectID = "YIs-p1-vuy"; */
+"YIs-p1-vuy.text" = "Nous saluons le retour";
+
+/* Class = "UITextField"; text = "Set a settlement channel "; ObjectID = "Ygk-wz-I3U"; */
+"Ygk-wz-I3U.text" = "Définir un canal de règlement ";
+
+/* Class = "UILabel"; text = "Biller Details"; ObjectID = "Zbp-mE-5Fu"; */
+"Zbp-mE-5Fu.text" = "Détails de Biller";
+
+/* Class = "UILabel"; text = "Smile"; ObjectID = "Zgs-T6-gGe"; */
+"Zgs-T6-gGe.text" = "Sourire";
+
+/* Class = "UITextField"; placeholder = "Account number"; ObjectID = "a9N-o1-MlJ"; */
+"a9N-o1-MlJ.placeholder" = "Numéro de compte";
+
+/* Class = "UITextField"; placeholder = "your address"; ObjectID = "aJz-Qi-uTu"; */
+"aJz-Qi-uTu.placeholder" = "Votre adresse";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "aLQ-4b-f53"; */
+"aLQ-4b-f53.text" = "Mot de passe";
+
+/* Class = "UITextField"; placeholder = "your first name"; ObjectID = "adk-pW-DbM"; */
+"adk-pW-DbM.placeholder" = "ton prénom";
+
+/* Class = "UILabel"; text = "Date "; ObjectID = "aod-hc-2MQ"; */
+"aod-hc-2MQ.text" = "Rendez-vous amoureux ";
+
+/* Class = "UIButton"; normalTitle = "ACTIONS"; ObjectID = "auy-JV-Hia"; */
+"auy-JV-Hia.normalTitle" = "ACTES";
+
+/* Class = "UITextField"; placeholder = "Bill Amount"; ObjectID = "axg-W0-VwX"; */
+"axg-W0-VwX.placeholder" = "Montant de la facture";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "b3g-VQ-fy7"; */
+//"b3g-VQ-fy7.placeholder" = "Email Address";
+"b3g-VQ-fy7.placeholder.text" = "Adresse e-mail";
+
+/* Class = "UILabel"; text = "TRANSFER  WAS PLACED SUCCESSFULLY."; ObjectID = "b3j-j5-Wg1"; */
+"b3j-j5-Wg1.text" = "LE TRANSFERT A ÉTÉ EFFECTUÉ AVEC SUCCÈS.";
+
+/* Class = "UIButton"; normalTitle = "Add another"; ObjectID = "bcn-gl-WWM"; */
+"bcn-gl-WWM.normalTitle" = "Ajouter un autre";
+
+/* Class = "UITextField"; placeholder = "Account number"; ObjectID = "cB8-ph-XSZ"; */
+"cB8-ph-XSZ.placeholder" = "Numéro de compte";
+
+/* Class = "UIButton"; normalTitle = "Create Account"; ObjectID = "cCs-Ng-i6H"; */
+"cCs-Ng-i6H.normalTitle" = "Créer un compte";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "cQL-9r-PP6"; */
+"cQL-9r-PP6.text" = "Montant";
+
+/* Class = "UITextField"; text = "Select . Send . Smile"; ObjectID = "cV9-Tr-f7Y"; */
+"cV9-Tr-f7Y.text" = "Sélectionnez Envoyer . Sourire";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cep-JR-Nca"; */
+"cep-JR-Nca.text" = "Étiquette";
+
+/* Class = "UILabel"; text = "Bill payments across Africa"; ObjectID = "cmz-Jv-KWK"; */
+"cmz-Jv-KWK.text" = "Paiements de factures à travers l'Afrique";
+
+/* Class = "UILabel"; text = "CVV"; ObjectID = "cqg-qP-wv7"; */
+"cqg-qP-wv7.text" = "CVV";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "d0o-wD-3Y8"; */
+"d0o-wD-3Y8.text" = ")";
+
+/* Class = "UITextField"; text = " My Beneficiaries"; ObjectID = "dSe-vM-yJX"; */
+"dSe-vM-yJX.text" = " Mes bénéficiaires";
+
+/* Class = "UILabel"; text = "Paying for someone? (Optional)"; ObjectID = "dhi-Sr-Jbm"; */
+"dhi-Sr-Jbm.text" = "Payer pour quelqu'un? (Optionnel)";
+
+/* Class = "UITextField"; text = "Share Orobo"; ObjectID = "doe-6x-UYX"; */
+"doe-6x-UYX.text" = "Partager Orobo";
+
+/* Class = "UILabel"; text = "Select bank"; ObjectID = "dp9-d7-h0c"; */
+"dp9-d7-h0c.text" = "Sélectionnez une banque";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "dqQ-Qc-4wT"; */
+"dqQ-Qc-4wT.text" = "Montant";
+
+/* Class = "UILabel"; text = "Smile"; ObjectID = "dx2-5o-axm"; */
+"dx2-5o-axm.text" = "Sourire";
+
+/* Class = "UIButton"; normalTitle = "Reset Password"; ObjectID = "eHC-t5-hkv"; */
+"eHC-t5-hkv.normalTitle" = "réinitialiser le mot de passe";
+
+/* Class = "UITextField"; text = "Orobo"; ObjectID = "ePY-8m-uME"; */
+"ePY-8m-uME.text" = "Orobo";
+
+/* Class = "UILabel"; text = "Share Orobo"; ObjectID = "eba-Vq-bSd"; */
+"eba-Vq-bSd.text" = "Partager Orobo";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "evz-Tv-CZi"; */
+"evz-Tv-CZi.normalTitle" = "sauvegarder";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "fJR-EO-dI6"; */
+"fJR-EO-dI6.text" = "Répéter le mot de passe";
+
+/* Class = "UIButton"; normalTitle = "CHANGE"; ObjectID = "fZ5-ie-mrC"; */
+"fZ5-ie-mrC.normalTitle" = "CHANGEMENT";
+
+/* Class = "UILabel"; text = "Logout"; ObjectID = "fek-aY-VQl"; */
+"fek-aY-VQl.text" = "Connectez - Out";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "gUp-cx-YY9"; */
+"gUp-cx-YY9.placeholder" = "0,00";
+
+/* Class = "UITextField"; placeholder = "Physical Address"; ObjectID = "gYO-UB-zfb"; */
+"gYO-UB-zfb.placeholder" = "Adresse physique";
+
+/* Class = "UILabel"; text = "BILL PAYMENT RECEIVED SUCCESSFULLY."; ObjectID = "ga6-ob-q9Y"; */
+"ga6-ob-q9Y.text" = "BILL PAIEMENT REÇU AVEC SUCCES.";
+
+/* Class = "UITextField"; text = "Select a location"; ObjectID = "gg6-a8-Tmv"; */
+"gg6-a8-Tmv.text" = "Sélectionnez un lieu";
+
+/* Class = "UILabel"; text = "Option"; ObjectID = "ghN-7T-JRj"; */
+"ghN-7T-JRj.text" = "Option";
+
+/* Class = "UILabel"; text = "$75.98"; ObjectID = "gla-LA-FxG"; */
+"gla-LA-FxG.text" = "75,98 USD";
+
+/* Class = "UILabel"; text = "SELECT OPTION"; ObjectID = "gmm-co-hVq"; */
+"gmm-co-hVq.text" = "SELECT OPTION";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "h8O-Pi-zyQ"; */
+"h8O-Pi-zyQ.placeholder" = "Nom de famille";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "h9U-ys-bgk"; */
+"h9U-ys-bgk.text" = "Adresse e-mail";
+
+/* Class = "UITextField"; placeholder = "Physical Address"; ObjectID = "hSB-t2-Xhn"; */
+"hSB-t2-Xhn.placeholder" = "Adresse physique";
+
+/* Class = "UILabel"; text = "Rahul Kumar"; ObjectID = "hXk-kD-tP7"; */
+"hXk-kD-tP7.text" = "Rahul Kumar";
+
+/* Class = "UILabel"; text = "CVV"; ObjectID = "hdF-dV-fCP"; */
+"hdF-dV-fCP.text" = "CVV";
+
+/* Class = "UITextField"; placeholder = "Search by biller name"; ObjectID = "heB-id-TK6"; */
+"heB-id-TK6.placeholder" = "Recherche par nom de l'émetteur";
+
+/* Class = "UILabel"; text = "Bill "; ObjectID = "hk1-tq-5FZ"; */
+"hk1-tq-5FZ.text" = "Facture";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "hmL-op-TcC"; */
+"hmL-op-TcC.normalTitle" = "Prochain";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "hua-E9-syJ"; */
+"hua-E9-syJ.text" = "Montant";
+
+/* Class = "UILabel"; text = "New Password"; ObjectID = "hwX-KJ-77U"; */
+"hwX-KJ-77U.text" = "nouveau mot de passe";
+
+/* Class = "UILabel"; text = "PocketMoni"; ObjectID = "hze-nE-GBs"; */
+"hze-nE-GBs.text" = "PocketMoni";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "j5R-m3-EPI"; */
+"j5R-m3-EPI.text" = "Nom de famille";
+
+/* Class = "UILabel"; text = "Select your biller's country"; ObjectID = "jBx-rQ-QtE"; */
+"jBx-rQ-QtE.text" = "Sélectionnez le pays de votre émetteur de factures";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "jOq-n5-s6d"; */
+"jOq-n5-s6d.placeholder" = "Adresse e-mail";
+
+/* Class = "UILabel"; text = "Bill"; ObjectID = "jer-ha-IPt"; */
+"jer-ha-IPt.text" = "Facture";
+
+/* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "jjg-MQ-zX6"; */
+"jjg-MQ-zX6.placeholder" = "Numéro de téléphone";
+
+/* Class = "UITextField"; placeholder = "Bill Name"; ObjectID = "jlb-qL-DwM"; */
+"jlb-qL-DwM.placeholder" = "Nom de la facture";
+
+/* Class = "UITextField"; placeholder = "your email address here"; ObjectID = "jrU-dk-1LO"; */
+"jrU-dk-1LO.placeholder" = "votre adresse e-mail ici";
+
+/* Class = "UITextField"; placeholder = "repeat password"; ObjectID = "juL-Kd-Of0"; */
+"juL-Kd-Of0.placeholder" = "Répéter le mot de passe";
+
+/* Class = "UILabel"; text = "Confirm Transfer"; ObjectID = "k1W-wT-MSH"; */
+"k1W-wT-MSH.text" = "Confirmer le transfert";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "kT6-bk-jDO"; */
+"kT6-bk-jDO.text" = "Mot de passe";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "kfH-Nk-sEg"; */
+"kfH-Nk-sEg.normalTitle" = "Changer le mot de passe";
+
+/* Class = "UIButton"; normalTitle = "ADD NEW"; ObjectID = "kg5-gc-7fz"; */
+"kg5-gc-7fz.normalTitle" = "AJOUTER NOUVEAU";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "klu-TQ-4ed"; */
+"klu-TQ-4ed.placeholder" = "Numéro de téléphone";
+
+/* Class = "UILabel"; text = "Account Name"; ObjectID = "kly-2Q-Jmh"; */
+"kly-2Q-Jmh.text" = "Nom du compte";
+
+/* Class = "UILabel"; text = "Transfer Reference"; ObjectID = "ksx-ic-NMx"; */
+"ksx-ic-NMx.text" = "Référence de transfert";
+
+/* Class = "UILabel"; text = "Old Password"; ObjectID = "ktD-mu-QWI"; */
+"ktD-mu-QWI.text" = "Ancien mot de passe";
+
+/* Class = "UILabel"; text = "Beneficiary gets"; ObjectID = "l42-8h-FKj"; */
+"l42-8h-FKj.text" = "Le bénéficiaire obtient";
+
+/* Class = "UILabel"; text = "Card Number"; ObjectID = "lEQ-Yp-PD6"; */
+"lEQ-Yp-PD6.text" = "Numéro de carte";
+
+/* Class = "UITextField"; text = "Agent Profile"; ObjectID = "lMv-Vo-Oa2"; */
+"lMv-Vo-Oa2.text" = "Profil de l'agent";
+
+/* Class = "UILabel"; text = "Referral Code"; ObjectID = "lRg-AJ-NTF"; */
+"lRg-AJ-NTF.text" = "Code de Parrainage";
+
+/* Class = "UILabel"; text = "What would you like to pay for?"; ObjectID = "laT-a2-4Qe"; */
+"laT-a2-4Qe.text" = "Que voudriez-vous payer?";
+
+/* Class = "UIButton"; normalTitle = "Pay Bill"; ObjectID = "lsA-Wu-4Fe"; */
+"lsA-Wu-4Fe.normalTitle" = "Masse salariale";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "mNd-sr-IL2"; */
+"mNd-sr-IL2.placeholder" = "Numéro de téléphone";
+
+/* Class = "UIButton"; disabledTitle = "Sign in"; ObjectID = "mRf-dB-fhC"; */
+"mRf-dB-fhC.disabledTitle" = "Se connecter";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "mRf-dB-fhC"; */
+"mRf-dB-fhC.normalTitle" = "Se connecter";
+
+/* Class = "UIButton"; normalTitle = "BILL PAYMENTS"; ObjectID = "mni-Kj-CSS"; */
+"mni-Kj-CSS.normalTitle" = "PAIEMENTS DE FACTURE";
+
+/* Class = "UILabel"; text = "Tap code to share"; ObjectID = "mys-ob-BMu"; */
+"mys-ob-BMu.text" = "Appuyez sur le code pour partager";
+
+/* Class = "UILabel"; text = "Okeyson Limited"; ObjectID = "n2b-vh-i9c"; */
+"n2b-vh-i9c.text" = "Okeyson Limited";
+
+/* Class = "UILabel"; text = "Card Nickname"; ObjectID = "n5W-P6-oqM"; */
+"n5W-P6-oqM.text" = "Pseudo de la carte";
+
+/* Class = "UIButton"; disabledTitle = "Sign in"; ObjectID = "nHP-ql-Ovp"; */
+"nHP-ql-Ovp.disabledTitle" = "Se connecter";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "nHP-ql-Ovp"; */
+"nHP-ql-Ovp.normalTitle" = "PROCHAIN";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "nTg-qC-gz4"; */
+"nTg-qC-gz4.placeholder" = "0,00";
+
+/* Class = "UILabel"; text = "GET A DOLLAR"; ObjectID = "nWE-Y5-hem"; */
+"nWE-Y5-hem.text" = "OBTENIR UN DOLLAR";
+
+/* Class = "UIButton"; normalTitle = "     "; ObjectID = "noF-VT-Oqg"; */
+"noF-VT-Oqg.normalTitle" = "     ";
+
+/* Class = "UITextField"; text = "Select a bill"; ObjectID = "o6N-Jn-dH2"; */
+"o6N-Jn-dH2.text" = "Sélectionnez une facture";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "o9H-2v-5a3"; */
+"o9H-2v-5a3.text" = "Statut";
+
+/* Class = "UITextField"; text = "Confirm Transfer"; ObjectID = "oai-BY-WTG"; */
+"oai-BY-WTG.text" = "Confirmer le transfert";
+
+/* Class = "UIButton"; normalTitle = "Home"; ObjectID = "obt-lM-SE8"; */
+"obt-lM-SE8.normalTitle" = "Accueil";
+
+/* Class = "UILabel"; text = "Bill Reference (OBR)"; ObjectID = "oca-1e-5oH"; */
+"oca-1e-5oH.text" = "Référence de facture (OBR)";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "owE-UE-Sdq"; */
+"owE-UE-Sdq.text" = "Montant";
+
+/* Class = "UILabel"; text = "Add Biller"; ObjectID = "p7H-yR-0nI"; */
+"p7H-yR-0nI.text" = "Ajouter Biller";
+
+/* Class = "UILabel"; text = "Ex. Rate: $1.00 to ₦350.00 Fee $4.00"; ObjectID = "pbK-gJ-Ddo"; */
+"pbK-gJ-Ddo.text" = "Ex. Taux: 1,00 $ à 350,00 $ Frais de 4,00 $";
+
+/* Class = "UITextField"; text = "Select a category"; ObjectID = "pkz-Md-f3T"; */
+"pkz-Md-f3T.text" = "Choisir une catégorie";
+
+/* Class = "UITextField"; text = "Add Your Biller"; ObjectID = "pt0-61-im5"; */
+"pt0-61-im5.text" = "Ajoutez votre tueur";
+
+/* Class = "UILabel"; text = "****4242"; ObjectID = "pvm-dt-dFC"; */
+"pvm-dt-dFC.text" = "****4242";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "q0H-Ml-anl"; */
+"q0H-Ml-anl.text" = "Adresse e-mail";
+
+/* Class = "UILabel"; text = "Select bank"; ObjectID = "q0l-nf-gsH"; */
+"q0l-nf-gsH.text" = "Sélectionnez une banque";
+
+/* Class = "UITextField"; placeholder = "Account name"; ObjectID = "q87-wW-bp3"; */
+"q87-wW-bp3.placeholder" = "Nom du compte";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "qOU-Kg-4dN"; */
+"qOU-Kg-4dN.normalTitle" = "Sauvegarder";
+
+/* Class = "UILabel"; text = "$4.03"; ObjectID = "qin-yB-ham"; */
+"qin-yB-ham.text" = "4,03 $";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "qoa-Kc-yOF"; */
+"qoa-Kc-yOF.text" = "Email";
+
+/* Class = "UILabel"; text = "Beneficiary name"; ObjectID = "qtc-CZ-uEz"; */
+"qtc-CZ-uEz.text" = "Nom du bénéficiaire";
+
+/* Class = "UILabel"; text = "Provide a valid email address"; ObjectID = "qyt-04-Yxf"; */
+"qyt-04-Yxf.text" = "Donnez une adresse de messagerie valide";
+
+/* Class = "UILabel"; text = "Biller"; ObjectID = "rsd-eU-cpv"; */
+"rsd-eU-cpv.text" = "Biller";
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "s4O-7c-DVu"; */
+"s4O-7c-DVu.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "Select Option"; ObjectID = "sWz-ZS-5QO"; */
+"sWz-ZS-5QO.text" = "Sélectionnez l'option";
+
+/* Class = "UILabel"; text = "Can't find your biller? Add here"; ObjectID = "sci-2G-ayf"; */
+"sci-2G-ayf.text" = "Vous ne trouvez pas votre émetteur de factures? Ajoutez ici";
+
+/* Class = "UIButton"; normalTitle = "Send Money"; ObjectID = "smD-84-O0P"; */
+"smD-84-O0P.normalTitle" = "Envoyer de l'argent";
+
+/* Class = "UILabel"; text = "Referral Code"; ObjectID = "ssL-5Q-SJZ"; */
+"ssL-5Q-SJZ.text" = "Code de Parrainage";
+
+/* Class = "UIButton"; normalTitle = "Create Account"; ObjectID = "t2b-Kf-2c6"; */
+//"t2b-Kf-2c6.normalTitle" = "Create Account";
+"t2b-Kf-2c6.normalTitle" = "Créer un compte";
+
+/* Class = "UITextField"; text = "Change Password"; ObjectID = "t6d-6y-ptR"; */
+"t6d-6y-ptR.text" = "Changer le mot de passe";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "tuW-df-opQ"; */
+"tuW-df-opQ.normalTitle" = "Changer le mot de passe";
+
+/* Class = "UIButton"; normalTitle = "Confirm Payment"; ObjectID = "uDw-Tz-pSs"; */
+"uDw-Tz-pSs.normalTitle" = "Confirmer le paiement";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "uak-8S-sFJ"; */
+"uak-8S-sFJ.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "Profile"; ObjectID = "uq7-rK-CGU"; */
+"uq7-rK-CGU.text" = "Profil";
+
+/* Class = "UILabel"; text = "Option Amount"; ObjectID = "uyv-Cc-qbp"; */
+"uyv-Cc-qbp.text" = "Montant de l'option";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "vKQ-yW-CTK"; */
+"vKQ-yW-CTK.placeholder" = "Adresse e-mail";
+
+/* Class = "UILabel"; text = "bank_account_name"; ObjectID = "vQ3-Tm-KsY"; */
+"vQ3-Tm-KsY.text" = "nom du compte bancaire";
+
+/* Class = "UITextField"; text = "Transfer PENDING"; ObjectID = "vRB-mC-fjp"; */
+"vRB-mC-fjp.text" = "Transfert en attente";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "vU9-gX-d6Y"; */
+"vU9-gX-d6Y.text" = "Répéter le mot de passe";
+
+/* Class = "UILabel"; text = "25"; ObjectID = "vV5-uc-gPk"; */
+"vV5-uc-gPk.text" = "25";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "vpg-ME-mfP"; */
+"vpg-ME-mfP.text" = "Adresse";
+
+/* Class = "UILabel"; text = "bill option Title"; ObjectID = "vyw-ZP-4NR"; */
+"vyw-ZP-4NR.text" = "titre de l'option de facture";
+
+/* Class = "UILabel"; text = "Add your card details"; ObjectID = "w5t-Q1-VXD"; */
+"w5t-Q1-VXD.text" = "Ajouter les détails de votre carte";
+
+/* Class = "UILabel"; text = "Can't find your biller? Add here"; ObjectID = "w6Y-i0-Ddh"; */
+"w6Y-i0-Ddh.text" = "Vous ne trouvez pas votre émetteur de factures? Ajoutez ici";
+
+/* Class = "UITextField"; placeholder = "Biller Name"; ObjectID = "wZX-mK-qnh"; */
+"wZX-mK-qnh.placeholder" = "Nom de Biller";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "weG-b2-74S"; */
+"weG-b2-74S.normalTitle" = "Changer le mot de passe";
+
+/* Class = "UILabel"; text = "Reference Number"; ObjectID = "wiP-Wq-7pQ"; */
+"wiP-Wq-7pQ.text" = "Numéro de réference";
+
+/* Class = "UILabel"; text = "Set a secure password"; ObjectID = "wlf-U0-mlP"; */
+"wlf-U0-mlP.text" = "Définir un mot de passe sécurisé";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "xZn-do-xFF"; */
+"xZn-do-xFF.text" = "Mot de passe";
+
+/* Class = "UITextField"; text = "Add Your Biller"; ObjectID = "y8a-q9-4hA"; */
+"y8a-q9-4hA.text" = "Ajoutez votre tueur";
+
+/* Class = "UILabel"; text = "YYYY"; ObjectID = "yA9-zq-V9t"; */
+"yA9-zq-V9t.text" = "YYYY";
+
+/* Class = "UITextField"; placeholder = "Bill Amount"; ObjectID = "yLU-3F-WP9"; */
+"yLU-3F-WP9.placeholder" = "Montant de la facture";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "yRW-vN-6GW"; */
+"yRW-vN-6GW.text" = "Répéter le mot de passe";
+
+/* Class = "UILabel"; text = "Pay Bills"; ObjectID = "yU6-DR-dnb"; */
+"yU6-DR-dnb.text" = "Masse salariale";
+
+/* Class = "UITextField"; text = "Transfer PENDING"; ObjectID = "yuw-mY-gR4"; */
+"yuw-mY-gR4.text" = "Transfert en attente";
+
+/* Class = "UILabel"; text = "Beneficiary Settlement Channel name"; ObjectID = "ywH-sS-aVu"; */
+"ywH-sS-aVu.text" = "Nom du canal de règlement du bénéficiaire";
+
+/* Class = "UILabel"; text = "Old Password"; ObjectID = "zcO-aV-Fp4"; */
+"zcO-aV-Fp4.text" = "Ancien mot de passe";
+
+/* Class = "UILabel"; text = "Repeat Password"; ObjectID = "ziD-OH-PFN"; */
+"ziD-OH-PFN.text" = "Répéter le mot de passe";
+
+/* Class = "UITextField"; text = "My Transactions"; ObjectID = "zuL-6B-oVA"; */
+"zuL-6B-oVA.text" = "Mes transactions";
+

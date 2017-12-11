@@ -22,6 +22,25 @@
     
      [NSThread sleepForTimeInterval:3.0];
     // Override point for customization after application launch.
+    
+    //new
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSLog(@"country   .   %@",language);
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setValue:language forKey:@"lang_locale"];
+    if ([language  isEqual: @"fr"]) {
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ar"];
+        NSString *l1 = [locale displayNameForKey:NSLocaleIdentifier value:@"ar"];
+        NSLog(@"%@", l1);
+    }
+    else
+    {
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en"];
+        NSString *l2 = [locale displayNameForKey:NSLocaleIdentifier value:@"en"];
+        NSLog(@"%@", l2);
+        
+    }
+    //
     [self loadStoryboards];
     [Stripe setDefaultPublishableKey:@"pk_test_MJD7VPvX8eEsgr7F2dapMGjl"];
     [[ NSUserDefaults standardUserDefaults]removeObjectForKey:@"timeStamp"];

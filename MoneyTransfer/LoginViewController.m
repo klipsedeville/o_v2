@@ -29,13 +29,38 @@
     [_passwordTextField setSecureTextEntry:YES];
     _scrollView.bounces = NO;
     
+//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//    NSString *language = [ prefs valueForKey:@"lang_locale"];
+//    if ([language  isEqual: @"en"])
+//    {
+//        self.emailAddressTextField.placeholder = @"Email Address";
+//    }
+//    else
+//    {
+//      self.emailAddressTextField.placeholder = @"Adresse e-mail";
+//    }
+    
+
     // Add tool bar on Number Key pad
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT-50, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *language = [ prefs valueForKey:@"lang_locale"];
+    if ([language  isEqual: @"fr"])
+    {
+    numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Annuler" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
                             [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                            [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
+                            [[UIBarButtonItem alloc]initWithTitle:@"Terminé" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
     [numberToolbar sizeToFit];
+    }
+    else
+    {
+        numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
+                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
+        [numberToolbar sizeToFit];
+    }
     
     _emailAddressTextField.inputAccessoryView = numberToolbar;
     _passwordTextField.inputAccessoryView = numberToolbar;
@@ -54,8 +79,24 @@
     [self->loginBtnClick setBackgroundColor: [self colorWithHexString:@"82c460"]];
     
     UIColor *color = [UIColor whiteColor];
-    _emailAddressTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: color}];
-    _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+    
+    //new
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *language = [ prefs valueForKey:@"lang_locale"];
+    if ([language  isEqual: @"fr"])
+    
+    {
+        _emailAddressTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Adresse e-mail" attributes:@{NSForegroundColorAttributeName: color}];
+        _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Mot de passe" attributes:@{NSForegroundColorAttributeName: color}];
+
+    }
+    else
+    {
+            _emailAddressTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: color}];
+            _passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+       
+    }
+    //
     
     //Bottom border
     
@@ -116,12 +157,13 @@
     
     NSString *userStatus =  [[NSUserDefaults standardUserDefaults] valueForKey:@"UserLogout"];
     if ([userStatus isEqualToString:@"Yes"]) {
+       
+            myalert = [[UIAlertView alloc] initWithTitle:@"Alert!"message:@"You have logged out successfully."
+                                                delegate:self cancelButtonTitle:@""
+                                       otherButtonTitles:nil, nil];
+            myalert.tag = 1001;
+            [myalert show];
         
-        myalert = [[UIAlertView alloc] initWithTitle:@"Alert!"message:@"You have logged out successfully."
-                                            delegate:self cancelButtonTitle:@""
-                                   otherButtonTitles:nil, nil];
-        myalert.tag = 1001;
-        [myalert show];
         
         timer= [NSTimer scheduledTimerWithTimeInterval:2.0
                                                 target:self selector:@selector(test)
@@ -204,40 +246,85 @@
         if ([passwordStr length] == 0)
         {
             // If Password is empty
-            
-            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter password." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            NSString *language = [ prefs valueForKey:@"lang_locale"];
+            if ([language  isEqual: @"fr"])
+            {
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alerte!" message:@"Veuillez entrer le mot de passe." delegate:self cancelButtonTitle:@"D'accord" otherButtonTitles:nil, nil];
             
             [alertview show];
+                
+                }
+            else
+            {
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter password." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertview show];
+            }
         }
         
         else
         {
             // Call User login method
-            
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            NSString *language = [ prefs valueForKey:@"lang_locale"];
+            if ([language  isEqual: @"fr"])
+            {
             [HUD removeFromSuperview];
             HUD = [[MBProgressHUD alloc] initWithView:self.view];
             [self.view addSubview:HUD];
-            HUD.labelText = NSLocalizedString(@"Logging in...", nil);
+            HUD.labelText = NSLocalizedString(@"Se connecter...", nil);
             [HUD show:YES];
             [ self callUserLoginMethod];
+            }
+            else
+            {
+                [HUD removeFromSuperview];
+                HUD = [[MBProgressHUD alloc] initWithView:self.view];
+                [self.view addSubview:HUD];
+                HUD.labelText = NSLocalizedString(@"Logging in...", nil);
+                [HUD show:YES];
+                [ self callUserLoginMethod];
+            }
         }
     }
     else{
         if([userEmailStr length] == 0)
         {
             // If email ID is empty
-            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter the email" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            NSString *language = [ prefs valueForKey:@"lang_locale"];
+            if ([language  isEqual: @"fr"])
+            {
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alerte!" message:@"S'il vous plaît entrer l'email" delegate:self cancelButtonTitle:@"D'accord" otherButtonTitles:nil, nil];
             
             [alertview show];
+            }
+            else{
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter the email" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertview show];
+            }
         }
         
         else if ([passwordStr length] == 0)
         {
             // If Password is empty
-            
-            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter password." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            NSString *language = [ prefs valueForKey:@"lang_locale"];
+            if ([language  isEqual: @"fr"])
+                
+            {
+            UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alerte!" message:@"Veuillez entrer le mot de passe." delegate:self cancelButtonTitle:@"D'accord" otherButtonTitles:nil, nil];
             
             [alertview show];
+            }
+            else
+            {
+                UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter password." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertview show];
+            }
         }
         else if([userEmailStr length] > 0){
             
@@ -248,21 +335,62 @@
             int checkValue = [emailTest evaluateWithObject:self.emailAddressTextField.text];
             if (checkValue==0)
             {
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                NSString *language = [ prefs valueForKey:@"lang_locale"];
+                if ([language  isEqual: @"fr"])
+                    
+                {
+                    UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alerte!" message:@"Veuillez entrer un email valide." delegate:self cancelButtonTitle:@"D'accord" otherButtonTitles:nil, nil];
+                    
+                    [alertview show];
+//                    [HUD removeFromSuperview];
+//                    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//                    [self.view addSubview:HUD];
+//                    HUD.labelText = NSLocalizedString(@"Se connecter...", nil);
+//                    [HUD show:YES];
+//                    [ self callUserLoginMethod];
+                }
+                else
+                {
                 UIAlertView *alertview=[[UIAlertView alloc]initWithTitle: @"Alert!" message:@"Please enter a valid email." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 
                 [alertview show];
+                    
+//                    [HUD removeFromSuperview];
+//                    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//                    [self.view addSubview:HUD];
+//                    HUD.labelText = NSLocalizedString(@"Logging in...", nil);
+//                    [HUD show:YES];
+//                    [ self callUserLoginMethod];
+                    
             }
-            else
-            {
+            }
+                else
+                {
+                    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                    NSString *language = [ prefs valueForKey:@"lang_locale"];
+                    if ([language  isEqual: @"fr"])
+                        
+                    {
+                        [HUD removeFromSuperview];
+                                            HUD = [[MBProgressHUD alloc] initWithView:self.view];
+                                            [self.view addSubview:HUD];
+                                            HUD.labelText = NSLocalizedString(@"Se connecter...", nil);
+                                            [HUD show:YES];
+                                            [ self callUserLoginMethod];
                 
-                // Call User login method
+                }
+                    else
+                    {
+                        [HUD removeFromSuperview];
+                                            HUD = [[MBProgressHUD alloc] initWithView:self.view];
+                                            [self.view addSubview:HUD];
+                                            HUD.labelText = NSLocalizedString(@"Logging in...", nil);
+                                            [HUD show:YES];
+                                            [ self callUserLoginMethod];
+                    }
                 
-                [HUD removeFromSuperview];
-                HUD = [[MBProgressHUD alloc] initWithView:self.view];
-                [self.view addSubview:HUD];
-                HUD.labelText = NSLocalizedString(@"Logging in...", nil);
-                [HUD show:YES];
-                [ self callUserLoginMethod];
+               
             }
         }
     }

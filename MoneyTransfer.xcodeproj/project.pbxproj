@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1897FBC01FDE9714003092AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1897FBC21FDE9714003092AD /* Main.storyboard */; };
 		73F67F251F9FCFC200C7B79A /* CustomPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F67F231F9FCFC200C7B79A /* CustomPopUp.m */; };
 		73F67F261F9FCFC200C7B79A /* CustomPopUp_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73F67F241F9FCFC200C7B79A /* CustomPopUp_iPhone.xib */; };
 		73F67F2A1F9FD02600C7B79A /* CustomPopUp_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F67F281F9FD02600C7B79A /* CustomPopUp_iPad.m */; };
@@ -325,7 +326,6 @@
 		9AAAEA5E1D0145CB00F435B7 /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAEA5B1D0145CB00F435B7 /* back-arrow@2x.png */; };
 		9AAF13EC1CE9CEBE00C36706 /* AddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF13EB1CE9CEBE00C36706 /* AddCardViewController.m */; };
 		9AAF13EF1CE9DFE800C36706 /* ipadAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF13EE1CE9DFE800C36706 /* ipadAddCardViewController.m */; };
-		9AAF14421CE9F2CA00C36706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF14411CE9F2CA00C36706 /* Main.storyboard */; };
 		9AB1209B1CEDD8D500C1D5FC /* iPadSendMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB1209A1CEDD8D500C1D5FC /* iPadSendMoneyViewController.m */; };
 		9AB1209E1CEDD8F400C1D5FC /* iPadBeneficiariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB1209D1CEDD8F400C1D5FC /* iPadBeneficiariesViewController.m */; };
 		9AB120A11CEDD92800C1D5FC /* iPadAddBeneficiariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB120A01CEDD92800C1D5FC /* iPadAddBeneficiariesViewController.m */; };
@@ -378,6 +378,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1897FBC11FDE9714003092AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1897FBC31FDE9755003092AD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		29E2B7F4AA3D50EE20A23C08 /* libPods-MoneyTransferUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoneyTransferUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBFB27BB4918EAED105B868 /* Pods-MoneyTransfer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTransfer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTransfer/Pods-MoneyTransfer.release.xcconfig"; sourceTree = "<group>"; };
 		73F67F221F9FCFC200C7B79A /* CustomPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopUp.h; sourceTree = "<group>"; };
@@ -782,7 +784,6 @@
 		9AAF13EB1CE9CEBE00C36706 /* AddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCardViewController.m; sourceTree = "<group>"; };
 		9AAF13ED1CE9DFE800C36706 /* ipadAddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipadAddCardViewController.h; sourceTree = "<group>"; };
 		9AAF13EE1CE9DFE800C36706 /* ipadAddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ipadAddCardViewController.m; sourceTree = "<group>"; };
-		9AAF14411CE9F2CA00C36706 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9AB120991CEDD8D500C1D5FC /* iPadSendMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadSendMoneyViewController.h; sourceTree = "<group>"; };
 		9AB1209A1CEDD8D500C1D5FC /* iPadSendMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadSendMoneyViewController.m; sourceTree = "<group>"; };
 		9AB1209C1CEDD8F400C1D5FC /* iPadBeneficiariesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadBeneficiariesViewController.h; sourceTree = "<group>"; };
@@ -1514,7 +1515,7 @@
 				9A5229381F864A94005104C5 /* UIViewController+MJPopupViewController.h */,
 				9A5229391F864A94005104C5 /* UIViewController+MJPopupViewController.m */,
 				9A6CDD731D599CB900B1D7C1 /* MyriadPro-Light.ttf */,
-				9AAF14411CE9F2CA00C36706 /* Main.storyboard */,
+				1897FBC21FDE9714003092AD /* Main.storyboard */,
 				9ACBB1781CDA0D33009E5595 /* main.m */,
 				9A3DEB501D01A12000997F00 /* iPadMain.storyboard */,
 				9AB864021CE9871600243DF8 /* CoreText.framework */,
@@ -1770,7 +1771,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ar,
 			);
 			mainGroup = 9ACBB16B1CDA0D33009E5595;
 			productRefGroup = 9ACBB1751CDA0D33009E5595 /* Products */;
@@ -1913,7 +1913,7 @@
 				9A675F831D462B820078257B /* camera@2x.png in Resources */,
 				9A2350111CEF18C200C325AC /* left_arrow@3x.png in Resources */,
 				9A675FA21D4632EB0078257B /* email@3x.png in Resources */,
-				9AAF14421CE9F2CA00C36706 /* Main.storyboard in Resources */,
+				1897FBC01FDE9714003092AD /* Main.storyboard in Resources */,
 				9AAAEA5C1D0145CB00F435B7 /* back-arrow@3x.png in Resources */,
 				9A3E31531CF5C651008A69EC /* profile_ipad@2x.png in Resources */,
 				9A1A14171CF56FE20049EA4D /* sendMoneylogo@2x.png in Resources */,
@@ -2370,11 +2370,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		1897FBC21FDE9714003092AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1897FBC11FDE9714003092AD /* Base */,
+				1897FBC31FDE9755003092AD /* fr */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		9ACBB19F1CDA0D34009E5595 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2422,6 +2435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
